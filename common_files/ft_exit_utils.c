@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_exit_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/12 16:59:53 by zmakhkha         ###   ########.fr       */
+/*   Created: 2023/03/12 15:33:12 by zmakhkha          #+#    #+#             */
+/*   Updated: 2023/03/12 16:58:32 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
-void	l(void)
+void	ft_exit(char *c, int s)
 {
-	system("leaks minishell");
-}
-
-int	main(void)
-{
-	atexit(l);
-	ft_prompt();
-	return (0);
+	write(1, c, ft_strlen(c));
+	exit(s);
 }
