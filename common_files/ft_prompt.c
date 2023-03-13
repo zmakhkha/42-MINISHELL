@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/12 17:27:13 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/13 16:37:02 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_prompt(void)
 	while (1)
 	{
 		usleep(100);
-		str = readline(">> ");
+		str = readline("minishell >> ");
 		if (str == NULL)
 		{
 			printf("\n");
@@ -56,4 +56,10 @@ int	ft_add_history(char *str)
 	if (close(fd) == -1)
 		ft_exit("Failed to close history file !!\n", 1);
 	return (0);
+}
+
+// Return the user input allocated
+char	*ft_read_input(char *str)
+{
+	return (ft_strdup(str));
 }

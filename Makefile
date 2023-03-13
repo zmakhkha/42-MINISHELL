@@ -2,6 +2,7 @@ M_NAME = minishell
 FT_PATH = libft/libft.a
 SRC_MN =	common_files/ft_prompt.c \
 			common_files/ft_exit_utils.c \
+			common_files/token_utils.c \
 			main.c
 
 OBJ = $(SRC_MN:.c=.o)
