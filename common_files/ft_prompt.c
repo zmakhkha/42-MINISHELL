@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/13 16:37:02 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:08:27 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ void	ft_print(char *a)
 	write(1, a, ft_strlen(a));
 }
 
+// Add a command history
 void	ft_prompt(void)
 {
 	char	*str;
+	t_token	*t;
+	t_token	*tmp;
 
 	while (1)
 	{
@@ -30,15 +33,22 @@ void	ft_prompt(void)
 			printf("\n");
 			break ;
 		}
-		if (ft_strlen(str) > 0)
+		ft_add_history(str);
+		printf("%s\n", str);
+		add_history(str);
+		t = ft_strtok(str);
+		while (t)
 		{
-			ft_add_history(str);
-			printf("%s\n", str);
+			tmp = t;
+			ft_pr(t->type);
+			printf("\n");
+			t = t->prev;
 		}
-		free(str);
+		ft_free_token(&tmp);
 	}
 }
 
+// Add a file history
 int	ft_add_history(char *str)
 {
 	int		fd;
