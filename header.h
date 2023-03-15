@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/14 20:01:10 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:21:25 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,8 @@
 
 enum
 {
-	SPACE,
 	WORD,
 	PIPE,
-	ASSIGN,
-	VAR,
 	SUBSHELL,
 	COMMAND,
 	AND,
@@ -38,7 +35,7 @@ enum
 	RE_IN,
 	RE_OUT,
 	HDOC,
-	APP,
+	APPEND,
 	W_CARD,
 	DQ_COMM,
 	SQ_COMM
@@ -70,7 +67,9 @@ void	s_quotes(char *str, t_token **lst, int *a, int *b);
 void	ft_operators(char *str, t_token **lst, int *a, int *b);
 void	ft_prt(char *str, t_token **lst, int *a, int *b);
 
-// common_files/ft_string_utils.c
+// common_files/ft_string_utils2.c
+int	ft_is_operator2(char c);
+void	ft_operators2(char *str, t_token **lst, int *a, int *b);
 t_token	*ft_strtok(char *str);
 
 // common_files/ft_utils.c

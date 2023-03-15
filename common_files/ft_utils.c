@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:33:12 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/14 20:06:20 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:20:02 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ void	ft_exit(char *c, int s)
 
 int	ft_is_valid_comm(char c)
 {
-	return (ft_isalnum(c) || c == '+' || c == '>' || \
-	c == '<' || c == '-' || ft_is_whitespace(c));
+	return (!(c == '&' || c == '|' || c == '&' || c == '(' || c == ')' \
+	|| c == '=' || c == '$' || c == ';') && !ft_is_operator(c) \
+	&& !ft_is_quote(c) && !ft_is_operator2(c));
 }
 
 int	ft_is_whitespace(char c)

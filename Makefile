@@ -16,7 +16,7 @@ CFLAGS = -Wall -Werror -Wextra
 all: $(M_NAME)
 
 $(M_NAME) : $(OBJ)
-	$(CC)  $(CFLAGS) $(SRC_MN) $(FT_PATH) -o $(M_NAME) -lreadline
+	$(CC)  $(CFLAGS) $(SRC_MN) $(FT_PATH) -o $(M_NAME) -lreadline 
 %.o:%.c header.h
 	@$(CC) $(CFLAGS) -c $< -o $@
 
@@ -28,4 +28,5 @@ fclean:
 
 re	: fclean	all
 
+wq	: re	clean 
 .PHONY: all clean fclean re 

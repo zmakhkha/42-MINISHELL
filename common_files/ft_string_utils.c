@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 10:26:38 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/14 20:19:02 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/15 19:51:52 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,127 +14,147 @@
 
 void	white_comm(char *str, t_token **lst, int *a, int *b)
 {
-	int	i;
-	int	j;
+	int		j;
+	char	*s;
 
-	i = *a;
 	j = *b;
-	while (str[(j)] && ft_is_valid_comm(str[j]))
-		j++;
-	ft_token_addback(lst, ft_add_token(ft_substr(str, i, j - i + 1), COMMAND));
-	*b = j;
+	while (str[(*b)] && ft_is_valid_comm(str[*b]))
+		*b += 1;
+	s = ft_substr(str, *a, j - *a + 1);
+	ft_token_addback(lst, ft_add_token(s, COMMAND));
+	free(s);
 	return ;
 }
 
 void	d_quotes(char *str, t_token **lst, int *a, int *b)
 {
-	int	i;
-	int	j;
-	int	len;
+	int		len;
+	char	*s;
 
+	s = NULL;
 	len = ft_strlen(str);
-	i = *a;
-	j = *b;
-	if (str[j] && str[j] == '"')
+	if (str[*b] && str[*b] == '"')
 	{
-		j++;
-		while (str[j] && str[j] != '"')
-			j++;
-		if (str[j] == '"')
+		*b += 1;
+		while (str[*b] && str[*b] != '"')
+			*b += 1;
+		if (str[*b] == '"')
 		{
-			ft_token_addback(lst, ft_add_token \
-			(ft_substr(str, i + 1, j - i), DQ_COMM));
-			j++;
+			s = ft_substr(str, *a + 1, *b - *a -1);
+			ft_token_addback(lst, ft_add_token(s, DQ_COMM));
+			*b += 1;
 		}
-		else if (j == len)
+		else if (*b == len)
 		{
 			ft_free_token(lst);
 			ft_exit("Double Quotes error !!\n", 1);
 		}
 	}
-	*b = j;
+	if (s)
+		free(s);
 }
 
 void	s_quotes(char *str, t_token **lst, int *a, int *b)
 {
-	int	i;
-	int	j;
-	int	len;
+	int		len;
+	char	*s;
 
+	s = NULL;
 	len = ft_strlen(str);
-	i = *a;
-	j = *b;
-	if (str[j] && str[j] == '\'')
+	if (str[*b] && str[*b] == '\'')
 	{
-		j++;
-		while (str[j] && str[j] != '\'')
-			j++;
-		if (str[j] == '\'')
+		*b += 1;
+		while (str[*b] && str[*b] != '\'')
+			*b += 1;
+		if (str[*b] == '\'')
 		{
-			ft_token_addback(lst, ft_add_token \
-			(ft_substr(str, i + 1, j - i), SQ_COMM));
-			j++;
+			s = ft_substr(str, *a + 1, *b - *a -1);
+			ft_token_addback(lst, ft_add_token(s, SQ_COMM));
+			*b += 1;
 		}
-		else if (j == len)
+		else if (*b == len)
 		{
 			ft_free_token(lst);
 			ft_exit("Signle Quotes error !!\n", 1);
 		}
 	}
-	*b = j;
+	if (s)
+		free(s);
 }
 
 void	ft_operators(char *str, t_token **lst, int *a, int *b)
 {
-	int	i;
-	int	j;
-	int	len;
+	int		len;
+	char	*s;
 
-	i = *a;
 	len = ft_strlen(str);
-	j = *b;
-	if (str[j] && str[j + 1] && str[j] == '|' && str[j + 1] == '|')
+	s = NULL;
+	if (str[*b] && str[*b + 1] && str[*b] == '|' && str[*b + 1] == '|')
 	{
-		ft_token_addback(lst, ft_add_token(ft_substr(str, i, i + 2), OR));
-		j += 2;
+		s = ft_substr(str, *a, *a + 2);
+		ft_token_addback(lst, ft_add_token(s, OR));
+		*b += 2;
 	}
-	else if (str[j] && str[j + 1] && str[j] == '&' && str[j + 1] == '&')
+	else if (str[*b] && str[*b + 1] && str[*b] == '&' && str[*b + 1] == '&')
 	{
-		ft_token_addback(lst, ft_add_token(ft_substr(str, i, j + 2), AND));
-		j += 2;
+		s = ft_substr(str, *a, *b + 2);
+		ft_token_addback(lst, ft_add_token(s, AND));
+		*b += 2;
 	}
-	else if (str[j] && str[j] == '|')
+	else if (str[*b] && str[*b] == '|')
 	{
-		ft_token_addback(lst, ft_add_token(ft_substr(str, i, j + 1), PIPE));
-		j++;
+		s = ft_substr(str, *a, *b + 1);
+		ft_token_addback(lst, ft_add_token(s, PIPE));
+		*b += 1;
 	}
-	*b = j;
+	if (s)
+		free (s);
 }
 
+// Still to handle multiple parethetises
 void	ft_prt(char *str, t_token **lst, int *a, int *b)
 {
-	int	i;
-	int	j;
-	int	len;
+	int		len;
+	char	*s;
 
-	i = *a;
-	j = *b;
+	s = NULL;
 	len = ft_strlen(str);
-	if (str[j] == '(')
+	if (str[*b] && str[*b] == '(')
 	{
-		while (j < len && str[j] != ')')
-			j++;
-		if (str[j] == ')')
+		*b += 1;
+		while (str[*b] && str[*b] != ')')
+			*b += 1;
+		if (str[*b] == ')')
 		{
-			ft_token_addback(lst, ft_add_token \
-			(ft_substr(str, i + 1, j - i), SUBSHELL));
-			j++;
+			s = ft_substr(str, *a + 1, *b - *a -1);
+			ft_token_addback(lst, ft_add_token(s, SUBSHELL));
+			*b += 1;
 		}
-		else if (j == len)
+		else if (*b == len)
 		{
 			ft_free_token(lst);
-			ft_exit("parenthesis Error !!\n", 1);
+			ft_exit("Parenthesis Quotes error !!\n", 1);
 		}
 	}
-	*b = j;
+	if (s)
+		free(s);
 }
+
+// void	ft_ptr(char *str, t_token **lst, int *a, int *b)
+// {
+// 	int		len;
+// 	char	*s;
+// 	int		open;
+
+// 	open = 0;
+// 	s = NULL;
+// 	len = ft_strlen(str);
+// 	while (str[*b])
+// 	{
+// 		if (str[*b] == '(')
+// 			open++;
+// 		if (str[*b] == '(')
+// 			open--;
+// 		*b += 1;
+// 	}
+// }

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:01:55 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/14 20:05:52 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:18:56 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,10 @@
 
 void	ft_pr(int a)
 {
-	if (a == SPACE)
-		printf("SPACE");
-	else if (a == WORD)
+	if (a == WORD)
 		printf("WORD");
 	else if (a == PIPE)
 		printf("PIPE");
-	else if (a == ASSIGN)
-		printf("ASSIGN");
-	else if (a == VAR)
-		printf("VAR");
 	else if (a == SUBSHELL)
 		printf("SUBSHELL");
 	else if (a == COMMAND)
@@ -38,8 +32,8 @@ void	ft_pr(int a)
 		printf("RE_OUT");
 	else if (a == HDOC)
 		printf("HDOC");
-	else if (a == APP)
-		printf("APP");
+	else if (a == APPEND)
+		printf("APPEND");
 	else if (a == W_CARD)
 		printf("W_CARD");
 	else if (a == DQ_COMM)
@@ -57,7 +51,7 @@ t_token	*ft_add_token(char *str, int type)
 	tmp = (t_token *) malloc(sizeof(t_token));
 	if (!tmp)
 		ft_exit("Token allocation failed", 1);
-	tmp->str = ft_strdup(str);
+	tmp->str = str;
 	tmp->type = type;
 	tmp->prev = NULL;
 	return (tmp);
@@ -92,11 +86,9 @@ void	ft_free_token(t_token **t)
 			{
 				tmp = *t;
 				(*t) = (*t)->prev;
-				if (tmp->str)
-					free (tmp->str);
 				free (tmp);
 			}
+			free ((*t));
 		}
-		// free (*t);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/14 20:08:27 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/15 15:48:13 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,18 @@ void	ft_prompt(void)
 			printf("\n");
 			break ;
 		}
-		ft_add_history(str);
 		printf("%s\n", str);
 		add_history(str);
+		ft_add_history(str);
 		t = ft_strtok(str);
+		tmp = t;
 		while (t)
 		{
-			tmp = t;
 			ft_pr(t->type);
 			printf("\n");
 			t = t->prev;
 		}
+		free (str);
 		ft_free_token(&tmp);
 	}
 }
@@ -66,10 +67,4 @@ int	ft_add_history(char *str)
 	if (close(fd) == -1)
 		ft_exit("Failed to close history file !!\n", 1);
 	return (0);
-}
-
-// Return the user input allocated
-char	*ft_read_input(char *str)
-{
-	return (ft_strdup(str));
 }

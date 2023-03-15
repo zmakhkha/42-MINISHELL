@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   draft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/14 20:22:43 by zmakhkha         ###   ########.fr       */
+/*   Created: 2023/03/15 19:02:26 by zmakhkha          #+#    #+#             */
+/*   Updated: 2023/03/15 19:51:56 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+# include<libc.h>
 
-void	l(void)
+int ft_isvalidparet(char *str)
 {
-	system("leaks minishell");
+    int i;
+    int open;
+
+    i = -1;
+    open = 0;
+    while(str[++i])
+    {
+        if (str[i] == '(')
+            open++;
+        if (str[i] == ')')
+            open--;
+    }
+    if (!open)
+        return (1);
+    return (0);
 }
 
-int	main(void)
+int main()
 {
-	atexit(l);
-	ft_prompt();
-	return (0);
+    char *s = "sdjbad((()))";
+    printf("hooo yaaaa %d", ft_isvalidparet(s));
 }
