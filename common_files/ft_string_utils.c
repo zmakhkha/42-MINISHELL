@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 10:26:38 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/16 23:38:14 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/17 18:00:51 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,88 @@ void	ft_operators(char *str, t_token **lst, int *a, int *b)
 		}
 	}
 	else
-	{
-		ft_exit("operators error !!", 1);
-	}
+		ft_exit("PIPE or OR error !!", 1);
 	if (s)
 		free (s);
+}
+
+// int	ft_istrrchr(const char *s, int c)
+// {
+// 	int	nbr;
+
+// 	nbr = ft_strlen((char *)s);
+// 	c = (char)c;
+//     write(1, &s[nbr], 1);
+// 	while ((nbr != -1) && s[nbr] != c)
+//         nbr--;
+// 	if (s[nbr] == c)
+// 		return (nbr);
+// 	else
+// 		return (-1);
+// }
+
+// int	ft_istrchr(const char *s, int c)
+// {
+// 	int	nbr;
+// 	int	i;
+
+// 	nbr = ft_strlen((char *)s);
+// 	c = (char)c;
+// 	i = 0;
+// 	while (i < nbr && s[i] != c)
+//         i++;
+// 	if (s[i] == c)
+// 		return (i);
+// 	else
+// 		return (-1);
+// }
+
+// int ft_isvalidparet(char *str)
+// {
+//     int i;
+//     int open;
+
+//     i = -1;
+//     open = 0;
+//     while(str[++i])
+//     {
+//         if (str[i] == '(')
+//             open++;
+//         if (str[i] == ')')
+//             open--;
+//     }
+//     if (!open)
+// 	{
+// 		printf("----------->haaaaana\n");	
+//         return (1);
+// 	}
+//     return (0);
+// }
+
+int if_validp(char* str)
+{
+	int open;
+	int i;
+
+	i = 0;
+	open = 1;
+	while (str[++i])
+	{
+		if (str[i] == '(')
+		{
+			open++;
+			if_validp(str + i +1 );
+		}
+		if (str[i] == ')')
+		{	
+			open--;
+			if (!open)
+				return (i);
+		}
+	}
+	if (!open)
+		return (i);
+	return (-1);
 }
 
 // Still to handle multiple parethetises
@@ -128,11 +205,11 @@ void	ft_prt(char *str, t_token **lst, int *a, int *b)
 
 	s = NULL;
 	len = ft_strlen(str);
-	if (str[*b] && str[*b] == '(')
+	if (str[*b] && (str[*b] == '(' && if_validp(str + *b) != -1))
 	{
-		*b += 1;
-		while (str[*b] && str[*b] != ')')
-			*b += 1;
+		printf("--------->%d\n", *b);
+		*b += if_validp(str + *b) ;
+		printf("--------->%d\n", *b);
 		if (str[*b] == ')')
 		{
 			s = ft_substr(str, *a + 1, *b - *a -1);
@@ -142,28 +219,11 @@ void	ft_prt(char *str, t_token **lst, int *a, int *b)
 		else if (*b == len)
 		{
 			ft_free_token(lst);
-			ft_exit("Parenthesis Quotes error !!\n", 1);
+			ft_exit("SUBSHELL Quotes error !!\n", 1);
 		}
 	}
+	else
+		ft_exit("SUBSHELL errors !!\n", 1);
 	if (s)
 		free(s);
 }
-
-// void	ft_ptr(char *str, t_token **lst, int *a, int *b)
-// {
-// 	int		len;
-// 	char	*s;
-// 	int		open;
-
-// 	open = 0;
-// 	s = NULL;
-// 	len = ft_strlen(str);
-// 	while (str[*b])
-// 	{
-// 		if (str[*b] == '(')
-// 			open++;
-// 		if (str[*b] == '(')
-// 			open--;
-// 		*b += 1;
-// 	}
-// }

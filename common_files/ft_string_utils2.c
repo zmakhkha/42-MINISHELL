@@ -6,13 +6,14 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:29 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/17 00:39:36 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/17 14:59:13 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-int	ft_is_operator2(char c)
+
+int	ft_is_operator3(char c)
 {
 	return (c == '<' || c == '>');
 }
@@ -22,7 +23,7 @@ void	ft_operators2(char *str, t_token **lst, int *a, int *b)
 	char	*s;
 
 	s = NULL;
-	if (ft_voperator(str + *b,'>'))
+	if (ft_voperator(str + *b, '>') || ft_voperator(str + *b, '<'))
 	{
 		if (ft_validouble(str + *b, '>'))
 		{	
@@ -37,6 +38,8 @@ void	ft_operators2(char *str, t_token **lst, int *a, int *b)
 			*b += 1;
 		}
 	}
+	else
+		ft_exit("operators 2 error !!", 1);
 	if (s)
 		free (s);
 }
@@ -46,7 +49,7 @@ void	ft_operators3(char *str, t_token **lst, int *a, int *b)
 	char	*s;
 
 	s = NULL;
-	if (ft_voperator(str + *b,'<'))
+	if (ft_voperator(str + *b, '<'))
 	{
 		if (ft_validouble(str + *b, '<'))
 		{	
@@ -62,7 +65,7 @@ void	ft_operators3(char *str, t_token **lst, int *a, int *b)
 		}
 	}
 	else
-		ft_exit("Operators 2 Error !!", 1);
+		ft_exit("Operators 3 Error !!", 1);
 	if (s)
 		free (s);
 }
@@ -86,16 +89,16 @@ t_token	*ft_strtok(char *str)
 			s_quotes(str, &lst, &i, &j);
 		else if (str[j] && str[j] == '"')
 			d_quotes(str, &lst, &i, &j);
-		else if (str[j] == '(')
+		else if (str[j] && str[j] == '(')
 			ft_prt(str, &lst, &i, &j);
 		else if (str[j] && ft_is_operator(str[j]))
 			ft_operators(str, &lst, &i, &j);
-		else if (str[j] && ft_is_operator2(str[j]))
+		else if (str[j] && (str[j] == '>' ))
 			ft_operators2(str, &lst, &i, &j);
+		else if (str[j] && str[j] == '<')
+			ft_operators3(str, &lst, &i, &j);
 		else
 			return (free(lst), ft_exit("Parse !!", 1), NULL);
 	}
-	else
-		ft_exit("Operators 2 Error !!", 1);
 	return (lst);
 }

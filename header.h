@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/16 23:28:11 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/17 15:05:37 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_token	*ft_strtok(char *str);
 
 // common_files/ft_string_utils2.c
 int		ft_voperator(char*str, char op);
-int 	ft_validouble(char *str, char op);
+int		ft_validouble(char *str, char op);
 
 // common_files/ft_utils.c
 void	ft_exit(char *c, int s);
@@ -82,5 +82,9 @@ int		ft_is_valid_comm(char c);
 int		ft_is_whitespace(char c);
 int		ft_is_operator(char c);
 int		ft_is_quote(char c);
+int		ft_is_valid_comm2(char c);
+int		ft_is_operator4(char c);
+
+
 
 #endif

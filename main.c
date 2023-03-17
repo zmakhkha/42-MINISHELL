@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/16 22:53:14 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/17 15:16:59 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	l(void)
 {
-	// system("leaks minishell");
-	system("valgrind --leak-check=yes --log-file=log minishell");
+	system("leaks minishell");
+	// system("valgrind --leak-check=yes --log-file=log minishell");
 }
 
 int	main(void)

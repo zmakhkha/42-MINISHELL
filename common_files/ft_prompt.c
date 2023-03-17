@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/16 22:57:30 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/17 16:43:15 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_prompt(void)
 	while (1)
 	{
 		usleep(100);
-		str = readline("minishell $ ");
+		str = readline("minishell >> ");
 		if (str == NULL)
 			break ;
 		printf("%s\n", str);

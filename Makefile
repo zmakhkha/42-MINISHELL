@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
+#    Updated: 2023/03/17 16:27:09 by zmakhkha         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 M_NAME = minishell
 FT_PATH = libft/libft.a
 SRC_MN =	common_files/ft_prompt.c \
@@ -12,7 +24,7 @@ OBJ = $(SRC_MN:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address
 
 all: $(M_NAME)
 
