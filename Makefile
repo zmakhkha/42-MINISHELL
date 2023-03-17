@@ -5,6 +5,7 @@ SRC_MN =	common_files/ft_prompt.c \
 			common_files/token_utils.c \
 			common_files/ft_string_utils.c \
 			common_files/ft_string_utils2.c \
+			common_files/ft_string_utils3.c \
 			main.c
 
 OBJ = $(SRC_MN:.c=.o)
@@ -16,7 +17,7 @@ CFLAGS = -Wall -Werror -Wextra
 all: $(M_NAME)
 
 $(M_NAME) : $(OBJ)
-	$(CC)  $(CFLAGS) $(SRC_MN) $(FT_PATH) -o $(M_NAME) -lreadline 
+	$(CC)  $(CFLAGS) $(SRC_MN) $(FT_PATH) -o $(M_NAME) -lreadline -g
 %.o:%.c header.h
 	@$(CC) $(CFLAGS) -c $< -o $@
 

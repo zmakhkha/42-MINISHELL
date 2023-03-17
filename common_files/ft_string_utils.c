@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 10:26:38 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/15 19:51:52 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/16 23:38:14 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	white_comm(char *str, t_token **lst, int *a, int *b)
 	while (str[(*b)] && ft_is_valid_comm(str[*b]))
 		*b += 1;
 	s = ft_substr(str, *a, j - *a + 1);
-	ft_token_addback(lst, ft_add_token(s, COMMAND));
+	ft_token_addback(lst, ft_add_token(s, WORD));
 	free(s);
 	return ;
 }
@@ -84,28 +84,37 @@ void	s_quotes(char *str, t_token **lst, int *a, int *b)
 
 void	ft_operators(char *str, t_token **lst, int *a, int *b)
 {
-	int		len;
 	char	*s;
 
-	len = ft_strlen(str);
 	s = NULL;
-	if (str[*b] && str[*b + 1] && str[*b] == '|' && str[*b + 1] == '|')
+	if (ft_voperator(str + *b, '|'))
 	{
-		s = ft_substr(str, *a, *a + 2);
-		ft_token_addback(lst, ft_add_token(s, OR));
-		*b += 2;
+		write(1, b, 1);
+		if (ft_validouble(str + *b, '|'))
+		{
+			s = ft_substr(str, *a, *a + 2);
+			ft_token_addback(lst, ft_add_token(s, OR));
+			*b += 2;
+		}
+		else if (str[*b] == '|')
+		{
+			s = ft_substr(str, *a, *b + 1);
+			ft_token_addback(lst, ft_add_token(s, PIPE));
+			*b += 1;
+		}
 	}
-	else if (str[*b] && str[*b + 1] && str[*b] == '&' && str[*b + 1] == '&')
+	else if (ft_voperator(str + *b, '&'))
 	{
-		s = ft_substr(str, *a, *b + 2);
-		ft_token_addback(lst, ft_add_token(s, AND));
-		*b += 2;
+		if (ft_validouble(str + *b, '&'))
+		{
+			s = ft_substr(str, *a, *b + 2);
+			ft_token_addback(lst, ft_add_token(s, AND));
+			*b += 2;
+		}
 	}
-	else if (str[*b] && str[*b] == '|')
+	else
 	{
-		s = ft_substr(str, *a, *b + 1);
-		ft_token_addback(lst, ft_add_token(s, PIPE));
-		*b += 1;
+		ft_exit("operators error !!", 1);
 	}
 	if (s)
 		free (s);

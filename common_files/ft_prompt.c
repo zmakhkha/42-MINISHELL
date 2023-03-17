@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/15 15:48:13 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/16 22:57:30 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,10 @@ void	ft_prompt(void)
 	while (1)
 	{
 		usleep(100);
-		str = readline("minishell >> ");
+		str = readline("minishell $ ");
 		if (str == NULL)
-		{
-			printf("\n");
 			break ;
-		}
 		printf("%s\n", str);
-		add_history(str);
 		ft_add_history(str);
 		t = ft_strtok(str);
 		tmp = t;
@@ -55,6 +51,7 @@ int	ft_add_history(char *str)
 	int		fd;
 	ssize_t	b;
 
+	add_history(str);
 	fd = open(H_PATH, O_WRONLY | O_APPEND | O_CREAT, 0644);
 	if (fd == -1)
 		ft_exit("Failed to create the history file !!\n", 1);
