@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 10:26:38 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 10:45:16 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/18 13:26:48 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 void	ft_word(char *str, t_token **lst, int *a, int *b)
 {
-	int		j;
 	char	*s;
 
-	j = *b;
 	while (str[(*b)] && ft_valid_word(str[*b]))
 		*b += 1;
-	s = ft_substr(str, *a, j - *a + 1);
+	s = ft_substr(str, *a, *b - *a);
 	ft_token_addback(lst, ft_add_token(s, WORD));
-	free(s);
-	return ;
 }
 
 void	d_quotes(char *str, t_token **lst, int *a, int *b)
@@ -50,8 +46,6 @@ void	d_quotes(char *str, t_token **lst, int *a, int *b)
 			ft_exit("Double Quotes error !!\n", 1);
 		}
 	}
-	if (s)
-		free(s);
 }
 
 void	s_quotes(char *str, t_token **lst, int *a, int *b)
@@ -78,8 +72,6 @@ void	s_quotes(char *str, t_token **lst, int *a, int *b)
 			ft_exit("Signle Quotes error !!\n", 1);
 		}
 	}
-	if (s)
-		free(s);
 }
 
 void	ft__operators(char *str, t_token **lst, int *a, int *b)
@@ -89,13 +81,13 @@ void	ft__operators(char *str, t_token **lst, int *a, int *b)
 	s = NULL;
 	if (ft_validouble(str + *b, '|'))
 	{
-		s = ft_substr(str, *a, *a + 2);
+		s = ft_substr(str, *a, 2);
 		ft_token_addback(lst, ft_add_token(s, OR));
 		*b += 2;
 	}
 	else if (str[*b] == '|')
 	{
-		s = ft_substr(str, *a, *b + 1);
+		s = ft_substr(str, *a, 1);
 		ft_token_addback(lst, ft_add_token(s, PIPE));
 		*b += 1;
 	}
@@ -114,7 +106,7 @@ void	ft_operators(char *str, t_token **lst, int *a, int *b)
 	{
 		if (ft_validouble(str + *b, '&'))
 		{
-			s = ft_substr(str, *a, *b + 2);
+			s = ft_substr(str, *a, 2);
 			ft_token_addback(lst, ft_add_token(s, AND));
 			*b += 2;
 		}
@@ -123,6 +115,4 @@ void	ft_operators(char *str, t_token **lst, int *a, int *b)
 	}
 	else
 		ft_exit("PIPE or OR error !!\n", 1);
-	if (s)
-		free (s);
 }

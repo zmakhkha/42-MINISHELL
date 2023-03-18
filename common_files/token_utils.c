@@ -6,44 +6,56 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:01:55 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 11:06:20 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/18 13:46:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-// void	ft_pr(int a)
+// char	*ft_pr1(int a)
 // {
 // 	if (a == WORD)
-// 		printf("WORD");
+// 		return("WORD");
 // 	else if (a == PIPE)
-// 		printf("PIPE");
+// 		return("PIPE");
 // 	else if (a == SPACE)
-// 		printf("SPACE");
+// 		return("SPACE");
 // 	else if (a == SUBSHELL)
-// 		printf("SUBSHELL");
+// 		return("SUBSHELL");
 // 	else if (a == AND)
-// 		printf("AND");
+// 		return("AND");
 // 	else if (a == OR)
-// 		printf("OR");
+// 		return("OR");
 // 	else if (a == RE_IN)
-// 		printf("RE_IN");
+// 		return("RE_IN");
 // 	else if (a == RE_OUT)
-// 		printf("RE_OUT");
+// 		return("RE_OUT");
 // 	else if (a == HDOC)
-// 		printf("HDOC");
+// 		return("HDOC");
 // 	else if (a == APPEND)
-// 		printf("APPEND");
+// 		return("APPEND");
 // 	else if (a == W_CARD)
-// 		printf("W_CARD");
+// 		return("W_CARD");
 // 	else if (a == DQ_COMM)
-// 		printf("DQ_COMM");
+// 		return("DQ_COMM");
 // 	else if (a == SQ_COMM)
-// 		printf("SQ_COMM");
+// 		return("SQ_COMM");
 // 	else if (a == DOLLAR)
-// 		printf("DOLLAR");
+// 		return("DOLLAR");
 // 	else if (a == QST)
-// 		printf("QST");
+// 		return("QST");
+// 	return("NULL");
+// }
+// void	ft_pr(t_token *lst)
+// {
+// 	if (lst)
+// 	{
+// 		while (lst)
+// 		{
+// 			printf("%s : %s\n", ft_pr1(lst->type), lst->str);
+// 			lst = lst->prev;
+// 		}
+// 	}
 // }
 
 t_token	*ft_add_token(char *str, int type)
@@ -83,15 +95,23 @@ void	ft_free_token(t_token **t)
 	if (t && *t)
 	{
 		if ((*t)-> prev == NULL)
+		{
+			if ((*t)->str)
+				free((*t)->str);
 			free (*t);
+		}
 		else
 		{
 			while ((*t)->prev)
 			{
 				tmp = *t;
 				(*t) = (*t)->prev;
+				if (tmp->str)
+					free(tmp->str);
 				free (tmp);
 			}
+			if ((*t)->str)
+				free((*t)->str);
 			free ((*t));
 		}
 	}
@@ -105,7 +125,7 @@ void	ft__strtok(char *str, t_token **lst, int *a, int *b)
 		ft_prt(str, lst, a, b);
 	else if (str[*b] && ft_is_moperator(str[*b]))
 		ft_operators(str, lst, a, b);
-	else if (str[*b] && (str[*b] == '>' ))
+	else if (str[*b] && (str[*b] == '>'))
 		ft_operators2(str, lst, a, b);
 	else if (str[*b] && str[*b] == '<')
 		ft_operators3(str, lst, a, b);
@@ -128,6 +148,7 @@ t_token	*ft_strtok(char *str)
 	lst = NULL;
 	while (str[j] && !ft_forbidden(str[j]))
 	{
+		i = j;
 		if (ft_is_whitespace(str[j]))
 			ft_space(str, &lst, &i, &j);
 		else if (ft_is_operators4(str[j]))

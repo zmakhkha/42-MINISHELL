@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/17 16:43:15 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/18 13:39:38 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,19 @@ void	ft_prompt(void)
 {
 	char	*str;
 	t_token	*t;
-	t_token	*tmp;
 
+	t = NULL;
 	while (1)
 	{
 		usleep(100);
 		str = readline("minishell >> ");
 		if (str == NULL)
 			break ;
-		printf("%s\n", str);
 		ft_add_history(str);
 		t = ft_strtok(str);
-		tmp = t;
-		while (t)
-		{
-			ft_pr(t->type);
-			printf("\n");
-			t = t->prev;
-		}
+		ft_pr(t);
 		free (str);
-		ft_free_token(&tmp);
+		ft_free_token(&t);
 	}
 }
 

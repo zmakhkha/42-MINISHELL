@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:29 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 10:54:57 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/18 13:26:17 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,13 @@
 
 void	ft_space(char *str, t_token **lst, int *a, int *b)
 {
-	int		j;
 	char	*s;
 
-	j = *b;
+	s = NULL;
 	while (str[(*b)] && ft_is_whitespace(str[*b]))
 		*b += 1;
-	s = ft_substr(str, *a, j - *a + 1);
+	s = ft_substr(str, *a, *b - *a);
 	ft_token_addback(lst, ft_add_token(s, SPACE));
-	free(s);
-	return ;
 }
 
 void	ft_operators2(char *str, t_token **lst, int *a, int *b)
@@ -33,49 +30,46 @@ void	ft_operators2(char *str, t_token **lst, int *a, int *b)
 	s = NULL;
 	if (ft_voperator(str + *b, '>') || ft_voperator(str + *b, '<'))
 	{
-		if (ft_validouble(str + *b, '>'))
+		if (ft_validouble(str + *a, '>'))
 		{	
-			s = ft_substr(str, *a, *b + 1);
+			s = ft_substr(str, *a, 2);
 			ft_token_addback(lst, ft_add_token(s, APPEND));
 			*b += 2;
 		}
 		else if (str[*b] == '>')
 		{
-			s = ft_substr(str, *a, *b + 1);
+			s = ft_substr(str, *a, 1);
 			ft_token_addback(lst, ft_add_token(s, RE_OUT));
 			*b += 1;
 		}
 	}
 	else
 		ft_exit("operators 2 error !!", 1);
-	if (s)
-		free (s);
 }
 
 void	ft_operators3(char *str, t_token **lst, int *a, int *b)
 {
 	char	*s;
 
+	(void)a;
 	s = NULL;
 	if (ft_voperator(str + *b, '<'))
 	{
 		if (ft_validouble(str + *b, '<'))
 		{	
-			s = ft_substr(str, *a, *b + 1);
+			s = ft_substr(str, *b, 2);
 			ft_token_addback(lst, ft_add_token(s, HDOC));
 			*b += 2;
 		}
 		else if (str[*b] == '<')
 		{
-			s = ft_substr(str, *a, *b + 1);
+			s = ft_substr(str, *b, 1);
 			ft_token_addback(lst, ft_add_token(s, RE_IN));
 			*b += 1;
 		}
 	}
 	else
 		ft_exit("Operators 3 Error !!", 1);
-	if (s)
-		free (s);
 }
 
 int	if_validp(char *str)
@@ -128,6 +122,4 @@ void	ft_prt(char *str, t_token **lst, int *a, int *b)
 	}
 	else
 		ft_exit("SUBSHELL errors !!\n", 1);
-	if (s)
-		free(s);
 }

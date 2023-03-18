@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 10:57:24 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/18 11:42:03 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	ft_prompt(void);
 int		ft_add_history(char *tmp);
 
 // common_files/token_utils.c
-void	ft_pr(int a);
+// void	ft_pr(int a);
+void	ft_pr(t_token *t);
 t_token	*ft_add_token(char *str, int type);
 void	ft_token_addback(t_token **lst, t_token *new);
 void	ft_free_token(t_token **t);
