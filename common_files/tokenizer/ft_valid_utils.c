@@ -6,11 +6,11 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:27:40 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 10:44:43 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/18 14:02:11 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../../header.h"
 
 int	ft_is_operator(char c)
 {

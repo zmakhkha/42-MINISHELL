@@ -6,11 +6,11 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 10:26:38 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 13:26:48 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/18 14:01:06 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../../header.h"
 
 void	ft_word(char *str, t_token **lst, int *a, int *b)
 {

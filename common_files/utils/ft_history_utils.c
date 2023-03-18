@@ -1,41 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prompt.c                                        :+:      :+:    :+:   */
+/*   ft_history_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 13:39:38 by zmakhkha         ###   ########.fr       */
+/*   Created: 2023/03/18 14:56:25 by zmakhkha          #+#    #+#             */
+/*   Updated: 2023/03/18 14:58:35 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../../header.h"
 
 void	ft_print(char *a)
 {
 	write(1, a, ft_strlen(a));
-}
-
-// Add a command history
-void	ft_prompt(void)
-{
-	char	*str;
-	t_token	*t;
-
-	t = NULL;
-	while (1)
-	{
-		usleep(100);
-		str = readline("minishell >> ");
-		if (str == NULL)
-			break ;
-		ft_add_history(str);
-		t = ft_strtok(str);
-		ft_pr(t);
-		free (str);
-		ft_free_token(&t);
-	}
 }
 
 // Add a file history

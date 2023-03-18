@@ -6,11 +6,11 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 09:43:14 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 13:26:31 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/18 14:01:55 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../../header.h"
 
 int	ft_forbidden(char c)
 {

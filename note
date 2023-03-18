@@ -1,0 +1,5 @@
+pasing errors
+-heredoc without delimiter
+-dQ->dQ ; should be joined
+- dup in redirection and pipe
+-dQ->sQ ; exaption -> and joining

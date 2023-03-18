@@ -6,11 +6,11 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:29 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 13:26:17 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/18 14:01:12 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../../header.h"
 
 void	ft_space(char *str, t_token **lst, int *a, int *b)
 {

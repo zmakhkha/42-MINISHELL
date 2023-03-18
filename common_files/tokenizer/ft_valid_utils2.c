@@ -6,11 +6,11 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:33:12 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 10:44:54 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/18 14:02:15 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../../header.h"
 
 void	ft_exit(char *c, int s)
 {

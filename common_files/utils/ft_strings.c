@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strings.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 18:45:34 by zmakhkha         ###   ########.fr       */
+/*   Created: 2023/03/18 17:11:44 by zmakhkha          #+#    #+#             */
+/*   Updated: 2023/03/18 17:21:38 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../../header.h"
 
-void	l(void)
+int	ft_strcmp(char *s1, char *s2)
 {
-	system("leaks minishell");
-}
+	int	i;
+	int	l1;
+	int	l2;
 
-int	main(void)
-{
-	// atexit(l);
-	ft_prompt();
-	return (0);
+	i = -1;
+	if (s1 && s2)
+	{
+		l1 = ft_strlen(s1);
+		l2 = ft_strlen(s2);
+		if (l1 != l2)
+			return (i);
+		while (l1 && s1[l1] == s2[l1])
+			l1--;
+		return (s1[l1] - s2[l1]);
+	}
+	return (-1);
 }

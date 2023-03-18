@@ -6,32 +6,37 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/03/18 13:30:35 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/03/18 17:22:05 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 M_NAME = minishell
 FT_PATH = libft/libft.a
-SRC_MN =	common_files/ft_prompt.c \
-			common_files/ft_valid_utils.c \
-			common_files/ft_valid_utils2.c \
-			common_files/token_utils.c \
-			common_files/ft_string_utils.c \
-			common_files/ft_string_utils2.c \
-			common_files/ft_string_utils3.c \
-			common_files/ft_string_utils4.c \
+SRC_MN =	common_files/utils/ft_prompt.c \
+			common_files/utils/ft_token_utils.c \
+			common_files/utils/ft_history_utils.c \
+			common_files/utils/ft_strings.c \
+			common_files/lexer/ft_main_lexer.c \
+			common_files/lexer/ft_check_errors.c \
+			common_files/tokenizer/ft_valid_utils.c \
+			common_files/tokenizer/ft_valid_utils2.c \
+			common_files/tokenizer/ft_token_utils.c \
+			common_files/tokenizer/ft_string_utils.c \
+			common_files/tokenizer/ft_string_utils2.c \
+			common_files/tokenizer/ft_string_utils3.c \
+			common_files/tokenizer/ft_string_utils4.c \
 			main.c
 
 OBJ = $(SRC_MN:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra # -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra # -fsanitize=address -g
 
 all: $(M_NAME)
 
 $(M_NAME) : $(OBJ)
-	$(CC)  $(CFLAGS) $(SRC_MN) $(FT_PATH) -o $(M_NAME) -lreadline -g
+	$(CC)  $(CFLAGS) $(SRC_MN) $(FT_PATH) -o $(M_NAME) -lreadline
 %.o:%.c header.h
 	@$(CC) $(CFLAGS) -c $< -o $@
 

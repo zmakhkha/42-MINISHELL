@@ -1,0 +1,2701 @@
+{
+  "document": {
+    "id": "doc",
+    "name": "New Document",
+    "version": 15.5,
+    "pages": {
+      "page": {
+        "id": "page",
+        "name": "Page 1",
+        "childIndex": 1,
+        "shapes": {
+          "5aae62ed-49ae-44b6-0414-7de7268fe568": {
+            "id": "5aae62ed-49ae-44b6-0414-7de7268fe568",
+            "type": "text",
+            "name": "Text",
+            "parentId": "page",
+            "childIndex": 10,
+            "point": [
+              28.650000000000006,
+              228.37
+            ],
+            "rotation": 0,
+            "text": "ls -la | grep -a.  ....",
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1,
+              "font": "script",
+              "textAlign": "middle"
+            }
+          },
+          "d516b1d3-1e20-441c-38fa-339665aec160": {
+            "id": "d516b1d3-1e20-441c-38fa-339665aec160",
+            "type": "rectangle",
+            "name": "Rectangle",
+            "parentId": "page",
+            "childIndex": 11,
+            "point": [
+              11.26,
+              214.08
+            ],
+            "size": [
+              214.53,
+              67.98
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "1864e2cc-365d-4c70-1452-b386999e8b86": {
+            "id": "1864e2cc-365d-4c70-1452-b386999e8b86",
+            "type": "text",
+            "name": "Text",
+            "parentId": "page",
+            "childIndex": 12,
+            "point": [
+              64.99,
+              288.38
+            ],
+            "rotation": 0,
+            "text": "input",
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1,
+              "font": "script",
+              "textAlign": "middle"
+            }
+          },
+          "3b2cf188-a870-4774-2616-e7384b4faa8d": {
+            "id": "3b2cf188-a870-4774-2616-e7384b4faa8d",
+            "type": "arrow",
+            "name": "Arrow",
+            "parentId": "page",
+            "childIndex": 13,
+            "point": [
+              225.79,
+              246.36
+            ],
+            "rotation": 0,
+            "bend": -0.000052313085017083704,
+            "handles": {
+              "start": {
+                "id": "start",
+                "index": 0,
+                "point": [
+                  0,
+                  1.08
+                ],
+                "canBind": true,
+                "bindingId": "d9a47ea2-8b67-46fe-3f39-2ae8823cfe63"
+              },
+              "end": {
+                "id": "end",
+                "index": 1,
+                "point": [
+                  182.23,
+                  0
+                ],
+                "canBind": true,
+                "bindingId": "2292f624-98ea-408c-34e5-7fb402296e0a"
+              },
+              "bend": {
+                "id": "bend",
+                "index": 2,
+                "point": [
+                  91.12,
+                  0.54
+                ]
+              }
+            },
+            "decorations": {
+              "end": "arrow"
+            },
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "14b388e7-2197-44f3-196c-232d7a61ca22": {
+            "id": "14b388e7-2197-44f3-196c-232d7a61ca22",
+            "type": "rectangle",
+            "name": "Rectangle",
+            "parentId": "page",
+            "childIndex": 14,
+            "point": [
+              424.02,
+              210.95
+            ],
+            "size": [
+              450.29,
+              67.98
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "29404ce3-79f4-4278-1b3e-374429d46f8e": {
+            "id": "29404ce3-79f4-4278-1b3e-374429d46f8e",
+            "type": "text",
+            "name": "Text",
+            "parentId": "page",
+            "childIndex": 15,
+            "point": [
+              486.4,
+              224.41
+            ],
+            "rotation": 0,
+            "text": "word space word pipe space word ...",
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1,
+              "font": "script",
+              "textAlign": "middle"
+            }
+          },
+          "6f53c46b-bf25-476c-295f-a3fa4edb994f": {
+            "id": "6f53c46b-bf25-476c-295f-a3fa4edb994f",
+            "type": "text",
+            "name": "Text",
+            "parentId": "page",
+            "childIndex": 16,
+            "point": [
+              638.04,
+              290.22
+            ],
+            "rotation": 0,
+            "text": "Tokens",
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1,
+              "font": "script",
+              "textAlign": "middle"
+            }
+          },
+          "ebce04dc-84af-45b3-38f2-f878e3361ee7": {
+            "id": "ebce04dc-84af-45b3-38f2-f878e3361ee7",
+            "type": "text",
+            "name": "Text",
+            "parentId": "page",
+            "childIndex": 17,
+            "point": [
+              250.14,
+              256.23
+            ],
+            "rotation": 0,
+            "text": "Tokenization",
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1,
+              "font": "script",
+              "textAlign": "middle"
+            }
+          },
+          "72c027a5-da61-4edd-1fa9-b150bb46caf3": {
+            "id": "72c027a5-da61-4edd-1fa9-b150bb46caf3",
+            "type": "arrow",
+            "name": "Arrow",
+            "parentId": "page",
+            "childIndex": 18,
+            "point": [
+              874.31,
+              244.2
+            ],
+            "rotation": 0,
+            "bend": 0,
+            "handles": {
+              "start": {
+                "id": "start",
+                "index": 0,
+                "point": [
+                  0,
+                  0.29
+                ],
+                "canBind": true,
+                "bindingId": "6c88e526-29a0-4a35-0b04-2782b13909e6"
+              },
+              "end": {
+                "id": "end",
+                "index": 1,
+                "point": [
+                  147.12,
+                  0
+                ],
+                "canBind": true
+              },
+              "bend": {
+                "id": "bend",
+                "index": 2,
+                "point": [
+                  73.56,
+                  0.14
+                ]
+              }
+            },
+            "decorations": {
+              "end": "arrow"
+            },
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "34484989-add5-45fe-2492-e0c869f174f5": {
+            "id": "34484989-add5-45fe-2492-e0c869f174f5",
+            "type": "ellipse",
+            "name": "Ellipse",
+            "parentId": "page",
+            "childIndex": 19,
+            "point": [
+              1023.91,
+              202.63
+            ],
+            "radius": [
+              38.98000000000002,
+              38.98000000000002
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "3e573097-5210-4a0a-2648-9092e81e1fa5": {
+            "id": "3e573097-5210-4a0a-2648-9092e81e1fa5",
+            "type": "arrow",
+            "name": "Arrow",
+            "parentId": "page",
+            "childIndex": 20,
+            "point": [
+              1101.93,
+              243.14999999999998,
+              0.5
+            ],
+            "rotation": 0,
+            "bend": -0.0000984045970677662,
+            "handles": {
+              "start": {
+                "id": "start",
+                "index": 0,
+                "point": [
+                  0,
+                  0
+                ],
+                "canBind": true
+              },
+              "end": {
+                "id": "end",
+                "index": 1,
+                "point": [
+                  101.6,
+                  1.47
+                ],
+                "canBind": true
+              },
+              "bend": {
+                "id": "bend",
+                "index": 2,
+                "point": [
+                  50.8,
+                  0.74
+                ]
+              }
+            },
+            "decorations": {
+              "end": "arrow"
+            },
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "ddd7ad8d-b175-4f6b-2968-fea55450cfb0": {
+            "id": "ddd7ad8d-b175-4f6b-2968-fea55450cfb0",
+            "type": "arrow",
+            "name": "Arrow",
+            "parentId": "page",
+            "childIndex": 21,
+            "point": [
+              1062.98,
+              37.02
+            ],
+            "rotation": 0,
+            "bend": 0,
+            "handles": {
+              "start": {
+                "id": "start",
+                "index": 0,
+                "point": [
+                  0,
+                  165.61
+                ],
+                "canBind": true,
+                "bindingId": "d34fab84-3b8d-407a-3890-0017e6a98fad"
+              },
+              "end": {
+                "id": "end",
+                "index": 1,
+                "point": [
+                  0.39,
+                  0
+                ],
+                "canBind": true
+              },
+              "bend": {
+                "id": "bend",
+                "index": 2,
+                "point": [
+                  0.2,
+                  82.81
+                ]
+              }
+            },
+            "decorations": {},
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "80bd1d59-5fd7-4719-24e8-c52eca7101c7": {
+            "id": "80bd1d59-5fd7-4719-24e8-c52eca7101c7",
+            "type": "arrow",
+            "name": "Arrow",
+            "parentId": "page",
+            "childIndex": 22,
+            "point": [
+              123.94,
+              36.89
+            ],
+            "rotation": 0,
+            "bend": 0,
+            "handles": {
+              "start": {
+                "id": "start",
+                "index": 0,
+                "point": [
+                  940.16,
+                  0.68
+                ],
+                "canBind": true
+              },
+              "end": {
+                "id": "end",
+                "index": 1,
+                "point": [
+                  0,
+                  0
+                ],
+                "canBind": true
+              },
+              "bend": {
+                "id": "bend",
+                "index": 2,
+                "point": [
+                  470.08,
+                  0.34
+                ]
+              }
+            },
+            "decorations": {},
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "2dfb7616-3e02-4752-028e-8505eef47ff9": {
+            "id": "2dfb7616-3e02-4752-028e-8505eef47ff9",
+            "type": "arrow",
+            "name": "Arrow",
+            "parentId": "page",
+            "childIndex": 23,
+            "point": [
+              119.38,
+              38.75
+            ],
+            "rotation": 0,
+            "bend": 0.0000019368565121309604,
+            "handles": {
+              "start": {
+                "id": "start",
+                "index": 0,
+                "point": [
+                  2.71,
+                  0
+                ],
+                "canBind": true
+              },
+              "end": {
+                "id": "end",
+                "index": 1,
+                "point": [
+                  0,
+                  159.33
+                ],
+                "canBind": true,
+                "bindingId": "1f87ddf6-e72d-48fa-1481-6585e9c9df6e"
+              },
+              "bend": {
+                "id": "bend",
+                "index": 2,
+                "point": [
+                  1.36,
+                  79.67
+                ]
+              }
+            },
+            "decorations": {
+              "end": "arrow"
+            },
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "83f4b7a4-8e9c-4c1a-26a9-e767208b5206": {
+            "id": "83f4b7a4-8e9c-4c1a-26a9-e767208b5206",
+            "type": "ellipse",
+            "name": "Ellipse",
+            "parentId": "page",
+            "childIndex": 24,
+            "point": [
+              513.59,
+              495.12
+            ],
+            "radius": [
+              68.90999999999997,
+              68.90999999999997
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "ff13de61-5493-4e95-0c6c-8bbd6252a35b": {
+            "id": "ff13de61-5493-4e95-0c6c-8bbd6252a35b",
+            "type": "ellipse",
+            "name": "Ellipse",
+            "parentId": "page",
+            "childIndex": 25,
+            "point": [
+              265.56,
+              672.68
+            ],
+            "radius": [
+              68.90999999999997,
+              68.90999999999997
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "84364df6-c699-465c-3238-ab1d5af66292": {
+            "id": "84364df6-c699-465c-3238-ab1d5af66292",
+            "type": "ellipse",
+            "name": "Ellipse",
+            "parentId": "page",
+            "childIndex": 26,
+            "point": [
+              786,
+              676.15
+            ],
+            "radius": [
+              68.90999999999997,
+              68.90999999999997
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "0edd701d-7505-48f6-011f-8e462e9175e1": {
+            "id": "0edd701d-7505-48f6-011f-8e462e9175e1",
+            "type": "ellipse",
+            "name": "Ellipse",
+            "parentId": "page",
+            "childIndex": 27,
+            "point": [
+              970.89,
+              832.97
+            ],
+            "radius": [
+              68.90999999999997,
+              68.90999999999997
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "05a00cfb-4099-4a05-10aa-9deeb1ee04fe": {
+            "id": "05a00cfb-4099-4a05-10aa-9deeb1ee04fe",
+            "type": "ellipse",
+            "name": "Ellipse",
+            "parentId": "page",
+            "childIndex": 28,
+            "point": [
+              141.87,
+              952.7
+            ],
+            "radius": [
+              68.90999999999997,
+              68.90999999999997
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "114dd702-1259-4c45-3948-e9a6fde4af94": {
+            "id": "114dd702-1259-4c45-3948-e9a6fde4af94",
+            "type": "text",
+            "name": "Text",
+            "parentId": "page",
+            "childIndex": 29,
+            "point": [
+              489.51,
+              1306.91
+            ],
+            "rotation": 0,
+            "text": "ls -la | grep ghg | wc -l",
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1,
+              "font": "script",
+              "textAlign": "middle"
+            }
+          },
+          "e02fea5d-79e3-4db1-1b51-a053dd9f2c05": {
+            "id": "e02fea5d-79e3-4db1-1b51-a053dd9f2c05",
+            "type": "draw",
+            "name": "Draw",
+            "parentId": "page",
+            "childIndex": 30,
+            "point": [
+              583.91,
+              550.29
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "points": [
+              [
+                0,
+                0,
+                0.5
+              ],
+              [
+                0,
+                0,
+                0.5
+              ],
+              [
+                0.17,
+                0.59,
+                0.5
+              ],
+              [
+                0.65,
+                6.34,
+                0.5
+              ],
+              [
+                1.75,
+                10.32,
+                0.5
+              ],
+              [
+                2.23,
+                14.99,
+                0.5
+              ],
+              [
+                2.7,
+                19.66,
+                0.5
+              ],
+              [
+                3.11,
+                23.64,
+                0.5
+              ],
+              [
+                3.11,
+                27.47,
+                0.5
+              ],
+              [
+                3.11,
+                30.61,
+                0.5
+              ],
+              [
+                3.11,
+                32.51,
+                0.5
+              ],
+              [
+                3.11,
+                35.65,
+                0.5
+              ],
+              [
+                3.11,
+                37.55,
+                0.5
+              ],
+              [
+                3.11,
+                38.23,
+                0.5
+              ],
+              [
+                3.11,
+                39.71,
+                0.5
+              ],
+              [
+                3.71,
+                40.65,
+                0.5
+              ],
+              [
+                3.71,
+                41.18,
+                0.5
+              ],
+              [
+                3.71,
+                41.71,
+                0.5
+              ],
+              [
+                3.71,
+                42.38,
+                0.5
+              ]
+            ],
+            "isComplete": true
+          },
+          "6a97bc5b-29ec-4472-2928-d08068e6f15b": {
+            "id": "6a97bc5b-29ec-4472-2928-d08068e6f15b",
+            "type": "draw",
+            "name": "Draw",
+            "parentId": "page",
+            "childIndex": 31,
+            "point": [
+              290.86,
+              707.61
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "points": [
+              [
+                0,
+                37.48,
+                0.5
+              ],
+              [
+                0,
+                37.48,
+                0.5
+              ],
+              [
+                2.66,
+                34.01,
+                0.5
+              ],
+              [
+                7.06,
+                29.61,
+                0.5
+              ],
+              [
+                10.93,
+                22.68,
+                0.5
+              ],
+              [
+                12.58,
+                17.17,
+                0.5
+              ],
+              [
+                13.13,
+                12.49,
+                0.5
+              ],
+              [
+                13.13,
+                7.81,
+                0.5
+              ],
+              [
+                11.21,
+                3.97,
+                0.5
+              ],
+              [
+                9.84,
+                0.95,
+                0.5
+              ],
+              [
+                9.5,
+                0.27,
+                0.5
+              ],
+              [
+                9.24,
+                0,
+                0.5
+              ],
+              [
+                9.24,
+                0.27,
+                0.5
+              ],
+              [
+                8.13,
+                3.02,
+                0.5
+              ],
+              [
+                6.67,
+                14.01,
+                0.5
+              ],
+              [
+                6.67,
+                25,
+                0.5
+              ],
+              [
+                6.67,
+                31.49,
+                0.5
+              ],
+              [
+                7.91,
+                37.98,
+                0.5
+              ],
+              [
+                8.87,
+                41.81,
+                0.5
+              ],
+              [
+                10.16,
+                44.4,
+                0.5
+              ],
+              [
+                10.43,
+                44.67,
+                0.5
+              ]
+            ],
+            "isComplete": true
+          },
+          "7d07d0b1-1a2c-4b9f-35ea-2b4797bb9dd8": {
+            "id": "7d07d0b1-1a2c-4b9f-35ea-2b4797bb9dd8",
+            "type": "draw",
+            "name": "Draw",
+            "parentId": "page",
+            "childIndex": 32,
+            "point": [
+              304.15,
+              737.24
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "points": [
+              [
+                0,
+                12.8,
+                0.5
+              ],
+              [
+                0,
+                12.8,
+                0.5
+              ],
+              [
+                0.97,
+                10.26,
+                0.5
+              ],
+              [
+                2.27,
+                7.67,
+                0.5
+              ],
+              [
+                3.34,
+                6.17,
+                0.5
+              ],
+              [
+                5.81,
+                3.7,
+                0.5
+              ],
+              [
+                6.62,
+                2.47,
+                0.5
+              ],
+              [
+                11.27,
+                0,
+                0.5
+              ],
+              [
+                12.62,
+                0,
+                0.5
+              ],
+              [
+                13.14,
+                0,
+                0.5
+              ],
+              [
+                15.8,
+                4.86,
+                0.5
+              ],
+              [
+                15.8,
+                8.7,
+                0.5
+              ],
+              [
+                15.8,
+                10.6,
+                0.5
+              ],
+              [
+                15.8,
+                12.49,
+                0.5
+              ],
+              [
+                14.79,
+                13.5,
+                0.5
+              ],
+              [
+                13.84,
+                14.44,
+                0.5
+              ]
+            ],
+            "isComplete": true
+          },
+          "feb08289-e0fc-4d2a-243b-06f5a4617369": {
+            "id": "feb08289-e0fc-4d2a-243b-06f5a4617369",
+            "type": "draw",
+            "name": "Draw",
+            "parentId": "page",
+            "childIndex": 33,
+            "point": [
+              333.61,
+              745.02
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "points": [
+              [
+                0,
+                0.08,
+                0.5
+              ],
+              [
+                0,
+                0.08,
+                0.5
+              ],
+              [
+                0.84,
+                0,
+                0.5
+              ],
+              [
+                3.29,
+                0,
+                0.5
+              ],
+              [
+                7.12,
+                0,
+                0.5
+              ],
+              [
+                8.61,
+                0,
+                0.5
+              ]
+            ],
+            "isComplete": true
+          },
+          "ec48c935-0e3d-414d-199e-896b6c5e3ded": {
+            "id": "ec48c935-0e3d-414d-199e-896b6c5e3ded",
+            "type": "draw",
+            "name": "Draw",
+            "parentId": "page",
+            "childIndex": 34,
+            "point": [
+              351.83,
+              709.89
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "points": [
+              [
+                0,
+                28.83,
+                0.5
+              ],
+              [
+                0,
+                28.83,
+                0.5
+              ],
+              [
+                0.5,
+                28.07,
+                0.5
+              ],
+              [
+                0.5,
+                27.8,
+                0.5
+              ],
+              [
+                4.64,
+                21.93,
+                0.5
+              ],
+              [
+                7.25,
+                17.8,
+                0.5
+              ],
+              [
+                10.14,
+                13.46,
+                0.5
+              ],
+              [
+                10.14,
+                10.31,
+                0.5
+              ],
+              [
+                10.14,
+                7.71,
+                0.5
+              ],
+              [
+                10.14,
+                5.13,
+                0.5
+              ],
+              [
+                7.67,
+                1.7,
+                0.5
+              ],
+              [
+                5.97,
+                0,
+                0.5
+              ],
+              [
+                5.7,
+                0,
+                0.5
+              ],
+              [
+                4.76,
+                0,
+                0.5
+              ],
+              [
+                2.85,
+                0.4,
+                0.5
+              ],
+              [
+                1.55,
+                3.54,
+                0.5
+              ],
+              [
+                0.45,
+                10.03,
+                0.5
+              ],
+              [
+                0.45,
+                16.52,
+                0.5
+              ],
+              [
+                2.75,
+                32.51,
+                0.5
+              ],
+              [
+                6.48,
+                39.98,
+                0.5
+              ],
+              [
+                9.08,
+                44.65,
+                0.5
+              ],
+              [
+                10.43,
+                46,
+                0.5
+              ],
+              [
+                10.43,
+                46.26,
+                0.5
+              ],
+              [
+                10.7,
+                46.53,
+                0.5
+              ],
+              [
+                10.96,
+                46.79,
+                0.5
+              ]
+            ],
+            "isComplete": true
+          },
+          "f015894b-c32a-4fee-2244-bcd8e8b809bf": {
+            "id": "f015894b-c32a-4fee-2244-bcd8e8b809bf",
+            "type": "draw",
+            "name": "Draw",
+            "parentId": "page",
+            "childIndex": 35,
+            "point": [
+              370.22,
+              741.36
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "points": [
+              [
+                3.98,
+                0.5,
+                0.5
+              ],
+              [
+                3.98,
+                0.5,
+                0.5
+              ],
+              [
+                2.65,
+                0,
+                0.5
+              ],
+              [
+                1.71,
+                0.34,
+                0.5
+              ],
+              [
+                0.41,
+                3.48,
+                0.5
+              ],
+              [
+                0,
+                5.93,
+                0.5
+              ],
+              [
+                0,
+                10.6,
+                0.5
+              ],
+              [
+                0,
+                13.19,
+                0.5
+              ],
+              [
+                0.96,
+                15.1,
+                0.5
+              ],
+              [
+                1.89,
+                15.1,
+                0.5
+              ],
+              [
+                2.42,
+                15.1,
+                0.5
+              ],
+              [
+                4.53,
+                12.31,
+                0.5
+              ],
+              [
+                5.34,
+                9.71,
+                0.5
+              ],
+              [
+                5.34,
+                9.04,
+                0.5
+              ],
+              [
+                5.34,
+                8.77,
+                0.5
+              ],
+              [
+                5.61,
+                8.5,
+                0.5
+              ],
+              [
+                8.7,
+                13.05,
+                0.5
+              ],
+              [
+                10.56,
+                20.52,
+                0.5
+              ],
+              [
+                13.38,
+                26.17,
+                0.5
+              ],
+              [
+                14.68,
+                28.76,
+                0.5
+              ],
+              [
+                14.94,
+                29.02,
+                0.5
+              ]
+            ],
+            "isComplete": true
+          },
+          "a80f9617-174d-4321-26a6-b2cb116b0f2b": {
+            "id": "a80f9617-174d-4321-26a6-b2cb116b0f2b",
+            "type": "draw",
+            "name": "Draw",
+            "parentId": "page",
+            "childIndex": 36,
+            "point": [
+              856.37,
+              725.13
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "points": [
+              [
+                0,
+                0,
+                0.5
+              ],
+              [
+                0,
+                0,
+                0.5
+              ],
+              [
+                0.17,
+                0.18,
+                0.5
+              ],
+              [
+                0.17,
+                11.17,
+                0.5
+              ],
+              [
+                0.17,
+                18.64,
+                0.5
+              ],
+              [
+                0.17,
+                25.12,
+                0.5
+              ],
+              [
+                0.17,
+                36.11,
+                0.5
+              ],
+              [
+                2.61,
+                49.79,
+                0.5
+              ],
+              [
+                3.71,
+                57.41,
+                0.5
+              ],
+              [
+                4.04,
+                60.83,
+                0.5
+              ],
+              [
+                4.04,
+                59.61,
+                0.5
+              ],
+              [
+                4.04,
+                58.93,
+                0.5
+              ]
+            ],
+            "isComplete": true
+          },
+          "b286a1d9-8ed8-4bb0-1423-48344e649ed4": {
+            "id": "b286a1d9-8ed8-4bb0-1423-48344e649ed4",
+            "type": "draw",
+            "name": "Draw",
+            "parentId": "page",
+            "childIndex": 37,
+            "point": [
+              704.65,
+              793.51
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "points": [
+              [
+                100.17,
+                0,
+                0.5
+              ],
+              [
+                100.17,
+                0,
+                0.5
+              ],
+              [
+                98.42,
+                0.39,
+                0.5
+              ],
+              [
+                87.23,
+                10.12,
+                0.5
+              ],
+              [
+                76.49,
+                17.78,
+                0.5
+              ],
+              [
+                62.49,
+                28.35,
+                0.5
+              ],
+              [
+                51.75,
+                36.01,
+                0.5
+              ],
+              [
+                39.86,
+                46.98,
+                0.5
+              ],
+              [
+                32.55,
+                56.52,
+                0.5
+              ],
+              [
+                24.48,
+                65.28,
+                0.5
+              ],
+              [
+                15.61,
+                76.51,
+                0.5
+              ],
+              [
+                7.18,
+                86.47,
+                0.5
+              ],
+              [
+                1.5,
+                91.59,
+                0.5
+              ],
+              [
+                0,
+                92.67,
+                0.5
+              ]
+            ],
+            "isComplete": true
+          },
+          "fa938c82-d039-4678-32b3-90f4e23484a1": {
+            "id": "fa938c82-d039-4678-32b3-90f4e23484a1",
+            "type": "draw",
+            "name": "Draw",
+            "parentId": "page",
+            "childIndex": 38,
+            "point": [
+              540.98,
+              869.26
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "points": [
+              [
+                143.74,
+                10.88,
+                0.5
+              ],
+              [
+                143.74,
+                10.88,
+                0.5
+              ],
+              [
+                140,
+                10.25,
+                0.5
+              ],
+              [
+                120.35,
+                8.64,
+                0.5
+              ],
+              [
+                98.55,
+                8.64,
+                0.5
+              ],
+              [
+                78.61,
+                10.6,
+                0.5
+              ],
+              [
+                58.67,
+                18.18,
+                0.5
+              ],
+              [
+                38.83,
+                28.93,
+                0.5
+              ],
+              [
+                24.61,
+                39.65,
+                0.5
+              ],
+              [
+                11.81,
+                58.34,
+                0.5
+              ],
+              [
+                1.97,
+                79.01,
+                0.5
+              ],
+              [
+                0,
+                98.94,
+                0.5
+              ],
+              [
+                1.82,
+                114.18,
+                0.5
+              ],
+              [
+                7.15,
+                122.08,
+                0.5
+              ],
+              [
+                21.73,
+                133.93,
+                0.5
+              ],
+              [
+                39.95,
+                141.21,
+                0.5
+              ],
+              [
+                93.11,
+                148.43,
+                0.5
+              ],
+              [
+                138.96,
+                151.28,
+                0.5
+              ],
+              [
+                174.97,
+                151.28,
+                0.5
+              ],
+              [
+                195.63,
+                146.36,
+                0.5
+              ],
+              [
+                205.16,
+                139.05,
+                0.5
+              ],
+              [
+                208.85,
+                129.95,
+                0.5
+              ],
+              [
+                210.52,
+                113.28,
+                0.5
+              ],
+              [
+                210.52,
+                98.03,
+                0.5
+              ],
+              [
+                208.44,
+                89.14,
+                0.5
+              ],
+              [
+                204.67,
+                78.91,
+                0.5
+              ],
+              [
+                200.72,
+                70.31,
+                0.5
+              ],
+              [
+                195.83,
+                56.63,
+                0.5
+              ],
+              [
+                185,
+                36.85,
+                0.5
+              ],
+              [
+                179.44,
+                28.36,
+                0.5
+              ],
+              [
+                175,
+                21.99,
+                0.5
+              ],
+              [
+                170.09,
+                16.39,
+                0.5
+              ],
+              [
+                166.45,
+                12.75,
+                0.5
+              ],
+              [
+                163.01,
+                10.41,
+                0.5
+              ],
+              [
+                158.34,
+                9.38,
+                0.5
+              ],
+              [
+                149.31,
+                5.9,
+                0.5
+              ],
+              [
+                139.44,
+                2.98,
+                0.5
+              ],
+              [
+                131.96,
+                0.48,
+                0.5
+              ],
+              [
+                125.18,
+                0,
+                0.5
+              ],
+              [
+                119.52,
+                0,
+                0.5
+              ],
+              [
+                106.06,
+                0,
+                0.5
+              ],
+              [
+                102.07,
+                0,
+                0.5
+              ],
+              [
+                100.58,
+                0,
+                0.5
+              ]
+            ],
+            "isComplete": true
+          },
+          "2f8844fd-1e87-45ac-014e-0904dfd46b8f": {
+            "id": "2f8844fd-1e87-45ac-014e-0904dfd46b8f",
+            "type": "draw",
+            "name": "Draw",
+            "parentId": "page",
+            "childIndex": 39,
+            "point": [
+              584.94,
+              951.73
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "points": [
+              [
+                2.05,
+                0,
+                0.5
+              ],
+              [
+                2.05,
+                0,
+                0.5
+              ],
+              [
+                2.21,
+                1.14,
+                0.5
+              ],
+              [
+                2.21,
+                3.06,
+                0.5
+              ],
+              [
+                0.55,
+                8.57,
+                0.5
+              ],
+              [
+                0,
+                12.55,
+                0.5
+              ],
+              [
+                0,
+                14.45,
+                0.5
+              ],
+              [
+                0.26,
+                14.71,
+                0.5
+              ],
+              [
+                2.71,
+                14.71,
+                0.5
+              ],
+              [
+                7.29,
+                11.97,
+                0.5
+              ],
+              [
+                7.81,
+                11.44,
+                0.5
+              ],
+              [
+                7.81,
+                11.17,
+                0.5
+              ],
+              [
+                8.08,
+                10.9,
+                0.5
+              ],
+              [
+                8.34,
+                10.9,
+                0.5
+              ],
+              [
+                10.54,
+                12.55,
+                0.5
+              ],
+              [
+                13.65,
+                23.9,
+                0.5
+              ],
+              [
+                14.75,
+                29.41,
+                0.5
+              ],
+              [
+                14.75,
+                31.31,
+                0.5
+              ],
+              [
+                14.41,
+                32.65,
+                0.5
+              ],
+              [
+                13.47,
+                32.65,
+                0.5
+              ],
+              [
+                13.2,
+                32.65,
+                0.5
+              ],
+              [
+                12.93,
+                32.65,
+                0.5
+              ],
+              [
+                12.67,
+                32.39,
+                0.5
+              ],
+              [
+                12.67,
+                29.24,
+                0.5
+              ],
+              [
+                14.8,
+                24.56,
+                0.5
+              ],
+              [
+                16.16,
+                21.15,
+                0.5
+              ],
+              [
+                16.16,
+                20.47,
+                0.5
+              ],
+              [
+                16.16,
+                20.2,
+                0.5
+              ]
+            ],
+            "isComplete": true
+          },
+          "4be1d678-64a6-48ac-1d72-ccb18dd87ab3": {
+            "id": "4be1d678-64a6-48ac-1d72-ccb18dd87ab3",
+            "type": "draw",
+            "name": "Draw",
+            "parentId": "page",
+            "childIndex": 40,
+            "point": [
+              602.4,
+              943.7
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "points": [
+              [
+                8.23,
+                22.76,
+                0.5
+              ],
+              [
+                8.23,
+                22.76,
+                0.5
+              ],
+              [
+                8.39,
+                20.23,
+                0.5
+              ],
+              [
+                8.39,
+                15.55,
+                0.5
+              ],
+              [
+                8.39,
+                12.79,
+                0.5
+              ],
+              [
+                5.09,
+                3.54,
+                0.5
+              ],
+              [
+                3.45,
+                0.94,
+                0.5
+              ],
+              [
+                2.77,
+                0.26,
+                0.5
+              ],
+              [
+                2.51,
+                0,
+                0.5
+              ],
+              [
+                2.24,
+                0,
+                0.5
+              ],
+              [
+                1.97,
+                0.26,
+                0.5
+              ],
+              [
+                0.41,
+                1.75,
+                0.5
+              ],
+              [
+                0,
+                3.65,
+                0.5
+              ],
+              [
+                0,
+                4.99,
+                0.5
+              ],
+              [
+                0,
+                5.67,
+                0.5
+              ],
+              [
+                0.26,
+                5.93,
+                0.5
+              ],
+              [
+                2.16,
+                5.93,
+                0.5
+              ],
+              [
+                4.61,
+                5.52,
+                0.5
+              ],
+              [
+                6.5,
+                5.18,
+                0.5
+              ],
+              [
+                7.85,
+                5.18,
+                0.5
+              ],
+              [
+                8.11,
+                5.18,
+                0.5
+              ],
+              [
+                9.41,
+                9.59,
+                0.5
+              ],
+              [
+                10.51,
+                16.08,
+                0.5
+              ],
+              [
+                11.68,
+                22.57,
+                0.5
+              ],
+              [
+                12.16,
+                25.71,
+                0.5
+              ],
+              [
+                12.9,
+                27.89,
+                0.5
+              ],
+              [
+                13.43,
+                28.42,
+                0.5
+              ],
+              [
+                15.8,
+                26.37,
+                0.5
+              ]
+            ],
+            "isComplete": true
+          },
+          "41189438-983c-425c-3746-2e5eda270490": {
+            "id": "41189438-983c-425c-3746-2e5eda270490",
+            "type": "draw",
+            "name": "Draw",
+            "parentId": "page",
+            "childIndex": 41,
+            "point": [
+              630.96,
+              944.08
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "points": [
+              [
+                0.92,
+                0,
+                0.5
+              ],
+              [
+                0.92,
+                0,
+                0.5
+              ],
+              [
+                0.41,
+                0.25,
+                0.5
+              ],
+              [
+                0,
+                1.47,
+                0.5
+              ],
+              [
+                0,
+                4.06,
+                0.5
+              ],
+              [
+                0,
+                5.96,
+                0.5
+              ],
+              [
+                1.15,
+                7.86,
+                0.5
+              ],
+              [
+                1.55,
+                9.35,
+                0.5
+              ],
+              [
+                2.08,
+                9.87,
+                0.5
+              ],
+              [
+                4.67,
+                11.17,
+                0.5
+              ],
+              [
+                18.25,
+                13.68,
+                0.5
+              ]
+            ],
+            "isComplete": true
+          },
+          "df13da44-24c6-4710-0813-b53b5cb96914": {
+            "id": "df13da44-24c6-4710-0813-b53b5cb96914",
+            "type": "draw",
+            "name": "Draw",
+            "parentId": "page",
+            "childIndex": 42,
+            "point": [
+              1010.96,
+              894.91
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "points": [
+              [
+                0,
+                6.16,
+                0.5
+              ],
+              [
+                0,
+                6.16,
+                0.5
+              ],
+              [
+                1.46,
+                10.49,
+                0.5
+              ],
+              [
+                4.02,
+                19.08,
+                0.5
+              ],
+              [
+                6.22,
+                24.59,
+                0.5
+              ],
+              [
+                6.7,
+                26.77,
+                0.5
+              ],
+              [
+                6.96,
+                27.04,
+                0.5
+              ],
+              [
+                10,
+                23.13,
+                0.5
+              ],
+              [
+                16.13,
+                12.4,
+                0.5
+              ],
+              [
+                23.33,
+                0.95,
+                0.5
+              ],
+              [
+                23.67,
+                0,
+                0.5
+              ]
+            ],
+            "isComplete": true
+          },
+          "9cd3c1db-0e5a-4c05-387f-34699bab0450": {
+            "id": "9cd3c1db-0e5a-4c05-387f-34699bab0450",
+            "type": "draw",
+            "name": "Draw",
+            "parentId": "page",
+            "childIndex": 43,
+            "point": [
+              1032.96,
+              892.24
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "points": [
+              [
+                0,
+                6.28,
+                0.5
+              ],
+              [
+                0,
+                6.28,
+                0.5
+              ],
+              [
+                0.17,
+                6.87,
+                0.5
+              ],
+              [
+                0.17,
+                7.55,
+                0.5
+              ],
+              [
+                1.46,
+                10.14,
+                0.5
+              ],
+              [
+                4.91,
+                15.17,
+                0.5
+              ],
+              [
+                9.05,
+                20.48,
+                0.5
+              ],
+              [
+                10.13,
+                22.38,
+                0.5
+              ],
+              [
+                10.66,
+                22.64,
+                0.5
+              ],
+              [
+                14.39,
+                18.9,
+                0.5
+              ],
+              [
+                15.49,
+                13.24,
+                0.5
+              ],
+              [
+                17.57,
+                4.35,
+                0.5
+              ],
+              [
+                17.57,
+                1.21,
+                0.5
+              ],
+              [
+                17.57,
+                0.26,
+                0.5
+              ],
+              [
+                17.57,
+                0,
+                0.5
+              ]
+            ],
+            "isComplete": true
+          },
+          "8cc4d098-fcd6-48d5-0252-e3902bf7f6b6": {
+            "id": "8cc4d098-fcd6-48d5-0252-e3902bf7f6b6",
+            "type": "draw",
+            "name": "Draw",
+            "parentId": "page",
+            "childIndex": 44,
+            "point": [
+              648.13,
+              1307.32
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "points": [
+              [
+                2.01,
+                0,
+                0.5
+              ],
+              [
+                2.01,
+                0,
+                0.5
+              ],
+              [
+                1.9,
+                0.18,
+                0.5
+              ],
+              [
+                1.49,
+                1.67,
+                0.5
+              ],
+              [
+                1.01,
+                4.26,
+                0.5
+              ],
+              [
+                0.74,
+                5.75,
+                0.5
+              ],
+              [
+                0.33,
+                7.64,
+                0.5
+              ],
+              [
+                0.33,
+                9.54,
+                0.5
+              ],
+              [
+                0.33,
+                10.89,
+                0.5
+              ],
+              [
+                0,
+                12.79,
+                0.5
+              ],
+              [
+                0,
+                13.31,
+                0.5
+              ],
+              [
+                0,
+                15.21,
+                0.5
+              ],
+              [
+                0,
+                17.11,
+                0.5
+              ],
+              [
+                0,
+                19.01,
+                0.5
+              ],
+              [
+                0,
+                20.91,
+                0.5
+              ],
+              [
+                0.95,
+                25,
+                0.5
+              ],
+              [
+                0.95,
+                27.19,
+                0.5
+              ],
+              [
+                1.22,
+                29.37,
+                0.5
+              ],
+              [
+                1.96,
+                31.26,
+                0.5
+              ],
+              [
+                2.91,
+                33.85,
+                0.5
+              ],
+              [
+                3.25,
+                35.2,
+                0.5
+              ],
+              [
+                3.59,
+                35.88,
+                0.5
+              ],
+              [
+                4.59,
+                37.22,
+                0.5
+              ],
+              [
+                5.82,
+                38.04,
+                0.5
+              ],
+              [
+                6.76,
+                38.71,
+                0.5
+              ],
+              [
+                8.24,
+                39.12,
+                0.5
+              ],
+              [
+                8.77,
+                39.38,
+                0.5
+              ],
+              [
+                9.44,
+                39.38,
+                0.5
+              ]
+            ],
+            "isComplete": true
+          },
+          "019e4305-fc65-4813-2dfc-8279be103c37": {
+            "id": "019e4305-fc65-4813-2dfc-8279be103c37",
+            "type": "draw",
+            "name": "Draw",
+            "parentId": "page",
+            "childIndex": 45,
+            "point": [
+              711.74,
+              1289.49
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "points": [
+              [
+                0,
+                0.09,
+                0.5
+              ],
+              [
+                0,
+                0.09,
+                0.5
+              ],
+              [
+                0.84,
+                0,
+                0.5
+              ],
+              [
+                7.07,
+                4.17,
+                0.5
+              ],
+              [
+                12.62,
+                13.41,
+                0.5
+              ],
+              [
+                16.57,
+                22,
+                0.5
+              ],
+              [
+                19.71,
+                33.29,
+                0.5
+              ],
+              [
+                20.47,
+                43.15,
+                0.5
+              ],
+              [
+                20.47,
+                49.64,
+                0.5
+              ],
+              [
+                20.47,
+                55.15,
+                0.5
+              ],
+              [
+                17.14,
+                63.74,
+                0.5
+              ],
+              [
+                13.11,
+                71.64,
+                0.5
+              ],
+              [
+                10.23,
+                76.57,
+                0.5
+              ],
+              [
+                9.97,
+                76.84,
+                0.5
+              ]
+            ],
+            "isComplete": true
+          }
+        },
+        "bindings": {
+          "d9a47ea2-8b67-46fe-3f39-2ae8823cfe63": {
+            "id": "d9a47ea2-8b67-46fe-3f39-2ae8823cfe63",
+            "type": "arrow",
+            "fromId": "3b2cf188-a870-4774-2616-e7384b4faa8d",
+            "toId": "d516b1d3-1e20-441c-38fa-339665aec160",
+            "handleId": "start",
+            "point": [
+              0.5,
+              0.5
+            ],
+            "distance": 16
+          },
+          "2292f624-98ea-408c-34e5-7fb402296e0a": {
+            "id": "2292f624-98ea-408c-34e5-7fb402296e0a",
+            "type": "arrow",
+            "fromId": "3b2cf188-a870-4774-2616-e7384b4faa8d",
+            "toId": "14b388e7-2197-44f3-196c-232d7a61ca22",
+            "handleId": "end",
+            "point": [
+              0.5,
+              0.5
+            ],
+            "distance": 16
+          },
+          "6c88e526-29a0-4a35-0b04-2782b13909e6": {
+            "id": "6c88e526-29a0-4a35-0b04-2782b13909e6",
+            "type": "arrow",
+            "fromId": "72c027a5-da61-4edd-1fa9-b150bb46caf3",
+            "toId": "14b388e7-2197-44f3-196c-232d7a61ca22",
+            "handleId": "start",
+            "point": [
+              0.5,
+              0.5
+            ],
+            "distance": 16
+          },
+          "d34fab84-3b8d-407a-3890-0017e6a98fad": {
+            "id": "d34fab84-3b8d-407a-3890-0017e6a98fad",
+            "type": "arrow",
+            "fromId": "ddd7ad8d-b175-4f6b-2968-fea55450cfb0",
+            "toId": "34484989-add5-45fe-2492-e0c869f174f5",
+            "handleId": "start",
+            "point": [
+              0.5,
+              0.5
+            ],
+            "distance": 8
+          },
+          "1f87ddf6-e72d-48fa-1481-6585e9c9df6e": {
+            "id": "1f87ddf6-e72d-48fa-1481-6585e9c9df6e",
+            "type": "arrow",
+            "fromId": "2dfb7616-3e02-4752-028e-8505eef47ff9",
+            "toId": "d516b1d3-1e20-441c-38fa-339665aec160",
+            "handleId": "end",
+            "point": [
+              0.5,
+              0.5
+            ],
+            "distance": 16
+          }
+        }
+      }
+    },
+    "pageStates": {
+      "page": {
+        "id": "page",
+        "selectedIds": [
+          "4d705092-ee9a-4c8c-3b82-590873428cca"
+        ],
+        "camera": {
+          "point": [
+            0,
+            32.25
+          ],
+          "zoom": 1
+        }
+      }
+    },
+    "assets": {}
+  },
+  "assets": {}
+}

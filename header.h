@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 11:42:03 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/18 18:43:00 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 # include "libft/libft.h"
 
 # define H_PATH "/tmp/.minishell_history"
+# define SUCC 0
+# define ERR 1
+
+// -------> Tokens enumeration <------- //
 
 enum
 {
@@ -43,74 +47,104 @@ enum
 	QST
 };
 
+// -------------------------------------- //
+// -----------> Token struct <---------- //
+// ------------------------------------ //
+
+typedef struct s_command
+{
+	char			**str[0];
+	struct s_token	*prev;
+}	t_command;
+
+// -------------------------------------- //
+// -----------> Token struct <---------- //
+// ------------------------------------ //
+
 typedef struct s_token
 {
 	char			*str;
-	int				len;
+	int				index;
 	int				type;
 	struct s_token	*prev;
 }	t_token;
 
-// common_files/ft_prompt.c
-void	ft_print(char *a);
-void	ft_prompt(void);
-int		ft_add_history(char *tmp);
+// -------------------------------------- //
+// --------------> Utils <-------------- //
+// ------------------------------------ //
 
-// common_files/token_utils.c
-// void	ft_pr(int a);
-void	ft_pr(t_token *t);
+// common_files/utils/ft_history_utils.c
+int		ft_add_history(char *str);
+void	ft_print(char *a);
+
+// common_files/utils/ft_prompt.c
+void	ft_prompt(void);
+
+// common_files/utils/ft_token_utils.c
 t_token	*ft_add_token(char *str, int type);
+t_token	*ft_getlast(t_token *lst);
 void	ft_token_addback(t_token **lst, t_token *new);
 void	ft_free_token(t_token **t);
 
-// common_files/ft_string_utils.c
+// -------------------------------------- //
+// -------> The tokenizer stage <------- //
+// ------------------------------------ //
+
+// common_files/tokenizer/ft_string_utils.c
 void	ft_word(char *str, t_token **lst, int *a, int *b);
 void	d_quotes(char *str, t_token **lst, int *a, int *b);
 void	s_quotes(char *str, t_token **lst, int *a, int *b);
+void	ft__operators(char *str, t_token **lst, int *a, int *b);
 void	ft_operators(char *str, t_token **lst, int *a, int *b);
-void	ft_prt(char *str, t_token **lst, int *a, int *b);
+
+// common_files/tokenizer/ft_string_utils2.c
 void	ft_space(char *str, t_token **lst, int *a, int *b);
-
-// common_files/ft_string_utils2.c
-int		ft_is_operator2(char c);
 void	ft_operators2(char *str, t_token **lst, int *a, int *b);
-t_token	*ft_strtok(char *str);
 void	ft_operators3(char *str, t_token **lst, int *a, int *b);
-void	ft_operators2(char *str, t_token **lst, int *a, int *b);
-int		ft_is_moperator(char c);
+int		if_validp(char *str);
+void	ft_prt(char *str, t_token **lst, int *a, int *b);
 
-int		ft_is_operator3(char c);
-
-// common_files/ft_string_utils2.c
+// common_files/tokenizer/ft_string_utils3.c
 int		ft_voperator(char*str, char op);
 int		ft_validouble(char *str, char op);
 
-// common_files/ft_string_utils4.c
+// common_files/tokenizer/ft_string_utils4.c
 int		ft_forbidden(char c);
 int		ft_is_operators4(char c);
 void	ft_operators4(char *str, t_token **lst, int *a, int *b);
 
-// common_files/ft_utils.c
-void	ft_exit(char *c, int s);
-int		ft_valid_word(char c);
-int		ft_is_whitespace(char c);
-int		ft_is_operator(char c);
-int		ft_is_quote(char c);
-int		ft_is_valid_comm2(char c);
-int		ft_is_operator4(char c);
+// common_files/tokenizer/ft_token_utils.c
+void	ft__strtok(char *str, t_token **lst, int *a, int *b);
+t_token	*ft_strtok(char *str);
 
-// common_files/ft_valid_utils.c
+// common_files/tokenizer/ft_valid_utils.c
 int		ft_is_operator(char c);
 int		ft_is_moperator(char c);
 int		ft_is_operator4(char c);
 int		ft_is_operator2(char c);
 int		ft_is_quote(char c);
 
-// common_files/ft_valid_utils2.c
+//common_files/tokenizer/ft_valid_utils2.c
 void	ft_exit(char *c, int s);
 int		ft_valid_word(char c);
 int		ft_is_valid_comm2(char c);
 int		ft_is_whitespace(char c);
 int		ft_is_operator3(char c);
+
+// -------------------------------------- //
+// ---------> The Lexer stage <--------- //
+// ------------------------------------ //
+
+// common_files/lexer/ft_check_errors.c
+int		ft_check_operators(t_token *lst);
+int		if_valid_re_floower(t_token *node);
+int		ft_check_redirections(t_token *lst);
+
+// common_files/lexer/ft_main_lexer.c
+void	ft_position_it(t_token **lst);
+void	ft_main_lexer(t_token *lst);
+
+// common_files/utils/ft_strings.c
+int		ft_strcmp(char *s1, char *s2);
 
 #endif
