@@ -6,18 +6,20 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/03/17 16:27:09 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/03/18 10:29:30 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 M_NAME = minishell
 FT_PATH = libft/libft.a
 SRC_MN =	common_files/ft_prompt.c \
-			common_files/ft_utils.c \
+			common_files/ft_valid_utils.c \
+			common_files/ft_valid_utils2.c \
 			common_files/token_utils.c \
 			common_files/ft_string_utils.c \
 			common_files/ft_string_utils2.c \
 			common_files/ft_string_utils3.c \
+			common_files/ft_string_utils4.c \
 			main.c
 
 OBJ = $(SRC_MN:.c=.o)

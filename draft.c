@@ -6,13 +6,12 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 19:02:26 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/17 17:46:31 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/18 11:06:30 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include<libc.h>
-# include"header.h"
-
+#include<libc.h>
+#include"header.h"
 
 // int	ft_istrrchr(const char *s, int c)
 // {
@@ -81,72 +80,70 @@
 //     int a;
 //     ft_prt("sakjdfvjksvdf", 0, 0);
 // }
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
+// size_t	ft_strlen(const char *s)
+// {
+// 	size_t	i;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
+// 	i = 0;
+// 	while (s[i] != '\0')
+// 		i++;
+// 	return (i);
+// }
 
+// int	ft_istrrchr(const char *s, int c)
+// {
+// 	int	nbr;
 
-int	ft_istrrchr(const char *s, int c)
-{
-	int	nbr;
+// 	nbr = ft_strlen((char *)s);
+// 	c = (char)c;
+//     write(1, &s[nbr], 1);
+// 	while ((nbr != -1) && s[nbr] != c)
+//         nbr--;
+// 	if (s[nbr] == c)
+// 		return (nbr + 1);
+// 	else
+// 		return (-1);
+// }
 
-	nbr = ft_strlen((char *)s);
-	c = (char)c;
-    write(1, &s[nbr], 1);
-	while ((nbr != -1) && s[nbr] != c)
-        nbr--;
-	if (s[nbr] == c)
-		return (nbr + 1);
-	else
-		return (-1);
-}
+// int	ft_istrchr(const char *s, int c)
+// {
+// 	int	nbr;
+// 	int	i;
 
+// 	nbr = ft_strlen((char *)s);
+// 	c = (char)c;
+// 	i = 0;
+// 	while (i < nbr && s[i] != c)
+//         i++;
+// 	if (s[i] == c)
+// 		return (i);
+// 	else
+// 		return (-1);
+// }
 
-int	ft_istrchr(const char *s, int c)
-{
-	int	nbr;
-	int	i;
+// int valid_p(char* str)
+// {
+// 	int open;
+// 	int i;
 
-	nbr = ft_strlen((char *)s);
-	c = (char)c;
-	i = 0;
-	while (i < nbr && s[i] != c)
-        i++;
-	if (s[i] == c)
-		return (i);
-	else
-		return (-1);
-}
+// 	i = -1;
+// 	open = 0;
+// 	while (str[++i])
+// 	{
+// 		if (str[i] == '(')
+// 		{
+// 			open++;
+// 			valid_p(str + i +1 );
+// 		}
+// 		if (str[i] == ')')
+// 			open--;
+// 	}
+// 	if (!open)
+// 		return (i);
+// 	return (-1);
+// }
 
-int valid_p(char* str)
-{
-	int open;
-	int i;
-
-	i = -1;
-	open = 0;
-	while (str[++i])
-	{
-		if (str[i] == '(')
-		{
-			open++;
-			valid_p(str + i +1 );
-		}
-		if (str[i] == ')')
-			open--;
-	}
-	if (!open)
-		return (i);
-	return (-1);
-}
-
-int main()
-{
-	printf("----->%d\n", valid_p("(ksbdjksdf))"));
-}
+// int main()
+// {
+// 	printf("----->%d\n", valid_p("(ksbdjksdf))"));
+// }

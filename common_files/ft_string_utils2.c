@@ -6,16 +6,24 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:29 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/17 14:59:13 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/18 10:54:57 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-
-int	ft_is_operator3(char c)
+void	ft_space(char *str, t_token **lst, int *a, int *b)
 {
-	return (c == '<' || c == '>');
+	int		j;
+	char	*s;
+
+	j = *b;
+	while (str[(*b)] && ft_is_whitespace(str[*b]))
+		*b += 1;
+	s = ft_substr(str, *a, j - *a + 1);
+	ft_token_addback(lst, ft_add_token(s, SPACE));
+	free(s);
+	return ;
 }
 
 void	ft_operators2(char *str, t_token **lst, int *a, int *b)
@@ -70,35 +78,56 @@ void	ft_operators3(char *str, t_token **lst, int *a, int *b)
 		free (s);
 }
 
-t_token	*ft_strtok(char *str)
+int	if_validp(char *str)
 {
-	int		i;
-	int		j;
-	t_token	*lst;
+	int	open;
+	int	i;
 
-	j = 0;
-	lst = NULL;
-	while (str[j])
+	i = 0;
+	open = 1;
+	while (str[++i])
 	{
-		while (ft_is_whitespace(str[j]))
-			j++;
-		i = j;
-		if (ft_is_valid_comm(str[j]))
-			white_comm(str, &lst, &i, &j);
-		else if (str[j] && str[j] == '\'')
-			s_quotes(str, &lst, &i, &j);
-		else if (str[j] && str[j] == '"')
-			d_quotes(str, &lst, &i, &j);
-		else if (str[j] && str[j] == '(')
-			ft_prt(str, &lst, &i, &j);
-		else if (str[j] && ft_is_operator(str[j]))
-			ft_operators(str, &lst, &i, &j);
-		else if (str[j] && (str[j] == '>' ))
-			ft_operators2(str, &lst, &i, &j);
-		else if (str[j] && str[j] == '<')
-			ft_operators3(str, &lst, &i, &j);
-		else
-			return (free(lst), ft_exit("Parse !!", 1), NULL);
+		if (str[i] == '(')
+		{
+			open++;
+			if_validp(str + i +1);
+		}
+		if (str[i] == ')')
+		{	
+			open--;
+			if (!open)
+				return (i);
+		}
 	}
-	return (lst);
+	if (!open)
+		return (i);
+	return (-1);
+}
+
+void	ft_prt(char *str, t_token **lst, int *a, int *b)
+{
+	int		len;
+	char	*s;
+
+	s = NULL;
+	len = ft_strlen(str);
+	if (str[*b] && (str[*b] == '(' && if_validp(str + *b) != -1))
+	{
+		*b += if_validp(str + *b);
+		if (str[*b] == ')')
+		{
+			s = ft_substr(str, *a + 1, *b - *a -1);
+			ft_token_addback(lst, ft_add_token(s, SUBSHELL));
+			*b += 1;
+		}
+		else if (*b == len)
+		{
+			ft_free_token(lst);
+			ft_exit("SUBSHELL Quotes error !!\n", 1);
+		}
+	}
+	else
+		ft_exit("SUBSHELL errors !!\n", 1);
+	if (s)
+		free(s);
 }

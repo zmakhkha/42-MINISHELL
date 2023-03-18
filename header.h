@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/17 15:05:37 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/18 10:57:24 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ enum
 {
 	WORD,
 	PIPE,
+	SPACE,
 	SUBSHELL,
-	COMMAND,
 	AND,
 	OR,
 	RE_IN,
@@ -38,7 +38,9 @@ enum
 	APPEND,
 	W_CARD,
 	DQ_COMM,
-	SQ_COMM
+	SQ_COMM,
+	DOLLAR,
+	QST
 };
 
 typedef struct s_token
@@ -61,30 +63,53 @@ void	ft_token_addback(t_token **lst, t_token *new);
 void	ft_free_token(t_token **t);
 
 // common_files/ft_string_utils.c
-void	white_comm(char *str, t_token **lst, int *a, int *b);
+void	ft_word(char *str, t_token **lst, int *a, int *b);
 void	d_quotes(char *str, t_token **lst, int *a, int *b);
 void	s_quotes(char *str, t_token **lst, int *a, int *b);
 void	ft_operators(char *str, t_token **lst, int *a, int *b);
 void	ft_prt(char *str, t_token **lst, int *a, int *b);
+void	ft_space(char *str, t_token **lst, int *a, int *b);
 
 // common_files/ft_string_utils2.c
 int		ft_is_operator2(char c);
 void	ft_operators2(char *str, t_token **lst, int *a, int *b);
 t_token	*ft_strtok(char *str);
+void	ft_operators3(char *str, t_token **lst, int *a, int *b);
+void	ft_operators2(char *str, t_token **lst, int *a, int *b);
+int		ft_is_moperator(char c);
+
+int		ft_is_operator3(char c);
 
 // common_files/ft_string_utils2.c
 int		ft_voperator(char*str, char op);
 int		ft_validouble(char *str, char op);
 
+// common_files/ft_string_utils4.c
+int		ft_forbidden(char c);
+int		ft_is_operators4(char c);
+void	ft_operators4(char *str, t_token **lst, int *a, int *b);
+
 // common_files/ft_utils.c
 void	ft_exit(char *c, int s);
-int		ft_is_valid_comm(char c);
+int		ft_valid_word(char c);
 int		ft_is_whitespace(char c);
 int		ft_is_operator(char c);
 int		ft_is_quote(char c);
 int		ft_is_valid_comm2(char c);
 int		ft_is_operator4(char c);
 
+// common_files/ft_valid_utils.c
+int		ft_is_operator(char c);
+int		ft_is_moperator(char c);
+int		ft_is_operator4(char c);
+int		ft_is_operator2(char c);
+int		ft_is_quote(char c);
 
+// common_files/ft_valid_utils2.c
+void	ft_exit(char *c, int s);
+int		ft_valid_word(char c);
+int		ft_is_valid_comm2(char c);
+int		ft_is_whitespace(char c);
+int		ft_is_operator3(char c);
 
 #endif
