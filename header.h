@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 18:43:00 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/18 21:18:28 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ enum
 {
 	WORD,
 	PIPE,
-	SPACE,
+	// SPACE,
 	SUBSHELL,
 	AND,
 	OR,

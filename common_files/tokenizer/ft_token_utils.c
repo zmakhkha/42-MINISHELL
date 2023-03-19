@@ -6,57 +6,57 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:01:55 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 15:08:54 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/18 21:58:22 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
 
-// char	*ft_pr1(int a)
-// {
-// 	if (a == WORD)
-// 		return("WORD");
-// 	else if (a == PIPE)
-// 		return("PIPE");
-// 	else if (a == SPACE)
-// 		return("SPACE");
-// 	else if (a == SUBSHELL)
-// 		return("SUBSHELL");
-// 	else if (a == AND)
-// 		return("AND");
-// 	else if (a == OR)
-// 		return("OR");
-// 	else if (a == RE_IN)
-// 		return("RE_IN");
-// 	else if (a == RE_OUT)
-// 		return("RE_OUT");
-// 	else if (a == HDOC)
-// 		return("HDOC");
-// 	else if (a == APPEND)
-// 		return("APPEND");
-// 	else if (a == W_CARD)
-// 		return("W_CARD");
-// 	else if (a == DQ_COMM)
-// 		return("DQ_COMM");
-// 	else if (a == SQ_COMM)
-// 		return("SQ_COMM");
-// 	else if (a == DOLLAR)
-// 		return("DOLLAR");
-// 	else if (a == QST)
-// 		return("QST");
-// 	return("NULL");
-// }
-// void	ft_pr(t_token *lst)
-// {
-// 	if (lst)
-// 	{
-// 		while (lst)
-// 		{
-// 			printf("%s : %s\n", ft_pr1(lst->type), lst->str);
-// 			lst = lst->prev;
-// 		}
-// 	}
-// }
+char	*ft_pr1(int a)
+{
+	if (a == WORD)
+		return("WORD");
+	else if (a == PIPE)
+		return("PIPE");
+	else if (a == SPACE)
+		return("SPACE");
+	else if (a == SUBSHELL)
+		return("SUBSHELL");
+	else if (a == AND)
+		return("AND");
+	else if (a == OR)
+		return("OR");
+	else if (a == RE_IN)
+		return("RE_IN");
+	else if (a == RE_OUT)
+		return("RE_OUT");
+	else if (a == HDOC)
+		return("HDOC");
+	else if (a == APPEND)
+		return("APPEND");
+	else if (a == W_CARD)
+		return("W_CARD");
+	else if (a == DQ_COMM)
+		return("DQ_COMM");
+	else if (a == SQ_COMM)
+		return("SQ_COMM");
+	else if (a == DOLLAR)
+		return("DOLLAR");
+	else if (a == QST)
+		return("QST");
+	return("NULL");
+}
+void	ft_pr(t_token *lst)
+{
+	if (lst)
+	{
+		while (lst)
+		{
+			printf("%s : %s\n", ft_pr1(lst->type), lst->str);
+			lst = lst->prev;
+		}
+	}
+}
 
 void	ft__strtok(char *str, t_token **lst, int *a, int *b)
 {
