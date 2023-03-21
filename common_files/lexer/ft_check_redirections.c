@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_errors.c                                  :+:      :+:    :+:   */
+/*   ft_check_redirections.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 15:12:49 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/19 21:44:28 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/21 19:18:27 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,33 @@
 int	ft_check_operators(t_token *lst)
 {
 	t_token	*tmp;
+	int		i;
 
+	i = SUCC;
 	if (lst)
 	{
 		tmp = ft_getlast(lst);
 		if (!(lst->index) && ((lst->type == OR) || (lst->type == AND) \
 		|| (lst->type == PIPE)))
+		{
 			ft_print("Parse Error near operator !!\n");
+			i = ERR;
+		}
 		else if ((tmp->type == OR) || (tmp->type == AND) || \
 		(tmp->type == PIPE) || (tmp->type == APPEND) \
-		|| (tmp->type == RE_IN) || (tmp->type == RE_OUT))
+		|| (tmp->type == RE_IN) || (tmp->type == RE_OUT) || (tmp->type == HDOC))
+		{
 			ft_print("Parse Error near operator !!\n");
+			i = ERR;
+		}
 	}
-	return (1);
+	return (i);
 }
 
 int	if_valid_re_floower(t_token *node)
 {
 	if (node && node->prev)
-		return (node->prev->type == WORD || node->prev->type == SQ_COMM \
-		|| node->prev->type == DQ_COMM);
+		return (node->prev->type == WORD);
 	return (0);
 }
 

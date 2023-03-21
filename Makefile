@@ -6,25 +6,29 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/03/18 17:22:05 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/03/21 19:27:01 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 M_NAME = minishell
 FT_PATH = libft/libft.a
-SRC_MN =	common_files/utils/ft_prompt.c \
-			common_files/utils/ft_token_utils.c \
-			common_files/utils/ft_history_utils.c \
-			common_files/utils/ft_strings.c \
+SRC_MN =	common_files/lexer/ft_check_hdoc.c \
+			common_files/lexer/ft_opperators.c \
+			common_files/lexer/ft_check_redirections.c \
 			common_files/lexer/ft_main_lexer.c \
-			common_files/lexer/ft_check_errors.c \
+			common_files/lexer/ft_simple_command.c \
 			common_files/tokenizer/ft_valid_utils.c \
-			common_files/tokenizer/ft_valid_utils2.c \
 			common_files/tokenizer/ft_token_utils.c \
+			common_files/tokenizer/ft_valid_utils2.c \
 			common_files/tokenizer/ft_string_utils.c \
 			common_files/tokenizer/ft_string_utils2.c \
 			common_files/tokenizer/ft_string_utils3.c \
 			common_files/tokenizer/ft_string_utils4.c \
+			common_files/utils/ft_prompt.c \
+			common_files/utils/ft_token_utils.c \
+			common_files/utils/ft_token_utils2.c \
+			common_files/utils/ft_history_utils.c \
+			common_files/utils/ft_strings.c \
 			main.c
 
 OBJ = $(SRC_MN:.c=.o)

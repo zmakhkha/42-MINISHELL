@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:01:55 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 21:58:22 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/21 19:22:23 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,38 @@
 char	*ft_pr1(int a)
 {
 	if (a == WORD)
-		return("WORD");
+		return ("WORD");
 	else if (a == PIPE)
-		return("PIPE");
+		return ("PIPE");
 	else if (a == SPACE)
-		return("SPACE");
+		return ("SPACE");
 	else if (a == SUBSHELL)
-		return("SUBSHELL");
+		return ("SUBSHELL");
 	else if (a == AND)
-		return("AND");
+		return ("AND");
 	else if (a == OR)
-		return("OR");
+		return ("OR");
 	else if (a == RE_IN)
-		return("RE_IN");
+		return ("RE_IN");
 	else if (a == RE_OUT)
-		return("RE_OUT");
+		return ("RE_OUT");
 	else if (a == HDOC)
-		return("HDOC");
+		return ("HDOC");
 	else if (a == APPEND)
-		return("APPEND");
+		return ("APPEND");
 	else if (a == W_CARD)
-		return("W_CARD");
+		return ("W_CARD");
 	else if (a == DQ_COMM)
-		return("DQ_COMM");
+		return ("DQ_COMM");
 	else if (a == SQ_COMM)
-		return("SQ_COMM");
+		return ("SQ_COMM");
 	else if (a == DOLLAR)
-		return("DOLLAR");
+		return ("DOLLAR");
 	else if (a == QST)
-		return("QST");
-	return("NULL");
+		return ("QST");
+	return ("NULL");
 }
+
 void	ft_pr(t_token *lst)
 {
 	if (lst)

@@ -3,3 +3,11 @@ pasing errors
 -dQ->dQ ; should be joined
 - dup in redirection and pipe
 -dQ->sQ ; exaption -> and joining
+
+
+
+remove * from Tokens
+
+l"s          "-al : haaaadi word w
+
+\<< a << b  cat  > ooei << chda

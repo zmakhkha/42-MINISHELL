@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 10:26:38 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 14:01:06 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/21 19:20:37 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	d_quotes(char *str, t_token **lst, int *a, int *b)
 			*b += 1;
 		if (str[*b] == '"')
 		{
-			s = ft_substr(str, *a + 1, *b - *a -1);
-			ft_token_addback(lst, ft_add_token(s, DQ_COMM));
+			s = ft_substr(str, *a, *b - *a + 1);
+			ft_token_addback(lst, ft_add_token(s, WORD));
 			*b += 1;
 		}
 		else if (*b == len)
@@ -62,8 +62,8 @@ void	s_quotes(char *str, t_token **lst, int *a, int *b)
 			*b += 1;
 		if (str[*b] == '\'')
 		{
-			s = ft_substr(str, *a + 1, *b - *a -1);
-			ft_token_addback(lst, ft_add_token(s, SQ_COMM));
+			s = ft_substr(str, *a, *b - *a + 1);
+			ft_token_addback(lst, ft_add_token(s, WORD));
 			*b += 1;
 		}
 		else if (*b == len)

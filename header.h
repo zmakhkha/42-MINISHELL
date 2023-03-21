@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 21:18:28 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/21 19:30:37 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ enum
 {
 	WORD,
 	PIPE,
-	// SPACE,
+	SPACE,
 	SUBSHELL,
 	AND,
 	OR,
@@ -48,7 +48,7 @@ enum
 };
 
 // -------------------------------------- //
-// -----------> Token struct <---------- //
+// ----------> Command struct <--------- //
 // ------------------------------------ //
 
 typedef struct s_command
@@ -70,21 +70,16 @@ typedef struct s_token
 }	t_token;
 
 // -------------------------------------- //
-// --------------> Utils <-------------- //
+// -----------> Token struct <---------- //
 // ------------------------------------ //
 
-// common_files/utils/ft_history_utils.c
-int		ft_add_history(char *str);
-void	ft_print(char *a);
-
-// common_files/utils/ft_prompt.c
-void	ft_prompt(void);
-
-// common_files/utils/ft_token_utils.c
-t_token	*ft_add_token(char *str, int type);
-t_token	*ft_getlast(t_token *lst);
-void	ft_token_addback(t_token **lst, t_token *new);
-void	ft_free_token(t_token **t);
+typedef struct s_tree
+{
+	char			**str;
+	t_command		comm;
+	struct s_tree	*left;
+	struct s_tree	*right;
+}	t_tree;
 
 // -------------------------------------- //
 // -------> The tokenizer stage <------- //
@@ -132,19 +127,59 @@ int		ft_is_whitespace(char c);
 int		ft_is_operator3(char c);
 
 // -------------------------------------- //
+// --------------> Utils <-------------- //
+// ------------------------------------ //
+
+// common_files/utils/ft_history_utils.c
+int		ft_add_history(char *str);
+void	ft_print(char *a);
+
+// common_files/utils/ft_prompt.c
+void	ft_prompt(void);
+
+// common_files/utils/ft_strings.c
+int		ft_strcmp(char *s1, char *s2);
+char	*ft_join_free(char *s1, char *s2);
+
+// common_files/utils/ft_token_utils.c
+t_token	*ft_add_token(char *str, int type);
+t_token	*ft_getlast(t_token *lst);
+void	ft_token_addback(t_token **lst, t_token *new);
+void	ft_free_token(t_token **t);
+void	ft_delete_next_token(t_token **t);
+
+// common_files/utils/ft_token_utils2.c
+void	ft_position_it(t_token **lst);
+void	ft_print_utils(int type);
+void	ft_print_token(t_token *t);
+void	ft_print_token_str(t_token *t);
+
+// -------------------------------------- //
 // ---------> The Lexer stage <--------- //
 // ------------------------------------ //
 
-// common_files/lexer/ft_check_errors.c
+// common_files/lexer/ft_check_hdoc.c
+int		ft_valid_hd_delim(t_token *lst);
+int		ft_check_hdoc(t_token *lst);
+
+// common_files/lexer/ft_check_quotes.c
+int		ft_valid_quote(t_token *t);
+void	ft_merge_words(t_token **lst);
+
+// common_files/lexer/ft_check_redirections.c
 int		ft_check_operators(t_token *lst);
 int		if_valid_re_floower(t_token *node);
 int		ft_check_redirections(t_token *lst);
 
 // common_files/lexer/ft_main_lexer.c
-void	ft_position_it(t_token **lst);
 void	ft_main_lexer(t_token *lst);
 
-// common_files/utils/ft_strings.c
-int		ft_strcmp(char *s1, char *s2);
+// common_files/lexer/ft_opperators.c
+int		ft_operator(t_token *l);
+int		ft_opperators(t_token *lst);
+
+// common_files/lexer/ft_simple_command.c
+void	ft_build_scomm(t_token **lst);
+void	ft_join_space(t_token **lst);
 
 #endif

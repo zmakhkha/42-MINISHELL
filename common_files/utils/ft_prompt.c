@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/19 21:37:59 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/20 17:33:28 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	ft_prompt(void)
 		ft_add_history(str);
 		t = ft_strtok(str);
 		ft_main_lexer(t);
-		//ft_pr(t);
 		free (str);
 		ft_free_token(&t);
 	}
