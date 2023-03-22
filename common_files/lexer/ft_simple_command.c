@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:53:11 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/21 19:17:45 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:34:16 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,35 @@ void	ft_join_space(t_token **lst)
 		tmp = *lst;
 		while (tmp && tmp->prev)
 		{
-			if (tmp->type == WORD && tmp->prev->type == SPACE)
+			if (tmp->type == WORD && tmp->prev->type == \
+			SPACE && tmp->prev->type != WORD)
 			{
 				s_tmp = tmp->str;
 				tmp->str = ft_join_free(tmp->str, " ");
+				free(s_tmp);
+				ft_delete_next_token(&tmp);
+				continue ;
+			}
+			tmp = tmp->prev;
+		}
+	}
+}
+
+// join words and quotes
+void	ft_join_wq(t_token **lst)
+{
+	t_token	*tmp;
+	char	*s_tmp;
+
+	if (lst)
+	{
+		tmp = *lst;
+		while (tmp && tmp->prev)
+		{
+			if (tmp->type == WORD && tmp->prev->type == QUOTE)
+			{
+				s_tmp = tmp->str;
+				tmp->str = ft_join_free(tmp->str, tmp->prev->str);
 				free(s_tmp);
 				ft_delete_next_token(&tmp);
 				continue ;
@@ -45,9 +70,8 @@ void	ft_merge_words(t_token **lst)
 		tmp = *lst;
 		while (tmp && tmp->prev)
 		{
-			if (tmp->type == WORD && !(tmp->prev->type == AND || \
-			tmp->prev->type == OR || tmp->prev->type == PIPE || \
-			tmp->prev->type == SUBSHELL))
+			if ((tmp->type == WORD && (tmp->prev->type == QUOTE)) || \
+			tmp->prev->type == SPACE)
 			{
 				s_tmp = tmp->str;
 				tmp->str = ft_join_free(tmp->str, tmp->prev->str);
@@ -62,6 +86,8 @@ void	ft_merge_words(t_token **lst)
 
 void	ft_build_scomm(t_token **lst)
 {
+	ft_join_wq(lst);
 	ft_join_space(lst);
-	ft_merge_words(lst);
+	// to build a simple cmmmande
+	// ft_merge_words(lst);
 }

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 17:18:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/21 15:47:28 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:46:37 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	ft_print_utils(int type)
 		printf("WORD");
 	if (type == PIPE)
 		printf("PIPE");
+	if (type == FILE_)
+		printf("FILE");
 	if (type == SPACE)
 		printf("SPACE");
 	if (type == SUBSHELL)
@@ -54,10 +56,8 @@ void	ft_print_utils(int type)
 		printf("APPEND");
 	if (type == W_CARD)
 		printf("W_CARD");
-	if (type == DQ_COMM)
-		printf("DQ_COMM");
-	if (type == SQ_COMM)
-		printf("SQ_COMM");
+	if (type == QUOTE)
+		printf("QUOTE");
 	if (type == DOLLAR)
 		printf("DOLLAR");
 	if (type == QST)

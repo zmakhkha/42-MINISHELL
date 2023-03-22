@@ -11,3 +11,12 @@ remove * from Tokens
 l"s          "-al : haaaadi word w
 
 \<< a << b  cat  > ooei << chda
+
+
+
+//////////////////////////
+
+
+ls "ls"
+ls | >out
+<    

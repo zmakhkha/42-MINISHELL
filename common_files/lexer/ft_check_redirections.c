@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 15:12:49 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/21 19:18:27 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:53:53 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ int	ft_check_operators(t_token *lst)
 		if (!(lst->index) && ((lst->type == OR) || (lst->type == AND) \
 		|| (lst->type == PIPE)))
 		{
-			ft_print("Parse Error near operator !!\n");
+			ft_print("Parse Error near operator 1!!\n");
 			i = ERR;
 		}
 		else if ((tmp->type == OR) || (tmp->type == AND) || \
 		(tmp->type == PIPE) || (tmp->type == APPEND) \
 		|| (tmp->type == RE_IN) || (tmp->type == RE_OUT) || (tmp->type == HDOC))
 		{
-			ft_print("Parse Error near operator !!\n");
+			ft_print("Parse Error near operator 2!!\n");
 			i = ERR;
 		}
 	}
@@ -42,7 +42,7 @@ int	ft_check_operators(t_token *lst)
 int	if_valid_re_floower(t_token *node)
 {
 	if (node && node->prev)
-		return (node->prev->type == WORD);
+		return (node->prev->type == FILE_);
 	return (0);
 }
 

@@ -1,0 +1,31 @@
+Allowed commands
+readline, add_history
+printf, write
+malloc, free
+access, open, read, close
+fork, wait
+signal, sigaction, kill
+exit
+getcwd, chdir
+stat
+execve
+dup, dup2, pipe
+opendir, readdir, closedir
+strerror, perror
+
+
+3.2.2 Simple Commands
+It's just a sequence of words separated by blanks, terminated by one of the shell’s control operators.
+The first word generally specifies a command to be executed, with the rest of the words being that command’s arguments.
+control operator
+A token that performs a control function. It is a newline or one of the following: ‘||’, ‘&&’, ‘&’, ‘;’, ‘;;’, ‘;&’, ‘;;&’, ‘|’, ‘|&’, ‘(’, or ‘)’.
+
+When parsing user input, you need to take care of operator precedence. Here's an example of the priority you should take into account:
+
+Parentheses - expressions inside parentheses should be evaluated first.
+Redirection - input/output redirection should be performed before executing the command.
+Pipes - commands connected by pipes should be executed from left to right.
+Logical operators - AND (&&) and OR (||) should be evaluated after pipes.
+Command execution - finally, the actual command should be executed.
+
+

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:29 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/18 14:01:12 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/22 14:21:54 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ void	ft_space(char *str, t_token **lst, int *a, int *b)
 	ft_token_addback(lst, ft_add_token(s, SPACE));
 }
 
-void	ft_operators2(char *str, t_token **lst, int *a, int *b)
+int	ft_operators2(char *str, t_token **lst, int *a, int *b)
 {
 	char	*s;
+	int		ret;
 
+	ret = SUCC;
 	s = NULL;
 	if (ft_voperator(str + *b, '>') || ft_voperator(str + *b, '<'))
 	{
@@ -44,13 +46,19 @@ void	ft_operators2(char *str, t_token **lst, int *a, int *b)
 		}
 	}
 	else
-		ft_exit("operators 2 error !!", 1);
+	{
+		printf("operators 2 error !!\n");
+		ret = ERR;
+	}
+	return (ret);
 }
 
-void	ft_operators3(char *str, t_token **lst, int *a, int *b)
+int	ft_operators3(char *str, t_token **lst, int *a, int *b)
 {
-	char	*s;
+	char	*s;	
+	int		ret;
 
+	ret = SUCC;
 	(void)a;
 	s = NULL;
 	if (ft_voperator(str + *b, '<'))
@@ -69,7 +77,45 @@ void	ft_operators3(char *str, t_token **lst, int *a, int *b)
 		}
 	}
 	else
-		ft_exit("Operators 3 Error !!", 1);
+	{
+		printf("Operators 3 Error !!");
+		ret = ERR;
+	}
+	return (ret);
+}
+
+int	ft_prt(char *str, t_token **lst, int *a, int *b)
+{
+	int		len;
+	int		ret;
+	char	*s;
+
+	ret = SUCC;
+	s = NULL;
+	len = ft_strlen(str);
+	if (str[*b] && (str[*b] == '(' && if_validp(str + *b) != -1))
+	{
+		*b += if_validp(str + *b);
+		if (str[*b] == ')')
+		{
+			s = ft_substr(str, *a + 1, *b - *a -1);
+			ft_token_addback(lst, ft_add_token(s, SUBSHELL));
+			*b += 1;
+		}
+		else if (*b == len)
+		{
+			ft_free_token(lst);
+			printf("SUBSHELL Quotes error !!\n");
+			ret = ERR;
+		}
+	}
+	else
+	{
+		ft_free_token(lst);
+		printf("SUBSHELL errors !!\n");
+		ret = ERR;
+	}
+	return (ret);
 }
 
 int	if_validp(char *str)
@@ -96,30 +142,4 @@ int	if_validp(char *str)
 	if (!open)
 		return (i);
 	return (-1);
-}
-
-void	ft_prt(char *str, t_token **lst, int *a, int *b)
-{
-	int		len;
-	char	*s;
-
-	s = NULL;
-	len = ft_strlen(str);
-	if (str[*b] && (str[*b] == '(' && if_validp(str + *b) != -1))
-	{
-		*b += if_validp(str + *b);
-		if (str[*b] == ')')
-		{
-			s = ft_substr(str, *a + 1, *b - *a -1);
-			ft_token_addback(lst, ft_add_token(s, SUBSHELL));
-			*b += 1;
-		}
-		else if (*b == len)
-		{
-			ft_free_token(lst);
-			ft_exit("SUBSHELL Quotes error !!\n", 1);
-		}
-	}
-	else
-		ft_exit("SUBSHELL errors !!\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/21 19:30:37 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:34:03 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "libft/libft.h"
 
 # define H_PATH "/tmp/.minishell_history"
+# define H_DOCP "/tmp/"
 # define SUCC 0
 # define ERR 1
 
@@ -31,6 +32,7 @@
 enum
 {
 	WORD,
+	FILE_,
 	PIPE,
 	SPACE,
 	SUBSHELL,
@@ -41,7 +43,7 @@ enum
 	HDOC,
 	APPEND,
 	W_CARD,
-	DQ_COMM,
+	QUOTE,
 	SQ_COMM,
 	DOLLAR,
 	QST
@@ -87,17 +89,17 @@ typedef struct s_tree
 
 // common_files/tokenizer/ft_string_utils.c
 void	ft_word(char *str, t_token **lst, int *a, int *b);
-void	d_quotes(char *str, t_token **lst, int *a, int *b);
-void	s_quotes(char *str, t_token **lst, int *a, int *b);
+int		d_quotes(char *str, t_token **lst, int *a, int *b);
+int		s_quotes(char *str, t_token **lst, int *a, int *b);
+int		ft_operators(char *str, t_token **lst, int *a, int *b);
 void	ft__operators(char *str, t_token **lst, int *a, int *b);
-void	ft_operators(char *str, t_token **lst, int *a, int *b);
 
 // common_files/tokenizer/ft_string_utils2.c
 void	ft_space(char *str, t_token **lst, int *a, int *b);
-void	ft_operators2(char *str, t_token **lst, int *a, int *b);
-void	ft_operators3(char *str, t_token **lst, int *a, int *b);
+int		ft_operators2(char *str, t_token **lst, int *a, int *b);
+int		ft_operators3(char *str, t_token **lst, int *a, int *b);
+int		ft_prt(char *str, t_token **lst, int *a, int *b);
 int		if_validp(char *str);
-void	ft_prt(char *str, t_token **lst, int *a, int *b);
 
 // common_files/tokenizer/ft_string_utils3.c
 int		ft_voperator(char*str, char op);
@@ -109,7 +111,7 @@ int		ft_is_operators4(char c);
 void	ft_operators4(char *str, t_token **lst, int *a, int *b);
 
 // common_files/tokenizer/ft_token_utils.c
-void	ft__strtok(char *str, t_token **lst, int *a, int *b);
+int		ft__strtok(char *str, t_token **lst, int *a, int *b);
 t_token	*ft_strtok(char *str);
 
 // common_files/tokenizer/ft_valid_utils.c
@@ -161,6 +163,8 @@ void	ft_print_token_str(t_token *t);
 // common_files/lexer/ft_check_hdoc.c
 int		ft_valid_hd_delim(t_token *lst);
 int		ft_check_hdoc(t_token *lst);
+char	*ft_heredoc(char *del);
+char	*ft_hdoc_tofd(char *str);
 
 // common_files/lexer/ft_check_quotes.c
 int		ft_valid_quote(t_token *t);
@@ -170,6 +174,7 @@ void	ft_merge_words(t_token **lst);
 int		ft_check_operators(t_token *lst);
 int		if_valid_re_floower(t_token *node);
 int		ft_check_redirections(t_token *lst);
+int		ft__opperators(t_token *lst);
 
 // common_files/lexer/ft_main_lexer.c
 void	ft_main_lexer(t_token *lst);
@@ -181,5 +186,11 @@ int		ft_opperators(t_token *lst);
 // common_files/lexer/ft_simple_command.c
 void	ft_build_scomm(t_token **lst);
 void	ft_join_space(t_token **lst);
+void	ft_join_wq(t_token **lst);
+
+// common_files/lexer/ft_redirections.c
+int		ft_isredirection(t_token *l);
+void	ft_detect_files(t_token **lst);
+int		ft_isvalidred(t_token *lst);
 
 #endif

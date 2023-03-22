@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_token_utils.c                                   :+:      :+:    :+:   */
+/*   ft_main_token.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:01:55 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/21 19:22:23 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:01:03 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_pr1(int a)
 		return ("WORD");
 	else if (a == PIPE)
 		return ("PIPE");
+	else if (a == FILE_)
+		return ("FILE");
 	else if (a == SPACE)
 		return ("SPACE");
 	else if (a == SUBSHELL)
@@ -36,10 +38,8 @@ char	*ft_pr1(int a)
 		return ("APPEND");
 	else if (a == W_CARD)
 		return ("W_CARD");
-	else if (a == DQ_COMM)
-		return ("DQ_COMM");
-	else if (a == SQ_COMM)
-		return ("SQ_COMM");
+	else if (a == QUOTE)
+		return ("QUOTE");
 	else if (a == DOLLAR)
 		return ("DOLLAR");
 	else if (a == QST)
@@ -59,36 +59,47 @@ void	ft_pr(t_token *lst)
 	}
 }
 
-void	ft__strtok(char *str, t_token **lst, int *a, int *b)
+int	ft__strtok(char *str, t_token **lst, int *a, int *b)
 {
+	int	ret;
+
+	ret = SUCC;
 	if (str[*b] && str[*b] == '"')
-		d_quotes(str, lst, a, b);
+		ret = d_quotes(str, lst, a, b);
 	else if (str[*b] && str[*b] == '(')
-		ft_prt(str, lst, a, b);
+		ret = ft_prt(str, lst, a, b);
 	else if (str[*b] && ft_is_moperator(str[*b]))
-		ft_operators(str, lst, a, b);
+		ret = ft_operators(str, lst, a, b);
 	else if (str[*b] && (str[*b] == '>'))
-		ft_operators2(str, lst, a, b);
+		ret = ft_operators2(str, lst, a, b);
 	else if (str[*b] && str[*b] == '<')
-		ft_operators3(str, lst, a, b);
+		ret = ft_operators3(str, lst, a, b);
 	else if (str[*b] && ft_is_operators4(str[*b]))
 		ft_operators4(str, lst, a, b);
+	else if (str[*b] && str[*b] == '\'')
+		ret = s_quotes(str, lst, a, b);
 	else
 	{
-		free(lst);
-		ft_exit("Parse !!", 1);
+		// free(lst);
+		// ft_free_token(lst);
+		printf("Tokenization !!\n");
+		ret = ERR;
 	}
+	return (ret);
 }
 
 t_token	*ft_strtok(char *str)
 {
 	int		i;
 	int		j;
+	int		ret;
 	t_token	*lst;
 
 	j = 0;
+	ret = SUCC;
 	lst = NULL;
-	while (str[j] && !ft_forbidden(str[j]))
+	ret = ft_forbidden(str[j]);
+	while (str[j] && (ret == SUCC))
 	{
 		i = j;
 		if (ft_is_whitespace(str[j]))
@@ -97,10 +108,11 @@ t_token	*ft_strtok(char *str)
 			ft_operators4(str, &lst, &i, &j);
 		else if (ft_valid_word(str[j]))
 			ft_word(str, &lst, &i, &j);
-		else if (str[j] && str[j] == '\'')
-			s_quotes(str, &lst, &i, &j);
 		else
-			ft__strtok(str, &lst, &i, &j);
+			ret = ft__strtok(str, &lst, &i, &j);
 	}
-	return (lst);
+	if (ret == SUCC)
+		return (lst);
+	else
+		return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 17:11:44 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/21 19:20:55 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/03/22 08:36:53 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_join_free(char *s1, char *s2)
 	char		*res;
 
 	res = NULL;
-	if (s1 && s2)
+	if (s2)
 	{
 		l1 = ft_strlen(s1);
 		l2 = ft_strlen(s2);
