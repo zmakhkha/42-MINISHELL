@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:01:55 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/22 17:01:03 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/06 08:05:11 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int	ft__strtok(char *str, t_token **lst, int *a, int *b)
 	ret = SUCC;
 	if (str[*b] && str[*b] == '"')
 		ret = d_quotes(str, lst, a, b);
+	else if (str[*b] && str[*b] == '\'')
+		ret = s_quotes(str, lst, a, b);
 	else if (str[*b] && str[*b] == '(')
 		ret = ft_prt(str, lst, a, b);
 	else if (str[*b] && ft_is_moperator(str[*b]))
@@ -76,8 +78,6 @@ int	ft__strtok(char *str, t_token **lst, int *a, int *b)
 		ret = ft_operators3(str, lst, a, b);
 	else if (str[*b] && ft_is_operators4(str[*b]))
 		ft_operators4(str, lst, a, b);
-	else if (str[*b] && str[*b] == '\'')
-		ret = s_quotes(str, lst, a, b);
 	else
 	{
 		// free(lst);

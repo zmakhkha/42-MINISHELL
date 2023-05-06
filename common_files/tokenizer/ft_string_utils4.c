@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 09:43:14 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/22 15:17:36 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/06 07:49:00 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_forbidden(char c)
 	int	ret;
 
 	ret = SUCC;
-	if (c == ';' || c == '\\')
+	if (c == ';' || c == '\\') // to replace with strchr 
 	{
 		printf("unsupported character\n");
 		ret = ERR;
