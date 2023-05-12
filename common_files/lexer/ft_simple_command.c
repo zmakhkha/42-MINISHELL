@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:53:11 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/22 17:34:16 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/07 17:56:42 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_join_space(t_token **lst)
 				s_tmp = tmp->str;
 				tmp->str = ft_join_free(tmp->str, " ");
 				free(s_tmp);
-				ft_delete_next_token(&tmp);
+				ft_delete_prev_token(&tmp);
 				continue ;
 			}
 			tmp = tmp->prev;
@@ -52,7 +52,7 @@ void	ft_join_wq(t_token **lst)
 				s_tmp = tmp->str;
 				tmp->str = ft_join_free(tmp->str, tmp->prev->str);
 				free(s_tmp);
-				ft_delete_next_token(&tmp);
+				ft_delete_prev_token(&tmp);
 				continue ;
 			}
 			tmp = tmp->prev;
@@ -76,7 +76,7 @@ void	ft_merge_words(t_token **lst)
 				s_tmp = tmp->str;
 				tmp->str = ft_join_free(tmp->str, tmp->prev->str);
 				free(s_tmp);
-				ft_delete_next_token(&tmp);
+				ft_delete_prev_token(&tmp);
 				continue ;
 			}
 			tmp = tmp->prev;

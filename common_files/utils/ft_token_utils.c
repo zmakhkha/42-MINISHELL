@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 15:08:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/01 14:06:45 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:27:34 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ t_token	*ft_add_token(char *str, int type)
 		ft_exit("Token allocation failed", 1);
 	tmp->str = str;
 	tmp->type = type;
+	tmp->fd = -1;
 	tmp->prev = NULL;
+	tmp->next = NULL;
 	return (tmp);
 }
 
@@ -53,6 +55,7 @@ void	ft_token_addback(t_token **lst, t_token *new)
 		while (pos -> prev != NULL)
 			pos = pos -> prev;
 		pos -> prev = new;
+		new -> next = pos;
 	}
 }
 
@@ -85,7 +88,7 @@ void	ft_free_token(t_token **t)
 	}
 }
 
-void	ft_delete_next_token(t_token **t)
+void	ft_delete_prev_token(t_token **t)
 {
 	t_token	*tmp;
 	t_token	*rep;
@@ -97,5 +100,59 @@ void	ft_delete_next_token(t_token **t)
 		tmp->prev = rep->prev;
 		free (rep->str);
 		free (rep);
+	}
+}
+
+void	ft_delete_next_token(t_token **t)
+{
+	t_token	*tmp;
+	t_token	*rep;
+
+	if (t && *t && (*t)->next)
+	{
+		tmp = *t;
+		rep = tmp->next;
+		tmp->next = rep->next;
+		free (rep->str);
+		free (rep);
+	}
+}
+
+void	ft_remove_tok(t_token **list)
+{
+	t_token	*lst;
+
+	lst = *list;
+	t_token *tmp;
+	puts("\n\n\nhooooyah!!!\n\n\n");
+	tmp = NULL;
+	if (lst)
+	{
+		if (!lst->prev && !lst->next)
+			free(lst);
+		else if (!lst->prev)
+		{
+			lst->next->prev = NULL;
+			free (lst);
+		}
+		else if (!lst->next)
+		{
+			lst->prev->next = NULL;
+			free (lst);
+		}
+		else
+		{
+			lst->next->prev = lst->prev;
+			lst->prev->next = lst->next;
+			// free (lst); // abort when got freed 
+		}
+	}
+}
+
+void	ft_swap(t_token *lst)
+{
+	if (lst && lst->prev)
+	{
+		
 	}
 }

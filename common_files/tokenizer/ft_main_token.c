@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:01:55 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/06 08:05:11 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/07 18:14:58 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,4 +115,14 @@ t_token	*ft_strtok(char *str)
 		return (lst);
 	else
 		return (NULL);
+}
+
+t_token *ft_main_token(t_token *lst)
+{
+	if (lst)
+	{
+			ft_print_token_str(lst);
+			ft_print_token(lst);
+	}
+	return NULL;
 }

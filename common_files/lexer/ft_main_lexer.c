@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:06:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/22 16:51:32 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:39:28 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_merge_sw(t_token **lst)
 				s_tmp = tmp->str;
 				tmp->str = ft_join_free(tmp->str, tmp->prev->str);
 				free(s_tmp);
-				ft_delete_next_token(&tmp);
+				ft_delete_prev_token(&tmp);
 				continue ;
 			}
 			tmp = tmp->prev;
@@ -53,11 +53,28 @@ void	ft_joint_trim(t_token **lst)
 				free(tmp->str);
 				tmp->str = ft_strtrim(s_tmp, " ");
 				free(s_tmp);
-				ft_delete_next_token(&tmp);
+				ft_delete_prev_token(&tmp);
 				continue ;
 			}
 			tmp = tmp->prev;
 		}
+	}
+}
+
+void ft_readfd(t_token **list)
+{
+	t_token *lst;
+
+	lst = *list;
+	while (lst && lst->prev)
+	{
+		if (ft_isdigit(lst->str[0]) && (ft_isredirection(lst->prev)))
+		{
+			lst->prev->fd = ft_atoi(lst->str);
+			ft_remove_tok(&lst);
+			printf("----->%d<----\n\n", lst->prev->fd);
+		}
+		lst = lst->prev;
 	}
 }
 
@@ -68,6 +85,8 @@ void	ft_main_lexer(t_token *lst)
 	ret = SUCC;
 	if (lst)
 	{
+		
+		ft_readfd(&lst);
 		ft_position_it(&lst);
 		ft_joint_trim(&lst);
 		ft_detect_files(&lst);
@@ -79,7 +98,7 @@ void	ft_main_lexer(t_token *lst)
 			// ft_build_scomm(&lst);
 			ft_print_token_str(lst);
 			ft_print_token(lst);
-			// ft_check_redirections(lst);
+			ft_check_redirections(lst);
 		}
 		// else
 		// 	printf("lexer error !!");

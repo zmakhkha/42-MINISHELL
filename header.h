@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/22 17:34:03 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:04:47 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ typedef struct s_token
 	char			*str;
 	int				index;
 	int				type;
+	int				fd;
 	struct s_token	*prev;
+	struct s_token	*next;
 }	t_token;
 
 // -------------------------------------- //
@@ -113,6 +115,7 @@ void	ft_operators4(char *str, t_token **lst, int *a, int *b);
 // common_files/tokenizer/ft_token_utils.c
 int		ft__strtok(char *str, t_token **lst, int *a, int *b);
 t_token	*ft_strtok(char *str);
+t_token *ft_main_token(t_token *lst);
 
 // common_files/tokenizer/ft_valid_utils.c
 int		ft_is_operator(char c);
@@ -149,6 +152,9 @@ t_token	*ft_getlast(t_token *lst);
 void	ft_token_addback(t_token **lst, t_token *new);
 void	ft_free_token(t_token **t);
 void	ft_delete_next_token(t_token **t);
+void	ft_delete_prev_token(t_token **t);
+void	ft_remove_tok(t_token **list);
+
 
 // common_files/utils/ft_token_utils2.c
 void	ft_position_it(t_token **lst);
