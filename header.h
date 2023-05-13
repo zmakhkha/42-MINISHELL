@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/12 15:04:47 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/13 15:30:15 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,8 @@ void	ft_main_lexer(t_token *lst);
 // common_files/lexer/ft_opperators.c
 int		ft_operator(t_token *l);
 int		ft_opperators(t_token *lst);
+int		ft_subshells(t_token *lst);
+
 
 // common_files/lexer/ft_simple_command.c
 void	ft_build_scomm(t_token **lst);

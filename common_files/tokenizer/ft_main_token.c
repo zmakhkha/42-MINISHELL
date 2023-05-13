@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:01:55 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/07 18:14:58 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/13 15:48:08 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	ft__strtok(char *str, t_token **lst, int *a, int *b)
 	{
 		// free(lst);
 		// ft_free_token(lst);
-		printf("Tokenization !!\n");
+		printf("Tokenization error!!\n");
 		ret = ERR;
 	}
 	return (ret);

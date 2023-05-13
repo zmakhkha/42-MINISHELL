@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 15:08:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/12 15:27:34 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/13 17:38:06 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,21 +124,23 @@ void	ft_remove_tok(t_token **list)
 
 	lst = *list;
 	t_token *tmp;
-	puts("\n\n\nhooooyah!!!\n\n\n");
 	tmp = NULL;
+
 	if (lst)
 	{
 		if (!lst->prev && !lst->next)
-			free(lst);
+		{
+		}
+		// 	free(lst);
 		else if (!lst->prev)
 		{
 			lst->next->prev = NULL;
-			free (lst);
+			// free (lst);
 		}
 		else if (!lst->next)
 		{
 			lst->prev->next = NULL;
-			free (lst);
+			// free (lst);
 		}
 		else
 		{

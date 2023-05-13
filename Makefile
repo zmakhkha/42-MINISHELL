@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/05/06 07:41:11 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/05/13 17:28:58 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ OBJ = $(SRC_MN:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra  -fsanitize=address -g
+CFLAGS = -Wall -Werror -Wextra  -g -fsanitize=address
 
 all: $(M_NAME)
 

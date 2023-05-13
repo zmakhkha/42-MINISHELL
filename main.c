@@ -6,16 +6,16 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/06 07:41:37 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/13 17:28:37 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	l(void)
-{
-	system("leaks minishell");
-}
+// void	l(void)
+// {
+// 	system("leaks minishell");
+// }
 
 int	main(void)
 {
