@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 15:08:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/13 17:38:06 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/15 17:22:37 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,8 +153,35 @@ void	ft_remove_tok(t_token **list)
 
 void	ft_swap(t_token *lst)
 {
-	if (lst && lst->prev)
+	t_token *tmp;
+
+	tmp = NULL;
+	if (!lst->next && !lst->prev);
+	else if (!lst->next && lst && lst->prev)
 	{
-		
+		tmp = lst->prev;
+		lst->prev = tmp->prev;
+		lst->prev->next = lst;
+		tmp->next = NULL;
+		tmp->prev = lst;
+		lst->next = tmp;
+	}
+	else if (lst->next && lst && !lst->prev);
+	else if (lst->next && lst && lst->prev && !lst->prev)
+	{
+		lst->prev = tmp->prev;
+		tmp->next = lst->next;
+		tmp->next->prev = tmp;
+		lst->next = tmp;		
+	}
+	else
+	{
+		tmp = lst->prev;
+		lst->next->prev = tmp;
+		tmp->prev->next = lst;
+		tmp->next = lst->next;
+		lst->next = tmp;
+		lst->prev = tmp->prev;
+		tmp->prev = lst;
 	}
 }

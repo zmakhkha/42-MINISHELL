@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:06:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/13 19:05:15 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/15 17:29:34 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_merge_sw(t_token **lst)
 			== WORD && ((tmp->prev->type == WORD) || (tmp->prev->type == QUOTE))) )
 			{
 				s_tmp = tmp->str;
+				tmp->str = ft_join_free(tmp->str, " ");
 				tmp->str = ft_join_free(tmp->str, tmp->prev->str);
 				free(s_tmp);
 				ft_delete_prev_token(&tmp);
@@ -77,7 +78,7 @@ void ft_readfd(t_token **list)
 		{
 			i = 1;
 			lst->prev->fd = ft_atoi(lst->str);
-			// ft_remove_tok(&lst);
+			ft_remove_tok(&lst);
 			tmp = lst;
 			lst = lst->prev;
 			free (tmp->str);
@@ -99,10 +100,8 @@ void	ft_main_lexer(t_token *lst)
 	ret = SUCC;
 	if (lst)
 	{
-		ft_readfd(&lst);
-		if (lst == NULL)
-			printf("%s\n\n\n", lst->str);
-		ft_position_it(&lst);
+		// ft_readfd(&lst);
+		// ft_position_it(&lst);
 		ft_joint_trim_space(&lst);
 		ft_detect_files(&lst);
 		ft_merge_sw(&lst);

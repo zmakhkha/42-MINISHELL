@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/13 17:28:37 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/15 16:16:20 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // void	l(void)
 // {
-// 	system("leaks minishell");
+// 	system("leaks minishell"); 
 // }
 
 int	main(void)
