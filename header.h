@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/13 15:30:15 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/16 18:12:33 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ enum
 	QUOTE,
 	SQ_COMM,
 	DOLLAR,
-	QST
+	QST,
+	DIGITE
 };
 
 // -------------------------------------- //
@@ -98,6 +99,7 @@ void	ft__operators(char *str, t_token **lst, int *a, int *b);
 
 // common_files/tokenizer/ft_string_utils2.c
 void	ft_space(char *str, t_token **lst, int *a, int *b);
+void	ft_digits(char *str, t_token **lst, int *a, int *b);
 int		ft_operators2(char *str, t_token **lst, int *a, int *b);
 int		ft_operators3(char *str, t_token **lst, int *a, int *b);
 int		ft_prt(char *str, t_token **lst, int *a, int *b);

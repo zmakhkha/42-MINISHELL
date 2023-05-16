@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 17:18:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/22 15:46:37 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/16 18:11:14 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	ft_print_utils(int type)
 		printf("DOLLAR");
 	if (type == QST)
 		printf("QST");
+	if (type == DIGITE)
+		printf("DIGITE");
 }
 
 void	ft_print_token(t_token *t)

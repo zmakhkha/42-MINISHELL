@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:06:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/15 17:29:34 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/16 19:11:13 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,17 +74,13 @@ void ft_readfd(t_token **list)
 	lst = *list;
 	while (lst && lst->prev)
 	{
-		if (ft_isdigit(lst->str[0]) && (ft_isredirection(lst->prev)))
+		if (lst && (lst->type == DIGITE) && (ft_isredirection(lst->prev)))
 		{
 			i = 1;
-			lst->prev->fd = ft_atoi(lst->str);
-			ft_remove_tok(&lst);
-			tmp = lst;
+			lst->fd = ft_atoi(lst->str);
+			lst->type = lst->prev->type;
+			// ft_remove_tok(&lst->prev);
 			lst = lst->prev;
-			free (tmp->str);
-			free (tmp);
-			tmp = NULL;
-			// puts("sa\n\n\n");
 		}
 		else
 			lst = lst->prev;
@@ -93,6 +89,31 @@ void ft_readfd(t_token **list)
 		*list = (*list)->prev;
 }
 
+// void	ft_main_lexer(t_token *lst)
+// {
+// 	int	ret;
+
+// 	ret = SUCC;
+// 	if (lst)
+// 	{
+// 		ft_readfd(&lst);
+// 		ft_position_it(&lst);
+// 		ft_joint_trim_space(&lst);
+// 		ft_detect_files(&lst);
+// 		ft_merge_sw(&lst);
+// 		if ( ret == ft_check_redirections(lst) && ret == ft__opperators(lst) && \
+// 		ret == ft_check_operators(lst) && ret == ft_check_hdoc(lst) && \
+// 		ret == ft_opperators(lst) && ret == ft_subshells(lst))
+// 		{
+// 			ft_print_token_str(lst);
+// 			ft_print_token(lst);
+// 			ft_check_redirections(lst);
+// 		}
+// 		// else
+// 		// 	printf("lexer error !!");
+// 	}
+// }
+
 void	ft_main_lexer(t_token *lst)
 {
 	int	ret;
@@ -100,19 +121,19 @@ void	ft_main_lexer(t_token *lst)
 	ret = SUCC;
 	if (lst)
 	{
+		ft_joint_trim_space(&lst);
 		// ft_readfd(&lst);
 		// ft_position_it(&lst);
-		ft_joint_trim_space(&lst);
-		ft_detect_files(&lst);
-		ft_merge_sw(&lst);
-		if ( ret == ft_check_redirections(lst) && ret == ft__opperators(lst) && \
-		ret == ft_check_operators(lst) && ret == ft_check_hdoc(lst) && \
-		ret == ft_opperators(lst) && ret == ft_subshells(lst))
-		{
+		// ft_detect_files(&lst);
+		// ft_merge_sw(&lst);
+		// if ( ret == ft_check_redirections(lst) && ret == ft__opperators(lst) && \
+		// ret == ft_check_operators(lst) && ret == ft_check_hdoc(lst) && \
+		// ret == ft_opperators(lst) && ret == ft_subshells(lst))
+		// {
 			ft_print_token_str(lst);
 			ft_print_token(lst);
-			ft_check_redirections(lst);
-		}
+			// ft_check_redirections(lst);
+		// }
 		// else
 		// 	printf("lexer error !!");
 	}

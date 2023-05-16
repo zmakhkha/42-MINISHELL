@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:01:55 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/13 15:48:08 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/16 18:16:44 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ int	ft__strtok(char *str, t_token **lst, int *a, int *b)
 	int	ret;
 
 	ret = SUCC;
-	if (str[*b] && str[*b] == '"')
+	if (str[*b] && ft_isdigit(str[*b]))
+		ft_digits(str, lst, a, b);
+	else if (str[*b] && str[*b] == '"')
 		ret = d_quotes(str, lst, a, b);
 	else if (str[*b] && str[*b] == '\'')
 		ret = s_quotes(str, lst, a, b);

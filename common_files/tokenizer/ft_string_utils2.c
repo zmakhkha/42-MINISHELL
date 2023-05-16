@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:29 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/07 18:10:33 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/16 18:12:04 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@ void	ft_space(char *str, t_token **lst, int *a, int *b)
 	s = ft_substr(str, *a, *b - *a);
 	ft_token_addback(lst, ft_add_token(s, SPACE));
 }
+
+void	ft_digits(char *str, t_token **lst, int *a, int *b)
+{
+	char	*s;
+
+	s = NULL;
+	while (str[(*b)] && ft_isdigit(str[*b]))
+		*b += 1;
+	s = ft_substr(str, *a, *b - *a);
+	ft_token_addback(lst, ft_add_token(s, DIGITE));
+}
+
 
 int	ft_operators2(char *str, t_token **lst, int *a, int *b)
 {

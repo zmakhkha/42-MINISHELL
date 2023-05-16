@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:47:48 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/22 17:31:57 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/16 19:03:05 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_detect_files(t_token **lst)
 		while (tmp && tmp->prev)
 		{
 			if (ft_isredirection(tmp) && ((tmp->prev->type == WORD) || \
-			(tmp->type == QUOTE)))
+			(tmp->type == QUOTE) || (tmp->prev->type == DIGITE)))
 				tmp->prev->type = FILE_;
 			tmp = tmp->prev;
 		}
