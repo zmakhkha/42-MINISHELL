@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/16 18:12:33 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/17 16:36:14 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,12 @@ enum
 	SUBSHELL,
 	AND,
 	OR,
+	AMP,
 	RE_IN,
 	RE_OUT,
 	HDOC,
 	APPEND,
 	W_CARD,
-	QUOTE,
-	SQ_COMM,
-	DOLLAR,
-	QST,
 	DIGITE
 };
 
@@ -56,7 +53,7 @@ enum
 
 typedef struct s_command
 {
-	char			**str[0];
+	char			**str;
 	struct s_token	*prev;
 }	t_command;
 
@@ -117,7 +114,7 @@ void	ft_operators4(char *str, t_token **lst, int *a, int *b);
 // common_files/tokenizer/ft_token_utils.c
 int		ft__strtok(char *str, t_token **lst, int *a, int *b);
 t_token	*ft_strtok(char *str);
-t_token *ft_main_token(t_token *lst);
+t_token	*ft_main_token(t_token *lst);
 
 // common_files/tokenizer/ft_valid_utils.c
 int		ft_is_operator(char c);
@@ -157,7 +154,6 @@ void	ft_delete_next_token(t_token **t);
 void	ft_delete_prev_token(t_token **t);
 void	ft_remove_tok(t_token **list);
 
-
 // common_files/utils/ft_token_utils2.c
 void	ft_position_it(t_token **lst);
 void	ft_print_utils(int type);
@@ -185,13 +181,14 @@ int		ft_check_redirections(t_token *lst);
 int		ft__opperators(t_token *lst);
 
 // common_files/lexer/ft_main_lexer.c
+void	ft_merge_sp(t_token **list);
+
 void	ft_main_lexer(t_token *lst);
 
 // common_files/lexer/ft_opperators.c
 int		ft_operator(t_token *l);
 int		ft_opperators(t_token *lst);
 int		ft_subshells(t_token *lst);
-
 
 // common_files/lexer/ft_simple_command.c
 void	ft_build_scomm(t_token **lst);
@@ -202,5 +199,8 @@ void	ft_join_wq(t_token **lst);
 int		ft_isredirection(t_token *l);
 void	ft_detect_files(t_token **lst);
 int		ft_isvalidred(t_token *lst);
+
+// common_files/lexer/ft_syntax_errors.c
+int		ft_check_op(t_token *lst);
 
 #endif

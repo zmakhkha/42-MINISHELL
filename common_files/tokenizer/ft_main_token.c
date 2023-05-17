@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:01:55 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/16 18:16:44 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:06:56 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,8 @@ char	*ft_pr1(int a)
 		return ("APPEND");
 	else if (a == W_CARD)
 		return ("W_CARD");
-	else if (a == QUOTE)
-		return ("QUOTE");
-	else if (a == DOLLAR)
-		return ("DOLLAR");
-	else if (a == QST)
-		return ("QST");
+	else if (a == AMP)
+		return ("AMP");
 	return ("NULL");
 }
 
@@ -78,12 +74,8 @@ int	ft__strtok(char *str, t_token **lst, int *a, int *b)
 		ret = ft_operators2(str, lst, a, b);
 	else if (str[*b] && str[*b] == '<')
 		ret = ft_operators3(str, lst, a, b);
-	else if (str[*b] && ft_is_operators4(str[*b]))
-		ft_operators4(str, lst, a, b);
 	else
 	{
-		// free(lst);
-		// ft_free_token(lst);
 		printf("Tokenization error!!\n");
 		ret = ERR;
 	}
@@ -106,8 +98,6 @@ t_token	*ft_strtok(char *str)
 		i = j;
 		if (ft_is_whitespace(str[j]))
 			ft_space(str, &lst, &i, &j);
-		else if (ft_is_operators4(str[j]))
-			ft_operators4(str, &lst, &i, &j);
 		else if (ft_valid_word(str[j]))
 			ft_word(str, &lst, &i, &j);
 		else
@@ -119,12 +109,12 @@ t_token	*ft_strtok(char *str)
 		return (NULL);
 }
 
-t_token *ft_main_token(t_token *lst)
+t_token	*ft_main_token(t_token *lst)
 {
 	if (lst)
 	{
-			ft_print_token_str(lst);
-			ft_print_token(lst);
+		// ft_print_token_str(lst);
+		ft_print_token(lst);
 	}
-	return NULL;
+	return (NULL);
 }

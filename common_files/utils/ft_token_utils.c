@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 15:08:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/16 18:52:39 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:10:45 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,43 +121,47 @@ void	ft_delete_next_token(t_token **t)
 void	ft_remove_tok(t_token **list)
 {
 	t_token	*lst;
+	t_token	*tmp;
 
 	lst = *list;
-	t_token *tmp;
 	tmp = NULL;
-
 	if (lst)
 	{
 		if (!lst->prev && !lst->next)
 		{
+			free (lst->str);
 			free (lst);
 			lst = NULL;
 		}
-		// 	free(lst);
 		else if (!lst->prev)
 		{
 			lst->next->prev = NULL;
+			free (lst->str);
 			free (lst);
 			lst = NULL;
 		}
 		else if (!lst->next)
 		{
 			lst->prev->next = NULL;
+			free (lst->str);
 			free (lst);
+			lst = NULL;
 		}
 		else
 		{
 			tmp = lst;
 			lst->next->prev = lst->prev;
 			lst->prev->next = lst->next;
+			free(tmp->str);
 			free(tmp);
+			tmp = NULL;
 		}
 	}
 }
 
 void	ft_swap(t_token *lst)
 {
-	t_token *tmp;
+	t_token	*tmp;
 
 	tmp = NULL;
 	if (!lst->next && !lst->prev);
@@ -176,7 +180,7 @@ void	ft_swap(t_token *lst)
 		lst->prev = tmp->prev;
 		tmp->next = lst->next;
 		tmp->next->prev = tmp;
-		lst->next = tmp;		
+		lst->next = tmp;
 	}
 	else
 	{

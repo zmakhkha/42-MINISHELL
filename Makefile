@@ -6,17 +6,17 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/05/13 17:28:58 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/05/17 16:45:05 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 M_NAME = minishell
 FT_PATH = libft/libft.a
 SRC_MN =	common_files/lexer/ft_check_hdoc.c \
+			common_files/lexer/ft_syntax_errors.c \
 			common_files/lexer/ft_opperators.c \
 			common_files/lexer/ft_main_lexer.c \
 			common_files/lexer/ft_redirections.c \
-			common_files/lexer/ft_simple_command.c \
 			common_files/lexer/ft_check_redirections.c \
 			common_files/tokenizer/ft_valid_utils.c \
 			common_files/tokenizer/ft_string_utils.c \
@@ -36,7 +36,7 @@ OBJ = $(SRC_MN:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra  -g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -Wunused-function  -g #-fsanitize=address
 
 all: $(M_NAME)
 

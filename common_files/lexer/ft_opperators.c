@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 17:18:56 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/13 17:08:27 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/17 16:50:52 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ int	ft_subshells(t_token *lst)
 		while (lst && lst->prev)
 		{
 			if (((lst->type == SUBSHELL) && ((lst->prev->type \
-			== SUBSHELL) || (lst->prev->type == WORD)))|| \
+			== SUBSHELL) || (lst->prev->type == WORD))) || \
 			((lst->type == WORD) && ((lst->prev->type == SUBSHELL) \
-			|| (lst->prev->type == WORD)) ))
+			|| (lst->prev->type == WORD))))
 			{
 				i = ERR;
 				ft_print("Parse Error near ( or ) !!\n");

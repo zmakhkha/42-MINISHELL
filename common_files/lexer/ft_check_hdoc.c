@@ -17,7 +17,7 @@ int	ft_valid_hd_delim(t_token *lst)
 {
 	if (lst)
 		return (lst->type == WORD || \
-		lst->type == QUOTE || lst->type == FILE_);
+		lst->type == FILE_);
 	return (0);
 }
 

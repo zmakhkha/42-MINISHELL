@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:29 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/16 18:12:04 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:04:50 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	ft_digits(char *str, t_token **lst, int *a, int *b)
 	ft_token_addback(lst, ft_add_token(s, DIGITE));
 }
 
-
 int	ft_operators2(char *str, t_token **lst, int *a, int *b)
 {
 	char	*s;
@@ -58,10 +57,7 @@ int	ft_operators2(char *str, t_token **lst, int *a, int *b)
 		}
 	}
 	else
-	{
-		printf("operators 2 error !!\n");
 		ret = ERR;
-	}
 	return (ret);
 }
 
@@ -89,10 +85,7 @@ int	ft_operators3(char *str, t_token **lst, int *a, int *b)
 		}
 	}
 	else
-	{
-		printf("Operators 3 Error !!");
 		ret = ERR;
-	}
 	return (ret);
 }
 
@@ -114,17 +107,10 @@ int	ft_prt(char *str, t_token **lst, int *a, int *b)
 			ft_token_addback(lst, ft_add_token(s, SUBSHELL));
 			*b += 1;
 		}
-		else if (*b == len)
-		{
-			ft_free_token(lst);
-			printf("SUBSHELL Quotes error !!\n");
-			ret = ERR;
-		}
 	}
 	else
 	{
 		ft_free_token(lst);
-		printf("SUBSHELL errors !!\n");
 		ret = ERR;
 	}
 	return (ret);

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 10:26:38 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/22 13:21:23 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:06:18 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,12 @@ int	d_quotes(char *str, t_token **lst, int *a, int *b)
 		if (str[*b] == '"')
 		{
 			s = ft_substr(str, *a, *b - *a + 1);
-			ft_token_addback(lst, ft_add_token(s, QUOTE));
+			ft_token_addback(lst, ft_add_token(s, WORD));
 			*b += 1;
 		}
 		else if (*b == len)
 		{
 			ft_free_token(lst);
-			printf("Double Quotes error !!\n");
 			ret = ERR;
 		}
 	}
@@ -69,13 +68,12 @@ int	s_quotes(char *str, t_token **lst, int *a, int *b)
 		if (str[*b] == '\'')
 		{
 			s = ft_substr(str, *a, *b - *a + 1);
-			ft_token_addback(lst, ft_add_token(s, QUOTE));
+			ft_token_addback(lst, ft_add_token(s, WORD));
 			*b += 1;
 		}
 		else if (*b == len)
 		{
 			ft_free_token(lst);
-			printf("Signle Quotes error !!\n");
 			ret = ERR;
 		}
 	}
@@ -89,47 +87,36 @@ int	ft_operators(char *str, t_token **lst, int *a, int *b)
 
 	s = NULL;
 	ret = SUCC;
-	if (ft_voperator(str + *b, '|'))
-	{
-		ft__operators(str, lst, a, b);
-	}
-	else if (ft_voperator(str + *b, '&'))
-	{
-		if (ft_validouble(str + *b, '&'))
-		{
-			s = ft_substr(str, *a, 2);
-			ft_token_addback(lst, ft_add_token(s, AND));
-			*b += 2;
-		}
-		else if (str[*b] == '&')
-		{
-			printf("& error !!\n");
-			ret = SUCC;
-		}
-	}
-	else
-	{
-		printf("PIPE or OR error !!\n");
-		ret = ERR;
-	}
-	return (ret);
-}
-
-void	ft__operators(char *str, t_token **lst, int *a, int *b)
-{
-	char	*s;
-
 	s = NULL;
-	if (ft_validouble(str + *b, '|'))
-	{
-		s = ft_substr(str, *a, 2);
-		ft_token_addback(lst, ft_add_token(s, OR));
-		*b += 2;
-	}
-	else if (str[*b] == '|')
+	if (str[*b] == '|')
 	{
 		s = ft_substr(str, *a, 1);
 		ft_token_addback(lst, ft_add_token(s, PIPE));
 		*b += 1;
 	}
+	else if (str[*b] == '&')
+	{
+		s = ft_substr(str, *a, 1);
+		ft_token_addback(lst, ft_add_token(s, AMP));
+		*b += 1;
+	}
+	return (ret);
 }
+
+// void	ft__operators(char *str, t_token **lst, int *a, int *b)
+// {
+// 	char	*s;
+// 	s = NULL;
+// 	if (ft_validouble(str + *b, '|'))
+// 	{
+// 		s = ft_substr(str, *a, 2);
+// 		ft_token_addback(lst, ft_add_token(s, OR));
+// 		*b += 2;
+// 	}
+// 	else if (str[*b] == '|')
+// 	{
+// 		s = ft_substr(str, *a, 1);
+// 		ft_token_addback(lst, ft_add_token(s, PIPE));
+// 		*b += 1;
+// 	}
+// }
