@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:06:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/18 19:21:53 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/18 20:50:14 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,8 @@ void	ft_swap_red(t_token **list)
 		if (lst && (lst->type == WORD && (ft_isredirection(lst->prev) || lst->prev->type == HDOC)))
 		{
 			ft_swap(lst);
-			ft_merge_dig(&lst);
+			ft_merge_dig(list);
+			lst = *list;
 			continue ;
 		}
 		lst = lst->prev;
