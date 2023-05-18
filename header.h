@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/17 16:36:14 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/18 18:31:08 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,11 +148,14 @@ char	*ft_join_free(char *s1, char *s2);
 // common_files/utils/ft_token_utils.c
 t_token	*ft_add_token(char *str, int type);
 t_token	*ft_getlast(t_token *lst);
+t_token	*ft_getfirst(t_token *lst);
 void	ft_token_addback(t_token **lst, t_token *new);
 void	ft_free_token(t_token **t);
 void	ft_delete_next_token(t_token **t);
 void	ft_delete_prev_token(t_token **t);
 void	ft_remove_tok(t_token **list);
+void	ft_swap(t_token *lst);
+
 
 // common_files/utils/ft_token_utils2.c
 void	ft_position_it(t_token **lst);

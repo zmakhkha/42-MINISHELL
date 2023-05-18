@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:47:48 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/17 16:01:09 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:20:37 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	ft_detect_files(t_token **lst)
 		tmp = *lst;
 		while (tmp && tmp->prev)
 		{
-			if (ft_isredirection(tmp) && ((tmp->prev->type == WORD) || \
-			(tmp->prev->type == DIGITE) || (tmp->prev->type == SPACE)))
+			if ((ft_isredirection(tmp) || tmp->type == HDOC) && ((tmp->prev->type == WORD)))
 				tmp->prev->type = FILE_;
 			tmp = tmp->prev;
 		}

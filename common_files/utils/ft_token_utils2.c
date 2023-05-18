@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 17:18:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/17 16:37:17 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:46:07 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_print_token_str(t_token *t)
 	{
 		while (t)
 		{
-			printf("(%s)", t->str);
+			printf("(%s, %d)", t->str, t->fd);
 			printf("->");
 			t = t->prev;
 		}

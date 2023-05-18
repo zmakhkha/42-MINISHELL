@@ -20,3 +20,5 @@ l"s          "-al : haaaadi word w
 ls "ls"
 ls | >out
 <    
+
+ls -la || command 1< in comm2 2>out comm 3 << hdoc

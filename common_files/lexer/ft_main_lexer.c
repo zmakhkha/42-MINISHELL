@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:06:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/17 16:53:16 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/18 19:21:53 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,19 @@ void	ft_merge_sp(t_token **list)
 	char	*s_tmp;
 
 	lst = *list;
+	while (lst)
+	{
+		if (lst->type == DIGITE)
+			lst->type = WORD;
+		lst = lst->prev;
+	}
+	lst = *list;
 	while (lst && lst->prev)
 	{
-		if ((lst && (lst->type == SPACE) && (lst->prev->type == WORD || \
-		lst->prev->type == DIGITE)) || ((lst->type == WORD || \
-		lst->prev->type == DIGITE) && lst->prev->type == SPACE))
+		if ((lst && (lst->type == SPACE) && (lst->prev->type == WORD ||\
+		lst->prev->type == DIGITE || lst->prev->type == SPACE)) ||
+		(lst && (lst->type == WORD) && ( \
+		lst->prev->type == DIGITE || lst->prev->type == SPACE)))
 		{
 			s_tmp = ft_join_free(lst->str, lst->prev->str);
 			free(lst->str);
@@ -56,6 +64,14 @@ void	ft_merge_dig(t_token **list)
 		}
 		lst = lst->prev;
 	}
+	lst = *list;
+	while (lst)
+	{
+		if (lst->type == SPACE)
+			ft_remove_tok(&lst);
+			if (lst)
+				lst = lst->prev;
+	}
 }
 
 void	ft_readfd(t_token **list)
@@ -70,14 +86,54 @@ void	ft_readfd(t_token **list)
 		if (lst && (lst->type == DIGITE) && (ft_isredirection(lst->prev)))
 		{
 			lst->fd = ft_atoi(lst->str);
-			lst->str = lst->prev->str;
+			free(lst->str);
+			lst->str = NULL;
 			lst->type = lst->prev->type;
 			ft_remove_tok(&lst->prev);
 		}
 		lst = lst->prev;
 	}
 }
+// joinfd
+void	ft_fd_file(t_token **list)
+{
+	t_token	*lst;
+	t_token	*tmp;
 
+	tmp = NULL;
+	lst = *list;
+	while (lst && lst->prev)
+	{
+		if (lst && ((ft_isredirection(lst)) || lst->type == HDOC) && lst->prev->type == FILE_)
+		{
+			free (lst->str);
+			lst->str = ft_strdup(lst->prev->str);
+			ft_remove_tok(&lst->prev);
+		}
+		lst = lst->prev;
+	}
+}
+
+// swap redirections
+void	ft_swap_red(t_token **list)
+{
+	t_token	*lst;
+	t_token	*tmp;
+
+	tmp = NULL;
+	lst = *list;
+	while (lst && lst->prev)
+	{
+		if (lst && (lst->type == WORD && (ft_isredirection(lst->prev) || lst->prev->type == HDOC)))
+		{
+			ft_swap(lst);
+			ft_merge_dig(&lst);
+			continue ;
+		}
+		lst = lst->prev;
+	}
+	*list = ft_getfirst(*list);
+}
 // Detects PIPE and AND operators
 void	ft_detect_op(t_token **list)
 {
@@ -116,14 +172,17 @@ void	ft_main_lexer(t_token *lst)
 		ft_detect_op(&lst);
 		ft_readfd(&lst);
 		ft_merge_sp(&lst);
-		ft_merge_dig(&lst);
 		ft_detect_files(&lst);
-		if (ft_check_op(lst) == SUCC)
-		{	
-			// ft_print_token_str(lst);
-			ft_print_token(lst);
-		}
-		else
-			printf("lexer error !! \n");
+		ft_fd_file(&lst);
+		ft_swap_red(&lst);
+		ft_merge_dig(&lst);
+
+		// if (ft_check_op(lst) == SUCC)
+		// {	
+		ft_print_token_str(lst);
+		ft_print_token(lst);
+		// }
+		// else
+		// 	printf("lexer error !! \n");
 	}
 }
