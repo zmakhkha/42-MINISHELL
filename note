@@ -21,4 +21,6 @@ ls "ls"
 ls | >out
 <    
 
-ls -la || command 1< in comm2 2>out comm 3 << hdoc
+ls -la || command 1< in comm2 2>out comm 3 << hdoc : WORKING
+
+ls < redin1 >redout1 <<hdoc1 >>append1 <<hdoc2 -la : WORKING

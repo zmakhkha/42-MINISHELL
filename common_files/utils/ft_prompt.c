@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/18 20:51:22 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/25 23:10:27 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ void	ft_prompt(void)
 			// printf("%s", t->str);
 		free (str);
 		ft_free_token(&t);
-		system("leaks minishell");
+		// system("leaks minishell");
 	}
 }

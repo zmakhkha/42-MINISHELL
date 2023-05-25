@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 15:08:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/18 18:47:04 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/25 23:29:51 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,36 +178,23 @@ void	ft_remove_tok(t_token **list)
 
 void	ft_swap(t_token *lst)
 {
+	t_token	*t_next;
+	t_token	*t_prev;
 	t_token	*tmp;
 
-	tmp = NULL;
-	if (!lst->next && !lst->prev);
-	else if (lst && !lst->next && lst->prev && !lst->prev->prev)
+	t_prev = lst->prev;
+	t_next = lst->next;
+	tmp = t_prev->prev;
+	if (!t_prev && !t_next);
+	else if (lst && t_prev)
 	{
-		tmp = lst->prev;
-		tmp->next = NULL;
-		lst->prev = NULL;
-		lst->next = tmp;
-		tmp->prev = lst;
-	}
-	else if (lst->next && lst && !lst->prev);
-	else if (lst->next && lst && lst->prev && !lst->prev->prev)
-	{
-		tmp = lst->prev;
-		lst->prev = NULL;
-		tmp->next = lst->next;
-		tmp->next->prev = tmp;
-		lst->next = tmp;
-		tmp->prev = lst;
-	}
-	else
-	{
-		tmp = lst->prev;
-		lst->next->prev = tmp;
-		tmp->next = lst->next;
-		lst->next = tmp;
-		tmp->prev->next = lst;
-		lst->prev = tmp->prev;
-		tmp->prev = lst;
+		if (t_next)
+			t_next->prev = lst->prev;
+		lst->prev= t_prev->prev;
+		t_prev->next = t_next;
+		t_prev->prev = lst;
+		lst->next = t_prev;
+		if (tmp)
+			tmp->next = lst;
 	}
 }
