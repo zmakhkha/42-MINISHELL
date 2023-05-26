@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/26 15:10:02 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:21:09 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,7 +203,9 @@ void	ft_detect_files(t_token **lst);
 int		ft_isvalidred(t_token *lst);
 
 // common_files/lexer/ft_syntax_errors.c
-int		ft_check_op(t_token *lst);
+void	ft_check_op(t_token *lst);
+void	ft_operrors(t_token *lst);
+void	ft_op_space(t_token **list);
 
 // common_files/lexer/ft_red_utils.c
 void	ft_swap_red(t_token **list);
@@ -219,5 +221,8 @@ void	ft_word_dig(t_token **list);
 // common_files/lexer/ft_fdutils.c
 void	ft_fd_file(t_token **list);
 void	ft_readfd(t_token **list);
+
+// common_files/lexer/ft_errors.c
+void	ft_three(t_token *lst);
 
 #endif

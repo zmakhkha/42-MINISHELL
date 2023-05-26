@@ -34,4 +34,8 @@ To be implemented;
 + red -> subshell
 + shebshell ->word
 + word ->subshell
-+ pipe or operaor in the begining or in the end
+(wc -l) <main.c && cat -e : correct but the bash hangs
+(wc -l) <main.c  cat -e && : syntax error
+>out (haha) : red -> subshell : error
+SUBSHELL -> reddirection should be swapped
++ pipe or operaor in the begining or in the end : WORKING
