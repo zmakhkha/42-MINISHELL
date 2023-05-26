@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:01:55 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/17 17:06:56 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:10:31 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,45 +55,36 @@ void	ft_pr(t_token *lst)
 	}
 }
 
-int	ft__strtok(char *str, t_token **lst, int *a, int *b)
+void	ft__strtok(char *str, t_token **lst, int *a, int *b)
 {
-	int	ret;
-
-	ret = SUCC;
-	if (str[*b] && ft_isdigit(str[*b]))
+	if (!g_status && str[*b] && ft_isdigit(str[*b]))
 		ft_digits(str, lst, a, b);
-	else if (str[*b] && str[*b] == '"')
-		ret = d_quotes(str, lst, a, b);
-	else if (str[*b] && str[*b] == '\'')
-		ret = s_quotes(str, lst, a, b);
-	else if (str[*b] && str[*b] == '(')
-		ret = ft_prt(str, lst, a, b);
-	else if (str[*b] && ft_is_moperator(str[*b]))
-		ret = ft_operators(str, lst, a, b);
-	else if (str[*b] && (str[*b] == '>'))
-		ret = ft_operators2(str, lst, a, b);
-	else if (str[*b] && str[*b] == '<')
-		ret = ft_operators3(str, lst, a, b);
-	else
-	{
-		printf("Tokenization error!!\n");
-		ret = ERR;
-	}
-	return (ret);
+	else if (!g_status && str[*b] && str[*b] == '"')
+		d_quotes(str, lst, a, b);
+	else if (!g_status && str[*b] && str[*b] == '\'')
+		s_quotes(str, lst, a, b);
+	else if (!g_status && str[*b] && (str[*b] == '(' || str[*b] == ')'))
+		ft_prt(str, lst, a, b);
+	else if (!g_status && str[*b] && ft_is_moperator(str[*b]))
+		ft_operators(str, lst, a, b);
+	else if (!g_status && str[*b] && (str[*b] == '>'))
+		ft_operators2(str, lst, a, b);
+	else if (!g_status && str[*b] && str[*b] == '<')
+		ft_operators3(str, lst, a, b);
+	else if (g_status)
+		printf("unrecognized status!!\n");
 }
 
 t_token	*ft_strtok(char *str)
 {
 	int		i;
 	int		j;
-	int		ret;
 	t_token	*lst;
 
 	j = 0;
-	ret = SUCC;
 	lst = NULL;
-	ret = ft_forbidden(str[j]);
-	while (str[j] && (ret == SUCC))
+	ft_forbidden(str);
+	while (str[j] && !g_status)
 	{
 		i = j;
 		if (ft_is_whitespace(str[j]))
@@ -101,20 +92,24 @@ t_token	*ft_strtok(char *str)
 		else if (ft_valid_word(str[j]))
 			ft_word(str, &lst, &i, &j);
 		else
-			ret = ft__strtok(str, &lst, &i, &j);
+			ft__strtok(str, &lst, &i, &j);
 	}
-	if (ret == SUCC)
+	if (g_status == SUCC)
 		return (lst);
 	else
+	{
+		lst = ft_getfirst(lst);
+		ft_free_token(&lst);
 		return (NULL);
+	}
 }
 
-t_token	*ft_main_token(t_token *lst)
-{
-	if (lst)
-	{
-		// ft_print_token_str(lst);
-		ft_print_token(lst);
-	}
-	return (NULL);
-}
+// t_token	*ft_main_token(t_token *lst)
+// {
+// 	if (lst)
+// 	{
+// 		ft_print_token_str(lst);
+// 		ft_print_token(lst);
+// 	}
+// 	return (NULL);
+// }

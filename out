@@ -1,0 +1,17 @@
+total 2552
+drwxr-xr-x  16 zmakhkha  candidate      544 May 26 12:23 .
+drwxr-xr-x   4 zmakhkha  candidate      136 May 25 22:11 ..
+drwxr-xr-x  14 zmakhkha  candidate      476 May 25 23:55 .git
+-rw-r--r--   1 zmakhkha  candidate   161733 May 25 22:12 .tldr
+drwxr-xr-x   4 zmakhkha  candidate      136 May 26 12:11 .vscode
+-rw-r--r--   1 zmakhkha  candidate     2094 May 26 11:26 Makefile
+-rw-------@  1 zmakhkha  candidate  1113741 May 25 23:53 all.tldr
+drwxr-xr-x   5 zmakhkha  candidate      170 May 25 22:12 common_files
+-rw-r--r--   1 zmakhkha  candidate     1195 May 25 22:11 definitions.txt
+-rw-r--r--   1 zmakhkha  candidate     1629 May 25 22:12 draft.c
+-rw-r--r--   1 zmakhkha  candidate     6006 May 26 11:52 header.h
+drwxr-xr-x  51 zmakhkha  candidate     1734 May 25 22:11 libft
+-rw-r--r--   1 zmakhkha  candidate     1110 May 25 22:11 main.c
+drwxr-xr-x   3 zmakhkha  candidate      102 May 26 11:01 minishell.dSYM
+-rw-r--r--   1 zmakhkha  candidate      404 May 25 23:52 note
+-rw-r--r--   1 zmakhkha  candidate        0 May 26 12:23 out

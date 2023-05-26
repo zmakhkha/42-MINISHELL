@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 15:08:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/25 23:29:51 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:45:34 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,128 +73,15 @@ void	ft_token_addback(t_token **lst, t_token *new)
 	}
 }
 
+// free all the list from any location
 void	ft_free_token(t_token **t)
 {
-	t_token	*tmp;
-
 	if (t && *t)
 	{
-		if ((*t)-> prev == NULL)
-		{
-			if ((*t)->str)
-				free((*t)->str);
-			free (*t);
-		}
-		else
-		{
-			while ((*t)->prev)
-			{
-				tmp = *t;
-				(*t) = (*t)->prev;
-				if (tmp->str)
-					free(tmp->str);
-				free (tmp);
-			}
-			if ((*t)->str)
-				free((*t)->str);
-			free ((*t));
-		}
-	}
-}
-
-void	ft_delete_prev_token(t_token **t)
-{
-	t_token	*tmp;
-	t_token	*rep;
-
-	if (t && *t && (*t)->prev)
-	{
-		tmp = *t;
-		rep = tmp->prev;
-		tmp->prev = rep->prev;
-		free (rep->str);
-		free (rep);
-	}
-}
-
-void	ft_delete_next_token(t_token **t)
-{
-	t_token	*tmp;
-	t_token	*rep;
-
-	if (t && *t && (*t)->next)
-	{
-		tmp = *t;
-		rep = tmp->next;
-		tmp->next = rep->next;
-		free (rep->str);
-		free (rep);
-	}
-}
-
-void	ft_remove_tok(t_token **list)
-{
-	t_token	*lst;
-	t_token	*tmp;
-
-	lst = *list;
-	tmp = NULL;
-	if (lst)
-	{
-		if (!lst->prev && !lst->next)
-		{
-			free (lst->str);
-			lst->str = NULL;
-			free (lst);
-			lst = NULL;
-		}
-		else if (!lst->prev)
-		{
-			lst->next->prev = NULL;
-			free (lst->str);
-			lst->str = NULL;
-			free (lst);
-			lst = NULL;
-		}
-		else if (!lst->next)
-		{
-			free (lst->str);
-			lst->prev->next = NULL;
-			free (lst);
-			lst = NULL;
-		}
-		else
-		{
-			tmp = lst;
-			lst->next->prev = lst->prev;
-			lst->prev->next = lst->next;
-			free(tmp->str);
-			tmp->str = NULL;
-			free(tmp);
-			tmp = NULL;
-		}
-	}
-}
-
-void	ft_swap(t_token *lst)
-{
-	t_token	*t_next;
-	t_token	*t_prev;
-	t_token	*tmp;
-
-	t_prev = lst->prev;
-	t_next = lst->next;
-	tmp = t_prev->prev;
-	if (!t_prev && !t_next);
-	else if (lst && t_prev)
-	{
-		if (t_next)
-			t_next->prev = lst->prev;
-		lst->prev= t_prev->prev;
-		t_prev->next = t_next;
-		t_prev->prev = lst;
-		lst->next = t_prev;
-		if (tmp)
-			tmp->next = lst;
+		ft_free_token(&(*t)->prev);
+		free((*t)->str);
+		(*t)->str = NULL;
+		free(*t);
+		(*t) = NULL;
 	}
 }

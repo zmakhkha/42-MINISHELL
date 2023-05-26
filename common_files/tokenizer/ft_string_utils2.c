@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:29 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/17 17:04:50 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:49:46 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,57 +87,4 @@ int	ft_operators3(char *str, t_token **lst, int *a, int *b)
 	else
 		ret = ERR;
 	return (ret);
-}
-
-int	ft_prt(char *str, t_token **lst, int *a, int *b)
-{
-	int		len;
-	int		ret;
-	char	*s;
-
-	ret = SUCC;
-	s = NULL;
-	len = ft_strlen(str);
-	if (str[*b] && (str[*b] == '(' && if_validp(str + *b) != -1))
-	{
-		*b += if_validp(str + *b);
-		if (str[*b] == ')')
-		{
-			s = ft_substr(str, *a + 1, *b - *a -1);
-			ft_token_addback(lst, ft_add_token(s, SUBSHELL));
-			*b += 1;
-		}
-	}
-	else
-	{
-		ft_free_token(lst);
-		ret = ERR;
-	}
-	return (ret);
-}
-
-int	if_validp(char *str)
-{
-	int	open;
-	int	i;
-
-	i = 0;
-	open = 1;
-	while (str[++i])
-	{
-		if (str[i] == '(')
-		{
-			open++;
-			if_validp(str + i +1);
-		}
-		if (str[i] == ')')
-		{	
-			open--;
-			if (!open)
-				return (i);
-		}
-	}
-	if (!open)
-		return (i);
-	return (-1);
 }

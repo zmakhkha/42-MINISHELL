@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/18 18:31:08 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:10:02 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define SUCC 0
 # define ERR 1
 
+int	g_status;
 // -------> Tokens enumeration <------- //
 
 enum
@@ -89,9 +90,9 @@ typedef struct s_tree
 
 // common_files/tokenizer/ft_string_utils.c
 void	ft_word(char *str, t_token **lst, int *a, int *b);
-int		d_quotes(char *str, t_token **lst, int *a, int *b);
-int		s_quotes(char *str, t_token **lst, int *a, int *b);
-int		ft_operators(char *str, t_token **lst, int *a, int *b);
+void	d_quotes(char *str, t_token **lst, int *a, int *b);
+void	s_quotes(char *str, t_token **lst, int *a, int *b);
+void	ft_operators(char *str, t_token **lst, int *a, int *b);
 void	ft__operators(char *str, t_token **lst, int *a, int *b);
 
 // common_files/tokenizer/ft_string_utils2.c
@@ -99,7 +100,7 @@ void	ft_space(char *str, t_token **lst, int *a, int *b);
 void	ft_digits(char *str, t_token **lst, int *a, int *b);
 int		ft_operators2(char *str, t_token **lst, int *a, int *b);
 int		ft_operators3(char *str, t_token **lst, int *a, int *b);
-int		ft_prt(char *str, t_token **lst, int *a, int *b);
+void	ft_prt(char *str, t_token **lst, int *a, int *b);
 int		if_validp(char *str);
 
 // common_files/tokenizer/ft_string_utils3.c
@@ -107,12 +108,12 @@ int		ft_voperator(char*str, char op);
 int		ft_validouble(char *str, char op);
 
 // common_files/tokenizer/ft_string_utils4.c
-int		ft_forbidden(char c);
+int		ft_forbidden(char *str);
 int		ft_is_operators4(char c);
 void	ft_operators4(char *str, t_token **lst, int *a, int *b);
 
 // common_files/tokenizer/ft_token_utils.c
-int		ft__strtok(char *str, t_token **lst, int *a, int *b);
+void	ft__strtok(char *str, t_token **lst, int *a, int *b);
 t_token	*ft_strtok(char *str);
 t_token	*ft_main_token(t_token *lst);
 
@@ -151,17 +152,14 @@ t_token	*ft_getlast(t_token *lst);
 t_token	*ft_getfirst(t_token *lst);
 void	ft_token_addback(t_token **lst, t_token *new);
 void	ft_free_token(t_token **t);
-void	ft_delete_next_token(t_token **t);
-void	ft_delete_prev_token(t_token **t);
-void	ft_remove_tok(t_token **list);
-void	ft_swap(t_token *lst);
-
 
 // common_files/utils/ft_token_utils2.c
 void	ft_position_it(t_token **lst);
 void	ft_print_utils(int type);
 void	ft_print_token(t_token *t);
 void	ft_print_token_str(t_token *t);
+void	ft_remove_tok(t_token **list, t_token *node);
+void	ft_swap(t_token *lst);
 
 // -------------------------------------- //
 // ---------> The Lexer stage <--------- //
@@ -192,6 +190,7 @@ void	ft_main_lexer(t_token *lst);
 int		ft_operator(t_token *l);
 int		ft_opperators(t_token *lst);
 int		ft_subshells(t_token *lst);
+void	ft_detect_op(t_token **list);
 
 // common_files/lexer/ft_simple_command.c
 void	ft_build_scomm(t_token **lst);
@@ -205,5 +204,20 @@ int		ft_isvalidred(t_token *lst);
 
 // common_files/lexer/ft_syntax_errors.c
 int		ft_check_op(t_token *lst);
+
+// common_files/lexer/ft_red_utils.c
+void	ft_swap_red(t_token **list);
+void	ft_swap_red2(t_token **list);
+void	ft_swap_red3(t_token **list);
+
+// common_files/lexer/ft_mergeutils.c
+void	ft_rm_space(t_token **list);
+void	ft_merge_sp(t_token **list);
+void	ft_merge_dig(t_token **list);
+void	ft_word_dig(t_token **list);
+
+// common_files/lexer/ft_fdutils.c
+void	ft_fd_file(t_token **list);
+void	ft_readfd(t_token **list);
 
 #endif
