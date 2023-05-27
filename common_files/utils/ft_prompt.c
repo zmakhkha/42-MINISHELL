@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/26 15:11:50 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:32:51 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ void	ft_prompt(void)
 		if (!g_status && t)
 			ft_main_lexer(t);
 		else
-			printf("erroe\n\n\n");
+		{
+			if (t)
+				printf("Tokenization error !!");
+		}
 			// printf("%s", t->str);
 		free (str);
 		t = ft_getfirst(t);

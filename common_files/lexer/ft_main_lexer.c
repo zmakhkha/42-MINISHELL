@@ -6,11 +6,18 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:06:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/26 17:25:36 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:53:36 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
+
+void	ft_checksyntax(t_token *lst)
+{
+	ft_succop(lst);
+	ft_syntaxerr(lst);
+	ft_operrors(lst);
+}
 
 void	ft_checkfiles(t_token *lst)
 {
@@ -26,12 +33,32 @@ void	ft_checkfiles(t_token *lst)
 	}
 }
 
+// to solve the case ls1>haha
+void	ft_mergeword_num(t_token **list)
+{
+	t_token	*lst;
+	char	*s_tmp;
+
+	lst = *list;
+	while (lst && lst->prev)
+	{
+		if (lst && (lst->type == WORD) && (lst->prev->type == DIGITE))
+		{
+			s_tmp = ft_join_free(lst->str, lst->prev->str);
+			free(lst->str);
+			lst->str = s_tmp;
+			ft_remove_tok(list, lst->prev);
+			continue ;
+		}
+		lst = lst->prev;
+	}
+}
+
 void	ft_main_lexer(t_token *lst)
 {
-	// ft_three(lst);
+	ft_mergeword_num(&lst);
 	ft_detect_op(&lst);
 	ft_check_op(lst);
-	ft_operrors(lst);
 	if (!g_status && lst)
 	{
 		ft_readfd(&lst);
@@ -43,16 +70,26 @@ void	ft_main_lexer(t_token *lst)
 		{
 			ft_op_space(&lst);
 			ft_fd_file(&lst);
+			ft_sub_red(lst);
 			ft_swap_red(&lst);
 			ft_swap_red2(&lst);
 			ft_swap_red3(&lst);
 			ft_merge_dig(&lst);
-			ft_print_token_str(lst);
-			ft_print_token(lst);
+			ft_checksyntax(lst);
+			if (g_status)
+			{
+				printf("lexer error3 !!\n");
+				return ;
+			}
+			else
+			{
+				ft_print_token_str(lst);
+				ft_print_token(lst);
+			}			
 		}
 		if (g_status)
-			printf("error\n\n");
+			printf("lexer error2 !!\n");
 	}
 	else
-		printf("lexer error !! \n");
+		printf("lexer error1 !! \n");
 }

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/26 17:21:09 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:53:51 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 # include "libft/libft.h"
 
+# define EXLUDE "` @ # % ^ + = \ ;"
 # define H_PATH "/tmp/.minishell_history"
 # define H_DOCP "/tmp/"
 # define SUCC 0
@@ -206,6 +207,10 @@ int		ft_isvalidred(t_token *lst);
 void	ft_check_op(t_token *lst);
 void	ft_operrors(t_token *lst);
 void	ft_op_space(t_token **list);
+void	ft_syntaxerr(t_token *lst);
+void	ft_succop(t_token *lst);
+void	ft_sub_red(t_token *lst);
+
 
 // common_files/lexer/ft_red_utils.c
 void	ft_swap_red(t_token **list);

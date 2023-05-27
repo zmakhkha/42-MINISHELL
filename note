@@ -39,3 +39,16 @@ To be implemented;
 >out (haha) : red -> subshell : error
 SUBSHELL -> reddirection should be swapped
 + pipe or operaor in the begining or in the end : WORKING
+
+(wc -l) <main.c  cat -e && : DONE
+1 | 2 ||| 3 :  DONE
+2 | && 1 : DONE
+enter : DONE
+ls1>out : DONE
+() : DONE
+' | ' : DONE
+'ls | ' : DONE
+(wc -l) <main.c && cat -e : DONE
+(wc -l) <main.c  cat -e && : DONE
+>out (haha) : red -> subshell : DONE
+nswapiw wla la

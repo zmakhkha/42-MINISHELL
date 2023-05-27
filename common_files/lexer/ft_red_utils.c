@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:20:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/26 14:53:45 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:30:15 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	ft_swap_red(t_token **list)
 	lst = *list;
 	while (lst && lst->prev)
 	{
-		if ((lst->type == WORD && (ft_isredirection(lst->prev) || \
-		lst->prev->type == HDOC)))
+		if (((lst->type == WORD || lst->type == SUBSHELL) && \
+		(ft_isredirection(lst->prev) || lst->prev->type == HDOC)))
 		{
 			ft_swap(lst);
 			ft_merge_dig(list);

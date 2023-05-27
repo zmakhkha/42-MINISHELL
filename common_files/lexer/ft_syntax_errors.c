@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:36:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/26 17:26:37 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:53:17 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,58 @@ void	ft_operrors(t_token *lst)
 		g_status = ERR;
 }
 
+void	ft_succop(t_token *lst)
+{
+	if (lst && lst->prev)
+	{
+		ft_succop(lst->prev);
+		if ((lst->type == PIPE && ft_isbigoperators(lst->prev)) || \
+			(ft_isbigoperators(lst) && lst->prev->type == PIPE))
+		{
+			g_status = ERR;
+			// break ;
+		}
+		lst = lst->prev;
+	}
+}
+
+// this is an extreme case redirection -> subshell == error
+// we should check that before swapping
+void	ft_sub_red(t_token *lst)
+{
+		if (ft_isredirection(lst) && lst->prev->type == SUBSHELL)
+		{
+			g_status = ERR;
+			puts("3\n");
+		}
+}
+
+void	ft_syntaxerr(t_token *lst)
+{
+	if (lst && lst->prev)
+	{
+		ft_syntaxerr(lst->prev);
+		if (lst->type == SUBSHELL && (lst->prev->type == SUBSHELL \
+		|| lst->prev->type == WORD))
+		{
+			g_status = ERR;
+			puts("1\n");
+		}
+		if ((lst->type == SUBSHELL || lst->type == WORD) && \
+		lst->prev->type == SUBSHELL)
+		{
+			g_status = ERR;
+			puts("2\n");
+		}
+		if (lst->type == HDOC && (lst->prev->type == SUBSHELL))
+		{
+			g_status = ERR;
+			puts("3\n");
+		}
+	}
+}
+
+// if we remove the next pointers it double free
 void	ft_op_space(t_token **list)
 {
 	t_token	*lst;
@@ -77,14 +129,11 @@ void	ft_op_space(t_token **list)
 	lst = *list;
 	while (lst && lst->prev)
 	{
-		if (lst && ((ft_isredirection(lst)) || lst->type == PIPE
-			|| lst->type == HDOC || ft_isbigoperators(lst)) && \
-			(lst->prev->type == SPACE))
+		// ft_op_space(&lst->prev);
+		if (lst && ((ft_isredirection(lst)) || lst->type == PIPE \
+			|| lst->type == HDOC || lst->type == SUBSHELL || \
+			ft_isbigoperators(lst)) && (lst->prev->type == SPACE))
 			ft_remove_tok(list, lst->prev);
-		else if (lst && (lst->type == SPACE) && ((ft_isredirection(lst->prev)) \
-		|| lst->prev->type == PIPE || lst->prev->type == HDOC || \
-		ft_isbigoperators(lst->prev)))
-			ft_remove_tok(list, lst->next);
-		lst = lst->prev;
+	lst = lst->prev;
 	}
 }
