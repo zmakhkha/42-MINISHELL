@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/27 17:53:51 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:19:15 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ typedef struct s_token
 	int				fd;
 	struct s_token	*prev;
 	struct s_token	*next;
+	struct s_token	*left;
+	struct s_token	*right;
 }	t_token;
 
 // -------------------------------------- //
@@ -210,6 +212,8 @@ void	ft_op_space(t_token **list);
 void	ft_syntaxerr(t_token *lst);
 void	ft_succop(t_token *lst);
 void	ft_sub_red(t_token *lst);
+int	ft_isbigoperators(t_token *lst);
+
 
 
 // common_files/lexer/ft_red_utils.c
@@ -229,5 +233,12 @@ void	ft_readfd(t_token **list);
 
 // common_files/lexer/ft_errors.c
 void	ft_three(t_token *lst);
+
+
+// -------------------------------------- //
+// ----------> The AST stage <---------- //
+// ------------------------------------ //
+// common_files/ast/ft_main_ast.c
+void    ft_main_ast(t_token **list);
 
 #endif

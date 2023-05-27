@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/27 17:32:51 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:03:40 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ void	ft_prompt(void)
 		// ft_main_token(t);
 		if (!g_status && t)
 			ft_main_lexer(t);
-		else
-		{
-			if (t)
-				printf("Tokenization error !!");
-		}
+		else if (t)
+				printf("Lexer Error !!");
+		if (!g_status && t)
+			ft_main_ast(&t);
+		else if (t)
+				printf("Lexer Error !!");
 			// printf("%s", t->str);
 		free (str);
 		t = ft_getfirst(t);

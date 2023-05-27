@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 15:08:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/26 14:45:34 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:19:48 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_token	*ft_add_token(char *str, int type)
 	tmp->fd = -1;
 	tmp->prev = NULL;
 	tmp->next = NULL;
+	tmp->left = NULL;
+	tmp->right = NULL;
 	return (tmp);
 }
 
