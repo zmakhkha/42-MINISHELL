@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/05/28 18:00:10 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/05/28 19:14:42 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC_MN =	main.c \
 			common_files/lexer/ft_red_utils.c \
 			common_files/lexer/ft_redirections.c \
 			common_files/lexer/ft_syntax_errors.c \
+			common_files/lexer/ft_syntax_errors2.c \
 			common_files/tokenizer/ft_valid_utils.c \
 			common_files/tokenizer/ft_string_utils.c \
 			common_files/tokenizer/ft_string_utils4.c \
@@ -45,7 +46,7 @@ OBJ = $(SRC_MN:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -Wunused-function  -g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -Wunused-function  -g #-fsanitize=address
 
 all: $(M_NAME)
 

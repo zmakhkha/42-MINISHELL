@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:36:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/26 15:17:14 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/28 19:10:11 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	ft_merge_sp(t_token **list)
 	}
 }
 
+// to add ft_rm_space(list); before lst = *list; if we need to
 void	ft_merge_dig(t_token **list)
 {
 	t_token	*lst;
@@ -85,7 +86,6 @@ void	ft_merge_dig(t_token **list)
 		}
 		lst = lst->prev;
 	}
-	// ft_rm_space(list);
 	lst = *list;
 }
 

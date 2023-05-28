@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/17 16:36:27 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/28 19:07:25 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@
 
 int	main(void)
 {
-	// atexit(l);
 	ft_prompt();
-	// char	*a = ft_hdoc_tofd(ft_heredoc("-"));
-	// printf("------>%s\n\n", a);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:06:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/28 17:55:47 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/28 19:22:34 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,32 @@ void	ft_mergeword_num(t_token **list)
 	}
 }
 
+//  Add this to print to tokens after the lexing
+		// else
+		// {
+		// 	ft_print_token_str(lst);
+		// 	ft_print_token(lst);
+		// }		
+void	ft_lexit(t_token *lst)
+{
+	if (!g_status)
+	{
+		ft_op_space(&lst);
+		ft_fd_file(&lst);
+		ft_sub_red(lst);
+		ft_swap_red(&lst);
+		ft_swap_red2(&lst);
+		ft_merge_dig(&lst);
+		ft_checksyntax(lst);
+		if (g_status)
+		{
+			printf("lexer error3 !!\n");
+			return ;
+		}		
+	}
+}
+
+// to add ft_swap_red3(&lst) after ft_swap_red2(&lst); if we need to
 void	ft_main_lexer(t_token *lst)
 {
 	ft_mergeword_num(&lst);
@@ -66,27 +92,7 @@ void	ft_main_lexer(t_token *lst)
 		ft_merge_sp(&lst);
 		ft_detect_files(&lst);
 		ft_checkfiles(lst);
-		if (!g_status)
-		{
-			ft_op_space(&lst);
-			ft_fd_file(&lst);
-			ft_sub_red(lst);
-			ft_swap_red(&lst);
-			ft_swap_red2(&lst);
-			// ft_swap_red3(&lst);
-			ft_merge_dig(&lst);
-			ft_checksyntax(lst);
-			if (g_status)
-			{
-				printf("lexer error3 !!\n");
-				return ;
-			}
-			else
-			{
-				ft_print_token_str(lst);
-				ft_print_token(lst);
-			}			
-		}
+		ft_lexit(lst);
 		if (g_status)
 			printf("lexer error2 !!\n");
 	}

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/28 18:01:59 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/28 19:23:41 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,8 +160,8 @@ void	ft_free_token(t_token **t);
 // common_files/utils/ft_token_utils2.c
 void	ft_position_it(t_token **lst);
 void	ft_print_utils(int type);
-void	ft_print_token(t_token *t);
-void	ft_print_token_str(t_token *t);
+// void	ft_print_token(t_token *t);
+// void	ft_print_token_str(t_token *t);
 void	ft_remove_tok(t_token **list, t_token *node);
 void	ft_swap(t_token *lst);
 
@@ -207,13 +207,19 @@ void	ft_detect_files(t_token **lst);
 int		ft_isvalidred(t_token *lst);
 
 // common_files/lexer/ft_syntax_errors.c
+
+int		ft_loperators(t_token *lst);
+int		ft_isbigoperators(t_token *lst);
+int		ft_isforbidden(t_token *lst);
 void	ft_check_op(t_token *lst);
 void	ft_operrors(t_token *lst);
-void	ft_op_space(t_token **list);
-void	ft_syntaxerr(t_token *lst);
+
+// common_files/lexer/ft_syntax_errors2.c
+
 void	ft_succop(t_token *lst);
 void	ft_sub_red(t_token *lst);
-int		ft_isbigoperators(t_token *lst);
+void	ft_syntaxerr(t_token *lst);
+void	ft_op_space(t_token **list);
 
 // common_files/lexer/ft_red_utils.c
 void	ft_swap_red(t_token **list);
@@ -250,6 +256,7 @@ void	ft_pipe_nodes(t_token **list);
 int		ft_lstlen(t_token *lst);
 void	ft_print_tree(t_token *list);
 t_token	*ft_pop(t_token **list);
+void	ft_free_tree(t_token **list);
 
 // common_files/ast/ft_main_ast.c
 void	ft_main_ast(t_token **list);
@@ -258,6 +265,5 @@ void	ft_main_ast(t_token **list);
 t_token	*ft_makenull(void);
 t_token	*ft_make_leafs(t_token **list);
 void	ft_leaf_nodes(t_token **list);
-
 
 #endif
