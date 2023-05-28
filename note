@@ -51,4 +51,13 @@ SUBSHELL -> reddirection should be swapped
 + (wc -l) <main.c && cat -e : DONE
 + (wc -l) <main.c  cat -e && : DONE
 + >out (haha) : red -> subshell : DONE
-+ nswapiw wla la ??
++ nswapiw wla la ????????????????????????????/
+
+ast
+c1 | c2 | c3 && c11 | c12 : fixed
+c1 | c2 | c3 && c11 && gf : working
+c1 | c2 | c3 && c11 | c12 | c13 : fixed
+c1 | c12 && c13 : fixed
+c1 | c2 | c3 && c11 && gf || final : working
+
+

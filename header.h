@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/27 18:19:15 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/28 16:10:37 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,9 +212,7 @@ void	ft_op_space(t_token **list);
 void	ft_syntaxerr(t_token *lst);
 void	ft_succop(t_token *lst);
 void	ft_sub_red(t_token *lst);
-int	ft_isbigoperators(t_token *lst);
-
-
+int		ft_isbigoperators(t_token *lst);
 
 // common_files/lexer/ft_red_utils.c
 void	ft_swap_red(t_token **list);
@@ -234,11 +232,24 @@ void	ft_readfd(t_token **list);
 // common_files/lexer/ft_errors.c
 void	ft_three(t_token *lst);
 
-
 // -------------------------------------- //
 // ----------> The AST stage <---------- //
 // ------------------------------------ //
+
+// common_files/ast/ft_ops_utils.c
+
+int		ft_isthere_bop(t_token *lst);
+void	ft_make_bigops(t_token **list);
+int		ft_isthere_pipe(t_token *lst);
+t_token	*ft_make_pipes(t_token **list);
+void	ft_pipe_nodes(t_token **list);
+
+// common_files/ast/ft_ast_utils.c
+
+int		ft_lststrlen(t_token *lst);
+void	ft_print_tree(t_token *list);
+
 // common_files/ast/ft_main_ast.c
-void    ft_main_ast(t_token **list);
+void	ft_main_ast(t_token **list);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:36:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/27 17:53:17 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/28 15:31:17 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_isforbidden(t_token *lst)
 		ret = ((ft_loperators(lst) && ft_loperators(lst->prev) \
 		&& ft_loperators(lst->prev->prev)) \
 		|| (ft_loperators(lst) && (lst->prev->type == SPACE) && \
-		ft_loperators(lst->prev->prev)));
+	ft_loperators(lst->prev->prev)));
 	return (ret);
 }
 
@@ -87,11 +87,11 @@ void	ft_succop(t_token *lst)
 // we should check that before swapping
 void	ft_sub_red(t_token *lst)
 {
-		if (ft_isredirection(lst) && lst->prev->type == SUBSHELL)
-		{
-			g_status = ERR;
-			puts("3\n");
-		}
+	if (ft_isredirection(lst) && lst->prev->type == SUBSHELL)
+	{
+		g_status = ERR;
+		puts("3\n");
+	}
 }
 
 void	ft_syntaxerr(t_token *lst)

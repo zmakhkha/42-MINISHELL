@@ -1,21 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main_ast.c                                      :+:      :+:    :+:   */
+/*   ft_ast_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 17:58:17 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/28 15:27:21 by zmakhkha         ###   ########.fr       */
+/*   Created: 2023/05/28 15:24:04 by zmakhkha          #+#    #+#             */
+/*   Updated: 2023/05/28 15:24:48 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
 
-void	ft_main_ast(t_token **list)
+int	ft_lststrlen(t_token *lst)
 {
-	printf("\n The  tree stage \n");
-	ft_make_bigops(list);
-	ft_pipe_nodes(list);
-	ft_print_tree(*list);
+	int	i;
+
+	i = 0;
+	lst = ft_getfirst(lst);
+	while (lst)
+	{
+		i += 1;
+		lst = lst->prev;
+	}
+	return (i);
+}
+
+void	ft_print_tree(t_token *list)
+{
+	if (list)
+	{
+		ft_print_tree(list->left);
+		printf("(%s, %d)->", list->str, list->type);
+		ft_print_tree(list->right);
+	}
 }

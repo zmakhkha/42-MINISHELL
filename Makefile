@@ -6,14 +6,16 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/05/27 18:04:12 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/05/28 15:32:16 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 M_NAME = minishell
 FT_PATH = libft/libft.a
 SRC_MN =	main.c \
+			common_files/ast/ft_ast_utils.c \
 			common_files/ast/ft_main_ast.c \
+			common_files/ast/ft_ops_utils.c \
 			common_files/lexer/ft_errors.c \
 			common_files/lexer/ft_check_hdoc.c \
 			common_files/lexer/ft_check_redirections.c \

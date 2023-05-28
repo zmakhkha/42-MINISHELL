@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/27 18:03:40 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/28 15:31:37 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	ft_prompt(void)
 		if (!g_status && t)
 			ft_main_lexer(t);
 		else if (t)
-				printf("Lexer Error !!");
+			printf("Lexer Error !!");
 		if (!g_status && t)
 			ft_main_ast(&t);
 		else if (t)
-				printf("Lexer Error !!");
+			printf("Lexer Error !!");
 			// printf("%s", t->str);
 		free (str);
 		t = ft_getfirst(t);
