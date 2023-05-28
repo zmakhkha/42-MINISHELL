@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 15:25:11 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/28 16:08:09 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/28 17:24:25 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,19 +100,20 @@ void	ft_pipe_nodes(t_token **list)
 	if (list && *list)
 	{
 		ft_pipe_nodes(&(*list)->left);
+		ft_pipe_nodes(&(*list)->right);
 		if ((*list)->left)
 		{
 			if (ft_isthere_pipe((*list)->left) && \
-			ft_lststrlen((*list)->right) > 1)
+			ft_lstlen((*list)->right) > 1)
 				(*list)->left = ft_make_pipes(&(*list)->left);
 		}
 		if ((*list)->right)
 		{
 			if (ft_isthere_pipe((*list)->right) && \
-			ft_lststrlen((*list)->right) > 1)
+			ft_lstlen((*list)->right) > 1)
 				(*list)->right = ft_make_pipes(&(*list)->right);
 		}
-		if (ft_isthere_pipe(*list) && ft_lststrlen((*list)) > 1)
+		if (ft_isthere_pipe(*list) && ft_lstlen((*list)) > 1)
 			*list = ft_make_pipes(list);
 	}
 }

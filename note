@@ -54,10 +54,10 @@ SUBSHELL -> reddirection should be swapped
 + nswapiw wla la ????????????????????????????/
 
 ast
-c1 | c2 | c3 && c11 | c12 : fixed
-c1 | c2 | c3 && c11 && gf : working
-c1 | c2 | c3 && c11 | c12 | c13 : fixed
-c1 | c12 && c13 : fixed
-c1 | c2 | c3 && c11 && gf || final : working
++ c1 | c2 | c3 && c11 | c12 : fixed
++ c1 | c2 | c3 && c11 && gf : working
++ c1 | c2 | c3 && c11 | c12 | c13 : fixed
++ c1 | c12 && c13 : fixed
++ c1 | c2 | c3 && c11 && gf || final : working
 
 

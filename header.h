@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/28 16:10:37 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/28 18:01:59 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,14 @@ int	g_status;
 
 enum
 {
-	WORD,
-	FILE_,
+	Empty,
 	PIPE,
-	SPACE,
-	SUBSHELL,
 	AND,
 	OR,
+	WORD,
+	FILE_,
+	SPACE,
+	SUBSHELL,
 	AMP,
 	RE_IN,
 	RE_OUT,
@@ -246,10 +247,17 @@ void	ft_pipe_nodes(t_token **list);
 
 // common_files/ast/ft_ast_utils.c
 
-int		ft_lststrlen(t_token *lst);
+int		ft_lstlen(t_token *lst);
 void	ft_print_tree(t_token *list);
+t_token	*ft_pop(t_token **list);
 
 // common_files/ast/ft_main_ast.c
 void	ft_main_ast(t_token **list);
+
+// common_files/ast/ft_leafs_utils.c
+t_token	*ft_makenull(void);
+t_token	*ft_make_leafs(t_token **list);
+void	ft_leaf_nodes(t_token **list);
+
 
 #endif
