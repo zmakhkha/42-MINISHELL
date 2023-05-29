@@ -6,11 +6,11 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:58:22 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/05/29 02:02:08 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/05/29 03:35:17 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../execution.h"
+#include "../../header.h"
 
 void print_nodes(t_env *env_list)
 {
@@ -67,6 +67,6 @@ t_env	*set_env(char **env)
 		tmp = NULL;
 		i++;
 	}
-	// print_nodes(env_list);
+	print_nodes(env_list);
 	return (env_list);
 }

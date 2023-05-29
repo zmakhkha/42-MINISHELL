@@ -6,7 +6,7 @@
 #    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/05/29 02:31:00 by ayel-fil         ###   ########.fr        #
+#    Updated: 2023/05/29 03:45:25 by ayel-fil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIBS_DIR = libs
 CFLAGS = -Wall -Werror -Wextra -Wunused-function  -g #-fsanitize=address
 LDFLAGS = -lreadline
 
-HEADERS = header.h execution/execution.h
+HEADERS = header.h
 
 #parsing part:
 SRC_MN =	main.c \
@@ -58,7 +58,7 @@ SRC_MN =	main.c \
 SRC_EX = execution/execute.c execution/env/get_env.c execution/env/env.c
 
 #create .OBJ files:
-SRC = $(SRC_MN) $(EX)
+SRC = $(SRC_MN) $(SRC_EX)
 OBJ = $(SRC:.c=.o)
 
 

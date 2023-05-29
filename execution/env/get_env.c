@@ -6,11 +6,11 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 04:43:40 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/05/29 02:07:02 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/05/29 03:35:23 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../execution.h"
+#include "../../header.h"
 
 char	*find_env_node(char *key, t_env *env_list)
 {
