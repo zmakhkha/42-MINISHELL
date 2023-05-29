@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/28 19:23:41 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/29 02:16:42 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <readline/history.h>
 # include <fcntl.h>
 
-# include "libft/libft.h"
+# include "libs/includes.h"
 
 # define EXLUDE "` @ # % ^ + = \ ;"
 # define H_PATH "/tmp/.minishell_history"
@@ -147,7 +147,7 @@ void	ft_print(char *a);
 void	ft_prompt(void);
 
 // common_files/utils/ft_strings.c
-int		ft_strcmp(char *s1, char *s2);
+int		ft_strcmplen(char *s1, char *s2);
 char	*ft_join_free(char *s1, char *s2);
 
 // common_files/utils/ft_token_utils.c

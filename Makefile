@@ -3,15 +3,27 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
+#    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/05/28 19:14:42 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/05/29 02:31:00 by ayel-fil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-M_NAME = minishell
-FT_PATH = libft/libft.a
+#COLORS
+GREEN = \033[0;32m
+RED = \033[0;31m
+RESET = \033[0m
+
+NAME = minishell
+LIBS = libs/libs.a
+LIBS_DIR = libs
+CFLAGS = -Wall -Werror -Wextra -Wunused-function  -g #-fsanitize=address
+LDFLAGS = -lreadline
+
+HEADERS = header.h execution/execution.h
+
+#parsing part:
 SRC_MN =	main.c \
 			common_files/ast/ft_ast_utils.c \
 			common_files/ast/ft_leafs_utils.c \
@@ -42,26 +54,35 @@ SRC_MN =	main.c \
 			common_files/utils/ft_prompt.c \
 			common_files/utils/ft_strings.c
 
-OBJ = $(SRC_MN:.c=.o)
+#execution part:
+SRC_EX = execution/execute.c execution/env/get_env.c execution/env/env.c
 
-CC = cc
+#create .OBJ files:
+SRC = $(SRC_MN) $(EX)
+OBJ = $(SRC:.c=.o)
 
-CFLAGS = -Wall -Werror -Wextra -Wunused-function  -g #-fsanitize=address
 
-all: $(M_NAME)
+all: $(NAME)
 
-$(M_NAME) : $(OBJ)
-	$(CC)  $(CFLAGS) $(SRC_MN) $(FT_PATH) -o $(M_NAME) -lreadline
-%.o:%.c header.h
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME) : $(OBJ) $(HEADERS) $(LIBS)
+	@$(CC) $(LDFLAGS) $(OBJ) $(LIBS) -o $(NAME)
+	@echo "$(NAME): $(GREEN)$(NAME) was created successfully.$(RESET)"
+
+library:
+	@make -C $(LIBS_DIR)
+
+%.o: %.c | library
+	@$(CC) $(CFLAGS) -c $< -o $@
+
 
 clean:
-	@rm -f $(OBJ)
+	@make -C $(LIBS_DIR) clean
+	@rm -rf $(OBJ)
+	@echo "$(NAME): $(RED)The object files were deleted.$(RESET)"
 
-fclean:
-	@rm -f $(OBJ) $(M_NAME)
+fclean: clean
+	@make -C $(LIBS_DIR) fclean
+	@rm -f $(NAME)
+	@echo "$(NAME): $(RED) The executable file was deleted.$(RESET)"
 
-re	: fclean	all
-
-wq	: re	clean 
-.PHONY: all clean fclean re 
+re: fclean all
