@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/30 18:31:28 by zmakhkha         ###   ########.fr       */
+/*   Created: 2022/10/23 22:44:10 by zmakhkha          #+#    #+#             */
+/*   Updated: 2022/10/29 17:52:51 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include"libft.h"
 
-int	main(void)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	ft_prompt();
-	return (0);
+	if (lst && new)
+	{
+		if (*lst)
+			new->next = *lst;
+		else
+			new->next = NULL;
+	}
+	*lst = new;
 }

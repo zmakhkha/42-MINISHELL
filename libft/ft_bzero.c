@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/30 18:31:28 by zmakhkha         ###   ########.fr       */
+/*   Created: 2022/10/16 09:57:52 by zmakhkha          #+#    #+#             */
+/*   Updated: 2022/11/02 11:21:42 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include"libft.h"
 
-int	main(void)
+void	ft_bzero(void *s, size_t n)
 {
-	ft_prompt();
-	return (0);
+	if (n != 0)
+		ft_memset(s, 0, n);
 }

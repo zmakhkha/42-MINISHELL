@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_del_one.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/30 18:31:28 by zmakhkha         ###   ########.fr       */
+/*   Created: 2022/12/26 16:00:28 by zmakhkha          #+#    #+#             */
+/*   Updated: 2022/12/26 17:52:16 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include"dll.h"
 
-int	main(void)
+void	ft_del_one(t_list_d **lst, int a)
 {
-	ft_prompt();
-	return (0);
+	t_list_d	*tmp;
+
+	if (!a && lst)
+	{
+		tmp = *lst;
+		*lst = (*lst)-> prev;
+		free (tmp);
+	}
+	else if (a && lst)
+	{
+		tmp = ft_get_end_d(*lst);
+		tmp -> next -> prev = NULL;
+		free (tmp);
+	}
 }

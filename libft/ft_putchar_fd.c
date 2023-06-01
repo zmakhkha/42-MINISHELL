@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/30 18:31:28 by zmakhkha         ###   ########.fr       */
+/*   Created: 2022/10/23 21:13:35 by zmakhkha          #+#    #+#             */
+/*   Updated: 2022/10/24 16:10:15 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include"libft.h"
+#include <unistd.h>
 
-int	main(void)
+void	ft_putchar_fd(char c, int fd)
 {
-	ft_prompt();
-	return (0);
+	write(fd, &c, 1);
 }

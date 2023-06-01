@@ -6,52 +6,99 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 19:02:26 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/22 17:33:52 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/30 18:34:57 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<libc.h>
+#include "header.h"
+#include <fcntl.h>
 
-// char	*ft_join_free(char *s1, char *s2)
-// {
-// 	size_t		l1;
-// 	size_t		l2;
-// 	int			i;
-// 	char		*res;
-// 	res = NULL;
-// 	if (s1 && s2)
-// 	{
-// 		l1 = strlen(s1);
-// 		l2 = strlen(s2);
-// 		res = (char *)malloc(l1 + l2 + 1);
-// 		i = -1;
-// 		while (++i < (int)l1)
-// 			res[i] = s1[i];
-// 		i = -1;
-// 		while (++i < (int)l2)
-// 			res[l1 + i] = s2[i];
-// 		res[l1 + i] = 0;
-// 	}
-// 	return (res);
-// }
-// char	*ft_heredoc()
+// char	*ft_heredoc(char *del)
 // {
 // 	char	*hdoc;
 // 	char	*star;
 
 // 	star = NULL;
-// 	hdoc = calloc(1, 1);
+// 	hdoc = (char *)ft_calloc(1, 1);
 // 	while (1)
 // 	{
 // 		star = readline("> ");
-// 		if (star == NULL)
+// 		if (star == NULL || !ft_strcmp(del, star))
 // 			break ;
-// 		ft_join_free(hdoc, star);
+// 		else
+// 			hdoc = ft_join_free(ft_join_free(hdoc, star), "\n");
+// 		free(star);
 // 	}
 // 	return (hdoc);
 // }
 
-// int main()
+// char	*ft_hdoc_tofd(char *str)
 // {
-//     printf("%s", ft_heredoc());
+// 	int		fd;
+// 	char	*path;
+// 	char	*full_path;
+// 	ssize_t	b;
+
+// 	path = ft_join_free("HDOC", "");
+// 	full_path = ft_join_free(H_DOCP, path);
+// 	while (access(full_path, F_OK) == 0)
+// 		full_path = ft_join_free(full_path, "_1");
+// 	fd = open(full_path, O_WRONLY | O_APPEND | O_CREAT, 0644);
+// 	if (fd == -1)
+// 		ft_exit("Failed to create the tmp heredoc file !!\n", 1);
+// 	b = write(fd, str, ft_strlen(str));
+// 	if (b == -1)
+// 		ft_exit("Failed to update the tmp heredoc file !!\n", 1);
+// 	b = write(fd, "\n", 1);
+// 	if (b == -1)
+// 		ft_exit("Failed to update the tmp heredoc file !!\n", 1);
+// 	if (close(fd) == -1)
+// 		ft_exit("Failed to close tmp heredoc file !!\n", 1);
+// 	printf("%s", full_path);
+// 	return (full_path);
 // }
+
+// void	ft_fillheredoc(char *str)
+// {
+// 	// int 	a;
+// 	char    *s;
+// 	int		len;
+
+// 	// a = fork();
+// 	// if (!a)
+// 	// {
+// 		int fd = open("./dfg", O_WRONLY | O_APPEND | O_CREAT, 0644);
+// 		if (fd == -1)
+// 			perror("open");
+// 		while (1)
+// 		{
+// 			s = readline("> ");
+// 			if (!s || !ft_strcmp(str, s))
+// 			{
+// 				close(fd);
+// 				break ;
+// 			}
+// 			len = write(fd, s, ft_strlen(s));
+// 			if (len == -1)
+// 				ft_exit("Here doc error", 1);
+// 		}			
+// 	// }
+// }
+
+// to transform a heredoc to an input file
+int	main(void)
+{
+	int	a;
+
+	a = fork();
+	if (a == 0)
+	{
+		ft_hdoc_tofd(ft_heredoc("ila"));
+	}
+	else
+	{
+		waitpid(a, NULL, 0);
+		printf("\n\n salina\n");
+	}
+}

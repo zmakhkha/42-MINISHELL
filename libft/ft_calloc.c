@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/30 18:31:28 by zmakhkha         ###   ########.fr       */
+/*   Created: 2022/10/23 14:53:56 by zmakhkha          #+#    #+#             */
+/*   Updated: 2022/11/02 11:19:24 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include"libft.h"
 
-int	main(void)
+void	*ft_calloc(size_t count, size_t size)
 {
-	ft_prompt();
-	return (0);
+	void	*p;
+
+	p = (void *)malloc(count * size);
+	if (!p)
+		return (NULL);
+	ft_bzero(p, size * count);
+	return (p);
 }

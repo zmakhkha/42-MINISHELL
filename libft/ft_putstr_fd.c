@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/30 18:31:28 by zmakhkha         ###   ########.fr       */
+/*   Created: 2022/10/23 21:25:38 by zmakhkha          #+#    #+#             */
+/*   Updated: 2022/10/24 15:40:30 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include"libft.h"
 
-int	main(void)
+void	ft_putstr_fd(char *s, int fd)
 {
-	ft_prompt();
-	return (0);
+	int	i;
+	int	n;
+
+	if (s != NULL)
+	{
+		n = ft_strlen(s);
+		i = 0;
+		while (i < n)
+		{
+			ft_putchar_fd(s[i], fd);
+			i++;
+		}
+	}
 }

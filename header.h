@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/29 02:16:42 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/05/30 18:40:15 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@
 # include <readline/history.h>
 # include <fcntl.h>
 
-# include "libs/includes.h"
+# include "libft/libft.h"
 
 # define EXLUDE "` @ # % ^ + = \ ;"
 # define H_PATH "/tmp/.minishell_history"
-# define H_DOCP "/tmp/"
+// # define H_DOCP "/tmp/"
+# define H_DOCP "/Users/zmakhkha/Desktop/minishell"
 # define SUCC 0
 # define ERR 1
 
@@ -51,16 +52,6 @@ enum
 };
 
 // -------------------------------------- //
-// ----------> Command struct <--------- //
-// ------------------------------------ //
-
-typedef struct s_command
-{
-	char			**str;
-	struct s_token	*prev;
-}	t_command;
-
-// -------------------------------------- //
 // -----------> Token struct <---------- //
 // ------------------------------------ //
 
@@ -75,18 +66,6 @@ typedef struct s_token
 	struct s_token	*left;
 	struct s_token	*right;
 }	t_token;
-
-// -------------------------------------- //
-// -----------> Token struct <---------- //
-// ------------------------------------ //
-
-typedef struct s_tree
-{
-	char			**str;
-	t_command		comm;
-	struct s_tree	*left;
-	struct s_tree	*right;
-}	t_tree;
 
 // -------------------------------------- //
 // -------> The tokenizer stage <------- //
@@ -147,7 +126,7 @@ void	ft_print(char *a);
 void	ft_prompt(void);
 
 // common_files/utils/ft_strings.c
-int		ft_strcmplen(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
 char	*ft_join_free(char *s1, char *s2);
 
 // common_files/utils/ft_token_utils.c

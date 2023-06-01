@@ -1,19 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/30 18:31:28 by zmakhkha         ###   ########.fr       */
+/*   Created: 2022/10/14 12:17:54 by zmakhkha          #+#    #+#             */
+/*   Updated: 2022/10/26 15:03:10 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include"libft.h"
 
-int	main(void)
+char	*ft_strrchr(const char *s, int c)
 {
-	ft_prompt();
-	return (0);
+	int	i;
+	int	ind;
+	int	nbr;
+
+	nbr = ft_strlen((char *)s);
+	ind = 0;
+	i = 0;
+	c = (char)c;
+	while (i <= nbr)
+	{
+		if ((s[i] == c))
+			ind = i;
+		i++;
+	}
+	if (s[ind] == c)
+		return ((char *)&s[ind]);
+	else
+		return (NULL);
 }
