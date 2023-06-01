@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/06/03 02:40:06 by ayel-fil         ###   ########.fr       */
+=======
+/*   Updated: 2023/05/28 19:11:05 by zmakhkha         ###   ########.fr       */
+>>>>>>> Implemented heredoc logic
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +43,6 @@ void	ft_prompt(char **env)
 		free(str);
 		t = ft_getfirst(t);
 		ft_free_tree(&t);
-		// system("leaks minishell");
+		system("leaks minishell");
 	}
 }

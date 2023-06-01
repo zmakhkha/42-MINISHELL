@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/06/06 14:32:50 by ayel-fil         ###   ########.fr       */
+=======
+/*   Updated: 2023/05/30 18:40:15 by zmakhkha         ###   ########.fr       */
+>>>>>>> Implemented heredoc logic
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +26,19 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+<<<<<<< HEAD
+=======
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <fcntl.h>
+
+# include "libft/libft.h"
+>>>>>>> Implemented heredoc logic
 
 # define EXLUDE "` @ # % ^ + = \ ;"
 # define H_PATH "/tmp/.minishell_history"
-# define H_DOCP "/tmp/"
+// # define H_DOCP "/tmp/"
+# define H_DOCP "/Users/zmakhkha/Desktop/minishell"
 # define SUCC 0
 # define ERR 1
 
@@ -52,6 +65,7 @@ enum
 };
 
 // -------------------------------------- //
+<<<<<<< HEAD
 // ----------> Command struct <--------- //
 // ------------------------------------ //
 
@@ -63,6 +77,8 @@ typedef struct s_exe
 }					t_exe;
 
 // -------------------------------------- //
+=======
+>>>>>>> Implemented heredoc logic
 // -----------> Token struct <---------- //
 // ------------------------------------ //
 
@@ -80,6 +96,7 @@ typedef struct s_token
 }					t_token;
 
 // -------------------------------------- //
+<<<<<<< HEAD
 // -----------> Token struct <---------- //
 // ------------------------------------ //
 
@@ -91,6 +108,8 @@ typedef struct s_tree
 }					t_tree;
 
 // -------------------------------------- //
+=======
+>>>>>>> Implemented heredoc logic
 // -------> The tokenizer stage <------- //
 // ------------------------------------ //
 
@@ -149,8 +168,13 @@ void				ft_print(char *a);
 void				ft_prompt(char **env);
 
 // common_files/utils/ft_strings.c
+<<<<<<< HEAD
 int					ft_strcmplen(char *s1, char *s2);
 char				*ft_join_free(char *s1, char *s2);
+=======
+int		ft_strcmp(char *s1, char *s2);
+char	*ft_join_free(char *s1, char *s2);
+>>>>>>> Implemented heredoc logic
 
 // common_files/utils/ft_token_utils.c
 t_token				*ft_add_token(char *str, int type);
