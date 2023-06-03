@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/29 04:07:45 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/03 02:50:37 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,12 @@ enum
 // ----------> Command struct <--------- //
 // ------------------------------------ //
 
-typedef struct s_command
+typedef struct s_exe
 {
-	char			**str;
-	struct s_token	*prev;
-}					t_command;
+	t_env			*env_list;
+	char			*pwd;
+	char			*old_pwd;
+}					t_exe;
 
 // -------------------------------------- //
 // -----------> Token struct <---------- //
@@ -69,6 +70,7 @@ typedef struct s_token
 	int				index;
 	int				type;
 	int				fd;
+	t_exe 			*exec;
 	struct s_token	*prev;
 	struct s_token	*next;
 	struct s_token	*left;
@@ -82,7 +84,6 @@ typedef struct s_token
 typedef struct s_tree
 {
 	char			**str;
-	t_command		comm;
 	struct s_tree	*left;
 	struct s_tree	*right;
 }					t_tree;
@@ -253,20 +254,31 @@ void				ft_pipe_nodes(t_token **list);
 // common_files/ast/ft_ast_utils.c
 
 int					ft_lstlen(t_token *lst);
-void				ft_print_tree(t_token *list);
+void				ft_exe_tree(t_token *list,t_env *env_list);
 t_token				*ft_pop(t_token **list);
 void				ft_free_tree(t_token **list);
 
 // common_files/ast/ft_main_ast.c
-void				ft_main_ast(t_token **list);
+void				ft_main_ast(t_token **list,t_env **env_list);
 
 // common_files/ast/ft_leafs_utils.c
 t_token				*ft_makenull(void);
 t_token				*ft_make_leafs(t_token **list);
 void				ft_leaf_nodes(t_token **list);
 
-/*********************************** execution ********************************/
-int					ft_execution(t_token *t, char **env);
-t_env				*set_env(char **env);
-char				*find_env_node(char *key, t_env *env_list);
+//--------------------------------------------------//
+//--------------> execution > part <---------------//
+//------------------------------------------------//
+
+/* src/error.c */
+void				ft_error(char *msg, char *cmd);
+int					ft_protect(int fd, char *str, char *msg);
+
+/* src/execution */
+int					ft_execution(t_token *t, t_env *env_list);
+
+/* src/env/ */
+t_env					*set_env(char **env);
+void				print_nodes(t_env **env_list);
+char				*get_key(char *key, t_env *env);
 #endif
