@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/03 02:50:37 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/03 03:50:23 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct s_token
 	int				index;
 	int				type;
 	int				fd;
-	t_exe 			*exec;
+	t_exe			*exec;
 	struct s_token	*prev;
 	struct s_token	*next;
 	struct s_token	*left;
@@ -254,12 +254,12 @@ void				ft_pipe_nodes(t_token **list);
 // common_files/ast/ft_ast_utils.c
 
 int					ft_lstlen(t_token *lst);
-void				ft_exe_tree(t_token *list,t_env *env_list);
+void				ft_exe_tree(t_token *list, t_env *env_list);
 t_token				*ft_pop(t_token **list);
 void				ft_free_tree(t_token **list);
 
 // common_files/ast/ft_main_ast.c
-void				ft_main_ast(t_token **list,t_env **env_list);
+void				ft_main_ast(t_token **list, t_env **env_list);
 
 // common_files/ast/ft_leafs_utils.c
 t_token				*ft_makenull(void);
@@ -278,7 +278,13 @@ int					ft_protect(int fd, char *str, char *msg);
 int					ft_execution(t_token *t, t_env *env_list);
 
 /* src/env/ */
-t_env					*set_env(char **env);
+t_env				*set_env(char **env);
 void				print_nodes(t_env **env_list);
 char				*get_key(char *key, t_env *env);
+/* src/builtin */
+bool				is_builtin(char *command);
+void				execute_builtin(t_token *list, t_env *env);
+void				execute_cd(t_token *list);
+void				execute_pwd(void);
+
 #endif

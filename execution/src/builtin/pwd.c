@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute.c                                          :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/03 04:09:57 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/06/03 03:49:51 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/06/03 03:50:07 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../../../header.h"
 
-int	ft_execution(t_token *list, t_env *env)
+void	execute_pwd(void)
 {
-	if (!list)
+	char cwd[PATH_MAX];
+	if (getcwd(cwd, sizeof(cwd)) != NULL)
 	{
-		return (0);
+		printf("%s\n", cwd);
 	}
-	if (list->type == WORD)
+	else
 	{
-		if (is_builtin(list->str))
-		{
-			execute_builtin(list, env);
-			return (0);
-		}
+		perror("getcwd");
 	}
-	printf("Error: command not found\n");
-	return (1);
 }
