@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/03 03:50:23 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:38:42 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 # define HEADER_H
 
 # include "libs/includes.h"
+# include <errno.h>
 # include <fcntl.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <string.h>
 # include <unistd.h>
 
 # define EXLUDE "` @ # % ^ + = \ ;"
@@ -270,21 +272,29 @@ void				ft_leaf_nodes(t_token **list);
 //--------------> execution > part <---------------//
 //------------------------------------------------//
 
+enum				e_fd
+{
+	ER = STDERR_FILENO,
+	IN = STDIN_FILENO,
+	OUT = STDOUT_FILENO
+};
+
 /* src/error.c */
 void				ft_error(char *msg, char *cmd);
 int					ft_protect(int fd, char *str, char *msg);
 
 /* src/execution */
-int					ft_execution(t_token *t, t_env *env_list);
+void				ft_execution(t_token *t, t_env *env_list);
 
 /* src/env/ */
 t_env				*set_env(char **env);
-void				print_nodes(t_env **env_list);
+void				execute_env(t_env **env_list);
 char				*get_key(char *key, t_env *env);
+void				change_env(char *key, char *value, t_env *env);
 /* src/builtin */
 bool				is_builtin(char *command);
-void				execute_builtin(t_token *list, t_env *env);
-void				execute_cd(t_token *list);
-void				execute_pwd(void);
+void				execute_builtin(char **list, t_env *env);
+void				execute_cd(char **cmd, t_env *env);
+void				execute_pwd(t_env *env);
 
 #endif

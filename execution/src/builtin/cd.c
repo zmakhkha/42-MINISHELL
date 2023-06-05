@@ -6,37 +6,45 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:42:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/03 04:20:23 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/05 13:12:12 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../header.h"
 
-void	execute_cd(t_token *list)
+void	cd_home(t_env *env, char *old_pwd)
 {
-	int res = 0;
-	if (!list->left)
+	char	*path;
+
+	path = get_key("HOME", env);
+	if (!path)
 	{
-		printf("Error: path not specified\n");
+		ft_putstr_fd("cd: HOME not set\n", ER);
 		return ;
 	}
+	chdir(path);
+	change_env("PWD", path, env);
+	change_env("OLDPWD", old_pwd, env);
+}
 
-	if (list->left->left)
-	{
-		printf("Error: too many arguments\n");
-		return ;
-	}
+void	execute_cd(char **cmd, t_env *env)
+{
+	char	*path;
+	int		res;
+	char	*old_pwd;
 
-	// Check if the path is relative or absolute
-	char *path = list->left->str;
+	old_pwd = getcwd(NULL, 0);
+	if (!cmd[1])
+		return (cd_home(env,old_pwd));
+	path = cmd[1];
 	res = chdir(path);
 	if (res == -1)
 		perror("cd");
-	if (access(getenv("PWD"), F_OK) && !ft_strcmp(path, "."))
-	{
-		ft_putendl_fd("cd: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory",
-						ERR);
-		return ;
-	}
-	return ;
+	change_env("PWD", path, env);
+	// if (!access(getenv("PWD"), F_OK) && !ft_strcmp(cmd[1], "."))
+	// {
+	// 	ft_putendl_fd("cd: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory",
+	// 					ER);
+	// 	return ;
+	// }
 }
