@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:05:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/06 11:56:51 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:29:52 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,11 @@ char	**list_to_array(t_env *env)
 	t_env	*current;
 	char	*join_str;
 	int		i;
-
+	int		lenght;
+	
 	current = env;
-	array = ft_calloc(1, ft_lstsize(current));
+	lenght = ft_lstsize(current);
+	array = ft_calloc(sizeof(char *), lenght + 1);
 	if (array == NULL)
 		return (NULL);
 	i = 0;
@@ -63,6 +65,6 @@ char	**list_to_array(t_env *env)
 		current = current->next;
 		i++;
 	}
-	array[i] = NULL;
+	array[lenght] = NULL;
 	return (array);
 }
