@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:42:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/05 13:12:12 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/06 12:10:32 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	cd_home(t_env *env, char *old_pwd)
 {
 	char	*path;
 
-	path = get_key("HOME", env);
+	path = get_value("HOME", env);
 	if (!path)
 	{
 		ft_putstr_fd("cd: HOME not set\n", ER);

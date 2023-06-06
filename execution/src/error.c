@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:24:48 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/02 16:27:42 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/06 10:46:34 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,13 @@ void	ft_error(char *msg, char *cmd)
 	return ;
 }
 
-int	ft_protect(int fd, char *str, char *msg)
+int	ft_protect(int return_value, char *function_name, int err_type,char *cmd)
 {
-	if (!ft_strcmp(msg, "execve") && fd == -1)
-		ft_error("command not found", str);
-	if (fd == -1 && !str)
+	if (err_type == EXECVE && return_value == -1)
+		ft_error("command not found", cmd);
+	else if (return_value == -1)
 	{
-		perror(msg);
-		exit(1);
+		perror(function_name);
 	}
-	return (fd);
+	return (return_value);
 }

@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/05 15:38:42 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/06 14:32:50 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,29 +272,45 @@ void				ft_leaf_nodes(t_token **list);
 //--------------> execution > part <---------------//
 //------------------------------------------------//
 
+typedef struct s_cmd
+{
+	char			*name;
+	char			**args;
+	char			**paths;
+	char			**env;
+	bool			relative_or_binary;
+}					t_cmd;
+
 enum				e_fd
 {
 	ER = STDERR_FILENO,
 	IN = STDIN_FILENO,
-	OUT = STDOUT_FILENO
+	OUT = STDOUT_FILENO,
+	EXECVE
 };
 
 /* src/error.c */
 void				ft_error(char *msg, char *cmd);
-int					ft_protect(int fd, char *str, char *msg);
-
+int					ft_protect(int return_value, char *function_name,
+						int err_type, char *cmd);
 /* src/execution */
 void				ft_execution(t_token *t, t_env *env_list);
 
 /* src/env/ */
 t_env				*set_env(char **env);
 void				execute_env(t_env **env_list);
-char				*get_key(char *key, t_env *env);
+char				*get_value(char *key, t_env *env);
 void				change_env(char *key, char *value, t_env *env);
+char				**list_to_array(t_env *env);
+void				add_env_node(char *key, char *value, t_env **env_list);
 /* src/builtin */
 bool				is_builtin(char *command);
 void				execute_builtin(char **list, t_env *env);
 void				execute_cd(char **cmd, t_env *env);
 void				execute_pwd(t_env *env);
+/* src/run_cmd */
+t_cmd				ft_init_cmd(char *args, char **env);
+char				*set_cmd_path(t_cmd cmd);
+bool				ft_check_relative_or_binary(t_cmd cmd);
 
 #endif

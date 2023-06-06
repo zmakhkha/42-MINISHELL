@@ -6,48 +6,57 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/05 15:15:05 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/06 14:37:52 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-void	execute_command(t_token *list,t_env env)
-{
-	t_pipex	px;
 
-	px = ft_init_pipex(av, env);
-	if (px.proccess.child_1 == 0)
-		ft_child_1_process(av[2], px);
-	px.proccess.child_2 = ft_protect(fork(), NULL, "child_2");
-	if (px.proccess.child_2 == 0)
-		ft_child_2_process(av[3], px);
+void	execute_command(char *args, t_env *env)
+{
+	t_cmd	cmd;
+	pid_t	pid;
+	char	*path;
+
+	cmd = ft_init_cmd(args, list_to_array(env));
+	pid = ft_protect(fork(), "fork", 0, NULL);
+	if (pid == 0)
+	{
+		cmd.relative_or_binary = ft_check_relative_or_binary(cmd);
+		if (cmd.relative_or_binary == false)
+			path = set_cmd_path(cmd);
+		else if (cmd.relative_or_binary == true)
+			path = cmd.name;
+		ft_protect(execve(path, cmd.args, cmd.env), "execve", EXECVE,
+				cmd.name);
+		return ;
+	}
+	waitpid(pid, &g_status, 0);
 }
 
 void	ft_execution(t_token *list, t_env *env)
 {
+	char	**splited;
+
 	if (!list)
 	{
 		printf("Error: Command not found\n");
 		return ;
 	}
-
 	// if (list->type == PIPE || list->type == AND || list->type == OR)
 	// {
 	// 	execute_logical_op(list, env);
 	// 	return ;
 	// }
-
 	if (list->type == WORD)
 	{
-		char **splited;
-		splited = ft_split(list->str,' ');
-		ft_p2darray(splited,1);
-		if(is_builtin(list->str))
-			execute_builtin(splited,env);
+		splited = ft_split(list->str, ' ');
+		if (is_builtin(list->str))
+			execute_builtin(splited, env);
 		else
 		{
-			execute_command(list, env);
+			execute_command(list->str, env);
 			return ;
 		}
 	}
