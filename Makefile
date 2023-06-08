@@ -3,9 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
+#    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2023/06/06 14:36:08 by ayel-fil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -24,6 +25,14 @@ LDFLAGS = -lreadline #-fsanitize=address
 HEADERS = header.h
 
 #parsing part:
+=======
+#    Updated: 2023/05/30 18:31:16 by zmakhkha         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+M_NAME = minishell
+FT_PATH = libft/libft.a
+>>>>>>> Implemented heredoc logic
 SRC_MN =	main.c \
 			common_files/ast/ft_ast_utils.c \
 			common_files/ast/ft_leafs_utils.c \
@@ -54,6 +63,7 @@ SRC_MN =	main.c \
 			common_files/utils/ft_prompt.c \
 			common_files/utils/ft_strings.c
 
+<<<<<<< HEAD
 #execution part:
 SRC_EX = execution/execute.c execution/src/env/env.c execution/src/error.c\
 		 execution/src//utils/builtin_utils.c execution/src/builtin/cd.c\
@@ -62,29 +72,28 @@ SRC_EX = execution/execute.c execution/src/env/env.c execution/src/error.c\
 #create .OBJ files:
 SRC = $(SRC_MN) $(SRC_EX)
 OBJ = $(SRC:.c=.o)
+=======
+OBJ = $(SRC_MN:.c=.o)
+>>>>>>> Implemented heredoc logic
 
+CC = cc
 
-all: $(NAME)
+CFLAGS = -Wall -Werror -Wextra -Wunused-function  -g #-fsanitize=address
 
-$(NAME) : $(OBJ) $(HEADERS) $(LIBS)
-	@$(CC) $(LDFLAGS) $(OBJ) $(LIBS) -o $(NAME)
-	@echo "$(NAME): $(GREEN)$(NAME) was created successfully.$(RESET)"
+all: $(M_NAME)
 
-library:
-	@make -C $(LIBS_DIR)
-
-%.o: %.c | library
-	@$(CC) $(CFLAGS) -c $< -o $@
-
+$(M_NAME) : $(OBJ)
+	$(CC)  $(CFLAGS) $(SRC_MN) $(FT_PATH) -o $(M_NAME) -lreadline
+%.o:%.c header.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@make -C $(LIBS_DIR) clean
-	@rm -rf $(OBJ)
-	@echo "$(NAME): $(RED)The object files were deleted.$(RESET)"
+	@rm -f $(OBJ)
 
-fclean: clean
-	@make -C $(LIBS_DIR) fclean
-	@rm -f $(NAME)
-	@echo "$(NAME): $(RED) The executable file was deleted.$(RESET)"
+fclean:
+	@rm -f $(OBJ) $(M_NAME)
 
-re: fclean all
+re	: fclean	all
+
+wq	: re	clean 
+.PHONY: all clean fclean re 
