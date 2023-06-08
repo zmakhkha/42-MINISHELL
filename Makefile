@@ -6,7 +6,7 @@
 #    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/08 14:52:08 by ayel-fil         ###   ########.fr        #
+#    Updated: 2023/06/06 15:18:29 by ayel-fil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ RESET = \033[0m
 NAME = minishell
 LIBS = libs/libs.a
 LIBS_DIR = libs
-CFLAGS = -Wall -Werror -Wextra -Wunused-function  -g #-fsanitize=address
-LDFLAGS = -lreadline #-fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -Wunused-function  -g -fsanitize=address
+LDFLAGS = -lreadline -fsanitize=address
 
 HEADERS = header.h
 
@@ -54,26 +54,37 @@ SRC_MN =	main.c \
 			common_files/utils/ft_prompt.c \
 			common_files/utils/ft_strings.c
 
-OBJ = $(SRC_MN:.c=.o)
+#execution part:
+SRC_EX = execution/execute.c execution/src/env/env.c execution/src/error.c\
+		 execution/src//utils/builtin_utils.c execution/src/builtin/cd.c\
+		 execution/src/builtin/pwd.c execution/src//utils/env_utils.c\
+		 execution/src/run_cmd/exe.c
+#create .OBJ files:
+SRC = $(SRC_MN) $(SRC_EX)
+OBJ = $(SRC:.c=.o)
 
-CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -Wunused-function  -g #-fsanitize=address
+all: $(NAME)
 
-all: $(M_NAME)
+$(NAME) : $(OBJ) $(HEADERS) $(LIBS)
+	@$(CC) $(LDFLAGS) $(OBJ) $(LIBS) -o $(NAME)
+	@echo "$(NAME): $(GREEN)$(NAME) was created successfully.$(RESET)"
 
-$(M_NAME) : $(OBJ)
-	$(CC)  $(CFLAGS) $(SRC_MN) $(FT_PATH) -o $(M_NAME) -lreadline
-%.o:%.c header.h
-	$(CC) $(CFLAGS) -c $< -o $@
+library:
+	@make -C $(LIBS_DIR)
+
+%.o: %.c | library
+	@$(CC) $(CFLAGS) -c $< -o $@
+
 
 clean:
-	@rm -f $(OBJ)
+	@make -C $(LIBS_DIR) clean
+	@rm -rf $(OBJ)
+	@echo "$(NAME): $(RED)The object files were deleted.$(RESET)"
 
-fclean:
-	@rm -f $(OBJ) $(M_NAME)
+fclean: clean
+	@make -C $(LIBS_DIR) fclean
+	@rm -f $(NAME)
+	@echo "$(NAME): $(RED) The executable file was deleted.$(RESET)"
 
-re	: fclean	all
-
-wq	: re	clean 
-.PHONY: all clean fclean re 
+re: fclean all

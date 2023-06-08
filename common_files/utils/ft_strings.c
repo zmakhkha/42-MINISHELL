@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strings.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 17:11:44 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/03/22 08:36:53 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/08 15:01:20 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_strcmplen(char *s1, char *s2)
 {
 	int	i;
 	int	l1;
