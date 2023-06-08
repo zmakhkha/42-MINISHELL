@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main_ast.c                                      :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 17:58:17 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/06 15:50:18 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/06/03 03:49:51 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/06/05 13:17:17 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header.h"
+#include "../../../header.h"
 
-void	ft_main_ast(t_token **list,t_env **env_list)
+void	execute_pwd(t_env *env)
 {
-	// printf("\n The  tree stage \n");
-	ft_make_bigops(list);
-	ft_pipe_nodes(list);
-	ft_leaf_nodes(list);
-	ft_exe_tree(*list,*env_list);
+	char	*path;
+	(void)env;
+	path = getcwd(NULL,0);
+	change_env("PWD",path,env);
+	puts(path);
+	if (!path)
+	{
+		ft_putstr_fd("path not found\n", STDERR_FILENO);
+		return ;
+	}
+	ft_putstr_fd(path, STDOUT_FILENO);
+	ft_putstr_fd("\n", STDOUT_FILENO);
+	free(path);
 }

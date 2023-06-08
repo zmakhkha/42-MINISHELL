@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main_ast.c                                      :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 17:58:17 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/06 15:50:18 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/06/02 15:24:48 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/06/06 10:46:34 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
 
-void	ft_main_ast(t_token **list,t_env **env_list)
+void	ft_error(char *msg, char *cmd)
 {
-	// printf("\n The  tree stage \n");
-	ft_make_bigops(list);
-	ft_pipe_nodes(list);
-	ft_leaf_nodes(list);
-	ft_exe_tree(*list,*env_list);
+	if (!cmd)
+		cmd = " ";
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(msg, 2);
+	ft_putstr_fd(": ", 2);
+	ft_putendl_fd(cmd, 2);
+	return ;
+}
+
+int	ft_protect(int return_value, char *function_name, int err_type,char *cmd)
+{
+	if (err_type == EXECVE && return_value == -1)
+		ft_error("command not found", cmd);
+	else if (return_value == -1)
+	{
+		perror(function_name);
+	}
+	return (return_value);
 }

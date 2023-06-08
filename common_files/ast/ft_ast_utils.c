@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ast_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 15:24:04 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/28 19:07:37 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/03 02:50:37 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,15 @@ int	ft_lstlen(t_token *lst)
 	return (i);
 }
 
-void	ft_print_tree(t_token *list)
+void	ft_exe_tree(t_token *list,t_env *env_list)
 {
-	if (list)
-	{
-		ft_print_tree(list->left);
-		printf("(%s)->", list->str);
-		ft_print_tree(list->right);
-	}
+	// if (list)
+	// {
+	// 	ft_exe_tree(list->left,env_list);
+	// 	printf("(%s)->", list->str);
+	// 	ft_exe_tree(list->right,env_list);
+	// }
+	ft_execution(list,env_list);
 }
 
 t_token	*ft_pop(t_token **list)
