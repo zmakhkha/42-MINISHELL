@@ -6,12 +6,24 @@
 #    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/08 14:38:42 by ayel-fil         ###   ########.fr        #
+#    Updated: 2023/06/08 14:52:08 by ayel-fil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-M_NAME = minishell
-FT_PATH = libft/libft.a
+#COLORS
+GREEN = \033[0;32m
+RED = \033[0;31m
+RESET = \033[0m
+
+NAME = minishell
+LIBS = libs/libs.a
+LIBS_DIR = libs
+CFLAGS = -Wall -Werror -Wextra -Wunused-function  -g #-fsanitize=address
+LDFLAGS = -lreadline #-fsanitize=address
+
+HEADERS = header.h
+
+#parsing part:
 SRC_MN =	main.c \
 			common_files/ast/ft_ast_utils.c \
 			common_files/ast/ft_leafs_utils.c \
