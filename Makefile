@@ -3,36 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
+#    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2023/06/06 14:36:08 by ayel-fil         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-#COLORS
-GREEN = \033[0;32m
-RED = \033[0;31m
-RESET = \033[0m
-
-NAME = minishell
-LIBS = libs/libs.a
-LIBS_DIR = libs
-CFLAGS = -Wall -Werror -Wextra -Wunused-function  -g #-fsanitize=address
-LDFLAGS = -lreadline #-fsanitize=address
-
-HEADERS = header.h
-
-#parsing part:
-=======
-#    Updated: 2023/05/30 18:31:16 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/06/08 14:38:42 by ayel-fil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 M_NAME = minishell
 FT_PATH = libft/libft.a
->>>>>>> Implemented heredoc logic
 SRC_MN =	main.c \
 			common_files/ast/ft_ast_utils.c \
 			common_files/ast/ft_leafs_utils.c \
@@ -63,18 +42,7 @@ SRC_MN =	main.c \
 			common_files/utils/ft_prompt.c \
 			common_files/utils/ft_strings.c
 
-<<<<<<< HEAD
-#execution part:
-SRC_EX = execution/execute.c execution/src/env/env.c execution/src/error.c\
-		 execution/src//utils/builtin_utils.c execution/src/builtin/cd.c\
-		 execution/src/builtin/pwd.c execution/src//utils/env_utils.c\
-		 execution/src/run_cmd/exe.c
-#create .OBJ files:
-SRC = $(SRC_MN) $(SRC_EX)
-OBJ = $(SRC:.c=.o)
-=======
 OBJ = $(SRC_MN:.c=.o)
->>>>>>> Implemented heredoc logic
 
 CC = cc
 
