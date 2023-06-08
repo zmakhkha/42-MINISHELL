@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main_ast.c                                      :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 17:58:17 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/03 02:50:37 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/01/26 22:43:04 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/01/27 20:51:32 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header.h"
+#include "libft.h"
 
-void	ft_main_ast(t_token **list,t_env **env_list)
+void	ft_putnbr_fd(int n, int fd)
 {
-	printf("\n The  tree stage \n");
-	ft_make_bigops(list);
-	ft_pipe_nodes(list);
-	ft_leaf_nodes(list);
-	ft_exe_tree(*list,*env_list);
+	long	nb;
+
+	nb = n;
+	if (nb < 0)
+	{
+		nb = -nb;
+		ft_putchar_fd('-', fd);
+	}
+	if (nb > 9)
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putchar_fd(nb % 10 + '0', fd);
+	}
+	else
+	{
+		ft_putchar_fd(nb + '0', fd);
+	}
 }

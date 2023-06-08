@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main_ast.c                                      :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 17:58:17 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/03 02:50:37 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/01/26 22:43:09 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/01/27 20:51:41 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header.h"
+#include "libft.h"
 
-void	ft_main_ast(t_token **list,t_env **env_list)
+void	ft_putstr_fd(char *s, int fd)
 {
-	printf("\n The  tree stage \n");
-	ft_make_bigops(list);
-	ft_pipe_nodes(list);
-	ft_leaf_nodes(list);
-	ft_exe_tree(*list,*env_list);
+	if (!s)
+		return ;
+	while (*s)
+		ft_putchar_fd(*s++, fd);
 }

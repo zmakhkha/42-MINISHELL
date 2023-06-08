@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main_ast.c                                      :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 17:58:17 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/03 02:50:37 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/17 09:54:54 by ayel-fil          #+#    #+#             */
+/*   Updated: 2022/11/03 10:02:45 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header.h"
+#include "libft.h"
 
-void	ft_main_ast(t_token **list,t_env **env_list)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	printf("\n The  tree stage \n");
-	ft_make_bigops(list);
-	ft_pipe_nodes(list);
-	ft_leaf_nodes(list);
-	ft_exe_tree(*list,*env_list);
+	unsigned char	*string1;
+	unsigned char	*string2;
+
+	string1 = (unsigned char *)s1;
+	string2 = (unsigned char *)s2;
+	if (n == 0)
+		return (0);
+	while (n > 0)
+	{
+		if (*string1 != *string2)
+			return ((unsigned char)*string1 - (unsigned char)*string2);
+		string1 += 1;
+		string2 += 1;
+		n -= 1;
+	}
+	return (0);
 }

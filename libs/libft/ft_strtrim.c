@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main_ast.c                                      :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 17:58:17 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/03 02:50:37 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/21 21:58:42 by ayel-fil          #+#    #+#             */
+/*   Updated: 2022/11/06 15:21:12 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header.h"
+#include "libft.h"
 
-void	ft_main_ast(t_token **list,t_env **env_list)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	printf("\n The  tree stage \n");
-	ft_make_bigops(list);
-	ft_pipe_nodes(list);
-	ft_leaf_nodes(list);
-	ft_exe_tree(*list,*env_list);
+	char	*str;
+	size_t	start;
+	size_t	end;
+
+	if (!s1)
+		return (0);
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] && ft_strchr(set, s1[start]) != NULL)
+		start += 1;
+	while (end >= 0 && ft_strchr(set, s1[end - 1]) != NULL)
+		end -= 1;
+	str = ft_substr(s1, start, end - start);
+	return (str);
 }

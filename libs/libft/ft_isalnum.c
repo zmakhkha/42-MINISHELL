@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main_ast.c                                      :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 17:58:17 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/03 02:50:37 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/08 09:13:56 by ayel-fil          #+#    #+#             */
+/*   Updated: 2022/11/03 09:57:08 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header.h"
+#include "libft.h"
 
-void	ft_main_ast(t_token **list,t_env **env_list)
+int	ft_isalnum(int c)
 {
-	printf("\n The  tree stage \n");
-	ft_make_bigops(list);
-	ft_pipe_nodes(list);
-	ft_leaf_nodes(list);
-	ft_exe_tree(*list,*env_list);
+	return (ft_isalpha(c) || ft_isdigit(c));
 }

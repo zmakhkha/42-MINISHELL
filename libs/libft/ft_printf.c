@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main_ast.c                                      :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 17:58:17 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/03 02:50:37 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/11/09 11:45:42 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/01/29 05:52:52 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header.h"
+#include "libft.h"
 
-void	ft_main_ast(t_token **list,t_env **env_list)
+int	ft_printf(const char *string, ...)
 {
-	printf("\n The  tree stage \n");
-	ft_make_bigops(list);
-	ft_pipe_nodes(list);
-	ft_leaf_nodes(list);
-	ft_exe_tree(*list,*env_list);
+	va_list	args;
+	int		i;
+	int		len;
+
+	va_start(args, string);
+	i = 0;
+	len = 0;
+	while (string[i])
+	{
+		if (string[i] == '%')
+		{
+			len += ft_handler(string[i + 1], args);
+			i++;
+		}
+		else
+			len += ft_putchar(string[i]);
+		i++;
+	}
+	va_end(args);
+	return (len);
 }

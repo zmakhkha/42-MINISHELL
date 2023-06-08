@@ -1,22 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main_ast.c                                      :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 17:58:17 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/03 02:50:37 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/20 13:11:37 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/04/09 14:22:31 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header.h"
+#include "libft.h"
 
-void	ft_main_ast(t_token **list,t_env **env_list)
+long int	ft_atoi(const char *str)
 {
-	printf("\n The  tree stage \n");
-	ft_make_bigops(list);
-	ft_pipe_nodes(list);
-	ft_leaf_nodes(list);
-	ft_exe_tree(*list,*env_list);
+	int		sign;
+	long	result;
+	char	*string;
+
+	sign = POSITIVE;
+	string = (char *)str;
+	result = 0;
+	while (ft_isspace(*string))
+		string++;
+	if (*string == '-' || *string == '+')
+	{
+		if (*string == '-')
+			sign = NEGATIVE;
+		string++;
+	}
+	while (ft_isdigit(*string))
+	{
+		result = (*string - '0') + result * 10;
+		string++;
+	}
+	return (result * sign);
 }

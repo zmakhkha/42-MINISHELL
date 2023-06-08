@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main_ast.c                                      :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 17:58:17 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/03 02:50:37 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/09 20:47:13 by ayel-fil          #+#    #+#             */
+/*   Updated: 2022/11/03 10:04:43 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header.h"
+#include "libft.h"
 
-void	ft_main_ast(t_token **list,t_env **env_list)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	printf("\n The  tree stage \n");
-	ft_make_bigops(list);
-	ft_pipe_nodes(list);
-	ft_leaf_nodes(list);
-	ft_exe_tree(*list,*env_list);
+	size_t	index;
+	size_t	src_len;
+
+	index = 0;
+	src_len = ft_strlen(src);
+	if (dstsize != 0)
+	{
+		while (index < (dstsize - 1) && index < src_len)
+		{
+			dst[index] = src[index];
+			index += 1;
+		}
+		dst[index] = '\0';
+	}
+	return (src_len);
 }

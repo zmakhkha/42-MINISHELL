@@ -6,11 +6,12 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/06 15:44:52 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/06 14:37:52 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
+
 
 void	execute_command(char *args, t_env *env)
 {

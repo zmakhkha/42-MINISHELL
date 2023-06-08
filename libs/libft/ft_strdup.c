@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main_ast.c                                      :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 17:58:17 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/03 02:50:37 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/20 21:01:45 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/03/09 16:37:01 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header.h"
+#include "libft.h"
 
-void	ft_main_ast(t_token **list,t_env **env_list)
+char	*ft_strdup(const char *s1)
 {
-	printf("\n The  tree stage \n");
-	ft_make_bigops(list);
-	ft_pipe_nodes(list);
-	ft_leaf_nodes(list);
-	ft_exe_tree(*list,*env_list);
+	char	*ptr;
+	size_t	s1lenght;
+
+	s1lenght = ft_strlen(s1);
+	ptr = ft_calloc(s1lenght + 1, sizeof(char));
+	if (!ptr)
+	{
+		free(ptr);
+		return (ptr);
+	}
+	ft_memcpy(ptr, s1, (s1lenght * sizeof(char)));
+	return (ptr);
 }
