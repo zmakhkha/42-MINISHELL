@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcmpl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/05/24 05:47:23 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/24 05:52:06 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "additional.h"
 
-int	main(void)
+int	ft_strcmpl(const char *s1, const char *s2)
 {
-	if (ac != 1 || av[1])
+	int i;
+
+	i = 0;
+	if (!s1 || !s2)
+		return (1);
+	while (s1[i] || s2[i])
 	{
-		printf("This program does not accept arguments\n");
-		exit(0);
+		if (ft_tolower(s1[i]) != ft_tolower(s2[i]))
+			return (1);
+		i++;
 	}
-	ft_prompt(env);
 	return (0);
 }

@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/11/10 23:01:31 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/21 11:29:49 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "ft_printf.h"
 
-int	main(void)
+int	ft_putnbr_u(unsigned int n)
 {
-	if (ac != 1 || av[1])
+	int	len;
+
+	len = 0;
+	if (n > 9)
 	{
-		printf("This program does not accept arguments\n");
-		exit(0);
+		len += ft_putnbr(n / 10);
+		len += ft_putnbr(n % 10);
 	}
-	ft_prompt(env);
-	return (0);
+	else
+	{
+		len += ft_putchar(n + '0');
+	}
+	return (len);
 }

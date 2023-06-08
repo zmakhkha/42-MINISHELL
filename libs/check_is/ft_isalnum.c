@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/08 09:13:56 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/21 13:38:25 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "check_is.h"
 
-int	main(void)
+int	ft_isalnum(int c)
 {
-	if (ac != 1 || av[1])
-	{
-		printf("This program does not accept arguments\n");
-		exit(0);
-	}
-	ft_prompt(env);
-	return (0);
+	return (ft_isalpha(c) || ft_isdigit(c));
 }

@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/31 13:47:30 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/22 14:29:35 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "linkedlist.h"
 
-int	main(void)
+t_env	*ft_lstmap(t_env *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (ac != 1 || av[1])
+	t_env	*new_lest;
+	t_env	*chunk;
+
+	if (!f || !del)
+		return (0);
+	new_lest = NULL;
+	while (lst)
 	{
-		printf("This program does not accept arguments\n");
-		exit(0);
+		chunk = ft_lstnew(f(lst->key),f(lst->value));
+		if (chunk == NULL)
+		{
+			ft_lstclear(&new_lest, del);
+			return (0);
+		}
+		ft_lstadd_back(&new_lest, chunk);
+		lst = lst->next;
 	}
-	ft_prompt(env);
-	return (0);
+	return (new_lest);
 }

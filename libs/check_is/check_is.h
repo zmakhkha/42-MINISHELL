@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_is.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/05/21 13:30:42 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/21 18:10:26 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#ifndef CHECK_IS_H
+# define CHECK_IS_H
 
-int	main(void)
-{
-	if (ac != 1 || av[1])
-	{
-		printf("This program does not accept arguments\n");
-		exit(0);
-	}
-	ft_prompt(env);
-	return (0);
-}
+# include "../includes.h"
+
+int	ft_isalnum(int c);
+int	ft_isalpha(int c);
+int	ft_isascii(int c);
+int	ft_isdigit(int c);
+int	ft_isprint(int c);
+int	ft_isspace(char c);
+
+#endif

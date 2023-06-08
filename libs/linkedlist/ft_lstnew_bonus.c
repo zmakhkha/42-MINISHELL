@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/29 05:36:15 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/22 14:28:35 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "linkedlist.h"
 
-int	main(void)
+t_env	*ft_lstnew(char *key , char *value)
 {
-	if (ac != 1 || av[1])
-	{
-		printf("This program does not accept arguments\n");
-		exit(0);
-	}
-	ft_prompt(env);
-	return (0);
+	t_env	*new_node;
+
+	new_node = ft_calloc(1, sizeof(t_env));
+	if (new_node == NULL)
+		return (NULL);
+	new_node->key = key;
+	new_node->value = value;
+	new_node->next = NULL;
+	return (new_node);
 }

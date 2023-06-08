@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/31 02:49:48 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/22 14:25:37 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "linkedlist.h"
 
-int	main(void)
+void	ft_lstclear(t_env **lst, void (*del)(void *))
 {
-	if (ac != 1 || av[1])
+	t_env	*ptr;
+	t_env	*tmp;
+
+	if (!lst || !del)
+		return ;
+	ptr = *lst;
+	while (ptr)
 	{
-		printf("This program does not accept arguments\n");
-		exit(0);
+		tmp = ptr->next;
+		del(ptr->key);
+		free(ptr);
+		ptr = tmp;
 	}
-	ft_prompt(env);
-	return (0);
+	*lst = NULL;
 }

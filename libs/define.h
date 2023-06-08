@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/05/21 17:40:18 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/06/08 14:40:25 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#ifndef DEFINE_H
+# define DEFINE_H
 
-int	main(void)
+typedef struct s_env
 {
-	if (ac != 1 || av[1])
-	{
-		printf("This program does not accept arguments\n");
-		exit(0);
-	}
-	ft_prompt(env);
-	return (0);
-}
+	char				*key;
+	char				*value;
+	struct s_env	*next;
+}	t_env;
+
+enum				e_define
+{
+	POSITIVE = 1,
+	NEGATIVE = -1,
+	BUFFER_SIZE = 1,
+};
+
+#endif

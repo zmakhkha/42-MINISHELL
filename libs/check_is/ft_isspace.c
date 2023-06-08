@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/02/14 08:21:50 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/21 13:39:14 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "check_is.h"
 
-int	main(void)
+int	ft_isspace(char c)
 {
-	if (ac != 1 || av[1])
-	{
-		printf("This program does not accept arguments\n");
-		exit(0);
-	}
-	ft_prompt(env);
-	return (0);
+	return (c == '\n' || c == '\t' || c == '\v' || c == '\f' || c == '\r'
+		|| c == ' ');
 }

@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/20 21:01:45 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/21 15:29:22 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "lib_c.h"
 
-int	main(void)
+char	*ft_strdup(const char *s1)
 {
-	if (ac != 1 || av[1])
+	char	*ptr;
+	size_t	s1lenght;
+
+	s1lenght = ft_strlen(s1);
+	ptr = ft_calloc(s1lenght + 1, sizeof(char));
+	if (!ptr)
 	{
-		printf("This program does not accept arguments\n");
-		exit(0);
+		free(ptr);
+		return (ptr);
 	}
-	ft_prompt(env);
-	return (0);
+	ft_memcpy(ptr, s1, (s1lenght * sizeof(char)));
+	return (ptr);
 }

@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/20 15:58:07 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/21 15:29:00 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "lib_c.h"
 
-int	main(void)
+void	*ft_calloc(size_t count, size_t size)
 {
-	if (ac != 1 || av[1])
-	{
-		printf("This program does not accept arguments\n");
-		exit(0);
-	}
-	ft_prompt(env);
-	return (0);
+	void	*ptr;
+	size_t	total;
+
+	total = count * size;
+	if (count && total / count != size)
+		return (NULL);
+	ptr = malloc(total);
+	if (!ptr)
+		return (ptr);
+	ft_bzero(ptr, total);
+	return (ptr);
 }

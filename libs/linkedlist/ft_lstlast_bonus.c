@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/30 05:47:53 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/22 14:23:49 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "linkedlist.h"
 
-int	main(void)
+t_env	*ft_lstlast(t_env *lst)
 {
-	if (ac != 1 || av[1])
+	t_env	*tmp;
+
+	tmp = lst;
+	while (tmp->next)
 	{
-		printf("This program does not accept arguments\n");
-		exit(0);
+		tmp = tmp->next;
 	}
-	ft_prompt(env);
-	return (0);
+	return (tmp);
 }

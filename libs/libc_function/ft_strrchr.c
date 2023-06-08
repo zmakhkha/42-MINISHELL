@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/16 12:44:18 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/21 15:29:34 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "lib_c.h"
 
-int	main(void)
+char	*ft_strrchr(const char *s, int c)
 {
-	if (ac != 1 || av[1])
+	size_t	size;
+	int		i;
+
+	size = ft_strlen(s);
+	i = size;
+	while (i >= 0)
 	{
-		printf("This program does not accept arguments\n");
-		exit(0);
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i--;
 	}
-	ft_prompt(env);
 	return (0);
 }

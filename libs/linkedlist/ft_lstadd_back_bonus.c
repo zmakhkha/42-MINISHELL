@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/30 10:56:21 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/22 14:25:46 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "linkedlist.h"
 
-int	main(void)
+void	ft_lstadd_back(t_env **lst, t_env *new)
 {
-	if (ac != 1 || av[1])
+	t_env	*ptr;
+
+	if (!new)
+		return ;
+	if (!lst || !*lst)
 	{
-		printf("This program does not accept arguments\n");
-		exit(0);
+		*lst = new;
+		return ;
 	}
-	ft_prompt(env);
-	return (0);
+	ptr = ft_lstlast(*lst);
+	ptr->next = new;
 }

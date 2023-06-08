@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/20 13:11:37 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/21 17:43:15 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "lib_c.h"
 
-int	main(void)
+long int	ft_atoi(const char *str)
 {
-	if (ac != 1 || av[1])
+	int		sign;
+	long	result;
+	char	*string;
+
+	sign = POSITIVE;
+	string = (char *)str;
+	result = 0;
+	while (ft_isspace(*string))
+		string++;
+	if (*string == '-' || *string == '+')
 	{
-		printf("This program does not accept arguments\n");
-		exit(0);
+		if (*string == '-')
+			sign = NEGATIVE;
+		string++;
 	}
-	ft_prompt(env);
-	return (0);
+	while (ft_isdigit(*string))
+	{
+		result = (*string - '0') + result * 10;
+		string++;
+	}
+	return (result * sign);
 }

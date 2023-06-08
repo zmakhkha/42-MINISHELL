@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/27 15:48:30 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/21 15:57:28 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "add.h"
 
-int	main(void)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	if (ac != 1 || av[1])
+	int	i;
+
+	if (!s || !f)
+		return ;
+	i = -1;
+	while (s[++i] != '\0')
 	{
-		printf("This program does not accept arguments\n");
-		exit(0);
+		(*f)(i, &s[i]);
 	}
-	ft_prompt(env);
-	return (0);
 }

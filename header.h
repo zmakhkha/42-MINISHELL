@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:34:16 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/08 14:41:53 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ typedef struct s_token
 	int				index;
 	int				type;
 	int				fd;
-	t_exe			*exec;
 	struct s_token	*prev;
 	struct s_token	*next;
 	struct s_token	*left;

@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/09 20:47:13 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/21 18:10:18 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "lib_c.h"
 
-int	main(void)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	if (ac != 1 || av[1])
+	size_t	index;
+	size_t	src_len;
+
+	index = 0;
+	src_len = ft_strlen(src);
+	if (dstsize != 0)
 	{
-		printf("This program does not accept arguments\n");
-		exit(0);
+		while (index < (dstsize - 1) && index < src_len)
+		{
+			dst[index] = src[index];
+			index += 1;
+		}
+		dst[index] = '\0';
 	}
-	ft_prompt(env);
-	return (0);
+	return (src_len);
 }

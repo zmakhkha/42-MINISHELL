@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/11/09 11:45:42 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/21 18:10:32 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "ft_printf.h"
 
-int	main(void)
+int	ft_printf(const char *string, ...)
 {
-	if (ac != 1 || av[1])
+	va_list	args;
+	int		i;
+	int		len;
+
+	va_start(args, string);
+	i = 0;
+	len = 0;
+	while (string[i])
 	{
-		printf("This program does not accept arguments\n");
-		exit(0);
+		if (string[i] == '%')
+		{
+			len += ft_handler(string[i + 1], args);
+			i++;
+		}
+		else
+			len += ft_putchar(string[i]);
+		i++;
 	}
-	ft_prompt(env);
-	return (0);
+	va_end(args);
+	return (len);
 }

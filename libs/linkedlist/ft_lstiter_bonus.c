@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 14:41:05 by ayel-fil         ###   ########.fr       */
+/*   Created: 2022/10/31 09:52:10 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/05/22 14:25:07 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "linkedlist.h"
 
-int	main(void)
+void	ft_lstiter(t_env *lst, void (*f)(void *))
 {
-	if (ac != 1 || av[1])
+	if (!f)
+		return ;
+	while (lst)
 	{
-		printf("This program does not accept arguments\n");
-		exit(0);
+		(*f)(lst->key);
+		lst = lst->next;
 	}
-	ft_prompt(env);
-	return (0);
 }
