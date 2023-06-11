@@ -6,65 +6,67 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:05:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/06 15:29:52 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/11 15:50:47 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../header.h"
 
-void	execute_env(t_env **env_list)
+int	execute_env(t_env **env_list)
 {
 	t_env	*current;
 
 	current = *env_list;
 	while (current != NULL)
 	{
-		printf("%s=%s\n", current->key, current->value);
+		ft_putstr_fd(current->key,1);
+		ft_putstr_fd("=",1);
+		if(current->value == NULL)
+			ft_putendl_fd("",1);
+		ft_putendl_fd(current->value,1);
 		current = current->next;
 	}
+	return (0);
 }
 
 void	change_env(char *key, char *value, t_env *env)
 {
-	t_env	*tmp;
-
-	tmp = env;
-	while (tmp)
+	while (env)
 	{
-		if (!ft_strcmp(key, tmp->key))
+		if (!ft_strcmp(key, env->key))
 		{
-			free(tmp->value);
-			tmp->value = ft_strdup(value);
+			free(env->value);
+			env->value = ft_strdup(value);
 			return ;
 		}
-		tmp = tmp->next;
+		env = env->next;
 	}
 	add_env_node(key, value, &env);
 }
 
-char	**list_to_array(t_env *env)
+ char	**list_to_array(t_env *env)
 {
-	char	**array;
-	t_env	*current;
-	char	*join_str;
-	int		i;
-	int		lenght;
-	
-	current = env;
-	lenght = ft_lstsize(current);
-	array = ft_calloc(sizeof(char *), lenght + 1);
+	int length;
+	int i;
+	char **array;
+
+	i = 0;
+	length = ft_lstsize(env);
+	array = ft_calloc(length + 1, sizeof(char *));
 	if (array == NULL)
 		return (NULL);
-	i = 0;
-	while (current != NULL)
+	while (env != NULL)
 	{
-		join_str = ft_strjoin(current->key, "=");
-		join_str = ft_strjoin(join_str, current->value);
-		array[i] = ft_strdup(join_str);
+		if(env->value == NULL)
+			env->value = ft_strdup("");
+		char *join_str = ft_strjoin(env->key, "=");
+		char *tmp = ft_strjoin(join_str, env->value);
 		free(join_str);
-		current = current->next;
+		array[i] = ft_strdup(tmp);
+		free(tmp);
+		env = env->next;
 		i++;
 	}
-	array[lenght] = NULL;
+
 	return (array);
-}
+} 

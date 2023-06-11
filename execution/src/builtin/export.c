@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/03 03:42:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/11 13:01:00 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/06/11 10:01:54 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/06/11 16:39:55 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../header.h"
 
-int	execute_cd(char **cmd, t_env *env)
+int	execute_export(char **list, t_env **env_list)
 {
-	if (cmd[1] == NULL)
+	char	**split;
+	char	*key;
+	char	*value;
+	if(!list[1])
 	{
-		char *home_dir = get_value("HOME", env);
-		if (home_dir == NULL)
-		{
-			ft_perror("cd", "HOME not set");
-			return (1);
-		}
-
-		if (chdir(home_dir) != 0)
-		{
-			perror("cd");
-			return (1);
-		}
+		execute_env(env_list);
+		return EXIT_SUCCESS;
 	}
-	else
+	if(list[1])
 	{
-		if (chdir(cmd[1]) != 0)
-		{
-			perror("cd");
-			return (1);
-		}
+		split = ft_split(list[1],'=');
+		if(!split)
+			return EXIT_FAILURE;
+		key = split[0];
+		value = split[1];
+		change_env(key,value,*env_list);
+		return EXIT_SUCCESS;
 	}
-
-	return (0);
+	return (EXIT_FAILURE);
 }

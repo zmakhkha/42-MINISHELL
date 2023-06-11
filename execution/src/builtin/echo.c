@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/03 03:42:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/11 13:01:00 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/06/11 09:47:50 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/06/11 13:01:16 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../header.h"
 
-int	execute_cd(char **cmd, t_env *env)
+int	execute_echo(char **cmd)
 {
-	if (cmd[1] == NULL)
-	{
-		char *home_dir = get_value("HOME", env);
-		if (home_dir == NULL)
-		{
-			ft_perror("cd", "HOME not set");
-			return (1);
-		}
+	int i = 1;
+	bool newline;
 
-		if (chdir(home_dir) != 0)
-		{
-			perror("cd");
-			return (1);
-		}
-	}
-	else
+	newline = true;
+	while (cmd[i] != NULL && strcmp(cmd[i], "-n") == 0)
 	{
-		if (chdir(cmd[1]) != 0)
-		{
-			perror("cd");
-			return (1);
-		}
+		newline = false;
+		i++;
 	}
+
+	while (cmd[i] != NULL)
+	{
+		printf("%s", cmd[i]);
+		if (cmd[i + 1] != NULL)
+			printf(" ");
+		i++;
+	}
+
+	if (newline)
+		printf("\n");
 
 	return (0);
 }

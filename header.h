@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 15:26:06 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/11 13:04:14 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <readline/history.h>
 # include <readline/readline.h>
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -250,6 +251,7 @@ void				ft_leaf_nodes(t_token **list);
 //--------------> execution > part <---------------//
 //------------------------------------------------//
 
+# define CNF "command not found"
 typedef struct s_cmd
 {
 	char			*name;
@@ -268,26 +270,31 @@ enum				e_fd
 };
 
 /* src/error.c */
-void				ft_error(char *msg, char *cmd);
-int					ft_protect(int return_value, char *function_name,
-						int err_type, char *cmd);
+void				ft_error(char *msg, char *cmd, int exit_status);
+int					ft_protect(int fd, char *str, char *msg);
+void				ft_perror(char *err_msg1, char *err_msg2);
 /* src/execution */
-void				ft_execution(t_token *t, t_env *env_list);
+int					ft_execution(t_token *t, t_env *env_list);
 
 /* src/env/ */
 t_env				*set_env(char **env);
-void				execute_env(t_env **env_list);
 char				*get_value(char *key, t_env *env);
 void				change_env(char *key, char *value, t_env *env);
 char				**list_to_array(t_env *env);
 void				add_env_node(char *key, char *value, t_env **env_list);
 /* src/builtin */
 bool				is_builtin(char *command);
-void				execute_builtin(char **list, t_env *env);
-void				execute_cd(char **cmd, t_env *env);
-void				execute_pwd(t_env *env);
+int					execute_env(t_env **env_list);
+int					execute_builtin(char **list, t_env *env);
+int					execute_cd(char **cmd, t_env *env);
+int					execute_echo(char **cmd);
+int				execute_export(char **list, t_env **env_list);
+int					execute_pwd(t_env *env);
 /* src/run_cmd */
 t_cmd				ft_init_cmd(char *args, char **env);
-char				*set_cmd_path(t_cmd cmd);
-bool				ft_check_relative_or_binary(t_cmd cmd);
+char				*set_cmd_path(t_cmd *cmd);
+bool				ft_check_relative_or_binary(t_cmd *cmd);
+/* src/process/child.c */
+int					ft_child_process(t_cmd *cmd);
+
 #endif

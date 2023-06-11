@@ -1,42 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   child.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/03 03:42:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/11 13:01:00 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/04/24 06:13:41 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/06/11 09:25:50 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../header.h"
 
-int	execute_cd(char **cmd, t_env *env)
+int	ft_child_process(t_cmd *cmd)
 {
-	if (cmd[1] == NULL)
-	{
-		char *home_dir = get_value("HOME", env);
-		if (home_dir == NULL)
-		{
-			ft_perror("cd", "HOME not set");
-			return (1);
-		}
+	char	*path;
 
-		if (chdir(home_dir) != 0)
-		{
-			perror("cd");
-			return (1);
-		}
-	}
-	else
+	path = ft_strdup("");
+	cmd->relative_or_binary = ft_check_relative_or_binary(cmd);
+	if (cmd->relative_or_binary == false)
+		path = set_cmd_path(cmd);
+	else if (cmd->relative_or_binary == true)
+		path = ft_strdup(cmd->name);
+	if (execve(path, cmd->args, cmd->env) == -1)
 	{
-		if (chdir(cmd[1]) != 0)
-		{
-			perror("cd");
-			return (1);
-		}
+		ft_perror(*cmd->args,CNF);
+		return (127);
 	}
-
-	return (0);
+	exit(EXIT_SUCCESS);
 }
