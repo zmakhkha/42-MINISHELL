@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 10:01:54 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/11 16:39:55 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/11 16:40:16 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int	execute_export(char **list, t_env **env_list)
 		value = split[1];
 		change_env(key,value,*env_list);
 		return EXIT_SUCCESS;
-	}
+	} 
 	return (EXIT_FAILURE);
 }
