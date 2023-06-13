@@ -61,3 +61,8 @@ ast
 + c1 | c2 | c3 && c11 && gf || final : working
 
 
+expander stage
+
+"$HOME" : working
+"'$HOME'" : working
+""""'$HOME'"""" : working
