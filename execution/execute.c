@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/11 15:05:21 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/13 03:57:57 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	execute_command(char *args, t_env *env)
 {
 	t_cmd	cmd;
 	pid_t	pid;
-
+	printf("this is cmd -->(%s)\n",args);
 	cmd = ft_init_cmd(args, list_to_array(env));
 	pid = fork();
 	if (pid == -1)
@@ -46,7 +46,7 @@ int	ft_execution(t_token *list, t_env *env)
 		splited = ft_split(list->str, ' ');
 		if (!splited)
 			return (EXIT_FAILURE);
-		if (is_builtin(list->str))
+		if (is_builtin(splited))
 			g_status = execute_builtin(splited, env);
 		else
 			g_status = execute_command(list->str, env);

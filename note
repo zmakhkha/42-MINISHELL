@@ -18,6 +18,7 @@ l"s          "-al : haaaadi word w
 
 
 ls "ls"
+ech'o' 
 ls | >out
 <    
 

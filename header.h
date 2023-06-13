@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/11 13:04:14 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/13 03:58:01 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,17 +279,17 @@ int					ft_execution(t_token *t, t_env *env_list);
 /* src/env/ */
 t_env				*set_env(char **env);
 char				*get_value(char *key, t_env *env);
-void				change_env(char *key, char *value, t_env *env);
+void				change_env(char *key, char *value, t_env **env);
 char				**list_to_array(t_env *env);
 void				add_env_node(char *key, char *value, t_env **env_list);
 /* src/builtin */
-bool				is_builtin(char *command);
+bool				is_builtin(char **command);
 int					execute_env(t_env **env_list);
 int					execute_builtin(char **list, t_env *env);
-int					execute_cd(char **cmd, t_env *env);
+int					execute_cd(char **cmd, t_env **env_list);
 int					execute_echo(char **cmd);
-int				execute_export(char **list, t_env **env_list);
-int					execute_pwd(t_env *env);
+int					execute_export(char **list, t_env **env_list);
+int					execute_pwd(t_env **env);
 /* src/run_cmd */
 t_cmd				ft_init_cmd(char *args, char **env);
 char				*set_cmd_path(t_cmd *cmd);

@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 09:47:50 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/11 13:01:16 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/13 02:31:45 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,16 @@
 int	execute_echo(char **cmd)
 {
 	int i = 1;
+	int j = 0;
 	bool newline;
 
 	newline = true;
-	while (cmd[i] != NULL && strcmp(cmd[i], "-n") == 0)
+	while (cmd[i] != NULL && !strcmp(cmd[i], "-n"))
 	{
+		while (cmd[1][j] != ' ')
+		{
+			j++;
+		}
 		newline = false;
 		i++;
 	}
@@ -36,4 +41,4 @@ int	execute_echo(char **cmd)
 		printf("\n");
 
 	return (0);
-}
+} 
