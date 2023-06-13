@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/13 03:58:01 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/13 05:04:43 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,6 +252,7 @@ void				ft_leaf_nodes(t_token **list);
 //------------------------------------------------//
 
 # define CNF "command not found"
+# define CD_ER "cd: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory"
 typedef struct s_cmd
 {
 	char			*name;
