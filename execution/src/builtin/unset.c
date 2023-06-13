@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 05:25:46 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/13 05:29:04 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/13 09:29:22 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ void	free_env_node(t_env *node)
 {
 	if (node == NULL)
 		return ;
-	free(node->key);
-	free(node->value);
+	if (node->key)
+		free(node->key);
+	if (node->key)
+		free(node->value);
 	free(node);
+	node = NULL;
 }
 void	unset_env(const char *key, t_env **env_list)
 {
@@ -44,13 +47,13 @@ void	unset_env(const char *key, t_env **env_list)
 }
 int	execute_unset(char **list, t_env **env_list)
 {
-	if (list[1] != NULL)
+	if (!list[1])
 	{
 		ft_putendl_fd("unset: invalid syntax", 2);
 		return (1);
 	}
-	// Remove all environment variables from the list
-	while (*env_list != NULL)
-		unset_env((*env_list)->key, env_list);
+	printf("test - >(%d)\n", ft_lstsize(*env_list));
+	unset_env((*env_list)->key, env_list);
+	printf("test - >(%d)\n", ft_lstsize(*env_list));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 15:04:53 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/13 09:00:37 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	ft_prompt(char **env)
 	t_token	*t;
 	t_env	*env_list;
 	t = NULL;
+	env_list = set_env(env);
 	while (1)
 	{
-		env_list = set_env(env);
 		usleep(100);
 		str = readline("minishell $ ");
 		if (str == NULL)

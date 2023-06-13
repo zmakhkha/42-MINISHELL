@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:20:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/13 05:07:02 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/13 09:20:00 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	execute_builtin(char **list, t_env *env)
 {
 	if (list)
 	{
+		ft_p2darray(list,1);
 		if (!ft_strcmpl(list[0], "echo"))
 			return (execute_echo(list));
 		else if (!ft_strcmp(list[0], "cd"))
@@ -38,11 +39,11 @@ int	execute_builtin(char **list, t_env *env)
 		else if (!ft_strcmpl(list[0], "pwd"))
 			return (execute_pwd(&env));
 		else if (!ft_strcmp(list[0], "export"))
-			execute_export(list, &env);
-		// else if (ft_strcmp(list->str, "unset"))
-		// 	execute_unset(list, env);
+			return(execute_export(list, &env));
+		else if (!ft_strcmp(list[0], "unset"))
+			return(execute_unset(list, &env));
 		else if (!ft_strcmpl(list[0], "env"))
-			return (execute_env(&env));
+			return (execute_env(env));
 		// else if (!ft_strcmp(list->str, "exit"))
 		// 	execute_exit(list);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_valid_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:27:40 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/26 15:34:14 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/13 08:36:32 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	ft_is_operator(char c)
 {
-	return (c == '|' || c == '&' || c == '(' || c == ')' || \
-	c == '=' || c == '$' || c == '*' || c == ';');
+	return (c == '|' || c == '&' || c == '(' || c == ')' || c == ';');
 }
 
 int	ft_is_moperator(char c)
@@ -25,8 +24,8 @@ int	ft_is_moperator(char c)
 
 int	ft_is_operator4(char c)
 {
-	return (c == '|' || c == '&' || \
-	c == '=' || c == '$');
+	return (c == '|' || c == '&' ||
+			c == '=' || c == '$');
 }
 
 int	ft_is_operator2(char c)
