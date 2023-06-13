@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:42:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/13 05:05:55 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/13 05:18:50 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ int	ft_cd_home(t_env **env)
 int	execute_cd(char **cmd, t_env **env)
 {
 	char	*path;
-	int		res;
-
+	
 	if (!cmd[1])
 		return (ft_cd_home(env));
 	path = cmd[1];

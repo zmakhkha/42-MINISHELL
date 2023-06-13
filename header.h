@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/13 05:04:43 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/13 05:18:33 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -291,6 +291,7 @@ int					execute_cd(char **cmd, t_env **env_list);
 int					execute_echo(char **cmd);
 int					execute_export(char **list, t_env **env_list);
 int					execute_pwd(t_env **env);
+int					declare_env(t_env **env_list);
 /* src/run_cmd */
 t_cmd				ft_init_cmd(char *args, char **env);
 char				*set_cmd_path(t_cmd *cmd);

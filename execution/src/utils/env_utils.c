@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:05:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/13 03:52:58 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/13 05:17:15 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,21 @@ char	**list_to_array(t_env *env)
 		i++;
 	}
 	return (array);
+}
+int	declare_env(t_env **env_list)
+{
+	t_env	*current;
+
+	current = *env_list;
+	while (current != NULL)
+	{
+		ft_putstr_fd("declare -x ", 1);
+		ft_putstr_fd(current->key, 1);
+		ft_putstr_fd("=", 1);
+		if (current->value == NULL)
+			ft_putendl_fd("", 1);
+		ft_putendl_fd(current->value, 1);
+		current = current->next;
+	}
+	return (0);
 }
