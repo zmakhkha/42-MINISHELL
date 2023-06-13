@@ -63,6 +63,7 @@ ast
 
 expander stage
 
-"$HOME" : working
-"'$HOME'" : working
-""""'$HOME'"""" : working
++ "$HOME" : working
++ "'$HOME'" : working
++ """"'$HOME'"""" : working
++ """""'$USER'" : working

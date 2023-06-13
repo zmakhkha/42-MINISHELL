@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/13 16:49:19 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/06/13 18:53:24 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,8 @@ SRC_MN =	main.c \
 			common_files/utils/ft_prompt.c \
 			common_files/utils/ft_strings.c \
 			expanding/ft_exp_utils.c \
-			expanding/ft_main_exp.c
+			expanding/ft_main_exp.c \
+			expanding/ft_wild_card.c
 
 #execution part:
 SRC_EX = execution/execute.c execution/src/env/env.c execution/src/error.c\

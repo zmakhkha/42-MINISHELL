@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/13 16:48:48 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/13 19:07:23 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+#include <dirent.h>
 
 # define EXLUDE "` @ # % ^ + = \ ;"
 # define H_PATH "/tmp/.minishell_history"
@@ -309,3 +310,6 @@ char	*ft_rm_exp(char *str, t_env *env);
 int	ft_isquote(char *str);
 char	*ft_main_exp(char *str, t_env *env);
 
+// expanding/ft_wild_card.c
+char	**ft_dirfiles(t_env	*env_list);
+void	ft_main_wc(char	*str, t_env	*env_list);
