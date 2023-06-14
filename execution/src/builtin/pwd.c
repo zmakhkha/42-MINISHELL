@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:49:51 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/13 04:14:30 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/14 09:38:19 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ int	execute_pwd(t_env **env)
 	path = get_value("PWD", *env);
 	ft_putstr_fd(path, STDOUT_FILENO);
 	ft_putstr_fd("\n", STDOUT_FILENO);
-	free(path);
 	return (0);
-}
+} 
