@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:20:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/15 16:03:42 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/15 19:00:33 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,36 @@ t_str	*ft_multi(t_str *src, char *cnd)
 {
 	(void)src;
 	(void)cnd;
-	t_str *s;
+	// char	**parts;
 
-	s = NULL;
-	ft_str_addback(&s, ft_add_str("min.c"));
-	t_str *rs = ft_inter(src, s);
+	// while(src)
+	// {
+		
+	// }
+	
+	return (NULL);
+}
+t_str	*ft_middle(t_str *src, char *cnd)
+{
+	t_str	*l_match;
+	t_str	*r_match;
+	char	**parts;
 
-	while (rs)
+	l_match = NULL;
+	r_match = NULL;
+	parts = ft_split(cnd, '*');
+	if (src && cnd)
 	{
-		puts(rs->str);
-		rs = rs->prev;
+		l_match = ft_wc_left(src, parts[0]);
+		r_match = ft_wc_right(src, parts[1]);
 	}
+
+	while(l_match)
+	{
+		puts(l_match->str);
+		l_match = l_match ->prev;
+	}
+	
 	
 	return (NULL);
 }

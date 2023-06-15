@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:17:06 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/15 13:20:18 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:51:48 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,19 @@ int	ft_count_lmatching(t_str *src, char *cnd)
 {
 	int	m;
 	int	i;
+	int	len1;
 
-	i = 0;
 	m = 0;
+	len1 = ft_strlen(cnd);
 	if (src && cnd)
 	{
 		while (src)
 		{
-			while (src->str[i] && (src->str[i] == cnd[i]) \
-			&& (cnd[i] != '*'))
+			i = 0;
+			while (i < len1 && src->str[i] && \
+			(src->str[i] == cnd[i]))
 				i++;
-			if (cnd[i] == '*')
+			if (i == len1)
 				m++;
 			src = src->prev;
 		}
@@ -39,7 +41,9 @@ t_str	*ft_wc_left(t_str *src, char *cnd)
 	t_str	*res;
 	int		i;
 	int		m;
+	int		len;
 
+	len = ft_strlen(cnd);
 	i = 0;
 	res = NULL;
 	m = ft_count_lmatching(src, cnd);
@@ -48,10 +52,10 @@ t_str	*ft_wc_left(t_str *src, char *cnd)
 		while (src)
 		{
 			i = 0;
-			while (src->str[i] && (src->str[i] == cnd[i]) \
-			&& (cnd[i] != '*'))
+			while ((i < len) && src->str[i] \
+			&& (src->str[i] == cnd[i]))
 				i++;
-			if (cnd[i] == '*')
+			if (i == len)
 				ft_str_addback(&res, ft_add_str(src->str));
 			src = src->prev;
 		}
@@ -68,16 +72,14 @@ int	ft_count_rmatching(t_str *src, char *cnd, int len1, int len2)
 	{
 		while (src)
 		{
-			len1 = ft_strlen(src->str);
 			len2 = ft_strlen(cnd);
-			while ((len1 - 1 >= 0) && src->str[len1 - 1] \
-			&& (src->str[len1 - 1] == cnd[len2 - 1]) \
-			&& (cnd[len2 - 1] != '*'))
+			len1 = ft_strlen(src->str);
+			while ((len1 > 0) && (len2 > 0) && cnd[len2 - 1] == src->str[len1 - 1])
 			{
 				len1--;
 				len2--;
 			}
-			if (cnd[len2 - 1] == '*')
+			if (len2 == 0)
 				m++;
 			src = src->prev;
 		}
@@ -105,14 +107,12 @@ t_str	*ft_wc_right(t_str *src, char *cnd)
 		{
 			len1 = ft_strlen(src->str);
 			len2 = ft_strlen(cnd);
-			while ((len1 - 1 >= 0) && src->str[len1 - 1] \
-			&& (src->str[len1 - 1] == cnd[len2 - 1]) \
-			&& (cnd[len2 - 1] != '*'))
+			while ((len1 >= 1) && (len2 >= 1) && cnd[len2 - 1] == src->str[len1 - 1])
 			{
 				len1--;
 				len2--;
 			}
-			if (cnd[len2 - 1] == '*')
+			if (len2  == 0)
 				ft_str_addback(&res, ft_add_str(src->str));
 			src = src->prev;
 		}
@@ -131,15 +131,21 @@ int	ft_count(char *str)
 	{
 		while (str[i])
 		{
-			if (str[i++] == '*')
+			if (str[i] == '*')
 				c++;
+			i++;
 		}
 	}
-	if (c == 1 && *str == '*')
-		return (RIGHT);
-	else if (c == 1 && str[i - 1] == '*')
-		return (LEFT);
-	else if (c >= 1)
-		return (MULT);
+	if (c == 1)
+	{
+		if (*str == '*')
+			return (RIGHT);
+		else if (str[i - 1] == '*')
+			return (LEFT);
+		else
+			return (MIDL);
+	}
+	else if (c > 1)
+		return(MULT);
 	return (0);
 }

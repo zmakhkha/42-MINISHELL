@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/15 13:26:48 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:48:41 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@
 # define H_DOCP "/Users/zmakhkha/Desktop/minishell"
 # define SUCC 0
 # define ERR 1
-
-# define LEFT 0
-# define RIGHT 1
-# define MULT 2
 
 int					g_status;
 // -------> Tokens enumeration <------- //
@@ -307,6 +303,12 @@ typedef struct t_str
 	struct t_str	*prev;
 }					t_str;
 
+
+# define LEFT 0
+# define RIGHT 1
+# define MIDL 2
+# define MULT 3
+
 // expanding/ft_dir_lst.c
 
 t_str	*ft_dirfiles(t_env *env_list);
@@ -342,6 +344,7 @@ char	*ft_main_exp(char *str, t_env *env);
 
 // expanding/ft_mult.c
 
+t_str	*ft_middle(t_str *src, char *cnd);
 t_str   *ft_multi(t_str *src, char *cnd);
 
 // expanding/ft_wild_card.c

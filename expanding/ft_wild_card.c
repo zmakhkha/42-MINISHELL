@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:40:37 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/15 13:27:05 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/15 19:01:05 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,21 @@ t_str	*ft_matching(t_str *src, char *str)
 {
 	int		a;
 	t_str	*res;
+	char	**prts;
 
+	prts = ft_split(str, '*');
 	a = -1;
 	res = NULL;
+	a = ft_count(str);
 	if (str && src)
 	{
-		a = ft_count(str);
 		if (a == LEFT)
-			res = ft_wc_left(src, str);
+			res = ft_wc_left(src, prts[0]);
 		else if (a == RIGHT)
-			res = ft_wc_right(src, str);
-		else if (a != -1)
+			res = ft_wc_right(src, prts[0]);
+		else if (a == MIDL)
+			ft_middle(src, str);
+		else if (a == MULT)
 			ft_multi(src, str);
 	}
 	return (res);
