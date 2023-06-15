@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/13 19:07:23 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/15 12:12:22 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@
 # define H_DOCP "/Users/zmakhkha/Desktop/minishell"
 # define SUCC 0
 # define ERR 1
+
+# define LEFT 0
+# define RIGHT 1
+# define MULT 2
 
 int					g_status;
 // -------> Tokens enumeration <------- //
@@ -297,6 +301,12 @@ bool				ft_check_relative_or_binary(t_cmd cmd);
 //--------------> The expanding stage <---------------//
 //---------------------------------------------------//
 
+typedef struct t_str
+{
+	char			*str;
+	struct t_str	*prev;
+}					t_str;
+
 // expanding/ft_exp_utils.c
 char	*ft_join_freel(char *s1, char *s2, int len);
 char	*ft__rmsq(char *str, int i, int len, int c);
@@ -310,6 +320,12 @@ char	*ft_rm_exp(char *str, t_env *env);
 int	ft_isquote(char *str);
 char	*ft_main_exp(char *str, t_env *env);
 
+// expanding/ft_lst_utils.c
+t_str	*ft_add_str(char *str);
+void	ft_str_addback(t_str **lst, t_str *new);
+void	ft_free_str(t_str **t);
+
+
 // expanding/ft_wild_card.c
-char	**ft_dirfiles(t_env	*env_list);
+t_str	*ft_dirfiles(t_env *env_list);
 void	ft_main_wc(char	*str, t_env	*env_list);
