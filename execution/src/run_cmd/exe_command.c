@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exe.c                                              :+:      :+:    :+:   */
+/*   exe_command.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:16:02 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/11 13:51:22 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/16 03:37:09 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,26 @@ bool	ft_check_relative_or_binary(t_cmd *cmd)
 	if (ft_strchr(cmd->name, '/'))
 		return (true);
 	return (false);
+}
+int execute_command(char *args, t_env *env)
+{
+    t_cmd cmd;
+    pid_t pid;
+    int status;
+
+    cmd = ft_init_cmd(args, list_to_array(env));
+    pid = fork();
+    if (pid == -1)
+    {
+       ft_perror("fork","Fork failed");
+        return EXIT_FAILURE;
+    }
+    else if (pid == 0)
+    {
+        status = ft_child_process(&cmd);
+        exit(status);
+    }
+        waitpid(pid, &status, 0);
+        //!! free_cmd(&cmd);
+        return status;
 }

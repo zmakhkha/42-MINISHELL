@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/13 09:14:51 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/16 04:21:08 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -299,5 +299,8 @@ char				*set_cmd_path(t_cmd *cmd);
 bool				ft_check_relative_or_binary(t_cmd *cmd);
 /* src/process/child.c */
 int					ft_child_process(t_cmd *cmd);
+/* src/run_cmd/ */
+int					execute_logical_op(t_token *list, t_env *env);
+int					execute_command(char *args, t_env *env);
 
 #endif
