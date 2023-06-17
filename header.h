@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/16 04:21:08 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/17 02:40:22 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,7 +252,9 @@ void				ft_leaf_nodes(t_token **list);
 //------------------------------------------------//
 
 # define CNF "command not found"
-# define CD_ER "cd: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory"
+# define CD_ER "cd: error retrieving current directory: getcwd: cannot access\
+				parent directories: No such file or directory"
+
 typedef struct s_cmd
 {
 	char			*name;
@@ -293,6 +295,8 @@ int					execute_export(char **list, t_env **env_list);
 int					execute_unset(char **list, t_env **env_list);
 int					execute_pwd(t_env **env);
 int					declare_env(t_env **env_list);
+int					execute_exit(char **list);
+
 /* src/run_cmd */
 t_cmd				ft_init_cmd(char *args, char **env);
 char				*set_cmd_path(t_cmd *cmd);
@@ -302,5 +306,6 @@ int					ft_child_process(t_cmd *cmd);
 /* src/run_cmd/ */
 int					execute_logical_op(t_token *list, t_env *env);
 int					execute_command(char *args, t_env *env);
+int					execute_pipe(t_token *list, t_env *env);
 
 #endif

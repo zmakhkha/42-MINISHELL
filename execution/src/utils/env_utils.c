@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:05:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/14 09:36:02 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/17 02:28:45 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ char	**list_to_array(t_env *env)
 	array[i] = NULL;
 	return (array);
 }
+
 int	declare_env(t_env **env_list)
 {
 	t_env	*current;

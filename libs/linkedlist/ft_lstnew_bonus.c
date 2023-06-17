@@ -6,13 +6,13 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 05:36:15 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/05/22 14:28:35 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/17 02:26:15 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "linkedlist.h"
 
-t_env	*ft_lstnew(char *key , char *value)
+t_env	*ft_lstnew(char *key, char *value)
 {
 	t_env	*new_node;
 

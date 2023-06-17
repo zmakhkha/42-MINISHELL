@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmpl.c                                       :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 05:47:23 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/17 02:27:35 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/06/17 02:40:39 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/06/17 02:45:11 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "additional.h"
+#include "../../../header.h"
 
-int	ft_strcmpl(const char *s1, const char *s2)
+int					execute_exit(char **list)
 {
-	int	i;
-
-	i = 0;
-	if (!s1 || !s2)
-		return (1);
-	while (s1[i] || s2[i])
-	{
-		if (ft_tolower(s1[i]) != ft_tolower(s2[i]))
-			return (1);
-		i++;
-	}
-	return (0);
+	ft_putendl_fd(list[0],1);
+	exit(g_status);
 }
