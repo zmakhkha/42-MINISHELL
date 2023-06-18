@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:18:40 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/15 13:19:11 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/18 13:11:44 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_str	*ft_dirfiles(t_env *env_list)
 	DIR				*directory;
 
 	(void)env_list;
-	path = "/Users/zmakhkha/Desktop/minishell-dev-version";
+	path = "/Users/zmakhkha/Desktop/MINISHELL"; // to replace with the pwd value
 	directory = opendir(path);
 	if (directory == NULL)
 	{
@@ -43,7 +43,8 @@ t_str	*ft_dirfiles(t_env *env_list)
 	while ((dir = readdir(directory)) != NULL)
 	{
 		tmp = (char *) dir->d_name;
-		ft_str_addback(&res, ft_add_str(ft_strdup(tmp)));
+		if (tmp[0] != '.')
+			ft_str_addback(&res, ft_add_str(ft_strdup(tmp)));
 	}
 	closedir(directory);
 	return (res);

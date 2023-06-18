@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/15 18:48:41 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/18 15:35:14 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -350,4 +350,5 @@ t_str   *ft_multi(t_str *src, char *cnd);
 // expanding/ft_wild_card.c
 
 t_str	*ft_matching(t_str *src, char *str);
-void	ft_main_wc(char	*str, t_env	*env_list);
+char	*ft_main_wc(char	*str, t_env	*env_list);
+

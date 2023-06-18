@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strings.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 17:11:44 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/08 15:01:20 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/18 14:58:53 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
+
+size_t	ft_strlenp(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s && s[i] != '\0')
+		i++;
+	return (i);
+}
 
 int	ft_strcmplen(char *s1, char *s2)
 {
@@ -42,8 +52,10 @@ char	*ft_join_free(char *s1, char *s2)
 	res = NULL;
 	if (s2)
 	{
-		l1 = ft_strlen(s1);
-		l2 = ft_strlen(s2);
+		l1 = 0;
+		l2 = 0;
+		l1 = ft_strlenp(s1);
+		l2 = ft_strlenp(s2);
 		res = (char *)malloc(l1 + l2 + 1);
 		i = -1;
 		while (++i < (int)l1)
