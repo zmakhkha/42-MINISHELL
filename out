@@ -1,0 +1,12 @@
+Makefile
+common_files
+draft.c
+execution
+header.h
+libs
+main.c
+main.o
+minishell
+minishell.dSYM
+note
+out

@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 15:24:04 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/17 02:35:07 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/18 15:49:40 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_exe_tree(t_token *list, t_env *env_list)
 	// if (list)
 	// {
 	// 	ft_exe_tree(list->left,env_list);
-	// 	printf("(%s)->", list->str);
+	// 	// printf("(%s)->", list->str);
 	// 	ft_exe_tree(list->right,env_list);
 	// }
 	g_status =  ft_execution(list, env_list);

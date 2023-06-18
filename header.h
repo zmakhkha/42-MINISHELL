@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/17 02:40:22 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/18 15:14:44 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,9 +251,17 @@ void				ft_leaf_nodes(t_token **list);
 //--------------> execution > part <---------------//
 //------------------------------------------------//
 
-# define CNF "command not found"
+# define CNF "command not found\n"
 # define CD_ER "cd: error retrieving current directory: getcwd: cannot access\
 				parent directories: No such file or directory"
+
+typedef struct s_pipex
+{
+	int				pipefd[2];
+	int				status;
+	pid_t			pid_1;
+	pid_t			pid_2;
+}					t_pipex;
 
 typedef struct s_cmd
 {
@@ -276,6 +284,7 @@ enum				e_fd
 void				ft_error(char *msg, char *cmd, int exit_status);
 int					ft_protect(int fd, char *str, char *msg);
 void				ft_perror(char *err_msg1, char *err_msg2);
+int					ft_exit_pipe(t_pipex *px);
 /* src/execution */
 int					ft_execution(t_token *t, t_env *env_list);
 
@@ -308,4 +317,11 @@ int					execute_logical_op(t_token *list, t_env *env);
 int					execute_command(char *args, t_env *env);
 int					execute_pipe(t_token *list, t_env *env);
 
+/* src/run_cmd/ */
+void				child1_handler(t_pipex *pipex, t_token *list, t_env *env);
+void				child2_handler(t_pipex *pipex, t_token *list, t_env *env);
+
 #endif
+
+// 
+// ls | gsdgs|gsgs|dgsgs| ls -l

@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:20:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/17 02:39:42 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/18 08:54:59 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 bool	is_builtin(char **command)
 {
-	if (!ft_strcmpl(command[0], "echo") || !ft_strcmp(command[0], "cd") ||\
-		!ft_strcmpl(command[0], "pwd") || ft_strcmp(command[0], "export") ||\
-		!ft_strcmp(command[0], "unset") || !ft_strcmpl(command[0], "env") ||\
+	if (!ft_strcmpl(command[0], "echo") || !ft_strcmp(command[0], "cd") ||
+		!ft_strcmpl(command[0], "pwd") || !ft_strcmp(command[0], "export") ||
+		!ft_strcmp(command[0], "unset") || !ft_strcmpl(command[0], "env") ||
 		!ft_strcmp(command[0], "exit"))
 	{
 		return (true);
@@ -28,7 +28,6 @@ int	execute_builtin(char **list, t_env *env)
 {
 	if (list)
 	{
-		ft_p2darray(list, 1);
 		if (!ft_strcmpl(list[0], "echo"))
 			return (execute_echo(list));
 		else if (!ft_strcmp(list[0], "cd"))

@@ -6,60 +6,48 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:49:04 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/17 02:30:42 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/18 13:14:11 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../header.h"
 
-int	execute_pipe(t_token *list, t_env *env)
+ int	execute_pipe(t_token *list, t_env *env)
 {
-	int		pipefd[2];
-	int		status;
-	pid_t	pid;
+	t_pipex	pipex;
 
-	status = 0;
-	if (pipe(pipefd) == -1)
+	if (pipe(pipex.pipefd) == -1)
 	{
 		ft_perror("pipe", " ");
 		return (EXIT_FAILURE);
 	}
-	pid = fork();
-	if (pid == -1)
+	pipex.pid_1 = fork();
+	if (pipex.pid_1 == -1)
 	{
 		ft_perror("fork", " ");
+		close(pipex.pipefd[0]);
+		close(pipex.pipefd[1]);
 		return (EXIT_FAILURE);
 	}
-	else if (pid == 0)
+	else if (pipex.pid_1 == 0)
 	{
-		close(pipefd[0]);
-		if (dup2(pipefd[1], STDOUT_FILENO) == -1)
-		{
-			ft_perror("dup2", " ");
-			exit(EXIT_FAILURE);
-		}
-		close(pipefd[1]);
-		close(STDOUT_FILENO);
-		exit(status);
+		child1_handler(&pipex, list, env);
 	}
-	pid = fork();
-	if (pid == -1)
+	else
 	{
-		ft_perror("fork", " ");
-		return (EXIT_FAILURE);
-	}
-	else if (pid == 0)
-	{
-		close(pipefd[1]);
-		if (dup2(pipefd[0], STDIN_FILENO) == -1)
+		pipex.pid_2 = fork();
+		if (pipex.pid_2 == -1)
 		{
-			ft_perror("dup2", " ");
+			ft_perror("fork", " ");
+			close(pipex.pipefd[0]);
+			close(pipex.pipefd[1]);
 			return (EXIT_FAILURE);
 		}
-		close(pipefd[0]);
-		status = ft_execution(list->right, env);
-		exit(status);
+		else if (pipex.pid_2 == 0)
+		{
+			child2_handler(&pipex, list, env);
+		}
+		pipex.status = ft_exit_pipe(&pipex);
 	}
-	waitpid(pid, NULL, 0);
-	return (status);
+	return (pipex.status);
 }

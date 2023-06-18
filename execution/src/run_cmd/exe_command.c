@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:16:02 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/16 03:37:09 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/18 16:11:50 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,10 @@ char	*set_cmd_path(t_cmd *cmd)
 		free(temp_path);
 		i++;
 	}
+	ft_error(CNF, cmd->name, 1);//TODO gad l9wali : check path before child process ??
+	//!WAAAAARNIIIIIIING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	free(cmd->name);
+	
 	return NULL;
 }
 
