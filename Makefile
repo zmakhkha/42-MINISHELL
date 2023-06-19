@@ -6,7 +6,7 @@
 #    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/18 14:42:28 by ayel-fil         ###   ########.fr        #
+#    Updated: 2023/06/19 11:36:28 by ayel-fil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RESET = \033[0m
 NAME = minishell
 LIBS = libs/libs.a
 LIBS_DIR = libs
-CFLAGS = -Wall -Werror -Wextra -Wunused-function  -g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -Wunused-function -Winfinite-recursion -g -fsanitize=address
 LDFLAGS = -lreadline -fsanitize=address
 
 HEADERS = header.h
@@ -52,7 +52,14 @@ SRC_MN =	main.c \
 			common_files/utils/ft_token_utils2.c \
 			common_files/utils/ft_history_utils.c \
 			common_files/utils/ft_prompt.c \
-			common_files/utils/ft_strings.c
+			common_files/utils/ft_strings.c \
+			expanding/ft_dir_lst.c \
+			expanding/ft_exp_utils.c \
+			expanding/ft_left_right.c \
+			expanding/ft_lst_utils.c \
+			expanding/ft_main_exp.c \
+			expanding/ft_mult.c \
+			expanding/ft_wild_card.c
 
 #execution part:
 

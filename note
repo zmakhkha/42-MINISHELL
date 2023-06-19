@@ -62,3 +62,20 @@ ast
 + c1 | c2 | c3 && c11 && gf || final : working
 
 
+expander stage
+
++ "$HOME" : working
++ "'$HOME'" : working
++ """"'$HOME'"""" : working
++ """""'$USER'" : WORKING
+
+
+expader tests
+
++ ls *    : WORKING
++ m*c1    : WORKING
++ Ma*     : WORKING
++ *Ma     : WORKING
++ Ma*f*e  : WORKING
+
+<<<>>>
