@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:16:02 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/19 07:49:03 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/19 15:06:59 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ char	**get_path(char **env)
 	return (0);
 }
 
-t_cmd	ft_init_cmd(char *args, char **env)
+t_cmd	ft_init_cmd(char **args, char **env)
 {
 	t_cmd	cmd;
 
-	cmd.args = ft_split(args, ' ');
+	cmd.args = args;
 	cmd.name = cmd.args[0];
 	cmd.env = env;
 	cmd.paths = get_path(env);
@@ -73,7 +73,7 @@ bool	ft_check_relative_or_binary(t_cmd *cmd)
 		return (true);
 	return (false);
 }
-int	execute_command(char *args, t_env *env)
+int	execute_command(char **args, t_env *env)
 {
 	t_cmd	cmd;
 	pid_t	pid;
