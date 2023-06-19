@@ -1,2 +1,17 @@
+<<<<<<< HEAD
 draft.c
 main.c
+=======
+Makefile
+common_files
+draft.c
+execution
+header.h
+libs
+main.c
+main.o
+minishell
+minishell.dSYM
+note
+out
+>>>>>>> 81555ffc7330d83b3e92c15cf2211050fe5cbd2a

@@ -1,34 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 11:54:22 by ayel-fil          #+#    #+#             */
-/*   Updated: 2022/11/06 16:51:21 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/06/17 02:40:39 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/06/17 02:45:11 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../header.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+int					execute_exit(char **list)
 {
-	int		i;
-	char	*string;
-	int		s_lenght;
-
-	if (!s || !f)
-		return (0);
-	s_lenght = ft_strlen(s);
-	string = ft_calloc(s_lenght + 1, sizeof(char));
-	if (!string)
-		return (string);
-	i = 0;
-	while (s[i] != '\0')
-	{
-		string[i] = f(i, s[i]);
-		i++;
-	}
-	return (string);
+	ft_putendl_fd(list[0],1);
+	exit(g_status);
 }

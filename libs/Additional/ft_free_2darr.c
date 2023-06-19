@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 05:46:58 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/04 05:52:35 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/17 02:26:52 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_free_2darray(void **array)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (array[i])

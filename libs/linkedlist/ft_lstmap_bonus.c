@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 13:47:30 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/05/22 14:29:35 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/17 02:26:07 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_env	*ft_lstmap(t_env *lst, void *(*f)(void *), void (*del)(void *))
 	new_lest = NULL;
 	while (lst)
 	{
-		chunk = ft_lstnew(f(lst->key),f(lst->value));
+		chunk = ft_lstnew(f(lst->key), f(lst->value));
 		if (chunk == NULL)
 		{
 			ft_lstclear(&new_lest, del);

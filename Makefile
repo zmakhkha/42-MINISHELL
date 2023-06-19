@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
+#    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/18 16:44:31 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/06/19 11:36:28 by ayel-fil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,10 +62,16 @@ SRC_MN =	main.c \
 			expanding/ft_wild_card.c
 
 #execution part:
-SRC_EX = execution/execute.c execution/src/env/env.c execution/src/error.c\
-		 execution/src//utils/builtin_utils.c execution/src/builtin/cd.c\
-		 execution/src/builtin/pwd.c execution/src//utils/env_utils.c\
-		 execution/src/run_cmd/exe.c
+
+SRC_EX = execution/execute.c execution/src/env/env.c execution/src/builtin/cd.c\
+		 execution/src/utils/builtin_utils.c execution/src/utils/error.c\
+		 execution/src/builtin/pwd.c execution/src/utils/env_utils.c\
+		 execution/src/run_cmd/exe_command.c execution/src/process/child.c\
+		 execution/src/builtin/echo.c execution/src/builtin/export.c\
+		 execution/src/builtin/unset.c execution/src/run_cmd/exe_ope.c\
+		 execution/src/run_cmd/exe_pipe.c  execution/src/builtin/exit.c\
+		 execution/src/utils/pipe_utils.c
+		 
 #create .OBJ files:
 SRC = $(SRC_MN) $(SRC_EX)
 OBJ = $(SRC:.c=.o)
