@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/13 16:47:58 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 09:59:37 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,23 @@ char	*ft_expand(char *str, t_env *env)
 		res = ft_join_free(res, tmp_val);
 		i = j;
 	}
-	res = ft_join_free(res, &str[j]);
+	if (str[j])
+		res = ft_join_free(res, &str[j]);
 	return (res);
 }
 
 char	*ft_rm__exp(char *str, t_env *env, char *res, int i)
 {
 	res = ft_rmsq(str);
-	i = -1;
-	while (res[++i])
-	{
-		if (res[i] == '$')
-			res = ft_expand(res, env);
+	i = 0;
+	if (res[i])
+	{		
+		while (res && *res != 0 && res[i] != 0)
+		{
+			if (res[i] == '$')
+				res = ft_expand(res, env);
+			i++;
+		}
 	}
 	return (res);
 }
@@ -82,18 +87,38 @@ int	ft_isquote(char *str)
 	int	i;
 
 	i = 0;
-	while (str)
+	if (str)
 	{
-		if ((*str) == '\'' || (*str) == '\"')
-			return (1);
+		while (str)
+		{
+			if ((*str) == '\'' || (*str) == '\"')
+				return (1);
+		}
 	}
 	return (0);
 }
 
+char	*ft_toktostr(t_token *src)
+{
+	char	*res;
+	char	*tmp;
+
+	res = NULL;
+	while(src)
+	{
+		tmp = ft_join_free(src->str, "    ");
+		res = ft_join_free(res, tmp);
+		src = src->prev;
+	}
+	return (res);
+}
+
+// expand a string command
 char	*ft_main_exp(char *str, t_env *env)
 {
 	t_token	*lst;
 	t_token	*tmp;
+	char	*lala;
 	char	*s_tmp;
 
 	s_tmp = NULL;
@@ -102,12 +127,18 @@ char	*ft_main_exp(char *str, t_env *env)
 	tmp = lst;
 	while (lst)
 	{
-			lst->str = ft_rm_exp(lst->str, env);
+		if (ft_strchr(lst->str, '$') || \
+		(ft_strchr(lst->str, '\'') || ft_strchr(lst->str, '\"')))
+		{
+			lala = ft_rm_exp(lst->str, env);
+			lst->str = lala;
+		}
+		if (lst->str && ft_strchr(lst->str, '*'))
+			lst->str = ft_main_wc(lst->str, env);
 		lst = lst->prev;
 	}
 	lst = tmp;
-	ft_merge_all(&lst);
-	if (lst && lst->str)
-		s_tmp = lst->str;
+	s_tmp = ft_toktostr(lst);
+		puts (s_tmp);
 	return (s_tmp);
 }

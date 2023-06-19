@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/18 15:35:14 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/18 19:00:23 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -304,10 +304,11 @@ typedef struct t_str
 }					t_str;
 
 
-# define LEFT 0
-# define RIGHT 1
-# define MIDL 2
-# define MULT 3
+# define LEFT -1
+# define RIGHT -2
+# define MIDL -3
+# define MULT -4
+# define ALONE -5
 
 // expanding/ft_dir_lst.c
 

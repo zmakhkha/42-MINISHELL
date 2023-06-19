@@ -6,33 +6,11 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:20:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/18 13:57:06 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 09:57:57 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
-
-// intersection of s1 and s2 in res
-t_str	*ft_inter(t_str *s1, t_str *s2)
-{
-	t_str	*res;
-	t_str	*ts1;
-
-	res = NULL;
-	ts1 = s1;
-	while(s1 && s2)
-	{
-		s1 = ts1;
-		while (s1)
-		{
-			if (!ft_strcmplen(s1->str, s2->str))
-			ft_str_addback(&res, ft_add_str(s1->str));
-			s1 = s1->prev;
-		}
-			s2 = s2->prev;
-	}
-	return (res);
-}
 
 int	ft_strlen2(char **str)
 {
@@ -127,15 +105,7 @@ t_str	*ft_middle(t_str *src, char *cnd)
 	if (src && cnd)
 	{
 		l_match = ft_wc_left(src, parts[0]);
-		r_match = ft_wc_right(src, parts[1]);
-	}
-
-	while(l_match)
-	{
-		puts(l_match->str);
-		l_match = l_match ->prev;
-	}
-	
-	
-	return (NULL);
+		r_match = ft_wc_right(l_match, parts[1]);
+	}	
+	return (r_match);
 }

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:17:06 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/15 18:51:48 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/18 19:02:36 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,13 +132,17 @@ int	ft_count(char *str)
 		while (str[i])
 		{
 			if (str[i] == '*')
+			{
 				c++;
+			}
 			i++;
 		}
 	}
 	if (c == 1)
 	{
-		if (*str == '*')
+		if (ft_strlen(str) == 1)
+			return (ALONE);
+		else if (*str == '*')
 			return (RIGHT);
 		else if (str[i - 1] == '*')
 			return (LEFT);

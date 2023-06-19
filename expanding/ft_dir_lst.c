@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:18:40 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/18 13:11:44 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/18 18:39:36 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ t_str	*ft_dirfiles(t_env *env_list)
 	closedir(directory);
 	directory = opendir(path);
 	i = 0;
-	puts("\n");
 	res = NULL;
 	while ((dir = readdir(directory)) != NULL)
 	{

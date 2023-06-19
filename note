@@ -66,4 +66,13 @@ expander stage
 + "$HOME" : working
 + "'$HOME'" : working
 + """"'$HOME'"""" : working
-+ """""'$USER'" : working
++ """""'$USER'" : WORKING
+
+
+expader tests
+
+ls *    : WORKING
+m*c1    : WORKING
+Ma*     : WORKING
+*Ma     : WORKING
+Ma*f*e  : WORKING

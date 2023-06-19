@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:40:37 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/18 15:36:05 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 10:03:30 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ t_str	*ft_matching(t_str *src, char *str)
 	a = ft_count(str);
 	if (str && src)
 	{
-		if (a == LEFT)
+		if (a == ALONE)
+			res = src;
+		else if (a == LEFT)
 			res = ft_wc_left(src, prts[0]);
 		else if (a == RIGHT)
 			res = ft_wc_right(src, prts[0]);
@@ -39,6 +41,7 @@ t_str	*ft_matching(t_str *src, char *str)
 // # define LEFT 0
 // # define RIGHT 1
 // # define MULT 2
+// # define ALONE 2
 
 char	*ft_tostr(t_str *src)
 {
@@ -48,7 +51,7 @@ char	*ft_tostr(t_str *src)
 	res = NULL;
 	while(src)
 	{
-		tmp = ft_join_free(src->str, "    ");
+		tmp = ft_join_free(src->str, "\t");
 		res = ft_join_free(res, tmp);
 		src = src->prev;
 	}
@@ -78,6 +81,7 @@ void	ft_free_env(t_env **list)
 	}
 }
 
+// to be called foreach node
 char	*ft_main_wc(char	*str, t_env	*env_list)
 {
 	t_str	*r;
@@ -90,15 +94,9 @@ char	*ft_main_wc(char	*str, t_env	*env_list)
 		r = ft_dirfiles(env_list);
 		b = ft_matching(r, str);
 		res = ft_tostr(b);
-		// while (b)
-		// {
-		// 	puts(b->str);
-		// 	b = b->prev;
-		// }
-		// puts("-->haaana<--");
-		puts(res);
+		// puts(res);
 	}
 	ft_free_str(&r);
-	ft_free_str(&b);
+	// ft_free_str(&b);
 	return (res);
 }
