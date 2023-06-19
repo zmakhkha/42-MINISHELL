@@ -6,11 +6,11 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 11:44:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/15 12:57:00 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:56:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../../header.h"
 
 t_str	*ft_add_str(char *str)
 {

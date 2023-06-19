@@ -6,11 +6,11 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:45:00 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/13 16:47:26 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:56:54 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../../header.h"
 
 char	*ft_join_freel(char *s1, char *s2, int len)
 {
@@ -54,6 +54,30 @@ char	*ft__rmsq(char *str, int i, int len, int c)
 	return (res);
 }
 
+char	*ft__rmsq2(char *str, int len, char c)
+{
+	char	*res;
+	int		i;
+	int		j;
+
+	res = (char *)malloc((len + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
+	j = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != c)
+		{
+			res[j] = str[i];
+			j++;
+		}
+		i++;
+	}
+	res[j] = '\0';
+	return (res);
+}
+
 char	*ft_rmsq(char *str)
 {
 	int		i;
@@ -61,19 +85,20 @@ char	*ft_rmsq(char *str)
 	char	c;
 
 	i = 0;
-	c = 0;
 	len = 0;
 	while (str[i] && (str[i] != '\'' && str[i] != '\"'))
 		i++;
 	if (str[i])
 		c = str[i];
+	else
+		return (ft_strdup(str));
 	i = -1;
 	while (str[++i])
 	{
 		if (str[i] != c)
 			len++;
 	}
-	return (ft__rmsq(str, i, len, c));
+	return (ft__rmsq2(str, len, c));
 }
 
 void	ft_merge_all(t_token **list)

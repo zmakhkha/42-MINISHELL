@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 13:52:53 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 15:51:15 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	ft_prompt(char **env)
 		else if (t)
 			printf("Parser Error !!\n");
 		t = ft_getfirst(t);
-		// printf("%s",ft_main_exp(str, env_list));
 		free(str);
 		ft_free_tree(&t);
 		// system("leaks minishell");

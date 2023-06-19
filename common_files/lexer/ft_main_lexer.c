@@ -6,24 +6,35 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:06:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 13:28:41 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:34:21 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
 
+void	ft_lasterr(t_token *lst)
+{
+	if (lst)
+	{
+		puts(ft_getlast(lst)->str);
+		if (ft_getlast(lst)->type == RE_IN || ft_getlast(lst)->type == RE_OUT\
+		|| ft_getlast(lst)->type == APPEND)
+		g_status = ERR;
+	}
+}
+
 void	ft_singleerr(t_token *lst)
 {
 	if (lst && !lst->prev)
 	{
-		if (lst->type == RE_IN || lst->type == RE_OUT)
+		if (lst->type == RE_IN || lst->type == RE_OUT\
+		|| lst->type == APPEND)
 		g_status = ERR;
 	}
 }
 
 void	ft_checksyntax(t_token *lst)
 {
-	ft_singleerr(lst);
 	ft_succop(lst);
 	ft_syntaxerr(lst);
 	ft_operrors(lst);
@@ -76,6 +87,7 @@ void	ft_lexit(t_token *lst)
 	{
 		ft_op_space(&lst);
 		ft_fd_file(&lst);
+		ft_lasterr(lst);
 		ft_sub_red(lst);
 		ft_swap_red(&lst);
 		ft_swap_red2(&lst);

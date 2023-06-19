@@ -6,11 +6,11 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:18:40 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 13:52:07 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:57:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../../header.h"
 
 // returns anarrays of elements names
 
