@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:16:02 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/18 16:11:50 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/19 06:16:39 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**get_path(char **env)
 		}
 		i++;
 	}
-	ft_putendl_fd("Path env is not set",ER);
+	ft_putendl_fd("Path env is not set", ER);
 	return (0);
 }
 
@@ -58,18 +58,14 @@ char	*set_cmd_path(t_cmd *cmd)
 			path = ft_strdup(temp_path);
 			free(temp_path);
 			free(cmd->name);
-			return path;
+			return (path);
 		}
 		free(temp_path);
 		i++;
 	}
-	ft_error(CNF, cmd->name, 1);//TODO gad l9wali : check path before child process ??
-	//!WAAAAARNIIIIIIING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	free(cmd->name);
-	
-	return NULL;
+	// free(cmd->name);
+	return (NULL);
 }
-
 
 bool	ft_check_relative_or_binary(t_cmd *cmd)
 {
@@ -77,25 +73,37 @@ bool	ft_check_relative_or_binary(t_cmd *cmd)
 		return (true);
 	return (false);
 }
-int execute_command(char *args, t_env *env)
+int	execute_command(char *args, t_env *env)
 {
-    t_cmd cmd;
-    pid_t pid;
-    int status;
+	t_cmd	cmd;
+	pid_t	pid;
+	int		status;
 
-    cmd = ft_init_cmd(args, list_to_array(env));
-    pid = fork();
-    if (pid == -1)
-    {
-       ft_perror("fork","Fork failed");
-        return EXIT_FAILURE;
-    }
-    else if (pid == 0)
-    {
-        status = ft_child_process(&cmd);
-        exit(status);
-    }
-        waitpid(pid, &status, 0);
-        //!! free_cmd(&cmd);
-        return status;
+	cmd = ft_init_cmd(args, list_to_array(env));
+	cmd.relative_or_binary = ft_check_relative_or_binary(&cmd);
+	if (cmd.relative_or_binary == false)
+	{
+		cmd.path_cmd = set_cmd_path(&cmd);
+		if (!cmd.path_cmd)
+		{
+			ft_error(CNF, cmd.name, 1);
+			return (EXIT_FAILURE);
+		}
+	}
+	else if (cmd.relative_or_binary == true)
+		cmd.path_cmd = ft_strdup(cmd.name);
+	pid = fork();
+	if (pid == -1)
+	{
+		ft_perror("fork", "Fork failed");
+		return (EXIT_FAILURE);
+	}
+	else if (pid == 0)
+	{
+		status = ft_child_process(&cmd);
+		exit(status);
+	}
+	waitpid(pid, &status, 0);
+	//!! free_cmd(&cmd);
+	return (status);
 }

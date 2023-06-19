@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/18 15:14:44 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/19 06:13:33 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,6 +268,7 @@ typedef struct s_cmd
 	char			*name;
 	char			**args;
 	char			**paths;
+	char			*path_cmd;
 	char			**env;
 	bool			relative_or_binary;
 }					t_cmd;
