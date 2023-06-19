@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main_exp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 13:50:41 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 15:05:14 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_rm__exp(char *str, t_env *env, char *res, int i)
 	res = ft_rmsq(str);
 	i = 0;
 	if (res[i])
-	{		
+	{
 		while (res && *res != 0 && res[i] != 0)
 		{
 			if (res[i] == '$')
@@ -98,18 +98,11 @@ int	ft_isquote(char *str)
 	return (0);
 }
 
-char	**ft_format(char	*str)
+char	**ft_format(char *str)
 {
 	char	**spl;
-	int		i;
 
-	i = 0;
 	spl = ft_split(str, ' ');
-	while(spl[i])
-	{
-		puts(spl[i]);
-		i++;
-	}
 	return (spl);
 }
 
@@ -127,8 +120,8 @@ char	**ft_main_exp(char *str, t_env *env)
 	tmp = lst;
 	while (lst)
 	{
-		if (ft_strchr(lst->str, '$') || \
-		(ft_strchr(lst->str, '\'') || ft_strchr(lst->str, '\"')))
+		if (ft_strchr(lst->str, '$') ||
+			(ft_strchr(lst->str, '\'') || ft_strchr(lst->str, '\"')))
 		{
 			lala = ft_rm_exp(lst->str, env);
 			lst->str = lala;
@@ -139,6 +132,6 @@ char	**ft_main_exp(char *str, t_env *env)
 	}
 	lst = tmp;
 	s_tmp = ft_toktostr(lst);
-		// puts (s_tmp);
+	// puts (s_tmp);
 	return (ft_format(s_tmp));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 13:55:26 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 15:09:49 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -310,14 +310,14 @@ int					declare_env(t_env **env_list);
 int					execute_exit(char **list);
 
 /* src/run_cmd */
-t_cmd				ft_init_cmd(char *args, char **env);
+t_cmd				ft_init_cmd(char **args, char **env);
 char				*set_cmd_path(t_cmd *cmd);
 bool				ft_check_relative_or_binary(t_cmd *cmd);
 /* src/process/child.c */
 int					ft_child_process(t_cmd *cmd);
 /* src/run_cmd/ */
 int					execute_logical_op(t_token *list, t_env *env);
-int					execute_command(char *args, t_env *env);
+int					execute_command(char **args, t_env *env);
 int					execute_pipe(t_token *list, t_env *env);
 
 /* src/run_cmd/ */

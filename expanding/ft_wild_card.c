@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wild_card.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:40:37 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 10:42:41 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 15:04:23 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*ft_tostr(t_str *src)
 	res = NULL;
 	while (src)
 	{
-		tmp = ft_join_free(src->str, "\t");
+		tmp = ft_join_free(src->str, " ");
 		res = ft_join_free(res, tmp);
 		src = src->prev;
 	}

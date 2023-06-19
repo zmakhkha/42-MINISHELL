@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:20:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/18 08:54:59 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/19 15:22:41 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 bool	is_builtin(char **command)
 {
-	if (!ft_strcmpl(command[0], "echo") || !ft_strcmp(command[0], "cd") ||
-		!ft_strcmpl(command[0], "pwd") || !ft_strcmp(command[0], "export") ||
-		!ft_strcmp(command[0], "unset") || !ft_strcmpl(command[0], "env") ||
-		!ft_strcmp(command[0], "exit"))
+	if (!ft_strcmpl(command[0], "echo") || !ft_strncmp(command[0], "cd",2) ||
+		!ft_strcmpl(command[0], "pwd") || !ft_strncmp(command[0], "export",6) ||
+		!ft_strncmp(command[0], "unset",5) || ! ft_strncmp(command[0], "env",3) ||
+		!ft_strncmp(command[0], "exit",5))
 	{
 		return (true);
 	}
