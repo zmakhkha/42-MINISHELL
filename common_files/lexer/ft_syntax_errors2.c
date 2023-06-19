@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 19:11:24 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 11:13:14 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:26:19 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	ft_sub_red(t_token *lst)
 	if (lst && ft_isredirection(lst) && lst->prev && lst->prev->type == SUBSHELL)
 	{
 		g_status = ERR;
-		puts("3\n");
 	}
 }
 
@@ -46,18 +45,15 @@ void	ft_syntaxerr(t_token *lst)
 		|| lst->prev->type == WORD))
 		{
 			g_status = ERR;
-			puts("1\n");
 		}
 		if ((lst->type == SUBSHELL || lst->type == WORD) && \
 		lst->prev->type == SUBSHELL)
 		{
 			g_status = ERR;
-			puts("2\n");
 		}
 		if (lst->type == HDOC && (lst->prev->type == SUBSHELL))
 		{
 			g_status = ERR;
-			puts("3\n");
 		}
 	}
 }

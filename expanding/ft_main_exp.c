@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 10:43:41 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:50:41 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,23 @@ int	ft_isquote(char *str)
 	return (0);
 }
 
+char	**ft_format(char	*str)
+{
+	char	**spl;
+	int		i;
+
+	i = 0;
+	spl = ft_split(str, ' ');
+	while(spl[i])
+	{
+		puts(spl[i]);
+		i++;
+	}
+	return (spl);
+}
+
 // expand a string command
-char	*ft_main_exp(char *str, t_env *env)
+char	**ft_main_exp(char *str, t_env *env)
 {
 	t_token	*lst;
 	t_token	*tmp;
@@ -124,6 +139,6 @@ char	*ft_main_exp(char *str, t_env *env)
 	}
 	lst = tmp;
 	s_tmp = ft_toktostr(lst);
-		puts (s_tmp);
-	return (s_tmp);
+		// puts (s_tmp);
+	return (ft_format(s_tmp));
 }

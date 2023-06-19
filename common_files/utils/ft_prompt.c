@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 11:38:10 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:52:53 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_prompt(char **env)
 		if (!g_status && t)
 			ft_main_ast(&t,&env_list);
 		else if (t)
-			printf("Lexer Error !!\n");
+			printf("Parser Error !!\n");
 		t = ft_getfirst(t);
 		// printf("%s",ft_main_exp(str, env_list));
 		free(str);

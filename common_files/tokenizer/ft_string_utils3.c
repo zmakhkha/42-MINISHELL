@@ -20,19 +20,19 @@ int	ft_voperator(char*str, char op)
 	if (str[i] && str[i + 1] && str [i + 2])
 	{
 		if (str[i] == op && str[i + 1] == op && str[i + 2] == op)
-			return (0);
+			return (ERR);
 	}
 	if (str[i] && str[i + 1])
 	{
 		if (str[i] == op || str[i + 1] == op)
-			return (1);
+			return (SUCC);
 	}
 	if (str[i])
 	{
 		if (str[i] == '&')
-			return (0);
+			return (ERR);
 		else if (str[i] == op)
-			return (1);
+			return (SUCC);
 	}
 	return (0);
 }
