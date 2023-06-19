@@ -46,22 +46,28 @@ int	ft_check_hdoc(t_token *lst)
 	return (i);
 }
 
-char	*ft_heredoc(char *del)
+void	ft_heredoc(t_token **list ,char *del)
 {
 	char	*hdoc;
 	char	*star;
 
-	star = NULL;
-	hdoc = (char *)ft_calloc(1, 1);
-	while (1)
+	if (list)
 	{
-		star = readline("> ");
-		if (star == NULL || !ft_strcmp(del, star))
-			break ;
-		else
-			hdoc = ft_join_free(ft_join_free(hdoc, star), "\n");
+		star = NULL;
+		hdoc = (char *)ft_calloc(1, 1);
+		while (1)
+		{
+			star = readline("> ");
+			if (star == NULL || !ft_strcmp(del, star))
+				break ;
+			else
+				hdoc = ft_join_free(ft_join_free(hdoc, star), "\n");
+			free (star);
+		}
+	(*list)->str = ft_strdup(hdoc);
+	(*list)->type = RE_IN;
 	}
-	return (hdoc);
+
 }
 
 char	*ft_hdoc_tofd(char *str)
@@ -89,3 +95,16 @@ char	*ft_hdoc_tofd(char *str)
 	printf("%s", full_path);
 	return (full_path);
 }
+
+// void	main_hdoc_to_file(t_token **list, char *name)
+// {
+// 	int	a;
+// 	(void)list;
+// 	a = fork();
+// 	if (a == 0)
+// 	{
+// 		ft_hdoc_tofd(ft_heredoc(NULL, name));
+// 	}
+// 	else
+// 		waitpid(a, NULL, 0);
+// }

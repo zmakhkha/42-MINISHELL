@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 15:09:49 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/19 18:46:02 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ void				ft_swap(t_token *lst);
 // common_files/lexer/ft_check_hdoc.c
 int					ft_valid_hd_delim(t_token *lst);
 int					ft_check_hdoc(t_token *lst);
-char				*ft_heredoc(char *del);
+void				ft_heredoc(t_token **list ,char *del);
 char				*ft_hdoc_tofd(char *str);
 
 // common_files/lexer/ft_check_quotes.c
