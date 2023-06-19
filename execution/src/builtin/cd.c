@@ -6,45 +6,57 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:42:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/06 12:10:32 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/13 05:18:50 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../header.h"
 
-void	cd_home(t_env *env, char *old_pwd)
+int	ft_cd_home(t_env **env)
 {
-	char	*path;
+	char	*path_home;
 
-	path = get_value("HOME", env);
-	if (!path)
+	path_home = get_value("HOME", *env);
+	if (!path_home)
 	{
-		ft_putstr_fd("cd: HOME not set\n", ER);
-		return ;
+		ft_putstr_fd("cd: HOME not set\n", ERR);
+		return (1);
 	}
-	chdir(path);
-	change_env("PWD", path, env);
-	change_env("OLDPWD", old_pwd, env);
+	if (chdir(path_home) != 0)
+	{
+		perror("cd");
+		return (1);
+	}
+	change_env("PWD", path_home, env);
+	return (0);
 }
 
-void	execute_cd(char **cmd, t_env *env)
+int	execute_cd(char **cmd, t_env **env)
 {
 	char	*path;
-	int		res;
-	char	*old_pwd;
-
-	old_pwd = getcwd(NULL, 0);
+	
 	if (!cmd[1])
-		return (cd_home(env,old_pwd));
+		return (ft_cd_home(env));
 	path = cmd[1];
-	res = chdir(path);
-	if (res == -1)
+	if (chdir(path )== -1)
+	{
 		perror("cd");
-	change_env("PWD", path, env);
-	// if (!access(getenv("PWD"), F_OK) && !ft_strcmp(cmd[1], "."))
-	// {
-	// 	ft_putendl_fd("cd: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory",
-	// 					ER);
-	// 	return ;
-	// }
+		return (1);
+	}
+	else if (access(getcwd(NULL, 0), F_OK) != 0 && !ft_strcmp(cmd[1], "."))
+	{
+		ft_putendl_fd(CD_ER,ERR);
+		return (1);
+	}
+	else if (access(getcwd(NULL, 0), F_OK) != 0 && !ft_strcmp(cmd[1], ".."))
+	{
+		if (chdir(get_value("OLDPWD", *env)) == -1)
+		{
+			perror("cd");
+			return (1);
+		}
+		change_env("OLDPWD", path, env);
+	}
+	change_env("PWD", getcwd(NULL, 0), env);
+	return (0);
 }

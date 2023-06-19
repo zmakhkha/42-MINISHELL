@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 05:47:23 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/05/24 05:52:06 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/17 02:27:35 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strcmpl(const char *s1, const char *s2)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!s1 || !s2)

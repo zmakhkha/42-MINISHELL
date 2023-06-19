@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/30 05:47:53 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/03/20 10:05:48 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/06/11 10:01:54 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/06/13 09:01:50 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../header.h"
 
-t_stack	*ft_lstlast(t_stack *lst)
+int	execute_export(char **list, t_env **env_list)
 {
-	t_stack	*tmp;
+	char	**split;
+	char	*key;
+	char	*value;
 
-	tmp = lst;
-	while (tmp->next)
+	if (!list[1])
 	{
-		tmp = tmp->next;
+		declare_env(env_list);
+		return (EXIT_SUCCESS);
 	}
-	return (tmp);
+	if (list[1])
+	{
+		split = ft_split(list[1], '=');
+		if (!split)
+			return (EXIT_FAILURE);
+		key = split[0];
+		value = split[1];
+		change_env(key, value, env_list);
+		return (EXIT_SUCCESS);
+	}
+	return (EXIT_FAILURE);
 }

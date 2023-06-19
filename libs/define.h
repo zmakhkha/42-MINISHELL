@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 17:40:18 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/08 14:40:25 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/17 02:27:52 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 typedef struct s_env
 {
-	char				*key;
-	char				*value;
+	char			*key;
+	char			*value;
 	struct s_env	*next;
-}	t_env;
+}					t_env;
 
 enum				e_define
 {

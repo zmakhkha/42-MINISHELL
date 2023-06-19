@@ -1,30 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 18:01:25 by ayel-fil          #+#    #+#             */
-/*   Updated: 2022/11/03 10:02:35 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/06/11 09:47:50 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/06/13 02:31:45 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../header.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int	execute_echo(char **cmd)
 {
-	unsigned char	*string;
-	unsigned char	character;
+	int i = 1;
+	int j = 0;
+	bool newline;
 
-	string = (unsigned char *)s;
-	character = (unsigned char)c;
-	while (n > 0 && *string != character)
+	newline = true;
+	while (cmd[i] != NULL && !strcmp(cmd[i], "-n"))
 	{
-		string += 1;
-		n -= 1;
+		while (cmd[1][j] != ' ')
+		{
+			j++;
+		}
+		newline = false;
+		i++;
 	}
-	if (n == 0)
-		return (0);
-	return ((void *)string);
-}
+
+	while (cmd[i] != NULL)
+	{
+		printf("%s", cmd[i]);
+		if (cmd[i + 1] != NULL)
+			printf(" ");
+		i++;
+	}
+
+	if (newline)
+		printf("\n");
+
+	return (0);
+} 

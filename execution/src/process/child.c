@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   child.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/30 10:56:21 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/03/15 01:10:03 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/04/24 06:13:41 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/06/19 07:10:42 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../header.h"
 
-void	ft_lstadd_back(t_stack **lst, t_stack *new)
+int	ft_child_process(t_cmd *cmd)
 {
-	t_stack	*ptr;
-
-	if (!new)
-		return ;
-	if (!lst || !*lst)
+	
+	if (execve(cmd->path_cmd, cmd->args, cmd->env) == -1)
 	{
-		*lst = new;
-		return ;
+		ft_perror(*cmd->args,CNF);
+		return (127);
 	}
-	ptr = ft_lstlast(*lst);
-	ptr->next = new;
+	exit(EXIT_SUCCESS);
 }
