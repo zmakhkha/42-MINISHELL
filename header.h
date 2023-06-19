@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 11:35:03 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:06:20 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -311,8 +311,18 @@ int					execute_exit(char **list);
 
 /* src/run_cmd */
 t_cmd				ft_init_cmd(char *args, char **env);
-char				*set_cmd_path(t_cmd cmd);
-bool				ft_check_relative_or_binary(t_cmd cmd);
+char				*set_cmd_path(t_cmd *cmd);
+bool				ft_check_relative_or_binary(t_cmd *cmd);
+/* src/process/child.c */
+int					ft_child_process(t_cmd *cmd);
+/* src/run_cmd/ */
+int					execute_logical_op(t_token *list, t_env *env);
+int					execute_command(char *args, t_env *env);
+int					execute_pipe(t_token *list, t_env *env);
+
+/* src/run_cmd/ */
+void				child1_handler(t_pipex *pipex, t_token *list, t_env *env);
+void				child2_handler(t_pipex *pipex, t_token *list, t_env *env);
 
 //-----------------------------------------------------//
 //--------------> The expanding stage <---------------//
