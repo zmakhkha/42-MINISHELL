@@ -6,14 +6,24 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:06:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/28 19:22:34 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:28:41 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
 
+void	ft_singleerr(t_token *lst)
+{
+	if (lst && !lst->prev)
+	{
+		if (lst->type == RE_IN || lst->type == RE_OUT)
+		g_status = ERR;
+	}
+}
+
 void	ft_checksyntax(t_token *lst)
 {
+	ft_singleerr(lst);
 	ft_succop(lst);
 	ft_syntaxerr(lst);
 	ft_operrors(lst);

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:01:55 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/28 19:22:46 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:13:52 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void	ft__strtok(char *str, t_token **lst, int *a, int *b)
 		ft_operators2(str, lst, a, b);
 	else if (!g_status && str[*b] && str[*b] == '<')
 		ft_operators3(str, lst, a, b);
-	else if (g_status)
-		printf("unrecognized status!!\n");
+	if (g_status == ERR)
+		printf("Tokenizer Error!!\n");
 }
 
 t_token	*ft_strtok(char *str)

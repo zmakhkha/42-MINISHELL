@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:18:40 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 10:25:57 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:52:07 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_str	*ft_dirfiles(t_env *env_list)
 	DIR				*directory;
 
 	(void)env_list;
-	path = "/Users/zmakhkha/Desktop/MINISHELL"; // to replace with the pwd value
+	path = get_value("PWD", env_list);
 	directory = opendir(path);
 	if (directory == NULL)
 	{
