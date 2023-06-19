@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 09:59:37 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 10:43:41 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,21 +96,6 @@ int	ft_isquote(char *str)
 		}
 	}
 	return (0);
-}
-
-char	*ft_toktostr(t_token *src)
-{
-	char	*res;
-	char	*tmp;
-
-	res = NULL;
-	while(src)
-	{
-		tmp = ft_join_free(src->str, "    ");
-		res = ft_join_free(res, tmp);
-		src = src->prev;
-	}
-	return (res);
 }
 
 // expand a string command

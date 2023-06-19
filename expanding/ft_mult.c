@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:20:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 09:57:57 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 10:42:37 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,36 +19,12 @@ int	ft_strlen2(char **str)
 
 	len = 0;
 	i = -1;
-	while(str[++i])
+	while (str[++i])
 		len++;
 	return (len);
 }
 
-char	*ft_strnstr1(const char *haystack, const char *needle, size_t len)
-{
-	size_t		i;
-	size_t		j;
-	size_t		s2;
-
-	if (!haystack && !len)
-		return (0);
-	s2 = ft_strlen(needle);
-	if (!needle || !s2)
-		return ((char *)haystack);
-	i = 0;
-	while (haystack[i] && i < len)
-	{
-		j = 0;
-		while (haystack[i + j] && needle[j] == haystack[i + j] && (i + j) < len)
-			j++;
-		if (j == s2)
-			return ((char *)haystack + i);
-		i++;
-	}
-	return (NULL);
-}
-
-t_str	*ft__multi(t_str *res, char *cnd, char **parts)
+t_str	*ft___multi(t_str *res, char *cnd, char **parts)
 {
 	int		len;
 	int		len1;
@@ -61,22 +37,17 @@ t_str	*ft__multi(t_str *res, char *cnd, char **parts)
 		tmp = ft_wc_left(tmp, parts[0]);
 	if (cnd[len - 1] != '*')
 		tmp = ft_wc_right(tmp, parts[len1 - 1]);
-		return (tmp);
+	return (tmp);
 }
 
-t_str	*ft_multi(t_str *src, char *cnd)
+t_str	*ft__multi(t_str *src, char **parts, t_str *res)
 {
-	char	**parts;
-	t_str	*res;
-	char	*tmp;
 	int		i;
 	int		len;
-	parts = ft_split(cnd, '*');
-	res = NULL;
-	if (!parts)
-		ft_exit("Allocation error ", 1);
+	char	*tmp;
+
 	len = ft_strlen2(parts);
-	while(src)
+	while (src)
 	{
 		i = 0;
 		tmp = src->str;
@@ -89,7 +60,22 @@ t_str	*ft_multi(t_str *src, char *cnd)
 			ft_str_addback(&res, ft_add_str(src->str));
 		src = src->prev;
 	}
-	res = ft__multi(res, cnd, parts);
+	return (res);
+}
+
+t_str	*ft_multi(t_str *src, char *cnd)
+{
+	char	**parts;
+	t_str	*res;
+	int		len;
+
+	parts = ft_split(cnd, '*');
+	res = NULL;
+	if (!parts)
+		ft_exit("Allocation error ", 1);
+	len = ft_strlen2(parts);
+	res = ft__multi(src, parts, res);
+	res = ft___multi(res, cnd, parts);
 	return (res);
 }
 

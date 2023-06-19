@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/18 19:00:23 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 10:46:00 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int					if_validp(char *str);
 // common_files/tokenizer/ft_string_utils3.c
 int					ft_voperator(char *str, char op);
 int					ft_validouble(char *str, char op);
+char				*ft_toktostr(t_token *src);
 
 // common_files/tokenizer/ft_string_utils4.c
 int					ft_forbidden(char *str);
@@ -291,7 +292,6 @@ void				execute_pwd(t_env *env);
 t_cmd				ft_init_cmd(char *args, char **env);
 char				*set_cmd_path(t_cmd cmd);
 bool				ft_check_relative_or_binary(t_cmd cmd);
-#endif
 
 //-----------------------------------------------------//
 //--------------> The expanding stage <---------------//
@@ -316,40 +316,42 @@ t_str	*ft_dirfiles(t_env *env_list);
 
 // expanding/ft_exp_utils.c
 
-char	*ft_join_freel(char *s1, char *s2, int len);
-char	*ft__rmsq(char *str, int i, int len, int c);
-char	*ft_rmsq(char *str);
-void	ft_merge_all(t_token **list);
+char				*ft_join_freel(char *s1, char *s2, int len);
+char				*ft__rmsq(char *str, int i, int len, int c);
+char				*ft_rmsq(char *str);
+void				ft_merge_all(t_token **list);
 
 // expanding/ft_left_right.c
 
-int		ft_count_lmatching(t_str *src, char *cnd);
-t_str	*ft_wc_left(t_str *src, char *cnd);
-int		ft_count_rmatching(t_str *src, char *cnd, int len1, int len2);
-t_str	*ft_wc_right(t_str *src, char *cnd);
-int		ft_count(char *str);
+int					ft_count_lmatching(t_str *src, char *cnd);
+t_str				*ft_wc_left(t_str *src, char *cnd);
+int					ft_count_rmatching(t_str *src, char *cnd);
+t_str				*ft_wc_right(t_str *src, char *cnd);
+int					ft_count(char *str);
 
 // expanding/ft_lst_utils.c
 
-t_str	*ft_add_str(char *str);
-void	ft_str_addback(t_str **lst, t_str *new);
-void	ft_free_str(t_str **t);
+t_str				*ft_add_str(char *str);
+void				ft_str_addback(t_str **lst, t_str *new);
+void				ft_free_str(t_str **t);
 
 // expanding/ft_main_exp.c
 
-char	*ft_expand(char *str, t_env *env);
-char	*ft_rm__exp(char *str, t_env *env, char *res, int i);
-char	*ft_rm_exp(char *str, t_env *env);
-int		ft_isquote(char *str);
-char	*ft_main_exp(char *str, t_env *env);
+char				*ft_expand(char *str, t_env *env);
+char				*ft_rm__exp(char *str, t_env *env, char *res, int i);
+char				*ft_rm_exp(char *str, t_env *env);
+int					ft_isquote(char *str);
+char				*ft_main_exp(char *str, t_env *env);
 
 // expanding/ft_mult.c
 
-t_str	*ft_middle(t_str *src, char *cnd);
-t_str   *ft_multi(t_str *src, char *cnd);
+t_str				*ft_middle(t_str *src, char *cnd);
+t_str  			 *ft_multi(t_str *src, char *cnd);
 
 // expanding/ft_wild_card.c
 
-t_str	*ft_matching(t_str *src, char *str);
-char	*ft_main_wc(char	*str, t_env	*env_list);
+char				*ft_strnstr1(const char *haystack, const char *needle, size_t len);
+t_str				*ft_matching(t_str *src, char *str);
+char				*ft_main_wc(char	*str, t_env	*env_list);
 
+#endif

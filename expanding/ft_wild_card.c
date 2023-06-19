@@ -6,11 +6,35 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:40:37 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 10:03:30 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 10:42:41 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
+
+char	*ft_strnstr1(const char *haystack, const char *needle, size_t len)
+{
+	size_t		i;
+	size_t		j;
+	size_t		s2;
+
+	if (!haystack && !len)
+		return (0);
+	s2 = ft_strlen(needle);
+	if (!needle || !s2)
+		return ((char *)haystack);
+	i = 0;
+	while (haystack[i] && i < len)
+	{
+		j = 0;
+		while (haystack[i + j] && needle[j] == haystack[i + j] && (i + j) < len)
+			j++;
+		if (j == s2)
+			return ((char *)haystack + i);
+		i++;
+	}
+	return (NULL);
+}
 
 t_str	*ft_matching(t_str *src, char *str)
 {
@@ -49,7 +73,7 @@ char	*ft_tostr(t_str *src)
 	char	*tmp;
 
 	res = NULL;
-	while(src)
+	while (src)
 	{
 		tmp = ft_join_free(src->str, "\t");
 		res = ft_join_free(res, tmp);
@@ -94,9 +118,7 @@ char	*ft_main_wc(char	*str, t_env	*env_list)
 		r = ft_dirfiles(env_list);
 		b = ft_matching(r, str);
 		res = ft_tostr(b);
-		// puts(res);
 	}
 	ft_free_str(&r);
-	// ft_free_str(&b);
 	return (res);
 }

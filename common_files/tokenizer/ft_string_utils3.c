@@ -98,3 +98,18 @@ int	if_validp(char *str)
 		return (i);
 	return (-1);
 }
+
+char	*ft_toktostr(t_token *src)
+{
+	char	*res;
+	char	*tmp;
+
+	res = NULL;
+	while (src)
+	{
+		tmp = ft_join_free(src->str, "    ");
+		res = ft_join_free(res, tmp);
+		src = src->prev;
+	}
+	return (res);
+}

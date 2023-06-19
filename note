@@ -71,8 +71,10 @@ expander stage
 
 expader tests
 
-ls *    : WORKING
-m*c1    : WORKING
-Ma*     : WORKING
-*Ma     : WORKING
-Ma*f*e  : WORKING
++ ls *    : WORKING
++ m*c1    : WORKING
++ Ma*     : WORKING
++ *Ma     : WORKING
++ Ma*f*e  : WORKING
+
+<<>>
