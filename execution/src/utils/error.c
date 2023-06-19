@@ -6,21 +6,21 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:24:48 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/18 15:55:04 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/19 07:55:21 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../header.h"
 
-void	ft_error(char *msg, char *cmd, int exit_status)
+int	ft_error(char *msg, char *cmd, int exit_status)
 {
 	if (!cmd)
 		cmd = " ";
 	ft_putstr_fd("minishell: ", 2);
-	ft_putstr_fd(msg, 2);
+	ft_putstr_fd(cmd, 2);
 	ft_putstr_fd(": ", 2);
-	ft_putendl_fd(cmd, 2);
-	exit(exit_status);
+	ft_putendl_fd(msg, 2);
+	return (exit_status);
 }
 
 int	ft_protect(int fd, char *str, char *msg)
@@ -44,13 +44,11 @@ void	ft_perror(char *err_msg1, char *err_msg2)
 }
 int	ft_exit_pipe(t_pipex *px)
 {
-	close(px->pipefd[1]);
 	close(px->pipefd[0]);
-	// waitpid(px->pid_1, &px->status, 0);
-    // waitpid(px->pid_2, &px->status, 0);
-	// wait(NULL);
-	// wait(NULL);	
-	while (waitpid(-1, &px->status, 0) != -1)
-		;
+	close(px->pipefd[1]);
+	waitpid(-1, &px->status, 0);
+    waitpid(-1, &px->status, 0);
+	// while (waitpid(-1, &px->status, 0) != -1)
+	// 	;
 	return (px->status);
 }

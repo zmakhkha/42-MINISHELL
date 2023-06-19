@@ -6,13 +6,13 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:49:04 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/18 13:14:11 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/19 07:14:13 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../header.h"
 
- int	execute_pipe(t_token *list, t_env *env)
+int	execute_pipe(t_token *list, t_env *env)
 {
 	t_pipex	pipex;
 
@@ -33,21 +33,18 @@
 	{
 		child1_handler(&pipex, list, env);
 	}
-	else
+	pipex.pid_2 = fork();
+	if (pipex.pid_2 == -1)
 	{
-		pipex.pid_2 = fork();
-		if (pipex.pid_2 == -1)
-		{
-			ft_perror("fork", " ");
-			close(pipex.pipefd[0]);
-			close(pipex.pipefd[1]);
-			return (EXIT_FAILURE);
-		}
-		else if (pipex.pid_2 == 0)
-		{
-			child2_handler(&pipex, list, env);
-		}
-		pipex.status = ft_exit_pipe(&pipex);
+		ft_perror("fork", " ");
+		close(pipex.pipefd[0]);
+		close(pipex.pipefd[1]);
+		return (EXIT_FAILURE);
 	}
-	return (pipex.status);
+	else if (pipex.pid_2 == 0)
+	{
+		child2_handler(&pipex, list, env);
+	}
+	pipex.status = ft_exit_pipe(&pipex);
+return (pipex.status);
 }

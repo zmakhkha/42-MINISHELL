@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 06:13:33 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/19 07:50:29 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,7 +251,7 @@ void				ft_leaf_nodes(t_token **list);
 //--------------> execution > part <---------------//
 //------------------------------------------------//
 
-# define CNF "command not found\n"
+# define CNF "command not found"
 # define CD_ER "cd: error retrieving current directory: getcwd: cannot access\
 				parent directories: No such file or directory"
 
@@ -282,7 +282,7 @@ enum				e_fd
 };
 
 /* src/error.c */
-void				ft_error(char *msg, char *cmd, int exit_status);
+int				ft_error(char *msg, char *cmd, int exit_status);
 int					ft_protect(int fd, char *str, char *msg);
 void				ft_perror(char *err_msg1, char *err_msg2);
 int					ft_exit_pipe(t_pipex *px);

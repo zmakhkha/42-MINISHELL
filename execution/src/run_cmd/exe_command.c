@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:16:02 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/19 06:16:39 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/19 07:49:03 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	execute_command(char *args, t_env *env)
 		cmd.path_cmd = set_cmd_path(&cmd);
 		if (!cmd.path_cmd)
 		{
-			ft_error(CNF, cmd.name, 1);
+			ft_error(CNF, cmd.name + 1, 1);
 			return (EXIT_FAILURE);
 		}
 	}
@@ -104,6 +104,5 @@ int	execute_command(char *args, t_env *env)
 		exit(status);
 	}
 	waitpid(pid, &status, 0);
-	//!! free_cmd(&cmd);
 	return (status);
 }
