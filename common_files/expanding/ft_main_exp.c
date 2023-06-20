@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main_exp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 15:05:14 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:56:47 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../../header.h"
 
 char	*ft_expand(char *str, t_env *env)
 {
@@ -45,9 +45,9 @@ char	*ft_rm__exp(char *str, t_env *env, char *res, int i)
 {
 	res = ft_rmsq(str);
 	i = 0;
-	if (res[i])
+	if (res)
 	{
-		while (res && *res != 0 && res[i] != 0)
+		while (res[i] != '\0')
 		{
 			if (res[i] == '$')
 				res = ft_expand(res, env);
@@ -76,7 +76,9 @@ char	*ft_rm_exp(char *str, t_env *env)
 			break ;
 	}
 	if (t == 1)
+	{
 		res = ft_rmsq(str);
+	}
 	else
 		res = ft_rm__exp(str, env, res, i);
 	return (res);
@@ -111,27 +113,26 @@ char	**ft_main_exp(char *str, t_env *env)
 {
 	t_token	*lst;
 	t_token	*tmp;
-	char	*lala;
 	char	*s_tmp;
+	int		a;
 
+	a = 0;
 	s_tmp = NULL;
 	lst = NULL;
 	lst = ft_strtok(str);
 	tmp = lst;
 	while (lst)
 	{
-		if (ft_strchr(lst->str, '$') ||
-			(ft_strchr(lst->str, '\'') || ft_strchr(lst->str, '\"')))
+		if (ft_strchr(lst->str, '$'))
+			lst->str = ft_rm_exp(lst->str, env);
+		if ((ft_strchr(lst->str, '\'') || ft_strchr(lst->str, '\"')))
 		{
-			lala = ft_rm_exp(lst->str, env);
-			lst->str = lala;
+			a = 1;
+			lst->str = ft_rm_exp(lst->str, env);
 		}
-		if (lst->str && ft_strchr(lst->str, '*'))
+		if (!a && lst->str && ft_strchr(lst->str, '*'))
 			lst->str = ft_main_wc(lst->str, env);
 		lst = lst->prev;
 	}
-	lst = tmp;
-	s_tmp = ft_toktostr(lst);
-	// puts (s_tmp);
-	return (ft_format(s_tmp));
+	return (ft_format(ft_toktostr(tmp)));
 }

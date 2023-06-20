@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:24:48 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/19 07:55:21 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/20 05:08:24 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,14 @@ int	ft_error(char *msg, char *cmd, int exit_status)
 	return (exit_status);
 }
 
-int	ft_protect(int fd, char *str, char *msg)
+int	ft_protect(int return_value, char *str, char *msg)
 {
-	if (!ft_strcmp(str, "execve") && fd == -1)
-		ft_error(CNF, str, 1);
-	if (fd == -1 && !str)
+	if (return_value == -1)
 	{
-		perror(msg);
-		exit(fd);
+		ft_perror(str,msg);
+		exit(EXIT_FAILURE);
 	}
-	return (fd);
+	return (return_value);
 }
 
 void	ft_perror(char *err_msg1, char *err_msg2)

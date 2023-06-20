@@ -6,11 +6,11 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:17:06 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 10:28:37 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:56:52 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../../header.h"
 
 int	ft_count_lmatching(t_str *src, char *cnd)
 {

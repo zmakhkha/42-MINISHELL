@@ -6,7 +6,7 @@
 #    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/19 11:36:28 by ayel-fil         ###   ########.fr        #
+#    Updated: 2023/06/20 04:57:34 by ayel-fil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,13 +53,13 @@ SRC_MN =	main.c \
 			common_files/utils/ft_history_utils.c \
 			common_files/utils/ft_prompt.c \
 			common_files/utils/ft_strings.c \
-			expanding/ft_dir_lst.c \
-			expanding/ft_exp_utils.c \
-			expanding/ft_left_right.c \
-			expanding/ft_lst_utils.c \
-			expanding/ft_main_exp.c \
-			expanding/ft_mult.c \
-			expanding/ft_wild_card.c
+			common_files/expanding/ft_dir_lst.c \
+			common_files/expanding/ft_exp_utils.c \
+			common_files/expanding/ft_left_right.c \
+			common_files/expanding/ft_lst_utils.c \
+			common_files/expanding/ft_main_exp.c \
+			common_files/expanding/ft_mult.c \
+			common_files/expanding/ft_wild_card.c
 
 #execution part:
 
