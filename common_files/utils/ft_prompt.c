@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 15:51:15 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/20 17:00:22 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,11 @@ void	ft_prompt(char **env)
 			break;
 		ft_add_history(str);
 		t = ft_strtok(str);
+
 		if (!g_status && t)
-			ft_main_lexer(t);
+		{
+		ft_main_lexer(t);
+		}
 		else if (t)
 			printf("Lexer Error !!\n");
 		if (!g_status && t)

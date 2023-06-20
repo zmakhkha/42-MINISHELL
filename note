@@ -79,3 +79,31 @@ expader tests
 + Ma*f*e  : WORKING
 
 <<<>>>
+
+heredoc extrem cases : 
+<< hah : SEGV
+> hahaha
+> $HOME
+> $HIHI $HOME
+> ds
+> a
+
+<< B'A' WORKS
+
+export 
+sort export value
+double quotes in export
+SEGV  export a=
+export a========ffgg : to handle
+
+
+SHLVL=1
+_=/usr/bin/env
+bash-3.2$ unset PWD SHLVL _
+bash-3.2$ env
+_=/usr/bin/env
+bash-3.2$ unset PWD        
+bash-3.2$ unset _
+bash-3.2$ env
+_=/usr/bin/env
+bash-3.2$ 

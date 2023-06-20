@@ -46,53 +46,69 @@ int	ft_check_hdoc(t_token *lst)
 	return (i);
 }
 
-void	ft_heredoc(t_token **list ,char *del)
+char	*ft_heredoc(char *del)
 {
 	char	*hdoc;
 	char	*star;
 
-	if (list)
+	star = NULL;
+	hdoc = (char *)ft_calloc(1, 1);
+	while (1)
 	{
-		star = NULL;
-		hdoc = (char *)ft_calloc(1, 1);
-		while (1)
-		{
-			star = readline("> ");
-			if (star == NULL || !ft_strcmp(del, star))
-				break ;
-			else
-				hdoc = ft_join_free(ft_join_free(hdoc, star), "\n");
-			free (star);
-		}
-	(*list)->str = ft_strdup(hdoc);
-	(*list)->type = RE_IN;
+		star = readline("> ");
+		if (star == NULL || !ft_strcmp(del, star))
+			break ;
+		else
+			hdoc = ft_join_free(ft_join_free(hdoc, star), "\n");
+		free (star);
 	}
-
+	return (hdoc);
 }
 
-char	*ft_hdoc_tofd(char *str)
+char *ft_twotoone(char **table)
+{
+	int		i;
+	char	*res;
+
+	res = NULL;
+	i = -1;
+	while (table && table[++i])
+	{
+		
+		res = ft_join_free(res, table[i]);
+		res = ft_join_free(res, " ");
+	}
+	return (res);
+}
+
+char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
 {
 	int		fd;
 	char	*path;
 	char	*full_path;
 	ssize_t	b;
 
-	path = ft_join_free("HDOC", "");
+	b = 0;
+	path = ft_join_free("HDOC", " ");
 	full_path = ft_join_free(H_DOCP, path);
+	if (type == 1)
+		str = ft_twotoone(ft_main_exp(str, env_list)); 
 	while (access(full_path, F_OK) == 0)
 		full_path = ft_join_free(full_path, "_1");
 	fd = open(full_path, O_WRONLY | O_APPEND | O_CREAT, 0644);
 	if (fd == -1)
 		ft_exit("Failed to create the tmp heredoc file !!\n", 1);
-	b = write(fd, str, ft_strlen(str));
+	if (str)
+	{
+		b = write(fd, str, ft_strlen(str));
 	if (b == -1)
 		ft_exit("Failed to update the tmp heredoc file !!\n", 1);
 	b = write(fd, "\n", 1);
 	if (b == -1)
 		ft_exit("Failed to update the tmp heredoc file !!\n", 1);
+	}
 	if (close(fd) == -1)
 		ft_exit("Failed to close tmp heredoc file !!\n", 1);
-	printf("%s", full_path);
 	return (full_path);
 }
 

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 18:46:02 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/20 17:49:21 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,8 +155,8 @@ void				ft_swap(t_token *lst);
 // common_files/lexer/ft_check_hdoc.c
 int					ft_valid_hd_delim(t_token *lst);
 int					ft_check_hdoc(t_token *lst);
-void				ft_heredoc(t_token **list ,char *del);
-char				*ft_hdoc_tofd(char *str);
+char				*ft_heredoc(char *del);
+char				*ft_hdoc_tofd(char *str, int type, t_env *env_list);
 
 // common_files/lexer/ft_check_quotes.c
 int					ft_valid_quote(t_token *t);
