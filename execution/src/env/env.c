@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:58:22 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/14 09:17:43 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/21 18:06:21 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ t_env	*set_env(char **env)
 		key = tmp[0];
 		value = tmp[1];
 		add_env_node(key, value, &env_list);
-		free(tmp); // Free tmp after using it
+		ft_free_2dstr(tmp);
+		// free(tmp); // Free tmp after using it
 		tmp = NULL;
 		i++;
 	}

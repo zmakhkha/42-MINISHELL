@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:45:00 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/20 22:58:46 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:51:58 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ char	*ft_join_freel(char *s1, char *s2, int len)
 	{
 		l1 = ft_strlen(s1);
 		res = (char *)malloc(l1 + len + 1);
+		if (!res)
+			return (NULL);
 		i = -1;
 		while (++i < (int)l1)
 			res[i] = s1[i];
