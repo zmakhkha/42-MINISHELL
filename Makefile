@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
+#    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/19 11:36:28 by ayel-fil         ###   ########.fr        #
+#    Updated: 2023/06/21 11:11:21 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ HEADERS = header.h
 #parsing part:
 SRC_MN =	main.c \
 			common_files/ast/ft_ast_utils.c \
+			common_files/ast/ft_asthdoc.c \
+			common_files/ast/ft_asthdoc2.c \
 			common_files/ast/ft_leafs_utils.c \
 			common_files/ast/ft_main_ast.c \
 			common_files/ast/ft_ops_utils.c \
@@ -53,13 +55,13 @@ SRC_MN =	main.c \
 			common_files/utils/ft_history_utils.c \
 			common_files/utils/ft_prompt.c \
 			common_files/utils/ft_strings.c \
-			expanding/ft_dir_lst.c \
-			expanding/ft_exp_utils.c \
-			expanding/ft_left_right.c \
-			expanding/ft_lst_utils.c \
-			expanding/ft_main_exp.c \
-			expanding/ft_mult.c \
-			expanding/ft_wild_card.c
+			common_files/expanding/ft_dir_lst.c \
+			common_files/expanding/ft_exp_utils.c \
+			common_files/expanding/ft_left_right.c \
+			common_files/expanding/ft_lst_utils.c \
+			common_files/expanding/ft_main_exp.c \
+			common_files/expanding/ft_mult.c \
+			common_files/expanding/ft_wild_card.c
 
 #execution part:
 

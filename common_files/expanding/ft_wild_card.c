@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wild_card.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:40:37 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 15:04:23 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:57:02 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../../header.h"
 
 char	*ft_strnstr1(const char *haystack, const char *needle, size_t len)
 {
@@ -113,12 +113,16 @@ char	*ft_main_wc(char	*str, t_env	*env_list)
 	char	*res;
 
 	res = NULL;
+	r = NULL;
 	if (strrchr(str, '*'))
 	{
 		r = ft_dirfiles(env_list);
 		b = ft_matching(r, str);
 		res = ft_tostr(b);
 	}
-	ft_free_str(&r);
+	if (!res)
+		res = strdup(str);
+	if (r)
+		ft_free_str(&r);
 	return (res);
 }
