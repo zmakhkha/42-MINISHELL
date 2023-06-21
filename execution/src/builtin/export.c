@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 10:01:54 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/21 05:22:41 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/21 18:07:11 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,11 @@ int	execute_export(char **args, t_env **env_list)
 	{
 		if (handle_export_argument(args[i], env_list))
 			return (EXIT_FAILURE);
+		key = split[0];
+		value = split[1];
+		change_env(key, value, env_list);
+		ft_free_2dstr(split);
+		return (EXIT_SUCCESS);
 		i++;
 	}
 	return (EXIT_SUCCESS);

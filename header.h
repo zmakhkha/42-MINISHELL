@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/21 14:30:48 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/21 18:05:12 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,8 @@ int					ft_add_history(char *str);
 void				ft_print(char *a);
 
 // common_files/utils/ft_prompt.c
+void				ft_free_env(t_env **env);
+void				ft_free_2dstr(char **str);
 void				ft_prompt(char **env);
 
 // common_files/utils/ft_strings.c

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:40:37 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 16:57:02 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:53:24 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,29 +80,6 @@ char	*ft_tostr(t_str *src)
 		src = src->prev;
 	}
 	return (res);
-}
-
-void	ft_free_env(t_env **list)
-{
-	t_env	*lst;
-
-	lst = *list;
-	if (list && lst)
-	{
-		ft_free_env(&(lst->next));
-		if (lst->key)
-		{
-			free (lst->key);
-			lst->key = NULL;
-		}
-		if (lst->value)
-		{
-			free (lst->value);
-			lst->value = NULL;
-		}
-		free (lst);
-		lst = NULL;
-	}
 }
 
 // to be called foreach node
