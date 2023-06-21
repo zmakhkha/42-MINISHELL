@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
+#    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/21 08:27:27 by ayel-fil         ###   ########.fr        #
+#    Updated: 2023/06/21 11:11:21 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ HEADERS = header.h
 #parsing part:
 SRC_MN =	main.c \
 			common_files/ast/ft_ast_utils.c \
+			common_files/ast/ft_asthdoc.c \
+			common_files/ast/ft_asthdoc2.c \
 			common_files/ast/ft_leafs_utils.c \
 			common_files/ast/ft_main_ast.c \
 			common_files/ast/ft_ops_utils.c \
