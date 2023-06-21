@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 16:56:47 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/20 21:23:26 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_rm__exp(char *str, t_env *env, char *res, int i)
 	i = 0;
 	if (res)
 	{
-		while (res[i] != '\0')
+		while (res && res[i] != '\0')
 		{
 			if (res[i] == '$')
 				res = ft_expand(res, env);
