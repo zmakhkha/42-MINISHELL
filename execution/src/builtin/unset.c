@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 05:25:46 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/14 09:42:41 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/21 05:59:49 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,14 @@ void	unset_env(const char *key, t_env **env_list)
 		current = current->next;
 	}
 }
-int execute_unset(char **list, t_env **env_list)
+int	execute_unset(char **list, t_env **env_list)
 {
-	if (!list[1])
-	{
-		ft_putendl_fd("unset: invalid syntax", 2);
-		return (1);
-	}
-	unset_env(list[1], env_list);
-	return (0);
+	int	i;
+
+	i = 1;
+	if (!list[0])
+		return (EXIT_SUCCESS);
+	while (list[i])
+		unset_env(list[i++], env_list);
+	return (EXIT_FAILURE);
 }

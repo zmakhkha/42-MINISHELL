@@ -105,19 +105,13 @@ int	execute_command(char **args, t_env *env)
 	}
 	else if (cmd.relative_or_binary == true)
 		cmd.path_cmd = ft_strdup(cmd.name);
-	pid = fork();
-	if (pid == -1)
-	{
-		ft_perror("fork", "Fork failed");
-		return (EXIT_FAILURE);
-	}
-	else if (pid == 0)
+	pid = ft_protect(fork(),"fork","Fork failed");
+	if (pid == 0)
 	{
 		status = ft_child_process(&cmd);
 		exit(status);
 	}
 	waitpid(pid, &status, 0);
-	
 	ft_free_2dstr(cmd.paths);
 	ft_free_2dstr(cmd.env);
 	return (status);
