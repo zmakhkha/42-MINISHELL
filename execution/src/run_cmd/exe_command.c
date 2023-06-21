@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:16:02 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/20 05:06:18 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/20 23:51:22 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,6 @@ int	execute_command(char **args, t_env *env)
 		status = ft_child_process(&cmd);
 		exit(status);
 	}
-	waitpid(pid, &status, 0);
+	waitpid(-1, &status, 0);
 	return (status);
 }

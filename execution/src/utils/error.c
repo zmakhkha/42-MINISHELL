@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:24:48 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/20 05:08:24 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/21 01:13:46 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,13 @@ void	ft_perror(char *err_msg1, char *err_msg2)
 	ft_putstr_fd("minish: ", ER);
 	ft_putstr_fd(err_msg1, ER);
 	ft_putstr_fd(": ", ER);
-	ft_putstr_fd(err_msg2, ER);
+	ft_putendl_fd(err_msg2, ER);
 }
 int	ft_exit_pipe(t_pipex *px)
 {
 	close(px->pipefd[0]);
 	close(px->pipefd[1]);
 	waitpid(-1, &px->status, 0);
-    waitpid(-1, &px->status, 0);
-	// while (waitpid(-1, &px->status, 0) != -1)
-	// 	;
+	waitpid(-1, &px->status, 0);
 	return (px->status);
 }
