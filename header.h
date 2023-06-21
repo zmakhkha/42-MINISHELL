@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/20 17:49:21 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/21 11:10:27 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,6 +249,19 @@ t_token				*ft_makenull(void);
 t_token				*ft_make_leafs(t_token **list);
 void				ft_leaf_nodes(t_token **list);
 
+//--------------> The HDOC TO IN stage <---------------//
+
+// common_files/ast/ft_asthdoc.c
+
+char	*ft_get_path(char *del, int type, t_env **env_list);
+void	ft_hdoc_to_file(t_token **list, t_env **env_list);
+void	ft_hdocontree(t_token **list, t_env **env_list);
+
+// common_files/ast/ft_asthdoc2.c
+char	*ft_rmsq2(char *str, int len, char c);
+char	*ft_rmsq1(char *str);
+char	*ft_exp1(char *str);
+
 //--------------------------------------------------//
 //--------------> execution > part <---------------//
 //------------------------------------------------//
@@ -385,7 +398,13 @@ char				*ft_strnstr1(const char *haystack, const char *needle, size_t len);
 t_str				*ft_matching(t_str *src, char *str);
 char				*ft_main_wc(char	*str, t_env	*env_list);
 
+
+
+
+
 #endif
+
+
 
 // 
 // ls | gsdgs|gsgs|dgsgs| ls -l
