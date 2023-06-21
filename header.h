@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/21 11:10:27 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/21 14:30:48 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,6 +261,12 @@ void	ft_hdocontree(t_token **list, t_env **env_list);
 char	*ft_rmsq2(char *str, int len, char c);
 char	*ft_rmsq1(char *str);
 char	*ft_exp1(char *str);
+
+//--------------> The SUB TO TREE stage <---------------//
+
+void	ft_sub_ast(t_token **list);
+void	ft_subtotree(t_token **list);
+
 
 //--------------------------------------------------//
 //--------------> execution > part <---------------//

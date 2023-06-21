@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/20 17:00:22 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/21 14:37:10 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,12 @@ int	ft_check(char *str)
 	return (1);
 }
 
-// Add a command history
-void	ft_prompt(char **env)
+void	ft_run_it(char *str, t_env	*env_list)
 {
-	char	*str;
 	t_token	*t;
-	t_env	*env_list;
 	t = NULL;
-	env_list = set_env(env);
-	while (1)
-	{
-		// usleep(100);
-		str = readline("minishell $ ");
-		if (str == NULL )
-			break;
-		ft_add_history(str);
+
+	ft_add_history(str);
 		t = ft_strtok(str);
 
 		if (!g_status && t)
@@ -46,10 +37,26 @@ void	ft_prompt(char **env)
 		if (!g_status && t)
 			ft_main_ast(&t,&env_list);
 		else if (t)
-			printf("Parser Error !!\n");
+			printf("Parser Error dsds!!\n");
 		t = ft_getfirst(t);
 		free(str);
 		ft_free_tree(&t);
 		// system("leaks minishell");
+	
+}
+
+// Add a command history
+void	ft_prompt(char **env)
+{
+	char	*str;
+	t_env	*env_list;
+	env_list = set_env(env);
+	while (1)
+	{
+		// usleep(100);
+		str = readline("minishell $ ");
+		if (str == NULL )
+			break;
+		ft_run_it(str, env_list);
 	}
 }
