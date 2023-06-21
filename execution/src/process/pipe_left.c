@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   pipe_left.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 21:01:45 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/21 05:07:55 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/06/18 11:42:25 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/06/21 08:25:07 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_c.h"
+#include "../../../header.h"
 
-char	*ft_strdup(const char *s1)
+void	child1_handler(t_pipex *pipex, t_token *list, t_env *env)
 {
-	char	*ptr;
-	size_t	s1lenght;
-
-	if (!s1)
-		return (NULL);
-	s1lenght = ft_strlen(s1);
-	ptr = ft_calloc(s1lenght + 1, sizeof(char));
-	if (!ptr)
-	{
-		free(ptr);
-		return (ptr);
-	}
-	ft_memcpy(ptr, s1, (s1lenght * sizeof(char)));
-	return (ptr);
+	ft_protect(close(pipex->pipefd[0]),"close","close failed");
+	ft_protect(dup2(pipex->pipefd[1], STDOUT_FILENO), "dup2", "dup2 failed");
+	ft_protect(close(pipex->pipefd[1]),"close","close failed");
+	pipex->status = ft_execution(list->left, env);
+	exit(pipex->status);
 }

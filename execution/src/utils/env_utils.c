@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:05:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/18 10:46:59 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/21 05:09:14 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	change_env(char *key, char *value, t_env **env_list)
 {
 	t_env	*tmp;
 
+	if (!value)
+		value = ft_strdup("");
 	tmp = *env_list;
 	while (tmp)
 	{
@@ -95,11 +97,12 @@ int	declare_env(t_env **env_list)
 	return (0);
 }
 
-void free_env(t_env *env_list)
+void	free_env(t_env *env_list)
 {
-	t_env *current = env_list;
-	t_env *next_node;
+	t_env	*current;
+	t_env	*next_node;
 
+	current = env_list;
 	while (current != NULL)
 	{
 		next_node = current->next;
