@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 10:01:54 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/21 18:07:11 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/21 23:13:32 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ int	handle_export_argument(char *arg, t_env **env_list)
 	{
 		printf("Invalid format: %s\n", arg);
 		if (splited)
-			ft_free_2darray((void **)splited);
+			ft_free_2dstr(splited);
 		return (EXIT_FAILURE);
 	}
 }
 
 int	execute_export(char **args, t_env **env_list)
 {
-	int	i;
+	int i;
 
 	i = 1;
 	if (args[0] && !args[1])
@@ -52,11 +52,6 @@ int	execute_export(char **args, t_env **env_list)
 	{
 		if (handle_export_argument(args[i], env_list))
 			return (EXIT_FAILURE);
-		key = split[0];
-		value = split[1];
-		change_env(key, value, env_list);
-		ft_free_2dstr(split);
-		return (EXIT_SUCCESS);
 		i++;
 	}
 	return (EXIT_SUCCESS);
