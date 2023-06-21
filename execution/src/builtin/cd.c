@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:42:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/21 06:18:35 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/21 10:05:19 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,29 +34,23 @@ int	ft_cd_home(t_env **env)
 int	execute_cd(char **cmd, t_env **env)
 {
 	char	*path;
-	
+	char	*cwd;
+
 	if (!cmd[1])
 		return (ft_cd_home(env));
 	path = cmd[1];
-	if (chdir(path )== -1)
+	if (chdir(path) == -1)
 	{
 		perror("cd");
 		return (1);
 	}
-	else if (access(getcwd(NULL, 0), F_OK) != 0 && !ft_strcmp(cmd[1], "."))
+	cwd = getcwd(NULL, 0);
+	if (!cwd)
 	{
-		ft_putendl_fd(CD_ER,ERR);
+		perror("cd");
 		return (1);
 	}
-	else if (access(getcwd(NULL, 0), F_OK) != 0 && !ft_strcmp(cmd[1], ".."))
-	{
-		if (chdir(get_value("OLDPWD", *env)) == -1)
-		{
-			perror("cd");
-			return (1);
-		}
-		change_env("OLDPWD", path, env);
-	}
-	change_env("PWD", getcwd(NULL, 0), env);
+	change_env("PWD", cwd, env);
+	free(cwd);
 	return (0);
 }

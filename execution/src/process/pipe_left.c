@@ -1,44 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   pipe_left.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/11 09:47:50 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/21 11:17:48 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/06/18 11:42:25 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/06/21 08:25:07 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../header.h"
 
-int	execute_echo(char **cmd)
+void	child1_handler(t_pipex *pipex, t_token *list, t_env *env)
 {
-	int i = 1;
-	int j = 0;
-	bool newline;
-
-	newline = true;
-	while (cmd[i] != NULL && !strcmp(cmd[i], "-n"))
-	{
-		while (cmd[1][j] != ' ')
-		{
-			j++;
-		}
-		newline = false;
-		i++;
-	}
-
-	while (cmd[i] != NULL)
-	{
-		printf("%s", cmd[i]);
-		if (cmd[i + 1] != NULL)
-			printf(" ");
-		i++;
-	}
-
-	if (newline)
-		printf("\n");
-
-	return (0);
-} 
+	ft_protect(close(pipex->pipefd[0]),"close","close failed");
+	ft_protect(dup2(pipex->pipefd[1], STDOUT_FILENO), "dup2", "dup2 failed");
+	ft_protect(close(pipex->pipefd[1]),"close","close failed");
+	pipex->status = ft_execution(list->left, env);
+	exit(pipex->status);
+}

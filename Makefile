@@ -6,7 +6,7 @@
 #    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/20 04:57:34 by ayel-fil         ###   ########.fr        #
+#    Updated: 2023/06/21 08:27:27 by ayel-fil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,11 +66,11 @@ SRC_MN =	main.c \
 SRC_EX = execution/execute.c execution/src/env/env.c execution/src/builtin/cd.c\
 		 execution/src/utils/builtin_utils.c execution/src/utils/error.c\
 		 execution/src/builtin/pwd.c execution/src/utils/env_utils.c\
-		 execution/src/run_cmd/exe_command.c execution/src/process/child.c\
+		 execution/src/run_cmd/exe_command.c execution/src/process/simple_cmd.c\
 		 execution/src/builtin/echo.c execution/src/builtin/export.c\
 		 execution/src/builtin/unset.c execution/src/run_cmd/exe_ope.c\
 		 execution/src/run_cmd/exe_pipe.c  execution/src/builtin/exit.c\
-		 execution/src/utils/pipe_utils.c
+		 execution/src/process/pipe_right.c execution/src/process/pipe_left.c\
 		 
 #create .OBJ files:
 SRC = $(SRC_MN) $(SRC_EX)
