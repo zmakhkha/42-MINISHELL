@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 11:44:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 16:56:49 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/22 16:17:45 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_str_addback(t_str **lst, t_str *new)
 	}
 }
 
-// free all the list from any location
+// free all the list from the called location
 void	ft_free_str(t_str **t)
 {
 	if (t && *t)

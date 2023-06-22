@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:40:37 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/21 15:53:24 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/22 16:19:16 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_str	*ft_matching(t_str *src, char *str)
 		else if (a == MULT)
 			res = ft_multi(src, str);
 	}
+	ft_free_2dstr(prts);
 	return (res);
 }
 
@@ -79,11 +80,13 @@ char	*ft_tostr(t_str *src)
 		res = ft_join_free(res, tmp);
 		src = src->prev;
 	}
+	// free(tmp);
+	ft_free_str(&src);
 	return (res);
 }
 
 // to be called foreach node
-char	*ft_main_wc(char	*str, t_env	*env_list)
+char	*ft_main_wc(char *str, t_env	*env_list)
 {
 	t_str	*r;
 	t_str	*b;
@@ -91,6 +94,7 @@ char	*ft_main_wc(char	*str, t_env	*env_list)
 
 	res = NULL;
 	r = NULL;
+	b = NULL;
 	if (strrchr(str, '*'))
 	{
 		r = ft_dirfiles(env_list);
@@ -98,8 +102,10 @@ char	*ft_main_wc(char	*str, t_env	*env_list)
 		res = ft_tostr(b);
 	}
 	if (!res)
-		res = strdup(str);
+		return (str);
 	if (r)
 		ft_free_str(&r);
+		detect(b);
+	free(str);
 	return (res);
 }

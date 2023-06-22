@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/22 03:42:28 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/22 16:20:28 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,29 @@
 # include <string.h>
 # include <unistd.h>
 
+// static void *_malloc(size_t c, char *file, int line)
+// {
+// 	void *p = malloc(c);
+// 	printf("MALC: %p, LINE = %i, FILE = %s\n", p, line, file);
+// 	return (p);
+// }
+
+// static void _free(void* c, char *file, int line)
+// {
+// 	printf("FREE: %p, LINE = %i, FILE = %s\n", c, line, file);
+// 	return (free(c));
+// }
+
+// #define malloc(c) _malloc(c, __FILE__, __LINE__)
+// #define free(c) _free(c, __FILE__, __LINE__)
+
+
+
+
 # define EXLUDE "` @ # % ^ + = \ ;"
 # define H_PATH "/tmp/.minishell_history"
 // # define H_DOCP "/tmp/"
-# define H_DOCP "/Users/zmakhkha/Desktop/minishell"
+# define H_DOCP "/Users/zmakhkha/Desktop/tmp/"
 # define SUCC 0
 # define ERR 1
 
@@ -53,6 +72,8 @@ enum
 	W_CARD,
 	DIGITE
 };
+
+void	detect(void	*res);
 
 // -------------------------------------- //
 // -----------> Token struct <---------- //
