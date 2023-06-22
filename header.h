@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/22 16:20:28 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/22 23:15:49 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@
 // #define malloc(c) _malloc(c, __FILE__, __LINE__)
 // #define free(c) _free(c, __FILE__, __LINE__)
 
-
-
-
 # define EXLUDE "` @ # % ^ + = \ ;"
 # define H_PATH "/tmp/.minishell_history"
 // # define H_DOCP "/tmp/"
@@ -73,7 +70,7 @@ enum
 	DIGITE
 };
 
-void	detect(void	*res);
+void				detect(void *res);
 
 // -------------------------------------- //
 // -----------> Token struct <---------- //
@@ -361,6 +358,7 @@ int					ft_child_process(t_cmd *cmd);
 int					execute_logical_op(t_token *list, t_env *env);
 int					execute_command(char **args, t_env *env);
 int					execute_pipe(t_token *list, t_env *env);
+int					execute_re(t_token *list, t_env *env);
 
 /* src/run_cmd/ */
 void				child1_handler(t_pipex *pipex, t_token *list, t_env *env);

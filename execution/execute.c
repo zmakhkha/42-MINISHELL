@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/22 07:58:07 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/22 20:30:06 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	ft_execution(t_token *list, t_env *env)
 
 	if (!list)
 		return (EXIT_FAILURE);
-	if (list->type == PIPE || list->type == AND || list->type == OR)
-			g_status = execute_logical_op(list, env);
+	if (list->type == PIPE || list->type == AND || list->type == OR || \
+		list->type == Empty)
+		g_status = execute_logical_op(list, env);
 	if (list->type == WORD)
 	{
-		
-		splited = ft_main_exp(list->str,env);
+		splited = ft_main_exp(list->str, env);
 		if (!splited)
 			return (EXIT_FAILURE);
 		if (is_builtin(splited))

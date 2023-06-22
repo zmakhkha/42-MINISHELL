@@ -1,0 +1,13 @@
+minishell $ <<a
+> aaaa
+> a
+Failed to create the tmp heredoc file !!
+
+
+minishell $ ""
+[1]    97498 segmentation fault  ./minishell
+
+unset 7k
+export 7k
+bash: unset: `3f': not a valid identifier
+

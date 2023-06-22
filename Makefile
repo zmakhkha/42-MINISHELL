@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
+#    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/22 12:14:29 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/06/22 18:18:00 by ayel-fil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ RESET = \033[0m
 NAME = minishell
 LIBS = libs/libs.a
 LIBS_DIR = libs
- CFLAGS = -g #-Wall -Werror -Wextra -g # -Wunused-function -Winfinite-recursion -g #-fsanitize=address -fno-omit-frame-pointer -g
-LDFLAGS = -lreadline -g #-fsanitize=address -fno-omit-frame-pointer 
+ CFLAGS = -Wall -Werror -Wextra -g # -Wunused-function -Winfinite-recursion -g #-fsanitize=address -fno-omit-frame-pointer -g
+LDFLAGS = -lreadline -g #-fsanitize=address -fno-omit-frame-pointer
 
 HEADERS = header.h
 
@@ -74,6 +74,7 @@ SRC_EX = execution/execute.c execution/src/env/env.c execution/src/builtin/cd.c\
 		 execution/src/builtin/unset.c execution/src/run_cmd/exe_ope.c\
 		 execution/src/run_cmd/exe_pipe.c  execution/src/builtin/exit.c\
 		 execution/src/process/pipe_right.c execution/src/process/pipe_left.c\
+		 execution/src/run_cmd/exe_re.c
 		 
 #create .OBJ files:
 SRC = $(SRC_MN) $(SRC_EX)
