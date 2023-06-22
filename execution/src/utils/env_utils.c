@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:05:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/21 05:09:14 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/22 03:54:55 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,23 @@ char	**list_to_array(t_env *env)
 int	declare_env(t_env **env_list)
 {
 	t_env	*current;
+	char	**sorted;
+	char	**tmp;
+	int		i;
 
 	current = *env_list;
-	while (current != NULL)
+	sorted = ft_sort_env(list_to_array(current));
+	i = 0;
+	while (sorted[i] != NULL)
 	{
-		ft_putstr_fd("declare -x ", 1);
-		ft_putstr_fd(current->key, 1);
-		ft_putstr_fd("=", 1);
-		if (current->value == NULL)
-			ft_putendl_fd("", 1);
-		ft_putendl_fd(current->value, 1);
-		current = current->next;
+		tmp = ft_split(sorted[i], '=');
+		printf("declare -x ");
+		printf("%s=\"", tmp[0]);
+		if (tmp[1] == NULL)
+			printf("\"\n");
+		else
+			printf("%s\"\n", tmp[1]);
+		i++;
 	}
 	return (0);
 }

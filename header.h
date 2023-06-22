@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
 /*   Updated: 2023/06/22 16:20:28 by zmakhkha         ###   ########.fr       */
@@ -14,6 +14,7 @@
 # define HEADER_H
 
 # include "libs/includes.h"
+# include <dirent.h>
 # include <errno.h>
 # include <fcntl.h>
 # include <readline/history.h>
@@ -23,7 +24,6 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-#include <dirent.h>
 
 // static void *_malloc(size_t c, char *file, int line)
 // {
@@ -276,20 +276,19 @@ void				ft_leaf_nodes(t_token **list);
 
 // common_files/ast/ft_asthdoc.c
 
-char	*ft_get_path(char *del, int type, t_env **env_list);
-void	ft_hdoc_to_file(t_token **list, t_env **env_list);
-void	ft_hdocontree(t_token **list, t_env **env_list);
+char				*ft_get_path(char *del, int type, t_env **env_list);
+void				ft_hdoc_to_file(t_token **list, t_env **env_list);
+void				ft_hdocontree(t_token **list, t_env **env_list);
 
 // common_files/ast/ft_asthdoc2.c
-char	*ft_rmsq2(char *str, int len, char c);
-char	*ft_rmsq1(char *str);
-char	*ft_exp1(char *str);
+char				*ft_rmsq2(char *str, int len, char c);
+char				*ft_rmsq1(char *str);
+char				*ft_exp1(char *str);
 
 //--------------> The SUB TO TREE stage <---------------//
 
-void	ft_sub_ast(t_token **list);
-void	ft_subtotree(t_token **list);
-
+void				ft_sub_ast(t_token **list);
+void				ft_subtotree(t_token **list);
 
 //--------------------------------------------------//
 //--------------> execution > part <---------------//
@@ -326,7 +325,7 @@ enum				e_fd
 };
 
 /* src/error.c */
-int				ft_error(char *msg, char *cmd, int exit_status);
+int					ft_error(char *msg, char *cmd, int exit_status);
 int					ft_protect(int fd, char *str, char *msg);
 void				ft_perror(char *err_msg1, char *err_msg2);
 int					ft_exit_pipe(t_pipex *px);
@@ -350,6 +349,7 @@ int					execute_unset(char **list, t_env **env_list);
 int					execute_pwd(t_env **env);
 int					declare_env(t_env **env_list);
 int					execute_exit(char **list);
+char				**ft_sort_env(char **env);
 
 /* src/run_cmd */
 t_cmd				ft_init_cmd(char **args, char **env);
@@ -376,7 +376,6 @@ typedef struct t_str
 	struct t_str	*prev;
 }					t_str;
 
-
 # define LEFT -1
 # define RIGHT -2
 # define MIDL -3
@@ -385,7 +384,7 @@ typedef struct t_str
 
 // expanding/ft_dir_lst.c
 
-t_str	*ft_dirfiles(t_env *env_list);
+t_str				*ft_dirfiles(t_env *env_list);
 
 // expanding/ft_exp_utils.c
 
@@ -419,21 +418,16 @@ char				**ft_main_exp(char *str, t_env *env);
 // expanding/ft_mult.c
 
 t_str				*ft_middle(t_str *src, char *cnd);
-t_str  			 *ft_multi(t_str *src, char *cnd);
+t_str				*ft_multi(t_str *src, char *cnd);
 
 // expanding/ft_wild_card.c
 
-char				*ft_strnstr1(const char *haystack, const char *needle, size_t len);
+char				*ft_strnstr1(const char *haystack, const char *needle,
+						size_t len);
 t_str				*ft_matching(t_str *src, char *str);
-char				*ft_main_wc(char	*str, t_env	*env_list);
-
-
-
-
+char				*ft_main_wc(char *str, t_env *env_list);
 
 #endif
 
-
-
-// 
+//
 // ls | gsdgs|gsgs|dgsgs| ls -l
