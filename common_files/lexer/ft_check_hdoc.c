@@ -78,6 +78,7 @@ char *ft_twotoone(char **table)
 		res = ft_join_free(res, table[i]);
 		res = ft_join_free(res, " ");
 	}
+	ft_free_2dstr(table);
 	return (res);
 }
 
@@ -86,13 +87,17 @@ char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
 	int		fd;
 	char	*path;
 	char	*full_path;
+	char	**tm;
 	ssize_t	b;
 
 	b = 0;
 	path = ft_join_free("HDOC", " ");
 	full_path = ft_join_free(H_DOCP, path);
 	if (type == 1)
-		str = ft_twotoone(ft_main_exp(str, env_list)); 
+	{
+		tm = ft_main_exp(str, env_list);
+		str = ft_twotoone(tm); 
+	}
 	while (access(full_path, F_OK) == 0)
 		full_path = ft_join_free(full_path, "_1");
 	fd = open(full_path, O_WRONLY | O_APPEND | O_CREAT, 0644);
@@ -109,6 +114,7 @@ char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
 	}
 	if (close(fd) == -1)
 		ft_exit("Failed to close tmp heredoc file !!\n", 1);
+	free (str);
 	return (full_path);
 }
 

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/20 21:23:26 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:59:30 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	*ft_expand(char *str, t_env *env)
 	char	*res;
 	char	*tmp_val;
 
-	res = ft_strdup("");
-	tmp_val = ft_strdup("");
+	res = NULL;
+	tmp_val = NULL;
 	i = 0;
 	j = 0;
 	while (str[i] && str[i] != '$')
@@ -38,6 +38,8 @@ char	*ft_expand(char *str, t_env *env)
 	}
 	if (str[j])
 		res = ft_join_free(res, &str[j]);
+	free(str);
+		detect(env);
 	return (res);
 }
 
@@ -81,6 +83,7 @@ char	*ft_rm_exp(char *str, t_env *env)
 	}
 	else
 		res = ft_rm__exp(str, env, res, i);
+	free(str);
 	return (res);
 }
 
@@ -105,6 +108,8 @@ char	**ft_format(char *str)
 	char	**spl;
 
 	spl = ft_split(str, ' ');
+	free (str);
+	str = NULL;
 	return (spl);
 }
 
@@ -114,9 +119,11 @@ char	**ft_main_exp(char *str, t_env *env)
 	t_token	*lst;
 	t_token	*tmp;
 	char	*s_tmp;
+	char	**res;
 	int		a;
 
 	a = 0;
+	res = NULL;
 	s_tmp = NULL;
 	lst = NULL;
 	lst = ft_strtok(str);
@@ -128,11 +135,16 @@ char	**ft_main_exp(char *str, t_env *env)
 		if ((ft_strchr(lst->str, '\'') || ft_strchr(lst->str, '\"')))
 		{
 			a = 1;
+			s_tmp = lst->str;
 			lst->str = ft_rm_exp(lst->str, env);
+
 		}
 		if (!a && lst->str && ft_strchr(lst->str, '*'))
 			lst->str = ft_main_wc(lst->str, env);
 		lst = lst->prev;
 	}
-	return (ft_format(ft_toktostr(tmp)));
+	s_tmp = ft_toktostr(tmp);
+	res = ft_format(s_tmp);
+	ft_free_token(&tmp);
+	return (res);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/18 09:23:58 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:54:12 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 // 	system("leaks minishell");
 // }
 
+void	detect(void	*res)
+{
+		puts("\n");
+		printf("HADA: %p,\n", res);
+		puts("\n");
+}
 int	main(int ac, char **av, char **env)
 {
 	// atexit(l);

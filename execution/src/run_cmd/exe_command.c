@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:16:02 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/21 18:32:24 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/22 10:29:38 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ char	*set_cmd_path(t_cmd *cmd)
 		free(temp_path);
 		i++;
 	}
-	// free(cmd->name);
 	return (NULL);
 }
 
@@ -73,18 +72,6 @@ bool	ft_check_relative_or_binary(t_cmd *cmd)
 		return (true);
 	return (false);
 }
-
-// void ft_free_cmd(t_cmd cmd)
-// {
-
-// 	// free(cmd.path_cmd);
-// 	// cmd.path_cmd = NULL;
-// 	// free(cmd.name);
-// 	// cmd.name = NULL;
-// 	// ft_free_2dstr(cmd.args);  
-// 	// ft_free_2dstr(cmd.paths); 
-// 	// ft_free_2dstr(cmd.env); 
-// }
 
 int	execute_command(char **args, t_env *env)
 {
@@ -100,6 +87,9 @@ int	execute_command(char **args, t_env *env)
 		if (!cmd.path_cmd)
 		{
 			ft_error(CNF, cmd.name + 1, 1);
+			free(cmd.path_cmd);
+			ft_free_2dstr(cmd.paths);
+			ft_free_2dstr(cmd.env);
 			return (EXIT_FAILURE);
 		}
 	}
@@ -109,6 +99,8 @@ int	execute_command(char **args, t_env *env)
 	if (pid == 0)
 	{
 		status = ft_child_process(&cmd);
+		ft_free_2dstr(cmd.paths);
+		ft_free_2dstr(cmd.env);
 		exit(status);
 	}
 	waitpid(pid, &status, 0);
