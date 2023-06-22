@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 10:01:54 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/21 23:13:32 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/22 03:24:50 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ int	handle_export_argument(char *arg, t_env **env_list)
 	char	*value;
 
 	splited = ft_split(arg, '=');
-	if (splited && splited[0] && splited[1])
+	if (splited && splited[0])
 	{
+		if (!splited[1])
+			value = ft_strdup("");
 		key = ft_strdup(splited[0]);
 		value = ft_strdup(splited[1]);
 		change_env(key, value, env_list);
@@ -33,7 +35,7 @@ int	handle_export_argument(char *arg, t_env **env_list)
 	{
 		printf("Invalid format: %s\n", arg);
 		if (splited)
-			ft_free_2dstr(splited);
+			ft_free_2darray((void **)splited);
 		return (EXIT_FAILURE);
 	}
 }

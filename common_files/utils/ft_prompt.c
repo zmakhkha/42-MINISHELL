@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/21 18:14:05 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/22 03:51:24 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	ft_prompt(char **env)
 			break;
 		ft_run_it(str, env_list);
 		free(str);
-		system("leaks minishell");
+		// system("leaks minishell");
 	}
 	ft_free_env(&env_list);
 }
