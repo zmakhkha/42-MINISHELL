@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:45:00 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/21 16:51:58 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:46:40 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,24 +104,24 @@ char	*ft_rmsq(char *str)
 	return (ft__rmsq2(str, len, c));
 }
 
-void	ft_merge_all(t_token **list)
-{
-	t_token	*lst;
-	char	*s_tmp;
+// void	ft_merge_all(t_token **list)
+// {
+// 	t_token	*lst;
+// 	char	*s_tmp;
 
-	lst = *list;
-	while (lst && lst->prev)
-	{
-		if (lst->str && lst->prev->str)
-		{
-			s_tmp = ft_join_free(lst->str, lst->prev->str);
-			free(lst->str);
-			lst->str = s_tmp;
-			lst->type = WORD;
-			ft_remove_tok(list, lst->prev);
-			continue ;
-		}
-		lst = lst->prev;
-	}
-	lst = *list;
-}
+// 	lst = *list;
+// 	while (lst && lst->prev)
+// 	{
+// 		if (lst->str && lst->prev->str)
+// 		{
+// 			s_tmp = ft_join_free(lst->str, lst->prev->str);
+// 			free(lst->str);
+// 			lst->str = s_tmp;
+// 			lst->type = WORD;
+// 			ft_remove_tok(list, lst->prev);
+// 			continue ;
+// 		}
+// 		lst = lst->prev;
+// 	}
+// 	lst = *list;
+// }

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/21 18:14:05 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/22 16:20:56 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	ft_check(char *str)
 
 void	ft_free_env(t_env **env)
 {
-	puts ("haha");
 	if (env && *env)
 	{
 		ft_free_env(&(*env)->next);
@@ -31,12 +30,14 @@ void	ft_free_env(t_env **env)
 			free ((*env)->key);
 			(*env)->key = NULL;
 		}
-		if ((*env)->value)
+		if ((*env)->value != NULL)
 		{
 			free ((*env)->value);
 			(*env)->value = NULL;
 		}
+		free(*env);
 		(*env) = NULL;
+		env = NULL;
 	}
 }
 
@@ -74,7 +75,9 @@ void	ft_free_2dstr(char **str)
 		str[i] = NULL;
 		i++;
 	}
-	free(str);
+	if (str)
+		free(str);
+		str = NULL;
 	str = NULL;
 }
 
@@ -93,7 +96,8 @@ void	ft_prompt(char **env)
 			break;
 		ft_run_it(str, env_list);
 		free(str);
-		system("leaks minishell");
+		// break;
 	}
 	ft_free_env(&env_list);
+	// system("leaks minishell");
 }

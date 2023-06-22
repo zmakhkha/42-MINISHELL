@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 19:02:26 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/30 18:34:57 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:05:25 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,10 @@ int	main(void)
 	a = fork();
 	if (a == 0)
 	{
-		ft_hdoc_tofd(ft_heredoc("ila"));
 	}
 	else
 	{
-		waitpid(a, NULL, 0);
 		printf("\n\n salina\n");
 	}
+	system ("leaks a.out");
 }

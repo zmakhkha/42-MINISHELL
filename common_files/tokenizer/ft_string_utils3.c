@@ -102,11 +102,14 @@ int	if_validp(char *str)
 char	*ft_toktostr(t_token *src)
 {
 	char	*res;
+	char	*tmp;
 
 	res = NULL;
+	tmp = NULL;
 	while (src)
 	{
-		res = ft_join_free(res, src->str);
+		tmp = src->str;
+		res = ft_join_free(res, tmp);
 		src = src->prev;
 	}
 	return (res);
