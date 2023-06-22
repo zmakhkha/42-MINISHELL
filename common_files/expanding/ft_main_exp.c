@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/22 11:59:30 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/22 16:12:37 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ char	*ft_expand(char *str, t_env *env)
 	if (str[j])
 		res = ft_join_free(res, &str[j]);
 	free(str);
-		detect(env);
 	return (res);
 }
 
@@ -146,5 +145,6 @@ char	**ft_main_exp(char *str, t_env *env)
 	s_tmp = ft_toktostr(tmp);
 	res = ft_format(s_tmp);
 	ft_free_token(&tmp);
+	ft_free_token(&lst);
 	return (res);
 }
