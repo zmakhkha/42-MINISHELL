@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:36:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/22 11:32:35 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/22 19:04:31 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void	ft_merge_dig(t_token **list)
 			(lst->type == WORD && lst->prev->type == DIGITE) || \
 			(lst->type == WORD && lst->prev->type == WORD))
 		{
+		puts("sitaaaatouuuuuuuuun");
+
 			s_tmp = ft_join_free(lst->str, lst->prev->str);
 			free(lst->str);
 			lst->str = s_tmp;
@@ -101,6 +103,8 @@ void	ft_word_dig(t_token **list)
 		if (lst && (((lst->type == DIGITE) && (lst->prev->type == WORD)) || \
 		((lst->type == WORD) && (lst->prev->type == DIGITE))))
 		{
+		puts("sabaaaatouuuuuuuuun");
+
 			s_tmp = ft_join_free(lst->str, lst->prev->str);
 			free(lst->str);
 			lst->str = s_tmp;

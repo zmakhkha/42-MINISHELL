@@ -108,6 +108,12 @@ char	*ft_toktostr(t_token *src)
 	tmp = NULL;
 	while (src)
 	{
+		puts("tmp");
+		detect(tmp);
+		puts("res");
+		detect(res);
+		puts("src");
+		detect(src);
 		tmp = src->str;
 		res = ft_join_free(res, tmp);
 		src = src->prev;

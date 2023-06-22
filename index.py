@@ -18,7 +18,7 @@ allocated = {}
 freed = {}
 hada = 'khawi'
 # Read input from a file
-filename = 'leaks'
+filename = 'leaks.txt'
 with open(filename, 'r') as file:
     file_content = file.read()
 

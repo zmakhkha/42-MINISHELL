@@ -1,0 +1,32 @@
+
+
+HADA: 0x7f9b20804170,
+
+
+res
+
+
+HADA: 0x7f9b20804290,
+
+
+src
+
+
+HADA: 0x7f9b20804220,
+
+
+MALC: 0x7f9b208042a0, LINE = 59, FILE = common_files/utils/ft_strings.c
+FREE: 0x7f9b208042a0, LINE = 111, FILE = common_files/expanding/ft_main_exp.c
+FREE: 0x7f9b208041c0, LINE = 84, FILE = common_files/utils/ft_token_utils.c
+FREE: 0x7f9b20804220, LINE = 86, FILE = common_files/utils/ft_token_utils.c
+FREE: 0x7f9b20804170, LINE = 84, FILE = common_files/utils/ft_token_utils.c
+FREE: 0x7f9b20804180, LINE = 86, FILE = common_files/utils/ft_token_utils.c
+FREE: 0x7f9b20804120, LINE = 84, FILE = common_files/utils/ft_token_utils.c
+FREE: 0x7f9b20804130, LINE = 86, FILE = common_files/utils/ft_token_utils.c
+FREE: 0x7f9b208040d0, LINE = 84, FILE = common_files/utils/ft_token_utils.c
+FREE: 0x7f9b208040e0, LINE = 86, FILE = common_files/utils/ft_token_utils.c
+FREE: 0x7f9b20804080, LINE = 84, FILE = common_files/utils/ft_token_utils.c
+FREE: 0x7f9b208041d0, LINE = 86, FILE = common_files/utils/ft_token_utils.c
+FREE: 0x7f9b208042a0, LINE = 152, FILE = common_files/expanding/ft_main_exp.c
+minishell(14357,0x10e78edc0) malloc: *** error for object 0x7f9b208042a0: pointer being freed was not allocated
+minishell(14357,0x10e78edc0) malloc: *** set a breakpoint in malloc_error_break to debug

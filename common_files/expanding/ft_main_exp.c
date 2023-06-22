@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/22 16:12:37 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/22 19:25:09 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char	*ft_expand(char *str, t_env *env)
 		i++;
 	if (str[i] && str[i] == '$')
 	{
+		puts("waaaaahidoun");
 		res = ft_join_freel(res, &str[j], i - j);
 		j = i + 1;
 		while (str[j] && (ft_isalnum(str[j]) || str[j] == '_'))
@@ -107,7 +108,8 @@ char	**ft_format(char *str)
 	char	**spl;
 
 	spl = ft_split(str, ' ');
-	free (str);
+	if (str)
+		free (str);
 	str = NULL;
 	return (spl);
 }
@@ -142,6 +144,7 @@ char	**ft_main_exp(char *str, t_env *env)
 			lst->str = ft_main_wc(lst->str, env);
 		lst = lst->prev;
 	}
+	
 	s_tmp = ft_toktostr(tmp);
 	res = ft_format(s_tmp);
 	ft_free_token(&tmp);

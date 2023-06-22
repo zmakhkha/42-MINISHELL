@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:16:02 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/22 16:10:34 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/22 16:43:35 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,7 @@ int	execute_command(char **args, t_env *env)
 		}
 	}
 	else if (cmd.relative_or_binary == true)
-	{
-		free(cmd.path_cmd);
 		cmd.path_cmd = ft_strdup(cmd.name);
-	}
 	pid = ft_protect(fork(),"fork","Fork failed");
 	if (pid == 0)
 	{

@@ -69,14 +69,18 @@ char *ft_twotoone(char **table)
 {
 	int		i;
 	char	*res;
+	char	*tmp;
 
+	puts("lalalalalalalalahahahahahahahahahahahahahahahahhahaa");
 	res = NULL;
+	tmp = NULL;
 	i = -1;
 	while (table && table[++i])
 	{
 		
-		res = ft_join_free(res, table[i]);
-		res = ft_join_free(res, " ");
+		tmp = ft_join_free(res, table[i]);
+		res = ft_join_free(tmp, " ");
+		free(tmp);
 	}
 	ft_free_2dstr(table);
 	return (res);

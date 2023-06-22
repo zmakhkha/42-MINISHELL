@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/22 16:20:28 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/22 16:54:07 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@
 # include <string.h>
 # include <unistd.h>
 
-// static void *_malloc(size_t c, char *file, int line)
-// {
-// 	void *p = malloc(c);
-// 	printf("MALC: %p, LINE = %i, FILE = %s\n", p, line, file);
-// 	return (p);
-// }
+static void *_malloc(size_t c, char *file, int line)
+{
+	void *p = malloc(c);
+	printf("MALC: %p, LINE = %i, FILE = %s\n", p, line, file);
+	return (p);
+}
 
-// static void _free(void* c, char *file, int line)
-// {
-// 	printf("FREE: %p, LINE = %i, FILE = %s\n", c, line, file);
-// 	return (free(c));
-// }
+static void _free(void* c, char *file, int line)
+{
+	printf("FREE: %p, LINE = %i, FILE = %s\n", c, line, file);
+	return (free(c));
+}
 
-// #define malloc(c) _malloc(c, __FILE__, __LINE__)
-// #define free(c) _free(c, __FILE__, __LINE__)
+#define malloc(c) _malloc(c, __FILE__, __LINE__)
+#define free(c) _free(c, __FILE__, __LINE__)
 
 
 
