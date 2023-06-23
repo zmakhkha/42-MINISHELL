@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 03:32:50 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/22 22:44:44 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/23 03:49:53 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	execute_logical_op(t_token *list, t_env *env)
 	status = 0;
 	if (list == NULL)
 		return (EXIT_FAILURE);
-	// if (list->type == Empty)
-	// 	status = execute_re(list, env);
+	if (list->type == Empty)
+		status = execute_re(list, env);
 	if (list->type == PIPE)
 		status = execute_pipe(list, env);
 	else if (list->type == AND)

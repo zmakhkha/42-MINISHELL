@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:16:02 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/22 23:06:17 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/23 04:02:22 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*set_cmd_path(t_cmd *cmd)
 	while (cmd->paths[i])
 	{
 		temp_path = ft_strjoin(cmd->paths[i], cmd->name);
-		if (access(temp_path, X_OK) == 0)
+		if (access(temp_path, X_OK | F_OK) == 0)
 		{
 			path = ft_strdup(temp_path);
 			free(temp_path);
