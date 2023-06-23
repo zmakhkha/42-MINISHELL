@@ -41,9 +41,6 @@
 // #define malloc(c) _malloc(c, __FILE__, __LINE__)
 // #define free(c) _free(c, __FILE__, __LINE__)
 
-
-
-
 # define EXLUDE "` @ # % ^ + = \ ;"
 # define H_PATH "/tmp/.minishell_history"
 // # define H_DOCP "/tmp/"
@@ -73,7 +70,7 @@ enum
 	DIGITE
 };
 
-void	detect(void	*res);
+void				detect(void *res);
 
 // -------------------------------------- //
 // -----------> Token struct <---------- //
@@ -361,10 +358,15 @@ int					ft_child_process(t_cmd *cmd);
 int					execute_logical_op(t_token *list, t_env *env);
 int					execute_command(char **args, t_env *env);
 int					execute_pipe(t_token *list, t_env *env);
+int					execute_re(t_token *list, t_env *env);
 
 /* src/run_cmd/ */
 void				child1_handler(t_pipex *pipex, t_token *list, t_env *env);
 void				child2_handler(t_pipex *pipex, t_token *list, t_env *env);
+/* src/utils/ */
+int					run_append(t_token *list, t_env *env);
+int					run_re_in(t_token *list, t_env *env);
+int					run_re_out(t_token *list, t_env *env);
 
 //-----------------------------------------------------//
 //--------------> The expanding stage <---------------//

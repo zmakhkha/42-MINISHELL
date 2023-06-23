@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exe_pipe.c                                         :+:      :+:    :+:   */
+/*   exe_re.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 15:49:04 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/22 23:09:40 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/06/22 17:08:24 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/06/23 04:41:25 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../header.h"
 
-int	execute_pipe(t_token *list, t_env *env)
+int	execute_re(t_token *list, t_env *env)
 {
-	t_pipex pipex;
+	int	status;
 
-	ft_protect(pipe(pipex.pipefd), "Pipe", "Pipe failed");
-	pipex.pid_1 = ft_protect(fork(), "fork", "Fork failed");
-	if (pipex.pid_1 == 0)
-		child1_handler(&pipex, list, env);
-	pipex.pid_2 = ft_protect(fork(), "fork", "Fork failed");
-	if (pipex.pid_2 == 0)
-		child2_handler(&pipex, list, env);
-	pipex.status = ft_exit_pipe(&pipex);
-	return (pipex.status);
+	if (!list->right || !list->right->str)
+		return (EXIT_FAILURE);
+	status = EXIT_FAILURE;
+	if (list->left->type == RE_IN)
+		status = run_re_in(list, env);
+	else if (list->left->type == RE_OUT)
+		status = run_re_out(list, env);
+	else if (list->left->type == APPEND)
+		status = run_append(list, env);
+	return (status);
 }
