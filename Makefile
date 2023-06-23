@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/23 13:31:03 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/06/23 17:09:16 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ NAME = minishell
 LIBS = libs/libs.a
 LIBS_DIR = libs
  CFLAGS = -g #-Wall -Werror -Wextra -g # -Wunused-function -Winfinite-recursion -g #-fsanitize=address -fno-omit-frame-pointer -g
-LDFLAGS = -lreadline -g # -fsanitize=address
+LDFLAGS = -lreadline -g  #-fsanitize=address
 
 HEADERS = header.h
 

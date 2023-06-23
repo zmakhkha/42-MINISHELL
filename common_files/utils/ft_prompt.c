@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/23 12:09:06 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/23 16:52:22 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	ft_free_2dstr(char **str)
 void	ft_prompt(char **env)
 {
 	char	*str;
+	char	*str1;
 	t_env	*env_list;
 	env_list = set_env(env);
 	// ft_free_envstr(env);
@@ -91,7 +92,7 @@ void	ft_prompt(char **env)
 	{
 		// usleep(100);
 		str = readline("minishell $ ");
-		if (str == NULL )
+		if (str == NULL)
 			break;
 		ft_run_it(str, env_list);
 		free(str);

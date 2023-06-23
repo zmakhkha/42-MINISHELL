@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:20:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/22 16:05:14 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:54:03 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_str	*ft__multi(t_str *src, char **parts, t_str *res)
 			i++;
 		}
 		if (i == len && ft_strnstr1(tmp, parts[i - 1], ft_strlen(tmp)))
-			ft_str_addback(&res, ft_add_str(src->str));
+			ft_str_addback(&res, ft_add_str(ft_strdup(src->str)));
 		src = src->prev;
 	}
 	return (res);

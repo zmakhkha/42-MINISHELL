@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:17:06 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 16:56:52 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:54:03 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_str	*ft_wc_left(t_str *src, char *cnd)
 			&& (src->str[i] == cnd[i]))
 				i++;
 			if (i == len)
-				ft_str_addback(&res, ft_add_str(src->str));
+				ft_str_addback(&res, ft_add_str(ft_strdup(src->str)));
 			src = src->prev;
 		}
 	}
@@ -112,7 +112,7 @@ t_str	*ft_wc_right(t_str *src, char *cnd)
 				len2--;
 			}
 			if (len2 == 0)
-				ft_str_addback(&res, ft_add_str(src->str));
+				ft_str_addback(&res, ft_add_str(ft_strdup(src->str)));
 			src = src->prev;
 		}
 	}

@@ -49,15 +49,13 @@ int	ft_check_hdoc(t_token *lst)
 char	*ft_heredoc(char *del)
 {
 	char	*hdoc;
-	char	*hdoc_;
 	char	*star;
 	char	*tmp;
 
 	tmp = NULL;
 	hdoc = NULL;
-	hdoc_ = NULL;
 	star = NULL;
-	hdoc = (char *)ft_calloc(1, 1);
+	hdoc = NULL;
 	while (1)
 	{
 		star = readline("> ");
@@ -70,11 +68,12 @@ char	*ft_heredoc(char *del)
 		}
 		else
 		{
-			hdoc_ = hdoc;
 			tmp = ft_join_free(hdoc, star);
 			free(hdoc);
+			hdoc = NULL;
 			hdoc = ft_join_free(tmp, "\n");
 			free(tmp);
+			tmp = NULL;
 		}
 		free (star);
 	}
@@ -125,6 +124,7 @@ char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
 		str = ft_twotoone(tm); 
 	}
 	free(tmp);
+	tmp = NULL;
 	while (access(full_path, F_OK) == 0)
 	{
 		path = ft_join_free(full_path, "_1");

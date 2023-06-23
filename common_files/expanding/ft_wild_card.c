@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:40:37 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/23 12:05:38 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/23 16:18:33 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,19 @@ char	*ft_strnstr1(const char *haystack, const char *needle, size_t len)
 	return (NULL);
 }
 
+t_str	*ft_strmkcpy(t_str *src)
+{
+	t_str	*res;
+
+	res = NULL;
+	while (src)
+	{
+		ft_str_addback(&res,(ft_add_str(ft_strdup(src->str))));
+		src = src->prev;
+	}
+	return(res);
+}
+
 t_str	*ft_matching(t_str *src, char *str)
 {
 	int		a;
@@ -49,7 +62,7 @@ t_str	*ft_matching(t_str *src, char *str)
 	if (str && src)
 	{
 		if (a == ALONE)
-			res = src;
+			res = ft_strmkcpy(src);
 		else if (a == LEFT)
 			res = ft_wc_left(src, prts[0]);
 		else if (a == RIGHT)
@@ -123,22 +136,23 @@ char	*ft_main_wc(char *str, t_env *env_list)
 	{
 		ft_free_str(&r);
 		r = NULL;
+		ft_free_str(&b);
+		b = NULL;
 		free(str);
 		str = NULL;
 		return (str);
 	}
 	else
 	{
-		printf("\n-------->r: %p\n", r);
-		printf("\n-------->b: %p\n", b);
-		printf("\n-------->res: %p\n", res);
 		if (r)
 		ft_free_str(&r);
 		r = NULL;
+		if (b)
+		ft_free_str(&b);
+		b = NULL;
 		if (str)
 		free(str);
 		str = NULL;
-		detect(r);
 	}
 	return (res);
 }

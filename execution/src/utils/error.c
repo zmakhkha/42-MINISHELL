@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:24:48 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/21 01:13:46 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:04:36 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	ft_error(char *msg, char *cmd, int exit_status)
 {
-	if (!cmd)
-		cmd = " ";
+
 	ft_putstr_fd("minishell: ", 2);
 	ft_putstr_fd(cmd, 2);
 	ft_putstr_fd(": ", 2);
