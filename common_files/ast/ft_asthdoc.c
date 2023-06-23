@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:05:01 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/22 10:38:06 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:14:56 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,17 @@ char	*ft_get_path(char *del, int type, t_env **env_list)
 	if (a == 0)
 	{
 		tmp = ft_heredoc(del);
-		path = ft_strdup(ft_hdoc_tofd(tmp, type, *env_list));
+		path = ft_hdoc_tofd(tmp, type, *env_list);
+		exit(0);
 	}
 	else
 	{
 		waitpid(a, NULL, 0);
+		return (ft_strdup(path));
+
+		// free(tmp);
 	}
-	return (path);
+	return(NULL);
 }
 
 void	ft_hdoc_to_file(t_token **list, t_env **env_list)
@@ -42,14 +46,15 @@ void	ft_hdoc_to_file(t_token **list, t_env **env_list)
 	if (list && (*list) && (*list)->type == HDOC)
 	{
 		tmp = ft_strtrim((*list)->str, " \t");
+		free((*list)->str);
 		if (ft_strchr(tmp, '\'') || ft_strchr(tmp, '\"'))
 		{
-			tmp = ft_exp1((*list)->str);
+			tmp = ft_exp1(tmp);
 			(*list)->str = ft_get_path(tmp, 0, env_list);
-			free(tmp);
 		}
 		else
 			(*list)->str = ft_get_path(tmp, 1, env_list);
+		free(tmp);
 		(*list)->type = RE_IN;
 	}
 }

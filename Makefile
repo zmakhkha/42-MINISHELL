@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/22 12:14:29 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/06/23 17:09:16 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ NAME = minishell
 LIBS = libs/libs.a
 LIBS_DIR = libs
  CFLAGS = -g #-Wall -Werror -Wextra -g # -Wunused-function -Winfinite-recursion -g #-fsanitize=address -fno-omit-frame-pointer -g
-LDFLAGS = -lreadline -g #-fsanitize=address -fno-omit-frame-pointer 
+LDFLAGS = -lreadline -g  #-fsanitize=address
 
 HEADERS = header.h
 
@@ -89,7 +89,7 @@ $(NAME) : $(OBJ) $(HEADERS) $(LIBS)
 library:
 	@make -C $(LIBS_DIR)
 
-%.o: %.c  $(HEADERS) | library
+%.o: %.c  $(HEADERS)  Makefile | library
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 

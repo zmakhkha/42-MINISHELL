@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 19:02:26 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/22 11:05:25 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/22 17:34:20 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,5 @@ int	main(void)
 		printf("\n\n salina\n");
 	}
 	system ("leaks a.out");
+	exit();
 }

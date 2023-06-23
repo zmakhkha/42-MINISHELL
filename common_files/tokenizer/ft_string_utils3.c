@@ -99,18 +99,24 @@ int	if_validp(char *str)
 	return (-1);
 }
 
-char	*ft_toktostr(t_token *src)
+char *ft_toktostr(t_token *src)
 {
-	char	*res;
-	char	*tmp;
+    char *res = NULL;
+    char *tmp = NULL;
+    char *tmp2 = NULL;
 
-	res = NULL;
-	tmp = NULL;
-	while (src)
-	{
-		tmp = src->str;
-		res = ft_join_free(res, tmp);
-		src = src->prev;
-	}
-	return (res);
+    while (src)
+    {
+        tmp = src->str;
+		tmp2 = res;
+        res = ft_join_free(tmp2, tmp);
+		if (tmp2)
+		{
+			free(tmp2);
+			tmp2 = NULL;
+		}
+        src = src->prev;
+    }
+    ft_free_token(&src); 
+    return res;
 }

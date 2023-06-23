@@ -1,0 +1,529 @@
+minishell $ *
+MALC: 0x606000000500, LINE = 21, FILE = common_files/utils/ft_token_utils.c
+MALC: 0x606000000560, LINE = 21, FILE = common_files/utils/ft_token_utils.c
+MALC: 0x602000000e70, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000000eb0, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000000ef0, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000000f30, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000000f70, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000000fb0, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000000ff0, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000001030, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000001070, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x6020000010b0, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x6020000010f0, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000001130, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000001170, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x6020000011b0, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x6020000011d0, LINE = 79, FILE = common_files/utils/ft_prompt.c
+haaaaaaaaaana
+MALC: 0x6020000011f0, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x602000001210, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x6020000011f0, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x602000001230, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x602000001250, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000001230, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x602000001270, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x603000003730, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000001270, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x602000001290, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x603000003760, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000001290, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x6020000012b0, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x604000000750, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x6020000012b0, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x6020000012d0, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x6060000005c0, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x6020000012d0, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x6020000012f0, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x606000000620, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x6020000012f0, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x602000001310, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x607000000250, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000001310, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x602000001330, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x6070000002c0, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000001330, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x602000001350, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x607000000330, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000001350, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x602000001370, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x608000000420, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000001370, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x602000001390, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x6080000004a0, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000001390, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x6020000013b0, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x60b0000000f0, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x6020000013b0, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x6020000013d0, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x60b0000001a0, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x6020000013d0, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+FREE: 0x602000001190, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x6020000011b0, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001150, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001170, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001110, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001130, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x6020000010d0, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x6020000010f0, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001090, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x6020000010b0, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001050, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001070, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001010, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001030, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000000fd0, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000000ff0, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000000f90, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000000fb0, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000000f50, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000000f70, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000000f10, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000000f30, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000000ed0, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000000ef0, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000000e90, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000000eb0, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000000e50, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000000e70, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000000e30, LINE = 122, FILE = common_files/expanding/ft_wild_card.c
+
+
+HADA: 0x0,
+
+
+haaaaaaaaaana
+MALC: 0x60b000000250, LINE = 60, FILE = common_files/utils/ft_strings.c
+
+
+HADA: 0x606000000560,
+
+
+FREE: 0x60b000000250, LINE = 111, FILE = common_files/expanding/ft_main_exp.c
+
+
+HADA: 0x6020000013f0,
+
+
+FREE: 0x6020000015b0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000015d0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001610, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003790, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001630, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x60d0000002b0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001650, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x6030000037f0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001670, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x6070000003a0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001690, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003850, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000016b0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000016d0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6030000038b0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x604000000790, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001710, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x606000000680, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6030000038e0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003910, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001730, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001750, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003970, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x604000000810, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001790, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000017b0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000017f0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x604000000890, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001810, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x604000000910, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001830, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x6030000039a0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001850, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001870, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000018b0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000018d0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001910, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003a00, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001930, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001950, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001990, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003a60, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003ac0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003af0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000019b0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003b50, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000019d0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003bb0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000019f0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x60b000000300, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003c10, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x60d000000450, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003c40, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x606000000740, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003c70, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x60c0000004c0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003ca0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x60b000000460, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001a10, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003cd0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000001a30, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x604000000990, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x604000000a90, LINE = 64, FILE = execution/src/run_cmd/exe_command.c
+FREE: 0x604000000ad0, LINE = 64, FILE = execution/src/run_cmd/exe_command.c
+FREE: 0x603000003d60, LINE = 64, FILE = execution/src/run_cmd/exe_command.c
+FREE: 0x602000001b10, LINE = 64, FILE = execution/src/run_cmd/exe_command.c
+FREE: 0x602000001b30, LINE = 64, FILE = execution/src/run_cmd/exe_command.c
+FREE: 0x602000001b50, LINE = 64, FILE = execution/src/run_cmd/exe_command.c
+FREE: 0x602000001b70, LINE = 64, FILE = execution/src/run_cmd/exe_command.c
+FREE: 0x603000003d90, LINE = 64, FILE = execution/src/run_cmd/exe_command.c
+FREE: 0x602000001af0, LINE = 68, FILE = execution/src/run_cmd/exe_command.c
+minishell: : command not found
+FREE: 0x0, LINE = 93, FILE = execution/src/run_cmd/exe_command.c
+FREE: 0x604000000a10, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x604000000a50, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000001a50, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000001a70, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000001a90, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000001ab0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000001ad0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x603000003d30, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x607000000480, LINE = 79, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6020000015f0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6030000037c0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x60d000000380, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x603000003820, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x607000000410, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x603000003880, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6020000016f0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6040000007d0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6060000006e0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x603000003940, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000001770, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x604000000850, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6020000017d0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6040000008d0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x604000000950, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6030000039d0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+minishell $ ls *
+MALC: 0x606000000800, LINE = 21, FILE = common_files/utils/ft_token_utils.c
+MALC: 0x606000000860, LINE = 21, FILE = common_files/utils/ft_token_utils.c
+MALC: 0x6060000008c0, LINE = 21, FILE = common_files/utils/ft_token_utils.c
+haaaaaaaaaana
+MALC: 0x602000001c30, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000001bd0, LINE = 57, FILE = common_files/lexer/ft_mergeutils.c
+FREE: 0x602000001bf0, LINE = 99, FILE = common_files/utils/ft_token_utils2.c
+FREE: 0x606000000860, LINE = 101, FILE = common_files/utils/ft_token_utils2.c
+haaaaaaaaaana
+MALC: 0x602000001c50, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000001c30, LINE = 81, FILE = common_files/lexer/ft_mergeutils.c
+FREE: 0x602000001c10, LINE = 99, FILE = common_files/utils/ft_token_utils2.c
+FREE: 0x6060000008c0, LINE = 101, FILE = common_files/utils/ft_token_utils2.c
+MALC: 0x606000000920, LINE = 21, FILE = common_files/utils/ft_token_utils.c
+MALC: 0x606000000980, LINE = 21, FILE = common_files/utils/ft_token_utils.c
+MALC: 0x6060000009e0, LINE = 21, FILE = common_files/utils/ft_token_utils.c
+MALC: 0x602000001cf0, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000001d30, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000001d70, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000001db0, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000001df0, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000001e30, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000001e70, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000001eb0, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000001ef0, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000001f30, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000001f70, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000001fb0, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000001ff0, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+MALC: 0x602000002030, LINE = 21, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000002050, LINE = 79, FILE = common_files/utils/ft_prompt.c
+haaaaaaaaaana
+MALC: 0x602000002070, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x602000002090, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000002070, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x6020000020b0, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x6020000020d0, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x6020000020b0, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x6020000020f0, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x603000003dc0, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x6020000020f0, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x602000002110, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x603000003df0, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000002110, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x602000002130, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x604000000b50, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000002130, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x602000002150, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x606000000a40, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000002150, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x602000002170, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x606000000aa0, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000002170, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x602000002190, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x6070000004f0, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000002190, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x6020000021b0, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x607000000560, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x6020000021b0, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x6020000021d0, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x6070000005d0, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x6020000021d0, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x6020000021f0, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x608000000520, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x6020000021f0, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x602000002210, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x6080000005a0, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000002210, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x602000002230, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x60b0000005c0, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000002230, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+haaaaaaaaaana
+MALC: 0x602000002250, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x60b000000670, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000002250, LINE = 84, FILE = common_files/expanding/ft_wild_card.c
+FREE: 0x602000002010, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000002030, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001fd0, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001ff0, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001f90, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001fb0, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001f50, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001f70, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001f10, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001f30, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001ed0, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001ef0, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001e90, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001eb0, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001e50, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001e70, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001e10, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001e30, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001dd0, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001df0, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001d90, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001db0, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001d50, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001d70, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001d10, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001d30, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001cd0, LINE = 51, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001cf0, LINE = 54, FILE = common_files/expanding/ft_lst_utils.c
+FREE: 0x602000001cb0, LINE = 122, FILE = common_files/expanding/ft_wild_card.c
+
+
+HADA: 0x0,
+
+
+haaaaaaaaaana
+MALC: 0x602000002270, LINE = 60, FILE = common_files/utils/ft_strings.c
+haaaaaaaaaana
+MALC: 0x602000002290, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000002270, LINE = 115, FILE = common_files/tokenizer/ft_string_utils3.c
+haaaaaaaaaana
+MALC: 0x60c000000640, LINE = 60, FILE = common_files/utils/ft_strings.c
+FREE: 0x602000002290, LINE = 115, FILE = common_files/tokenizer/ft_string_utils3.c
+
+
+HADA: 0x606000000920,
+
+
+FREE: 0x60c000000640, LINE = 111, FILE = common_files/expanding/ft_main_exp.c
+
+
+HADA: 0x6020000022b0,
+
+
+FREE: 0x602000002490, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000024b0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000024f0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003e20, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002510, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x60d0000005f0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002530, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003e80, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002550, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x607000000640, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002570, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003ee0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002590, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000025b0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003f40, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x604000000b90, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000025f0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x606000000b00, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003f70, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000003fa0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002610, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002630, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000004000, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x604000000c10, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002670, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002690, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000026d0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x604000000c90, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000026f0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x604000000d10, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002710, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000004030, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002730, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002750, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002790, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000027b0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000027f0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000004090, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002810, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002830, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002870, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x6030000040f0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000004150, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000004180, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002890, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x6030000041e0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000028b0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000004240, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000028d0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x60b000000720, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6030000042a0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x60d000000790, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6030000042d0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x606000000bc0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000004300, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x60c0000007c0, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000004330, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x60b000000880, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x6020000028f0, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x603000004360, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x602000002910, LINE = 72, FILE = execution/src/utils/env_utils.c
+FREE: 0x604000000d90, LINE = 74, FILE = execution/src/utils/env_utils.c
+FREE: 0x604000000e90, LINE = 64, FILE = execution/src/run_cmd/exe_command.c
+FREE: 0x604000000ed0, LINE = 64, FILE = execution/src/run_cmd/exe_command.c
+FREE: 0x6030000043f0, LINE = 64, FILE = execution/src/run_cmd/exe_command.c
+FREE: 0x6020000029f0, LINE = 64, FILE = execution/src/run_cmd/exe_command.c
+FREE: 0x602000002a10, LINE = 60, FILE = execution/src/run_cmd/exe_command.c
+FREE: 0x6020000029d0, LINE = 61, FILE = execution/src/run_cmd/exe_command.c
+Makefile        a.out           header.h        leaks.txt       main.o          note
+a               draft.c         index.py        main.c          minishell
+
+common_files:
+ast             expanding       lexer           tokenizer       utils
+
+execution:
+execute.c       execute.o       src
+
+libs:
+Add_functions   GNL             check_is        ft_printf       libc_function   linkedlist
+Additional      Makefile        define.h        includes.h      libs.a          print_fd
+FREE: 0x604000000e10, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x604000000e50, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000002930, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000002950, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000002970, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000002990, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6020000029b0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6030000043c0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x607000000720, LINE = 79, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000002a30, LINE = 112, FILE = execution/src/run_cmd/exe_command.c
+FREE: 0x6020000024d0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x603000003e50, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x60d0000006c0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x603000003eb0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6070000006b0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x603000003f10, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6020000025d0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x604000000bd0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x606000000b60, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x603000003fd0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000002650, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x604000000c50, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6020000026b0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x604000000cd0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x604000000d50, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x603000004060, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000002770, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6020000027d0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6030000040c0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000002850, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x603000004120, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6030000041b0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x603000004210, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x603000004270, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x60b0000007d0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x60d000000860, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x606000000c20, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x60c000000880, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x60b000000930, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x603000004390, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x604000000dd0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6110000007c0, LINE = 79, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6020000022b0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6020000022d0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6020000022f0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000002310, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000002330, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000002350, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000002370, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000002390, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6020000023b0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6020000023d0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x6020000023f0, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000002410, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000002430, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000002450, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000002470, LINE = 74, FILE = common_files/utils/ft_prompt.c
+FREE: 0x60c000000700, LINE = 79, FILE = common_files/utils/ft_prompt.c
+FREE: 0x602000001c50, LINE = 65, FILE = common_files/ast/ft_ast_utils.c
+FREE: 0x606000000800, LINE = 67, FILE = common_files/ast/ft_ast_utils.c
+FREE: 0x602000001b90, LINE = 97, FILE = common_files/utils/ft_prompt.c

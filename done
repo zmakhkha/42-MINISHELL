@@ -1,0 +1,3 @@
+execute a simple commande : /bin/ls
+empty command :  \n passes, "", '' passes
+

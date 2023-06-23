@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/22 16:12:37 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/23 16:17:23 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	*ft_expand(char *str, t_env *env)
 	int		i;
 	int		j;
 	char	*res;
+	char	*res_;
 	char	*tmp_val;
 
 	res = NULL;
@@ -32,13 +33,22 @@ char	*ft_expand(char *str, t_env *env)
 		while (str[j] && (ft_isalnum(str[j]) || str[j] == '_'))
 			j++;
 		tmp_val = ft_substr(str, i + 1, j - i - 1);
+		res_ = tmp_val;
 		tmp_val = get_value(tmp_val, env);
+		free(res_);
+		res_ = res;
 		res = ft_join_free(res, tmp_val);
+		free(res_);
 		i = j;
 	}
 	if (str[j])
+	{
+		res_ = res;
 		res = ft_join_free(res, &str[j]);
+		free(res_);
+	}
 	free(str);
+	puts(res);
 	return (res);
 }
 
@@ -107,7 +117,8 @@ char	**ft_format(char *str)
 	char	**spl;
 
 	spl = ft_split(str, ' ');
-	free (str);
+	if (str)
+		free (str);
 	str = NULL;
 	return (spl);
 }
@@ -142,9 +153,11 @@ char	**ft_main_exp(char *str, t_env *env)
 			lst->str = ft_main_wc(lst->str, env);
 		lst = lst->prev;
 	}
+	
 	s_tmp = ft_toktostr(tmp);
+	// detect(tmp);
 	res = ft_format(s_tmp);
+	if (tmp != NULL)
 	ft_free_token(&tmp);
-	ft_free_token(&lst);
 	return (res);
 }
