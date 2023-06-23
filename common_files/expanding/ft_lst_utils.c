@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 11:44:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/22 16:17:45 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/23 11:41:17 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,12 @@ void	ft_free_str(t_str **t)
 	if (t && *t)
 	{
 		ft_free_str(&(*t)->prev);
-		free((*t)->str);
+		if ((*t) && (*t)->str)
+			free((*t)->str);
 		(*t)->str = NULL;
-		free(*t);
+		if (*t)
+			free(*t);
 		(*t) = NULL;
 	}
+	t = NULL;
 }

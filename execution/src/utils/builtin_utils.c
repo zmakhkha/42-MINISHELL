@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:20:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/22 03:41:41 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:03:30 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 bool	is_builtin(char **command)
 {
+	if (command[0] == NULL)
+		return(false);
 	if (!ft_strcmpl(command[0], "echo") || !ft_strncmp(command[0], "cd", 2) ||
 		!ft_strcmpl(command[0], "pwd") || !ft_strncmp(command[0], "export", 6)
 			||

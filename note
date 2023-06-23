@@ -111,3 +111,6 @@ bash-3.2$
 # // export var=jkjkj                 jkjkj         kjjkjk
 echo $var 
 echo "$var"
+
+
+cd ccc  leaks

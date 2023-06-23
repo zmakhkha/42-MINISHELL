@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:36:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/22 11:32:35 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/23 09:00:39 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	ft_merge_dig(t_token **list)
 			lst->str = s_tmp;
 			lst->type = WORD;
 			ft_remove_tok(list, lst->prev);
+
 			continue ;
 		}
 		lst = lst->prev;

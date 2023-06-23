@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:16:02 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/23 04:02:22 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:06:11 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	execute_command(char **args, t_env *env)
 		cmd.path_cmd = set_cmd_path(&cmd);
 		if (!cmd.path_cmd)
 		{
-			ft_error(CNF, cmd.name + 1, 1);
+			ft_error(CNF, args[0], 1);
 			free(cmd.path_cmd);
 			ft_free_2dstr(cmd.paths);
 			ft_free_2dstr(cmd.env);
@@ -101,6 +101,7 @@ int	execute_command(char **args, t_env *env)
 	else if (cmd.relative_or_binary == true)
 		cmd.path_cmd = ft_strdup(cmd.name);
 	pid = ft_protect(fork(), "fork", "Fork failed");
+
 	if (pid == 0)
 	{
 		status = ft_child_process(&cmd);
