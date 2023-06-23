@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:24:48 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/22 23:39:17 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/23 04:53:22 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_protect(int return_value, char *str, char *msg)
 	if (return_value == -1)
 	{
 		ft_perror(str,msg);
-		exit(EXIT_FAILURE);
+		return(EXIT_FAILURE);
 	}
 	return (return_value);
 }
