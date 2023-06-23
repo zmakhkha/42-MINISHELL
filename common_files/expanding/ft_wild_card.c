@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:40:37 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/22 18:39:56 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:05:38 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,27 +71,43 @@ t_str	*ft_matching(t_str *src, char *str)
 char	*ft_tostr(t_str *src)
 {
 	char	*res;
+	char	*res_;
 	char	*tmp;
 
 	res = NULL;
+	res_ = NULL;
+	tmp = NULL;
 	while (src)
 	{
-		puts("jouuuuuuuuuujoun");
 		tmp = ft_join_free(src->str, " ");
-		res = ft_join_free(res, tmp);
+		res = res_;
+		res_ = ft_join_free(res_, tmp);
+		if (res)
+			free(res);
+		res = NULL;
+		if (tmp)
 		free(tmp);
-		free(src->str);
+		tmp = NULL;
+		src = src->prev;
 	}
-	// free(tmp);
-	ft_free_str(&src);
-	return (res);
+	return (res_);
+}
+
+void	ft_free_obj(t_str **s)
+{
+	if (s)
+	{
+		ft_free_obj(&(*s)->prev);
+		free(*s);
+		s = NULL;
+	}
 }
 
 // to be called foreach node
 char	*ft_main_wc(char *str, t_env *env_list)
 {
 	t_str	*r;
-	t_str	*b;
+	t_str	*b;   // haaaada ba9i fih double free mli kitfreea fih mochkila m3a r
 	char	*res;
 
 	res = NULL;
@@ -104,10 +120,25 @@ char	*ft_main_wc(char *str, t_env *env_list)
 		res = ft_tostr(b);
 	}
 	if (!res)
-		return (str);
-	if (r)
+	{
 		ft_free_str(&r);
-	free(str);
-	detect(r);
+		r = NULL;
+		free(str);
+		str = NULL;
+		return (str);
+	}
+	else
+	{
+		printf("\n-------->r: %p\n", r);
+		printf("\n-------->b: %p\n", b);
+		printf("\n-------->res: %p\n", res);
+		if (r)
+		ft_free_str(&r);
+		r = NULL;
+		if (str)
+		free(str);
+		str = NULL;
+		detect(r);
+	}
 	return (res);
 }

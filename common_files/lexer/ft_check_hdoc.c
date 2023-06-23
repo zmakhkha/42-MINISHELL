@@ -49,17 +49,33 @@ int	ft_check_hdoc(t_token *lst)
 char	*ft_heredoc(char *del)
 {
 	char	*hdoc;
+	char	*hdoc_;
 	char	*star;
+	char	*tmp;
 
+	tmp = NULL;
+	hdoc = NULL;
+	hdoc_ = NULL;
 	star = NULL;
 	hdoc = (char *)ft_calloc(1, 1);
 	while (1)
 	{
 		star = readline("> ");
-		if (star == NULL || !ft_strcmp(del, star))
+		if (star == NULL)
 			break ;
+		if (!ft_strcmp(del, star))
+		{
+			free (star);
+			break ;
+		}
 		else
-			hdoc = ft_join_free(ft_join_free(hdoc, star), "\n");
+		{
+			hdoc_ = hdoc;
+			tmp = ft_join_free(hdoc, star);
+			free(hdoc);
+			hdoc = ft_join_free(tmp, "\n");
+			free(tmp);
+		}
 		free (star);
 	}
 	return (hdoc);
@@ -69,16 +85,18 @@ char *ft_twotoone(char **table)
 {
 	int		i;
 	char	*res;
+	char	*res_;
 	char	*tmp;
 
-	puts("lalalalalalalalahahahahahahahahahahahahahahahahhahaa");
 	res = NULL;
+	res_ = NULL;
 	tmp = NULL;
 	i = -1;
 	while (table && table[++i])
 	{
-		
+		res_ = res;
 		tmp = ft_join_free(res, table[i]);
+		free(res_);
 		res = ft_join_free(tmp, " ");
 		free(tmp);
 	}
@@ -90,6 +108,7 @@ char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
 {
 	int		fd;
 	char	*path;
+	char	*tmp;
 	char	*full_path;
 	char	**tm;
 	ssize_t	b;
@@ -97,13 +116,21 @@ char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
 	b = 0;
 	path = ft_join_free("HDOC", " ");
 	full_path = ft_join_free(H_DOCP, path);
+	tmp = full_path;
+	free(path);
+	path = NULL;
 	if (type == 1)
 	{
 		tm = ft_main_exp(str, env_list);
 		str = ft_twotoone(tm); 
 	}
+	free(tmp);
 	while (access(full_path, F_OK) == 0)
-		full_path = ft_join_free(full_path, "_1");
+	{
+		path = ft_join_free(full_path, "_1");
+		full_path = path;
+		free(path);
+	}
 	fd = open(full_path, O_WRONLY | O_APPEND | O_CREAT, 0644);
 	if (fd == -1)
 		ft_exit("Failed to create the tmp heredoc file !!\n", 1);

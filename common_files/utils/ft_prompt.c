@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/22 19:19:15 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:09:06 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ void	ft_run_it(char *str, t_env	*env_list)
 		ft_main_lexer(t);
 		}
 		else if (t)
-			printf("Lexer Error !!\n");
+			printf("Parsing Error !!\n");
 		if (!g_status && t)
 			ft_main_ast(&t,&env_list);
 		else if (t)
-			printf("Parser Error dsds!!\n");
+			printf("Lexing Error !!\n");
 		t = ft_getfirst(t);
 		ft_free_tree(&t);
 }
@@ -68,7 +68,7 @@ void	ft_free_2dstr(char **str)
 	int	i;
 
 	i = 0;
-	while(str[i])
+	while(str && str[i])
 	{
 		if (str[i])
 			free(str[i]);
@@ -95,8 +95,8 @@ void	ft_prompt(char **env)
 			break;
 		ft_run_it(str, env_list);
 		free(str);
-		break;
+		// break;
 	}
 	ft_free_env(&env_list);
-	system("leaks minishell");
+	// system("leaks minishell");
 }
