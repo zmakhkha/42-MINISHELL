@@ -102,50 +102,51 @@ char *ft_twotoone(char **table)
 	ft_free_2dstr(table);
 	return (res);
 }
-char    *ft_hdoc_tofd(char *str, int type, t_env *env_list)
-{
-    int        fd;
-    char    *path;
-    char    *tmp;
-    char    *full_path;
-    char    **tm;
-    ssize_t    b;
 
-    b = 0;
-    path = ft_join_free("HDOC", " ");
-    full_path = ft_join_free(H_DOCP, path);
-    tmp = full_path;
-    free(path);
-    path = NULL;
-    if (type == 1)
-    {
-        tm = ft_main_exp(str, env_list);
-        str = ft_twotoone(tm); 
-    }
-    free(tmp);
-    tmp = NULL;
-    while (access(full_path, F_OK) == 0)
-    {
-        path = ft_join_free(full_path, "_1");
-        full_path = path;
-        free(path);
-    }
-    fd = open(full_path, O_WRONLY | O_APPEND | O_CREAT, 0644);
-    if (fd == -1)
-        ft_exit("Failed to create the tmp heredoc file !!\n", 1);
-    if (str)
-    {
-        b = write(fd, str, ft_strlen(str));
-    if (b == -1)
-        ft_exit("Failed to update the tmp heredoc file !!\n", 1);
-    b = write(fd, "\n", 1);
-    if (b == -1)
-        ft_exit("Failed to update the tmp heredoc file !!\n", 1);
-    }
-    if (close(fd) == -1)
-        ft_exit("Failed to close tmp heredoc file !!\n", 1);
-    free (str);
-    return (full_path);
+char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
+{
+	int		fd;
+	char	*path;
+	char	*tmp;
+	char	*full_path;
+	char	**tm;
+	ssize_t	b;
+
+	b = 0;
+	path = ft_join_free("HDOC", " ");
+	full_path = ft_join_free(H_DOCP, path);
+	tmp = full_path;
+	free(path);
+	path = NULL;
+	if (type == 1)
+	{
+		tm = ft_main_exp(str, env_list);
+		str = ft_twotoone(tm); 
+	}
+	free(tmp);
+	tmp = NULL;
+	while (access(full_path, F_OK) == 0)
+	{
+		path = ft_join_free(full_path, "_1");
+		full_path = path;
+		free(path);
+	}
+	fd = open(full_path, O_WRONLY | O_APPEND | O_CREAT, 0644);
+	if (fd == -1)
+		ft_exit("Failed to create the tmp heredoc file !!\n", 1);
+	if (str)
+	{
+		b = write(fd, str, ft_strlen(str));
+	if (b == -1)
+		ft_exit("Failed to update the tmp heredoc file !!\n", 1);
+	b = write(fd, "\n", 1);
+	if (b == -1)
+		ft_exit("Failed to update the tmp heredoc file !!\n", 1);
+	}
+	if (close(fd) == -1)
+		ft_exit("Failed to close tmp heredoc file !!\n", 1);
+	free (str);
+	return (full_path);
 }
 
 // void	main_hdoc_to_file(t_token **list, char *name)

@@ -114,3 +114,8 @@ echo "$var"
 
 
 cd ccc  leaks
+
+
+"$var1 $var2" : Does not woks
+ "ls $HOME"
+ 

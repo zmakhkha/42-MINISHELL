@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 09:57:15 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/24 13:50:16 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,51 +17,46 @@
 // 	system("leaks minishell");
 // }
 
-void	ft_handle(int signal)
-{
-	if (signal == SIGINT)
-	{
-		write(1, "\nminishell $", 12);
-	}
-	else if (signal == EOF)
-		{
-			write(1, "exit", 4);
-		}
-	else if (signal == SIGQUIT)
-	{
-	}
-}
+// void	detect(void	*res)
+// {
+// 		// puts("\n");
+// 		printf("\nHADA: %p,\n", res);
+// 		// puts("\n");
+// }
 
-void	ft_handle_child(int signal)
+void ft_main_handler(int signal)
 {
-	if (signal == SIGINT || signal == SIGQUIT)
-	{
+    if (signal == SIGINT)
+    {
+        write(1, "\nminishell $ ", 13);
+    }
+    else if (signal == SIGQUIT)
+    {
+    }
+    else if (signal == 50)
+    {
+        write(1, "exit", 4);
 		exit(0);
-	}
-	else if (signal == EOF)
-		write(1, "exit", 4);
-
+    }
 }
 
-void	detect(void	*res)
+void ft_signal_main()
 {
-		// puts("\n");
-		printf("\nHADA: %p,\n", res);
-		// puts("\n");
+    struct sigaction signal;
+	// void	(*pr)(int , int);  
+
+    signal.sa_handler = ft_main_handler;
+    sigemptyset(&signal.sa_mask);
+    signal.sa_flags = SA_RESTART;
+
+    sigaction(SIGINT, &signal, NULL);
+    sigaction(SIGTERM, &signal, NULL);
+    sigaction(SIGQUIT, &signal, NULL);
 }
+
 int	main(int ac, char **av, char **env)
 {
-	struct sigaction	signal;
-
-	signal.sa_handler = ft_handle;
-	sigemptyset(&signal.sa_mask);
-	signal.sa_flags = SA_RESTART;
-	
-	sigaction(SIGINT, &signal, NULL);
-	sigaction(SIGQUIT, &signal, NULL);
-	sigaction(SIGTERM, &signal, NULL);
-
-	
+	ft_signal_main();
 	if (ac != 1 || av[1])
 	{
 		printf("This program does not accept arguments\n");
