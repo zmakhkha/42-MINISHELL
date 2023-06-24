@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 14:48:13 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/24 14:51:08 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/24 14:52:31 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -296,6 +296,8 @@ void				ft_subtotree(t_token **list);
 # define CNF "command not found"
 # define CD_ER "cd: error retrieving current directory: getcwd: cannot access\
 				parent directories: No such file or directory"
+#define VALUE_PATH "/Users/ayel-fil/.docker/bin:/usr/gnu/bin:/usr/local/bin:\
+/bin:/usr/bin:.:/Users/ayel-fil/.fzf/bin"
 
 typedef struct s_pipex
 {

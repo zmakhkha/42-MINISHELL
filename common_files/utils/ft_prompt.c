@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 14:50:28 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/24 14:52:37 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	ft_free_2dstr(char **str)
 void	ft_prompt(char **env)
 {
 	char *str;
-	char *str1;
+	// char *str1;
 	t_env *env_list;
 	env_list = set_env(env);
 	if (env_list == NULL)
