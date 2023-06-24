@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:16:02 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/23 17:06:11 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/24 11:13:58 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	**get_path(char **env)
 		i++;
 	}
 	ft_putendl_fd("Path env is not set", ER);
-	return (0);
+	return (NULL);
 }
 
 t_cmd	ft_init_cmd(char **args, char **env)
@@ -83,11 +83,11 @@ int	execute_command(char **args, t_env *env)
 	int		status;
 
 	cmd = ft_init_cmd(args, list_to_array(env));
-	if (!cmd.paths)
-		return (EXIT_FAILURE);
 	cmd.relative_or_binary = ft_check_relative_or_binary(&cmd);
 	if (cmd.relative_or_binary == false)
 	{
+		if (!cmd.paths)
+			return (EXIT_FAILURE);
 		cmd.path_cmd = set_cmd_path(&cmd);
 		if (!cmd.path_cmd)
 		{
@@ -101,7 +101,6 @@ int	execute_command(char **args, t_env *env)
 	else if (cmd.relative_or_binary == true)
 		cmd.path_cmd = ft_strdup(cmd.name);
 	pid = ft_protect(fork(), "fork", "Fork failed");
-
 	if (pid == 0)
 	{
 		status = ft_child_process(&cmd);

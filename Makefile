@@ -6,7 +6,7 @@
 #    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/24 05:28:25 by ayel-fil         ###   ########.fr        #
+#    Updated: 2023/06/24 10:22:59 by ayel-fil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RESET = \033[0m
 NAME = minishell
 LIBS = libs/libs.a
 LIBS_DIR = libs 
-CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address# -Wunused-function -Winfinite-recursion -g  -fno-omit-frame-pointer -g
+CFLAGS = -Wall -Werror -Wextra  -fsanitize=address -g# -Wunused-function -Winfinite-recursion -g  -fno-omit-frame-pointer -g
 LDFLAGS = -lreadline -g  -fsanitize=address
 
 HEADERS = header.h
