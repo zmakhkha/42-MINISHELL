@@ -27,7 +27,7 @@ int	ft_protect(int return_value, char *str, char *msg)
 	if (return_value == -1)
 	{
 		ft_perror(str,msg);
-		exit(EXIT_FAILURE);
+		return(EXIT_FAILURE);
 	}
 	return (return_value);
 }

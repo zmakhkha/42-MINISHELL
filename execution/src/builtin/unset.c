@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 05:25:46 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/22 10:44:31 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/24 10:44:02 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,16 @@ void	free_env_node(t_env *node)
 {
 	if (node == NULL)
 		return ;
-	free(node->key);
-	node->key = NULL;
-	free(node->value);
-	node->value = NULL;
+	if (node->key != NULL)
+	{
+		free(node->key);
+		node->key = NULL;
+	}
+	if (node->value != NULL)
+	{
+		free(node->value);
+		node->key = NULL;
+	}
 	free(node);
 	node = NULL;
 }
@@ -48,11 +54,18 @@ void	unset_env(const char *key, t_env **env_list)
 int	execute_unset(char **list, t_env **env_list)
 {
 	int	i;
+	int	valid;
 
+	valid = 0;
 	i = 1;
 	if (!list[0])
 		return (EXIT_SUCCESS);
 	while (list[i])
-		unset_env(list[i++], env_list);
+	{
+		valid = check_if_valid(list[i]);
+		if (!valid)
+			unset_env(list[i], env_list);
+		i++;
+	}
 	return (EXIT_FAILURE);
 }
