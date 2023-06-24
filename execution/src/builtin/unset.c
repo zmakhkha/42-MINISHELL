@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 05:25:46 by ayel-fil          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/06/24 10:44:02 by ayel-fil         ###   ########.fr       */
-=======
-/*   Updated: 2023/06/22 10:44:31 by zmakhkha         ###   ########.fr       */
->>>>>>> parent of ab0bb26... Merge pull request #21 from zmakhkha/exe
+/*   Updated: 2023/06/24 14:45:20 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

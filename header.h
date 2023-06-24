@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/06/24 11:55:24 by ayel-fil         ###   ########.fr       */
-=======
-/*   Updated: 2023/06/23 19:45:09 by zmakhkha         ###   ########.fr       */
->>>>>>> parent of ab0bb26... Merge pull request #21 from zmakhkha/exe
+/*   Created: 2023/06/24 14:48:13 by ayel-fil          #+#    #+#             */
+/*   Updated: 2023/06/24 14:48:19 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
