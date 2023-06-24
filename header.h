@@ -24,6 +24,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <signal.h>
 
 // static void *_malloc(size_t c, char *file, int line)
 // {
@@ -71,6 +72,7 @@ enum
 };
 
 void				detect(void *res);
+void				ft_handle_child(int signal);
 
 // -------------------------------------- //
 // -----------> Token struct <---------- //
