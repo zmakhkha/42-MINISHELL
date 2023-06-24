@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 05:28:02 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/24 06:00:00 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@
 # define H_PATH "/tmp/.minishell_history"
 // # define H_DOCP "/tmp/"
 # define H_DOCP "/Users/zmakhkha/Desktop/tmp/"
+# define VALUE_PATH "/Users/ayel-fil/.docker/bin:/usr/gnu/bin:/usr/local/bi\
+n:/bin:/usr/bin:.:/Users/ayel-fil/.fzf/bin"
 # define SUCC 0
 # define ERR 1
 
