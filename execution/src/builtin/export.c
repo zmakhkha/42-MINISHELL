@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 10:01:54 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/24 05:25:10 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/24 08:42:32 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	execute_export(char **args, t_env **env_list)
 	while (args[i])
 	{
 		ret = check_if_valid(args[i]);
-		ret = parse_arguments(args[i], &key, &value);
+		parse_arguments(args[i], &key, &value);
 		if (!ret)
 			change_env(key, value, env_list);
 		i++;
