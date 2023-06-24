@@ -3,10 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
+#    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/24 05:28:25 by ayel-fil         ###   ########.fr        #
+<<<<<<< HEAD
+#    Updated: 2023/06/24 10:22:59 by ayel-fil         ###   ########.fr        #
+=======
+#    Updated: 2023/06/23 17:33:16 by zmakhkha         ###   ########.fr        #
+>>>>>>> parent of ab0bb26... Merge pull request #21 from zmakhkha/exe
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +22,13 @@ RESET = \033[0m
 NAME = minishell
 LIBS = libs/libs.a
 LIBS_DIR = libs 
-CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address# -Wunused-function -Winfinite-recursion -g  -fno-omit-frame-pointer -g
+<<<<<<< HEAD
+CFLAGS = -Wall -Werror -Wextra  -fsanitize=address -g# -Wunused-function -Winfinite-recursion -g  -fno-omit-frame-pointer -g
 LDFLAGS = -lreadline -g  -fsanitize=address
+=======
+CFLAGS = -g #-Wall -Werror -Wextra -g # -Wunused-function -Winfinite-recursion -g #-fsanitize=address -fno-omit-frame-pointer -g
+LDFLAGS = -lreadline -g  #-fsanitize=address
+>>>>>>> parent of ab0bb26... Merge pull request #21 from zmakhkha/exe
 
 HEADERS = header.h
 

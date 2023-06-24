@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 08:45:00 by ayel-fil         ###   ########.fr       */
+<<<<<<< HEAD
+/*   Updated: 2023/06/24 11:55:24 by ayel-fil         ###   ########.fr       */
+=======
+/*   Updated: 2023/06/23 19:45:09 by zmakhkha         ###   ########.fr       */
+>>>>>>> parent of ab0bb26... Merge pull request #21 from zmakhkha/exe
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +49,7 @@
 # define EXLUDE "` @ # % ^ + = \ ;"
 # define H_PATH "/tmp/.minishell_history"
 // # define H_DOCP "/tmp/"
-# define H_DOCP "/Users/zmakhkha/Desktop/tmp/"
+# define H_DOCP "/tmp/"
 # define SUCC 0
 # define ERR 1
 
@@ -296,8 +300,6 @@ void				ft_subtotree(t_token **list);
 # define CNF "command not found"
 # define CD_ER "cd: error retrieving current directory: getcwd: cannot access\
 				parent directories: No such file or directory"
-# define VALUE_PATH "/Users/ayel-fil/.docker/bin:/usr/gnu/bin:/usr/local/bi\
-n:/bin:/usr/bin:.:/Users/ayel-fil/.fzf/bin"
 
 typedef struct s_pipex
 {
@@ -349,8 +351,6 @@ int					execute_export(char **list, t_env **env_list);
 int					execute_unset(char **list, t_env **env_list);
 int					execute_pwd(t_env **env);
 int					declare_env(t_env **env_list);
-int					parse_arguments(char *arg, char **key, char **value);
-int					check_if_valid(char *arg);
 int					execute_exit(char **list);
 char				**ft_sort_env(char **env);
 
