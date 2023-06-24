@@ -6,20 +6,20 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:36:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/23 09:00:39 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/24 18:13:11 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
 
-void	ft_rm_space(t_token **list)
+void	ft_rm_SPACE_(t_token **list)
 {
 	t_token	*lst;
 
 	lst = ft_getfirst(*list);
 	while (lst)
 	{
-		if (lst->type == SPACE)
+		if (lst->type == SPACE_)
 			ft_remove_tok(list, lst);
 		if (lst)
 			lst = lst->prev;
@@ -48,10 +48,10 @@ void	ft_merge_sp(t_token **list)
 	lst = *list;
 	while (lst && lst->prev)
 	{
-		if ((lst && (lst->type == SPACE) && (lst->prev->type == WORD || \
-		lst->prev->type == DIGITE || lst->prev->type == SPACE)) || \
+		if ((lst && (lst->type == SPACE_) && (lst->prev->type == WORD || \
+		lst->prev->type == DIGITE || lst->prev->type == SPACE_)) || \
 		(lst && (lst->type == WORD) && (\
-		lst->prev->type == DIGITE || lst->prev->type == SPACE)))
+		lst->prev->type == DIGITE || lst->prev->type == SPACE_)))
 		{
 			s_tmp = ft_join_free(lst->str, lst->prev->str);
 			free(lst->str);
@@ -64,7 +64,7 @@ void	ft_merge_sp(t_token **list)
 	}
 }
 
-// to add ft_rm_space(list); before lst = *list; if we need to
+// to add ft_rm_SPACE_(list); before lst = *list; if we need to
 void	ft_merge_dig(t_token **list)
 {
 	t_token	*lst;

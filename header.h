@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 13:50:36 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/24 19:39:41 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <dirent.h>
 # include <errno.h>
 # include <fcntl.h>
+# include <signal.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <stdbool.h>
@@ -24,7 +25,6 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include <signal.h>
 
 // static void *_malloc(size_t c, char *file, int line)
 // {
@@ -63,7 +63,7 @@ enum
 	OR,
 	WORD,
 	FILE_,
-	SPACE,
+	SPACE_,
 	SUBSHELL,
 	AMP,
 	RE_IN,
@@ -104,7 +104,7 @@ void				ft_operators(char *str, t_token **lst, int *a, int *b);
 void				ft__operators(char *str, t_token **lst, int *a, int *b);
 
 // common_files/tokenizer/ft_string_utils2.c
-void				ft_space(char *str, t_token **lst, int *a, int *b);
+void				ft_SPACE_(char *str, t_token **lst, int *a, int *b);
 void				ft_digits(char *str, t_token **lst, int *a, int *b);
 int					ft_operators2(char *str, t_token **lst, int *a, int *b);
 int					ft_operators3(char *str, t_token **lst, int *a, int *b);
@@ -137,7 +137,7 @@ int					ft_is_quote(char c);
 void				ft_exit(char *c, int s);
 int					ft_valid_word(char c);
 int					ft_is_valid_comm2(char c);
-int					ft_is_whitespace(char c);
+int					ft_is_whiteSPACE_(char c);
 int					ft_is_operator3(char c);
 
 // -------------------------------------- //
@@ -205,7 +205,7 @@ void				ft_detect_op(t_token **list);
 
 // common_files/lexer/ft_simple_command.c
 void				ft_build_scomm(t_token **lst);
-void				ft_join_space(t_token **lst);
+void				ft_join_SPACE_(t_token **lst);
 void				ft_join_wq(t_token **lst);
 
 // common_files/lexer/ft_redirections.c
@@ -226,7 +226,7 @@ void				ft_operrors(t_token *lst);
 void				ft_succop(t_token *lst);
 void				ft_sub_red(t_token *lst);
 void				ft_syntaxerr(t_token *lst);
-void				ft_op_space(t_token **list);
+void				ft_op_SPACE_(t_token **list);
 
 // common_files/lexer/ft_red_utils.c
 void				ft_swap_red(t_token **list);
@@ -234,7 +234,7 @@ void				ft_swap_red2(t_token **list);
 void				ft_swap_red3(t_token **list);
 
 // common_files/lexer/ft_mergeutils.c
-void				ft_rm_space(t_token **list);
+void				ft_rm_SPACE_(t_token **list);
 void				ft_merge_sp(t_token **list);
 void				ft_merge_dig(t_token **list);
 void				ft_word_dig(t_token **list);
@@ -431,7 +431,10 @@ char				*ft_main_wc(char *str, t_env *env_list);
 //--------------> The Signals stage <---------------//
 
 void ft_main_handler(int signal);
+
 void 				ft_signal_main();
+void 				ft_signal_child();
+
 
 #endif
 

@@ -6,21 +6,21 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:29 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 13:24:12 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/24 18:13:11 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
 
-void	ft_space(char *str, t_token **lst, int *a, int *b)
+void	ft_SPACE_(char *str, t_token **lst, int *a, int *b)
 {
 	char	*s;
 
 	s = NULL;
-	while (str[(*b)] && ft_is_whitespace(str[*b]))
+	while (str[(*b)] && ft_is_whiteSPACE_(str[*b]))
 		*b += 1;
 	s = ft_substr(str, *a, *b - *a);
-	ft_token_addback(lst, ft_add_token(s, SPACE));
+	ft_token_addback(lst, ft_add_token(s, SPACE_));
 }
 
 void	ft_digits(char *str, t_token **lst, int *a, int *b)

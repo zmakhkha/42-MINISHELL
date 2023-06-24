@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 13:50:16 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/24 20:56:32 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,56 @@
 // 		// puts("\n");
 // }
 
+void ft_child_handler(int signal)
+{
+    if (getpid() != getppid())
+    {
+        if (signal == SIGINT || signal == SIGTERM)
+        {
+            rl_replace_line("", 0);
+            rl_on_new_line();
+            // rl_redisplay();
+            exit(0);
+        }
+    }
+}
+
 void ft_main_handler(int signal)
 {
+    rl_catch_signals = 0;
+    puts("lala");
     if (signal == SIGINT)
     {
-        write(1, "\nminishell $ ", 13);
+        write(1, "\n", 1);
+        rl_on_new_line();
+        rl_replace_line("", 0);
+        rl_redisplay();
     }
-    else if (signal == SIGQUIT)
+    else if (signal == SIGTERM)
     {
     }
-    else if (signal == 50)
-    {
-        write(1, "exit", 4);
-		exit(0);
-    }
+}
+
+void ft_signal_child()
+{
+    struct sigaction signal;
+
+    signal.sa_handler = (void (*)(int))ft_child_handler;
+    sigemptyset(&signal.sa_mask);
+    signal.ignore_signal = ignore_signal;
+
+    sigaction(SIGINT, &signal, NULL);
+    sigaction(SIGTERM, &signal, NULL);
+    sigaction(SIGQUIT, &signal, NULL);
 }
 
 void ft_signal_main()
 {
-    struct sigaction signal;
-	// void	(*pr)(int , int);  
+    int                 count;
+    struct sigaction    signal;
 
-    signal.sa_handler = ft_main_handler;
+    count = 0;
+    signal.sa_handler = (void (*)(int))ft_main_handler;
     sigemptyset(&signal.sa_mask);
     signal.sa_flags = SA_RESTART;
 
@@ -56,6 +84,8 @@ void ft_signal_main()
 
 int	main(int ac, char **av, char **env)
 {
+    rl_catch_signals = 0;
+    rl_initialize();
 	ft_signal_main();
 	if (ac != 1 || av[1])
 	{

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:01:55 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 13:13:52 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/24 18:13:11 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 // 		return ("PIPE");
 // 	else if (a == FILE_)
 // 		return ("FILE");
-// 	else if (a == SPACE)
-// 		return ("SPACE");
+// 	else if (a == SPACE_)
+// 		return ("SPACE_");
 // 	else if (a == SUBSHELL)
 // 		return ("SUBSHELL");
 // 	else if (a == AND)
@@ -87,8 +87,8 @@ t_token	*ft_strtok(char *str)
 	while (str[j] && !g_status)
 	{
 		i = j;
-		if (ft_is_whitespace(str[j]))
-			ft_space(str, &lst, &i, &j);
+		if (ft_is_whiteSPACE_(str[j]))
+			ft_SPACE_(str, &lst, &i, &j);
 		else if (ft_valid_word(str[j]))
 			ft_word(str, &lst, &i, &j);
 		else

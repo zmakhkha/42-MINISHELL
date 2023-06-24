@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 13:41:49 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/24 17:17:35 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,10 @@ void	ft_prompt(char **env)
 	{
 		// usleep(100);
 		str = readline("minishell $ ");
+		// rl_clear_message();
 		if (str == NULL)
 		{
-			ft_signal_main();
+			puts("exit");
 			break;
 		}
 		ft_run_it(str, env_list);

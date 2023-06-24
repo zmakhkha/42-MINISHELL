@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:56:14 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/26 14:59:33 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/24 18:13:11 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_opperators(t_token *lst)
 	{
 		while (lst && lst->prev && lst->prev->prev)
 		{
-			if (ft_operator(lst) && lst->prev->type == SPACE && \
+			if (ft_operator(lst) && lst->prev->type == SPACE_ && \
 			ft_operator(lst->prev->prev))
 			{
 				i = ERR;
@@ -55,7 +55,7 @@ int	ft__opperators(t_token *lst)
 	{
 		while (lst && lst->prev && lst->prev->prev)
 		{
-			if (ft_operator2(lst) && lst->prev->type == SPACE && \
+			if (ft_operator2(lst) && lst->prev->type == SPACE_ && \
 			ft_operator2(lst->prev->prev))
 			{
 				i = ERR;
