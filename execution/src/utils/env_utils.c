@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:05:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/24 05:27:14 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/24 21:25:19 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	execute_env(t_env *env_list)
 	current = env_list;
 	while (current != NULL)
 	{
+		
 		ft_putstr_fd(current->key, 1);
 		ft_putstr_fd("=", 1);
 		ft_putendl_fd(current->value, 1);
@@ -115,6 +116,8 @@ void	free_env(t_env *env_list)
 		next_node = current->next;
 		free(current->key);
 		free(current->value);
+		current->key = NULL;
+		current->value = NULL;
 		free(current);
 		current = next_node;
 	}

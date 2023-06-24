@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 15:39:12 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/24 21:23:53 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -340,7 +340,7 @@ void				change_env(char *key, char *value, t_env **env);
 char				**list_to_array(t_env *env);
 void				add_env_node(char *key, char *value, t_env **env_list);
 /* src/builtin */
-bool				is_builtin(char **command);
+bool				is_builtin(char **commad);
 int					execute_env(t_env *env_list);
 int					execute_builtin(char **list, t_env *env);
 int					execute_cd(char **cmd, t_env **env_list);
