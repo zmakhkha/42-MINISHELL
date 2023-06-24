@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/23 11:18:12 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/23 19:45:09 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <signal.h>
 
 // static void *_malloc(size_t c, char *file, int line)
 // {
@@ -71,6 +72,7 @@ enum
 };
 
 void				detect(void *res);
+void				ft_handle_child(int signal);
 
 // -------------------------------------- //
 // -----------> Token struct <---------- //

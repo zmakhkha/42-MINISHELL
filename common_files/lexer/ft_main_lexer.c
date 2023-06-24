@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:06:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/23 16:02:39 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:42:46 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void	ft_lexit(t_token *lst)
 	{
 		ft_op_space(&lst);
 		ft_fd_file(&lst);
-		ft_lasterr(lst);
 		ft_sub_red(lst);
 		ft_swap_red(&lst);
 		ft_swap_red2(&lst);
@@ -119,6 +118,7 @@ void	ft_mergewords(t_token **list)
 // to add ft_swap_red3(&lst) after ft_swap_red2(&lst); if we need to
 void	ft_main_lexer(t_token *lst)
 {
+	ft_lasterr(lst);
 	ft_mergewords(&lst);
 	ft_mergeword_num(&lst);
 	ft_detect_op(&lst);
