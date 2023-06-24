@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/24 14:48:13 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/24 14:52:31 by ayel-fil         ###   ########.fr       */
+/*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
+/*   Updated: 2023/06/24 13:50:36 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,13 @@
 // #define malloc(c) _malloc(c, __FILE__, __LINE__)
 // #define free(c) _free(c, __FILE__, __LINE__)
 
+
+
+
 # define EXLUDE "` @ # % ^ + = \ ;"
 # define H_PATH "/tmp/.minishell_history"
 // # define H_DOCP "/tmp/"
-# define H_DOCP "/tmp/"
+# define H_DOCP "/Users/zmakhkha/Desktop/tmp/"
 # define SUCC 0
 # define ERR 1
 
@@ -71,8 +74,7 @@ enum
 	DIGITE
 };
 
-void				detect(void *res);
-void				ft_handle_child(int signal);
+void	detect(void	*res);
 
 // -------------------------------------- //
 // -----------> Token struct <---------- //
@@ -296,8 +298,6 @@ void				ft_subtotree(t_token **list);
 # define CNF "command not found"
 # define CD_ER "cd: error retrieving current directory: getcwd: cannot access\
 				parent directories: No such file or directory"
-#define VALUE_PATH "/Users/ayel-fil/.docker/bin:/usr/gnu/bin:/usr/local/bin:\
-/bin:/usr/bin:.:/Users/ayel-fil/.fzf/bin"
 
 typedef struct s_pipex
 {
@@ -362,15 +362,10 @@ int					ft_child_process(t_cmd *cmd);
 int					execute_logical_op(t_token *list, t_env *env);
 int					execute_command(char **args, t_env *env);
 int					execute_pipe(t_token *list, t_env *env);
-int					execute_re(t_token *list, t_env *env);
 
 /* src/run_cmd/ */
 void				child1_handler(t_pipex *pipex, t_token *list, t_env *env);
 void				child2_handler(t_pipex *pipex, t_token *list, t_env *env);
-/* src/utils/ */
-int					run_append(t_token *list, t_env *env);
-int					run_re_in(t_token *list, t_env *env);
-int					run_re_out(t_token *list, t_env *env);
 
 //-----------------------------------------------------//
 //--------------> The expanding stage <---------------//
@@ -432,6 +427,11 @@ char				*ft_strnstr1(const char *haystack, const char *needle,
 						size_t len);
 t_str				*ft_matching(t_str *src, char *str);
 char				*ft_main_wc(char *str, t_env *env_list);
+
+//--------------> The Signals stage <---------------//
+
+void ft_main_handler(int signal);
+void 				ft_signal_main();
 
 #endif
 

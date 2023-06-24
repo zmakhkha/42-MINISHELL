@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/23 16:17:23 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/24 14:55:24 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ char	*ft_expand(char *str, t_env *env)
 		free(res_);
 	}
 	free(str);
-	puts(res);
 	return (res);
 }
 
