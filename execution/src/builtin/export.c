@@ -6,55 +6,65 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 10:01:54 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/22 03:24:50 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/24 08:42:32 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../header.h"
 
-int	handle_export_argument(char *arg, t_env **env_list)
+int	check_if_valid(char *arg)
 {
-	char	**splited;
-	char	*key;
-	char	*value;
-
-	splited = ft_split(arg, '=');
-	if (splited && splited[0])
+	if (!ft_isalpha(arg[0]))
 	{
-		if (!splited[1])
-			value = ft_strdup("");
-		key = ft_strdup(splited[0]);
-		value = ft_strdup(splited[1]);
-		change_env(key, value, env_list);
-		free(key);
-		free(value);
-		ft_free_2darray((void **)splited);
-		return (EXIT_SUCCESS);
-	}
-	else
-	{
-		printf("Invalid format: %s\n", arg);
-		if (splited)
-			ft_free_2darray((void **)splited);
+		ft_perror(arg, "not a valid identifier");
 		return (EXIT_FAILURE);
 	}
+	return (EXIT_SUCCESS);
+}
+int	parse_arguments(char *arg, char **key, char **value)
+{
+	int	j;
+
+	j = 0;
+	while (arg[j] && arg[j] != '=')
+	{
+		j++;
+	}
+	*key = ft_calloc(j + 1, sizeof(char));
+	*value = NULL;
+	ft_strlcpy(*key, arg, j + 1);
+	if (arg[j] == '=')
+	{
+		*value = ft_calloc(ft_strlen(arg) - j, sizeof(char));
+		ft_strlcpy(*value, (arg + j + 1), (ft_strlen(arg) - j));
+	}
+	return (EXIT_SUCCESS);
 }
 
 int	execute_export(char **args, t_env **env_list)
 {
-	int i;
+	int		i;
+	char	*key;
+	char	*value;
+	int		ret;
 
 	i = 1;
+	ret = 0;
+	if (args == NULL)
+	{
+		return (0);
+	}
 	if (args[0] && !args[1])
 	{
 		declare_env(env_list);
-		return (EXIT_SUCCESS);
 	}
-	while (args[i] != NULL)
+	while (args[i])
 	{
-		if (handle_export_argument(args[i], env_list))
-			return (EXIT_FAILURE);
+		ret = check_if_valid(args[i]);
+		parse_arguments(args[i], &key, &value);
+		if (!ret)
+			change_env(key, value, env_list);
 		i++;
 	}
-	return (EXIT_SUCCESS);
+	return (0);
 }
