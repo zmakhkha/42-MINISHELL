@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:20:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/23 17:03:30 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/24 05:26:31 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	**ft_sort_env(char **env)
 		count++;
 		tmp++;
 	}
-	sorted = ft_calloc(count, sizeof(char *));
+	sorted = ft_calloc(count + 1, sizeof(char *));
 	i = 0;
 	while (*env)
 	{

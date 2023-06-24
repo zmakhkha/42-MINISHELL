@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
+#    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/23 17:33:16 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/06/24 05:28:25 by ayel-fil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ RESET = \033[0m
 NAME = minishell
 LIBS = libs/libs.a
 LIBS_DIR = libs 
-CFLAGS = -g #-Wall -Werror -Wextra -g # -Wunused-function -Winfinite-recursion -g #-fsanitize=address -fno-omit-frame-pointer -g
-LDFLAGS = -lreadline -g  #-fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address# -Wunused-function -Winfinite-recursion -g  -fno-omit-frame-pointer -g
+LDFLAGS = -lreadline -g  -fsanitize=address
 
 HEADERS = header.h
 

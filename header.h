@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/23 11:18:12 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/24 05:28:02 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -345,6 +345,7 @@ int					execute_export(char **list, t_env **env_list);
 int					execute_unset(char **list, t_env **env_list);
 int					execute_pwd(t_env **env);
 int					declare_env(t_env **env_list);
+int					parse_arguments(char *arg, char **key, char **value);
 int					execute_exit(char **list);
 char				**ft_sort_env(char **env);
 
