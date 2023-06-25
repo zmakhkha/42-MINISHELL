@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_syntax_errors2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 19:11:24 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 13:26:19 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/25 04:56:06 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	ft_succop(t_token *lst)
 // we should check that before swapping
 void	ft_sub_red(t_token *lst)
 {
-	if (lst && ft_isredirection(lst) && lst->prev && lst->prev->type == SUBSHELL)
+	if (lst && ft_isredirection(lst) && lst->prev && \
+	lst->prev->type == SUBSHELL)
 	{
 		g_status = ERR;
 	}

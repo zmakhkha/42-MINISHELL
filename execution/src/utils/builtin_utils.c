@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:20:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/24 21:25:50 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/25 04:06:49 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 bool	is_builtin(char **command)
 {
 	if (command[0] == NULL)
-		return(false);
-	if (!ft_strcmpl(command[0], "echo") || !ft_strncmp(command[0], "cd", 2) ||
-		!ft_strcmpl(command[0], "pwd") || !ft_strncmp(command[0], "export", 6)
-			||
-		!ft_strncmp(command[0], "unset", 5) || !ft_strncmp(command[0], "env", 3)
-			||
-		!ft_strncmp(command[0], "exit", 5))
+		return (false);
+	if (!ft_strcmpl(command[0], "echo") || !ft_strncmp(command[0], "cd", 2) || \
+		!ft_strcmpl(command[0], "pwd") || !ft_strncmp(command[0], "export", 6) \
+		|| !ft_strncmp(command[0], "unset", 5) || !ft_strncmp(command[0], \
+		"env", 3) || !ft_strncmp(command[0], "exit", 5))
 	{
 		return (true);
 	}
@@ -73,6 +71,7 @@ void	ft_bubble_sort(char **arr, int size)
 		i++;
 	}
 }
+
 char	**ft_sort_env(char **env)
 {
 	int		count;

@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/25 03:04:56 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/25 04:37:05 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_execution(t_token *list, t_env *env)
 
 	if (!list)
 		return (EXIT_FAILURE);
-	if (list->type == PIPE || list->type == AND || list->type == OR ||
+	if (list->type == PIPE || list->type == AND || list->type == OR || \
 		list->type == Empty)
 		g_status = execute_logical_op(list, env);
 	if (list->type == WORD)
@@ -30,6 +30,7 @@ int	ft_execution(t_token *list, t_env *env)
 			g_status = execute_builtin(expanded_cmd, env);
 		else
 			g_status = execute_command(expanded_cmd, env);
+		printf("%d\n", g_status);
 		ft_free_2dstr(expanded_cmd);
 	}
 	return (g_status);

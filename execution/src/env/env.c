@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:58:22 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/24 05:50:46 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/25 04:36:07 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_env	*set_env(char **env)
 
 char	*get_value(char *key, t_env *env)
 {
-	t_env *tmp;
+	t_env	*tmp;
 
 	tmp = env;
 	while (tmp)

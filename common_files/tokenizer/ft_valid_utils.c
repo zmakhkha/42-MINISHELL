@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:27:40 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 11:37:10 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/25 04:46:36 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int	ft_is_moperator(char c)
 
 int	ft_is_operator4(char c)
 {
-	return (c == '|' || c == '&' ||
-			c == '=' || c == '$');
+	return (c == '|' || c == '&' || c == '=' || c == '$');
 }
 
 int	ft_is_operator2(char c)
