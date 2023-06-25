@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 09:47:50 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/24 19:20:46 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/25 02:28:32 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	execute_echo(char **cmd)
 	if (cmd[i] == NULL)
 	{
 		ft_putstr("\n");
-		return (0);
+		return (g_status);
 	}
 	while (cmd[i] && is_flag_n(cmd[i]))
 	{
@@ -64,5 +64,10 @@ int	execute_echo(char **cmd)
 	echo_args(cmd + i);
 	if (new_line == 1)
 		ft_putstr("\n");
-	return (0);
+	 if (cmd[i] && !ft_strcmp(cmd[i], "?"))
+    {
+        ft_putnbr(g_status);
+        ft_putstr("\n");
+    }
+	return (g_status);
 }
