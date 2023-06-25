@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mergeutils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:36:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/25 05:03:59 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:07:18 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
 
-void	ft_rm_space(t_token **list)
+void	ft_rm_SPACE_(t_token **list)
 {
 	t_token	*lst;
 
 	lst = ft_getfirst(*list);
 	while (lst)
 	{
-		if (lst->type == SPACE)
+		if (lst->type == SPACE_)
 			ft_remove_tok(list, lst);
 		if (lst)
 			lst = lst->prev;
@@ -64,7 +64,7 @@ void	ft_merge_sp(t_token **list)
 	}
 }
 
-// to add ft_rm_space(list); before lst = *list; if we need to
+// to add ft_rm_SPACE_(list); before lst = *list; if we need to
 void	ft_merge_dig(t_token **list)
 {
 	t_token	*lst;

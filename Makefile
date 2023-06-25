@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
+#    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/24 18:33:58 by ayel-fil         ###   ########.fr        #
+#    Updated: 2023/06/25 11:06:28 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,14 @@ RESET = \033[0m
 
 NAME = minishell
 LIBS = libs/libs.a
-LIBS_DIR = libs 
-CFLAGS = -Wall -Werror -Wextra  -fsanitize=address -g# -Wunused-function -Winfinite-recursion -g  -fno-omit-frame-pointer -g
-LDFLAGS = -lreadline -g  -fsanitize=address
-
+LIBS_DIR = libs
+ CFLAGS = -g #-Wall -Werror -Wextra -g # -Wunused-function -Winfinite-recursion -g #-fsanitize=address -fno-omit-frame-pointer -g
+# LDFLAGS = -lreadline -g  #-fsanitize=address
 HEADERS = header.h
+
+LDFLAGS = -L/goinfre/zmakhkha/homebrew/opt/readline/lib
+CPPFLAGS = -I/goinfre/zmakhkha/homebrew/opt/readline/include
+
 
 #parsing part:
 SRC_MN =	main.c \
@@ -84,14 +87,14 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME) : $(OBJ) $(HEADERS) $(LIBS)
-	@$(CC) $(LDFLAGS) $(OBJ) $(LIBS) -o $(NAME)
+	@$(CC)  $(CPPFLAGS) $(LDFLAGS) $(OBJ) $(LIBS) -o $(NAME) -lreadline
 	@echo "$(NAME): $(GREEN)$(NAME) was created successfully.$(RESET)"
 
 library:
 	@make -C $(LIBS_DIR)
 
 %.o: %.c  $(HEADERS)  Makefile | library
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 
 clean:

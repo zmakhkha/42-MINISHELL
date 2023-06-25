@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main_lexer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:06:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/25 05:02:03 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:06:42 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	ft_lexit(t_token *lst)
 {
 	if (!g_status)
 	{
-		ft_op_space(&lst);
+		ft_op_SPACE_(&lst);
 		ft_fd_file(&lst);
 		ft_sub_red(lst);
 		ft_swap_red(&lst);

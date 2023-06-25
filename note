@@ -119,3 +119,26 @@ cd ccc  leaks
 "$var1 $var2" : Does not woks
  "ls $HOME"
  
+
+ ------------------------------------------
+1 st cas
+bash-3.2$ export a='$HOME     lala '
+bash-3.2$ env | grep "a="
+a=$HOME     lala 
+bash-3.2$ echo a
+a
+bash-3.2$ echo $a
+$HOME lala
+bash-3.2$ echo "$a"
+$HOME     lala 
+------------------------->
+bash-3.2$ export b="$HOME     lala "
+bash-3.2$ echo $b
+/Users/zmakhkha lala
+bash-3.2$ echo "$b"
+/Users/zmakhkha     lala 
+bash-3.2$ echo '$b'
+$b
+bash-3.2$ echo $b
+/Users/zmakhkha lala
+bash-3.2$ 

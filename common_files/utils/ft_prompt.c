@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/25 04:46:12 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:07:43 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,12 @@ void	ft_prompt(char **env)
 	{
 		// usleep(100);
 		str = readline("minishell $ ");
+		// rl_clear_message();
 		if (str == NULL)
-			break ;
+		{
+			puts("exit");
+			break;
+		}
 		ft_run_it(str, env_list);
 		free(str);
 		// break ;
