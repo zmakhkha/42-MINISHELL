@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:05:01 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 19:40:01 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:14:56 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ char	*ft_get_path(char *del, int type, t_env **env_list)
 	a = fork();
 	if (a == 0)
 	{
-		ft_signal_child();
 		tmp = ft_heredoc(del);
 		path = ft_hdoc_tofd(tmp, type, *env_list);
 		exit(0);

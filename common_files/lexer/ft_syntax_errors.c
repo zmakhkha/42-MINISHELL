@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:36:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 18:13:11 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/28 19:11:53 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_isforbidden(t_token *lst)
 	if (lst && lst->prev && lst->prev->prev)
 		ret = ((ft_loperators(lst) && ft_loperators(lst->prev) \
 		&& ft_loperators(lst->prev->prev)) \
-		|| (ft_loperators(lst) && (lst->prev->type == SPACE_) && \
+		|| (ft_loperators(lst) && (lst->prev->type == SPACE) && \
 	ft_loperators(lst->prev->prev)));
 	return (ret);
 }

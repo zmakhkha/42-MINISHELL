@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/25 11:05:47 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:45:07 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void				ft_operators(char *str, t_token **lst, int *a, int *b);
 void				ft__operators(char *str, t_token **lst, int *a, int *b);
 
 // common_files/tokenizer/ft_string_utils2.c
-void				ft_SPACE_(char *str, t_token **lst, int *a, int *b);
+void				ft_space_(char *str, t_token **lst, int *a, int *b);
 void				ft_digits(char *str, t_token **lst, int *a, int *b);
 int					ft_operators2(char *str, t_token **lst, int *a, int *b);
 int					ft_operators3(char *str, t_token **lst, int *a, int *b);
@@ -136,7 +136,7 @@ int					ft_is_quote(char c);
 void				ft_exit(char *c, int s);
 int					ft_valid_word(char c);
 int					ft_is_valid_comm2(char c);
-int					ft_is_whiteSPACE_(char c);
+int					ft_is_whitespace_(char c);
 int					ft_is_operator3(char c);
 
 // -------------------------------------- //
@@ -225,7 +225,7 @@ void				ft_operrors(t_token *lst);
 void				ft_succop(t_token *lst);
 void				ft_sub_red(t_token *lst);
 void				ft_syntaxerr(t_token *lst);
-void				ft_op_SPACE_(t_token **list);
+void				ft_op_space_(t_token **list);
 
 // common_files/lexer/ft_red_utils.c
 void				ft_swap_red(t_token **list);
