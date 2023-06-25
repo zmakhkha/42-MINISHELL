@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:58:22 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/22 09:04:02 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/25 04:36:07 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_env	*new_env_node(char *key, char *value)
 	if (!new_lst)
 		return (NULL);
 	new_lst->key = ft_strdup(key);
-	if(value == NULL)
+	if (value == NULL)
 		new_lst->value = ft_strdup("");
 	else
 		new_lst->value = ft_strdup(value);
@@ -36,7 +36,7 @@ void	add_env_node(char *key, char *value, t_env **env_list)
 	if (!new)
 	{
 		ft_putendl_fd("Failed to allocate memory", ER);
-		return;
+		return ;
 	}
 	ft_lstadd_back(env_list, new);
 }
@@ -49,14 +49,9 @@ t_env	*set_env(char **env)
 	char	*value;
 	char	**tmp;
 
-	if (env == NULL)
-	{
-		ft_putendl_fd("minishell: Path env is not set", ER);
-		return (NULL);
-	}
+	env_list = NULL;
 	i = 0;
 	tmp = NULL;
-	env_list = NULL;
 	while (env[i])
 	{
 		tmp = ft_split(env[i], '=');

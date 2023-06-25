@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:24:48 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/23 17:04:36 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/25 04:05:11 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_error(char *msg, char *cmd, int exit_status)
 {
-
 	ft_putstr_fd("minishell: ", 2);
 	ft_putstr_fd(cmd, 2);
 	ft_putstr_fd(": ", 2);
@@ -26,8 +25,8 @@ int	ft_protect(int return_value, char *str, char *msg)
 {
 	if (return_value == -1)
 	{
-		ft_perror(str,msg);
-		exit(EXIT_FAILURE);
+		ft_perror(str, msg);
+		return (EXIT_FAILURE);
 	}
 	return (return_value);
 }
@@ -39,6 +38,7 @@ void	ft_perror(char *err_msg1, char *err_msg2)
 	ft_putstr_fd(": ", ER);
 	ft_putendl_fd(err_msg2, ER);
 }
+
 int	ft_exit_pipe(t_pipex *px)
 {
 	close(px->pipefd[0]);

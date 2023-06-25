@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:06:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 18:13:11 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:06:42 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_lasterr(t_token *lst)
 {
 	if (lst)
 	{
-		if (ft_getlast(lst)->type == RE_IN || ft_getlast(lst)->type == RE_OUT\
+		if (ft_getlast(lst)->type == RE_IN || ft_getlast(lst)->type == RE_OUT \
 		|| ft_getlast(lst)->type == APPEND)
 		g_status = ERR;
 	}
@@ -26,8 +26,7 @@ void	ft_singleerr(t_token *lst)
 {
 	if (lst && !lst->prev)
 	{
-		if (lst->type == RE_IN || lst->type == RE_OUT\
-		|| lst->type == APPEND)
+		if (lst->type == RE_IN || lst->type == RE_OUT || lst->type == APPEND)
 		g_status = ERR;
 	}
 }

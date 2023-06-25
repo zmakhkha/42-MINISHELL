@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 19:11:24 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 18:13:11 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:07:24 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	ft_succop(t_token *lst)
 // we should check that before swapping
 void	ft_sub_red(t_token *lst)
 {
-	if (lst && ft_isredirection(lst) && lst->prev && lst->prev->type == SUBSHELL)
+	if (lst && ft_isredirection(lst) && lst->prev && \
+	lst->prev->type == SUBSHELL)
 	{
 		g_status = ERR;
 	}

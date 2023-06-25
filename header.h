@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 19:39:41 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:05:47 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <signal.h>
 # include <readline/history.h>
 # include <readline/readline.h>
+# include <signal.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -42,13 +43,10 @@
 // #define malloc(c) _malloc(c, __FILE__, __LINE__)
 // #define free(c) _free(c, __FILE__, __LINE__)
 
-
-
-
 # define EXLUDE "` @ # % ^ + = \ ;"
 # define H_PATH "/tmp/.minishell_history"
 // # define H_DOCP "/tmp/"
-# define H_DOCP "/Users/zmakhkha/Desktop/tmp/"
+# define H_DOCP "/tmp/"
 # define SUCC 0
 # define ERR 1
 
@@ -74,7 +72,8 @@ enum
 	DIGITE
 };
 
-void	detect(void	*res);
+void				detect(void *res);
+void				ft_handle_child(int signal);
 
 // -------------------------------------- //
 // -----------> Token struct <---------- //
@@ -298,6 +297,9 @@ void				ft_subtotree(t_token **list);
 # define CNF "command not found"
 # define CD_ER "cd: error retrieving current directory: getcwd: cannot access\
 				parent directories: No such file or directory"
+# define VALUE_PATH "/Users/ayel-fil/.docker/bin:/usr/gnu/bin:/usr/local/bi\
+n:/bin:/usr/bin:.:/Users/ayel-fil/.fzf/bin"
+# define EXIT_ERR "exit: too many arguments"
 
 typedef struct s_pipex
 {
@@ -340,7 +342,7 @@ void				change_env(char *key, char *value, t_env **env);
 char				**list_to_array(t_env *env);
 void				add_env_node(char *key, char *value, t_env **env_list);
 /* src/builtin */
-bool				is_builtin(char **command);
+bool				is_builtin(char **commad);
 int					execute_env(t_env *env_list);
 int					execute_builtin(char **list, t_env *env);
 int					execute_cd(char **cmd, t_env **env_list);
@@ -349,6 +351,8 @@ int					execute_export(char **list, t_env **env_list);
 int					execute_unset(char **list, t_env **env_list);
 int					execute_pwd(t_env **env);
 int					declare_env(t_env **env_list);
+int					parse_arguments(char *arg, char **key, char **value);
+int					check_if_valid(char *arg);
 int					execute_exit(char **list);
 char				**ft_sort_env(char **env);
 
@@ -362,10 +366,15 @@ int					ft_child_process(t_cmd *cmd);
 int					execute_logical_op(t_token *list, t_env *env);
 int					execute_command(char **args, t_env *env);
 int					execute_pipe(t_token *list, t_env *env);
+int					execute_re(t_token *list, t_env *env);
 
 /* src/run_cmd/ */
 void				child1_handler(t_pipex *pipex, t_token *list, t_env *env);
 void				child2_handler(t_pipex *pipex, t_token *list, t_env *env);
+/* src/utils/ */
+int					run_append(t_token *list, t_env *env);
+int					run_re_in(t_token *list, t_env *env);
+int					run_re_out(t_token *list, t_env *env);
 
 //-----------------------------------------------------//
 //--------------> The expanding stage <---------------//
