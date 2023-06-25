@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main_exp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/25 11:06:34 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/24 19:11:43 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,8 @@ char	**ft_main_exp(char *str, t_env *env)
 	tmp = lst;
 	while (lst)
 	{
+		if (ft_strchr(lst->str, '$'))
+			lst->str = ft_rm_exp(lst->str, env);
 		if ((ft_strchr(lst->str, '\'') || ft_strchr(lst->str, '\"')))
 		{
 			a = 1;
@@ -146,8 +148,6 @@ char	**ft_main_exp(char *str, t_env *env)
 			lst->str = ft_rm_exp(lst->str, env);
 
 		}
-		if (ft_strchr(lst->str, '$'))
-			lst->str = ft_rm_exp(lst->str, env);
 		if (!a && lst->str && ft_strchr(lst->str, '*'))
 			lst->str = ft_main_wc(lst->str, env);
 		lst = lst->prev;

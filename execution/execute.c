@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/25 04:37:05 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:48:05 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	ft_execution(t_token *list, t_env *env)
 	if (list->type == WORD)
 	{
 		expanded_cmd = ft_main_exp(list->str, env);
+		// ft_p2darray(expanded_cmd,2);
 		if (!expanded_cmd)
 			return (EXIT_FAILURE);
 		if (is_builtin(expanded_cmd))
 			g_status = execute_builtin(expanded_cmd, env);
 		else
 			g_status = execute_command(expanded_cmd, env);
-		printf("%d\n", g_status);
 		ft_free_2dstr(expanded_cmd);
 	}
 	return (g_status);

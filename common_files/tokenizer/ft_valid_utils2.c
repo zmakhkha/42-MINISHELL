@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:33:12 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 18:13:11 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:46:51 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_valid_word(char c)
 {
 	return (!ft_is_operator(c) \
 	&& !ft_is_quote(c) && !ft_is_operator2(c) && \
-	!ft_is_whiteSPACE_(c) && !ft_isdigit(c));
+	!ft_is_whitespace_(c) && !ft_isdigit(c));
 }
 
 int	ft_is_valid_comm2(char c)
@@ -31,7 +31,7 @@ int	ft_is_valid_comm2(char c)
 	&& !ft_is_quote(c) && !ft_is_operator2(c));
 }
 
-int	ft_is_whiteSPACE_(char c)
+int	ft_is_whitespace_(char c)
 {
 	return (c == ' ' || c == '\t');
 }

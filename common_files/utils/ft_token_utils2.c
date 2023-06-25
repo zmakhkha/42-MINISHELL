@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 17:18:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 18:13:11 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/05/28 19:24:20 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 // 		printf("PIPE");
 // 	if (type == FILE_)
 // 		printf("FILE");
-// 	if (type == SPACE_)
-// 		printf("SPACE_");
+// 	if (type == SPACE)
+// 		printf("SPACE");
 // 	if (type == SUBSHELL)
 // 		printf("SUBSHELL");
 // 	if (type == AND)
