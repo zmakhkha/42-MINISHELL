@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 20:56:32 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/25 10:53:20 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void ft_child_handler(int signal)
         {
             rl_replace_line("", 0);
             rl_on_new_line();
-            // rl_redisplay();
+            rl_redisplay();
             exit(0);
         }
     }
@@ -41,7 +41,6 @@ void ft_child_handler(int signal)
 void ft_main_handler(int signal)
 {
     rl_catch_signals = 0;
-    puts("lala");
     if (signal == SIGINT)
     {
         write(1, "\n", 1);
@@ -60,7 +59,7 @@ void ft_signal_child()
 
     signal.sa_handler = (void (*)(int))ft_child_handler;
     sigemptyset(&signal.sa_mask);
-    signal.ignore_signal = ignore_signal;
+    signal.sa_handler = ft_child_handler;
 
     sigaction(SIGINT, &signal, NULL);
     sigaction(SIGTERM, &signal, NULL);
