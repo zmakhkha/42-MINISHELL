@@ -6,39 +6,69 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 09:47:50 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/21 11:17:48 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/25 04:04:11 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../header.h"
 
+static int	is_flag_n(char *flag)
+{
+	int	i;
+
+	i = 0;
+	if (!ft_strcmp(flag, "-n"))
+		return (1);
+	if (flag[0] != '-')
+		return (0);
+	i++;
+	while (flag && flag[i])
+	{
+		if (flag[i] != 'n')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static void	echo_args(char **args)
+{
+	int	i;
+
+	i = 0;
+	while (args && args[i])
+	{
+		ft_putstr(args[i]);
+		if (args[i + 1])
+			ft_putchar(' ');
+		i++;
+	}
+}
+
 int	execute_echo(char **cmd)
 {
-	int i = 1;
-	int j = 0;
-	bool newline;
+	int	new_line;
+	int	i;
 
-	newline = true;
-	while (cmd[i] != NULL && !strcmp(cmd[i], "-n"))
+	new_line = 1;
+	i = 1;
+	if (cmd[i] == NULL)
 	{
-		while (cmd[1][j] != ' ')
-		{
-			j++;
-		}
-		newline = false;
+		ft_putstr("\n");
+		return (g_status);
+	}
+	while (cmd[i] && is_flag_n(cmd[i]))
+	{
+		new_line = 0;
 		i++;
 	}
-
-	while (cmd[i] != NULL)
+	echo_args(cmd + i);
+	if (new_line == 1)
+		ft_putstr("\n");
+	if (cmd[i] && !ft_strcmp(cmd[i], "?"))
 	{
-		printf("%s", cmd[i]);
-		if (cmd[i + 1] != NULL)
-			printf(" ");
-		i++;
+		ft_putnbr(g_status);
+		ft_putstr("\n");
 	}
-
-	if (newline)
-		printf("\n");
-
-	return (0);
-} 
+	return (g_status);
+}

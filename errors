@@ -14,3 +14,6 @@ bash: unset: `3f': not a valid identifier
 minishell $ < main.c cat |cat > opop
 minish: open: open failed
 cat: stdin: Bad file descriptor
+
+minishell $ () // this should display error
+minishell $ echo $__ // should not segfault ! fixed;

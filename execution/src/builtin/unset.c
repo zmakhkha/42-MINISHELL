@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 05:25:46 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/24 10:44:02 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/24 21:26:55 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	free_env_node(t_env *node)
 	free(node);
 	node = NULL;
 }
+
 void	unset_env(const char *key, t_env **env_list)
 {
 	t_env	*current;
@@ -51,6 +52,7 @@ void	unset_env(const char *key, t_env **env_list)
 		current = current->next;
 	}
 }
+
 int	execute_unset(char **list, t_env **env_list)
 {
 	int	i;

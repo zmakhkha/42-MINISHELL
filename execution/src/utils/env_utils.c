@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:05:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/24 05:27:14 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/25 04:05:18 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ void	free_env(t_env *env_list)
 		next_node = current->next;
 		free(current->key);
 		free(current->value);
+		current->key = NULL;
+		current->value = NULL;
 		free(current);
 		current = next_node;
 	}

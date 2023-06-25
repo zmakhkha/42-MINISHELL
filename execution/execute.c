@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/23 11:31:18 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/25 04:37:05 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 int	ft_execution(t_token *list, t_env *env)
 {
-	char	**splited;
-	
-	splited = NULL;
+	char	**expanded_cmd;
+
 	if (!list)
 		return (EXIT_FAILURE);
 	if (list->type == PIPE || list->type == AND || list->type == OR || \
@@ -24,14 +23,15 @@ int	ft_execution(t_token *list, t_env *env)
 		g_status = execute_logical_op(list, env);
 	if (list->type == WORD)
 	{
-		splited = ft_main_exp(list->str,env);
-		if (!splited)
+		expanded_cmd = ft_main_exp(list->str, env);
+		if (!expanded_cmd)
 			return (EXIT_FAILURE);
-		if (is_builtin(splited))
-			g_status = execute_builtin(splited, env);
+		if (is_builtin(expanded_cmd))
+			g_status = execute_builtin(expanded_cmd, env);
 		else
-			g_status = execute_command(splited, env);
-		ft_free_2dstr(splited);
+			g_status = execute_command(expanded_cmd, env);
+		printf("%d\n", g_status);
+		ft_free_2dstr(expanded_cmd);
 	}
 	return (g_status);
 }

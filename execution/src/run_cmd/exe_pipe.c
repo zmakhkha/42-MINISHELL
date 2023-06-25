@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:49:04 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/22 23:09:40 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/25 04:06:59 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	execute_pipe(t_token *list, t_env *env)
 {
-	t_pipex pipex;
+	t_pipex	pipex;
 
 	ft_protect(pipe(pipex.pipefd), "Pipe", "Pipe failed");
 	pipex.pid_1 = ft_protect(fork(), "fork", "Fork failed");

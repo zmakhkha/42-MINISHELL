@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 15:39:12 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/25 04:03:23 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include <fcntl.h>
 # include <readline/history.h>
 # include <readline/readline.h>
+# include <signal.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include <signal.h>
 
 // static void *_malloc(size_t c, char *file, int line)
 // {
@@ -298,6 +298,7 @@ void				ft_subtotree(t_token **list);
 				parent directories: No such file or directory"
 # define VALUE_PATH "/Users/ayel-fil/.docker/bin:/usr/gnu/bin:/usr/local/bi\
 n:/bin:/usr/bin:.:/Users/ayel-fil/.fzf/bin"
+# define EXIT_ERR "exit: too many arguments"
 
 typedef struct s_pipex
 {
@@ -340,7 +341,7 @@ void				change_env(char *key, char *value, t_env **env);
 char				**list_to_array(t_env *env);
 void				add_env_node(char *key, char *value, t_env **env_list);
 /* src/builtin */
-bool				is_builtin(char **command);
+bool				is_builtin(char **commad);
 int					execute_env(t_env *env_list);
 int					execute_builtin(char **list, t_env *env);
 int					execute_cd(char **cmd, t_env **env_list);
