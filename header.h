@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/25 11:45:07 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/25 20:42:42 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,7 +233,7 @@ void				ft_swap_red2(t_token **list);
 void				ft_swap_red3(t_token **list);
 
 // common_files/lexer/ft_mergeutils.c
-void				ft_rm_SPACE_(t_token **list);
+void				ft_rm_space_(t_token **list);
 void				ft_merge_sp(t_token **list);
 void				ft_merge_dig(t_token **list);
 void				ft_word_dig(t_token **list);
@@ -444,6 +444,13 @@ void ft_main_handler(int signal);
 void 				ft_signal_main();
 void 				ft_signal_child();
 
+
+void	ft_mergewords(t_token **list);
+
+void	ft_mergeword_num(t_token **list);
+char	**ft_onesplit(char const *s, char c);
+
+char	*ft_rm__exp(char *str, t_env *env, char *res, int i);
 
 #endif
 

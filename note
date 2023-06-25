@@ -142,3 +142,14 @@ $b
 bash-3.2$ echo $b
 /Users/zmakhkha lala
 bash-3.2$ 
+
+
+export a=valid  b='valid valid 3atani' : passe
+export a=valid  b='valid valid 3atani' : passe
+bash-3.2$ export b="$HOME     lala " : passe
+
+
+export a=valid  8b=invalid  c="valid     lalalalaa"
+
+minishell $ echo $a $8b
+minishell: 8b: command not found

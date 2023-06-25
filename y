@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/25 17:04:16 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/06/25 11:23:57 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,11 @@ RESET = \033[0m
 NAME = minishell
 LIBS = libs/libs.a
 LIBS_DIR = libs
-CFLAGS = -g -Wall -Werror -Wextra -g # -Wunused-function -Winfinite-recursion 
-# LDFLAGS = -lreadline -g # -fsanitize=address
+ CFLAGS = -g -Wall -Werror -Wextra -g # -Wunused-function -Winfinite-recursion -g #-fsanitize=address -fno-omit-frame-pointer -g
+ LDFLAGS = -lreadline -g  #-fsanitize=address
 HEADERS = header.h
 
-LDFLAGS = -L/goinfre/zmakhkha/homebrew/opt/readline/lib -g -fsanitize=address
+LDFLAGS = -L/goinfre/zmakhkha/homebrew/opt/readline/lib
 CPPFLAGS = -I/goinfre/zmakhkha/homebrew/opt/readline/include
 
 
@@ -65,8 +65,7 @@ SRC_MN =	main.c \
 			common_files/expanding/ft_lst_utils.c \
 			common_files/expanding/ft_main_exp.c \
 			common_files/expanding/ft_mult.c \
-			common_files/expanding/ft_wild_card.c \
-			execution/src/utils/ft_onesplit.c
+			common_files/expanding/ft_wild_card.c
 
 #execution part:
 

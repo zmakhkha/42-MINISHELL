@@ -6,13 +6,13 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:36:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/23 09:00:39 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/25 15:13:00 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
 
-void	ft_rm_space(t_token **list)
+void	ft_rm_space_(t_token **list)
 {
 	t_token	*lst;
 
