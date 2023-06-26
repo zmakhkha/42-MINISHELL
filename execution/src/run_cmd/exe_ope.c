@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exe_ope.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 03:32:50 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/25 21:51:29 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/26 02:49:18 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int		execute_logical_op(t_token *list, t_env *env)
 		fd_in = dup(STDIN_FILENO);
 		fd_out = dup(STDOUT_FILENO);
 		status = execute_re(list->left, env);
-		status = ft_execution(list->right, env);
+		if (status != -1)
+			status = ft_execution(list->right, env);
 		ft_protect(dup2(fd_in, STDIN_FILENO), "dup2", "dup2 failed");
 		ft_protect(dup2(fd_out, STDOUT_FILENO), "dup2", "dup2 failed");
 	}
