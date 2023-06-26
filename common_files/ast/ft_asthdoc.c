@@ -6,11 +6,20 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:05:01 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/26 03:14:33 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/26 03:47:04 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
+
+void	ft_heredoc_handler()
+{
+	struct sigaction	sa;
+
+	sa.sa_handler = SIG_DFL;
+    sigaction(SIGINT, &sa, NULL);
+    sigaction(SIGTERM, &sa, NULL);
+}
 
 char	*ft_get_path(char *del, int type, t_env **env_list)
 {
@@ -23,6 +32,7 @@ char	*ft_get_path(char *del, int type, t_env **env_list)
 	a = fork();
 	if (a == 0)
 	{
+		ft_heredoc_handler();
 		tmp = ft_heredoc(del);
 		path = ft_hdoc_tofd(tmp, type, *env_list);
 		return ft_strdup(path);
@@ -59,7 +69,6 @@ void	ft_hdoc_to_file(t_token **list, t_env **env_list)
 		}
 		else
 			(*list)->str = ft_get_path(tmp, 1, env_list);
-		// free(tmp);
 		(*list)->type = RE_IN;
 	}
 }
