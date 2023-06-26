@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
+#    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/25 17:04:16 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/06/26 01:30:42 by ayel-fil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ SRC_EX = execution/execute.c execution/src/env/env.c execution/src/builtin/cd.c\
 		 
 #create .OBJ files:
 SRC = $(SRC_MN) $(SRC_EX)
-OBJ = $(SRC:.c=.o)
+OBJ = $(addprefix objs/, $(SRC:.c=.o))
 
 
 all: $(NAME)
@@ -94,7 +94,8 @@ $(NAME) : $(OBJ) $(HEADERS) $(LIBS)
 library:
 	@make -C $(LIBS_DIR)
 
-%.o: %.c  $(HEADERS)  Makefile | library
+objs/%.o: %.c  $(HEADERS)  Makefile | library
+	@mkdir -p $(dir $@)
 	@$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 
