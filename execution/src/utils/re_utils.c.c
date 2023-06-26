@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   re_utils.c.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 02:12:42 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/25 21:51:42 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/26 07:38:47 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	run_re_in(t_token *list, t_env *env)
 int	run_re_out(t_token *list, t_env *env)
 {
 	int	fd;
-	int	out_fd;
 	int	status;
 	(void)env;
 	if (!list)
@@ -44,7 +43,7 @@ int	run_re_out(t_token *list, t_env *env)
 							0644),
 					"open",
 					"open failed");
-	out_fd = dup(STDOUT_FILENO);
+	//out_fd = dup(STDOUT_FILENO);
 	ft_protect(dup2(fd, STDOUT_FILENO), "dup2", "dup2 failed");
 	ft_protect(close(fd), "close", "close failed");
 	// status = ft_execution(list->right, env);
@@ -55,7 +54,7 @@ int	run_re_out(t_token *list, t_env *env)
 int	run_append(t_token *list, t_env *env)
 {
 	int	fd;
-	int	out_fd;
+	//int	out_fd;
 	int	status;
 (void)env;
 	if (!list)
@@ -64,7 +63,7 @@ int	run_append(t_token *list, t_env *env)
 	fd = ft_protect(open(list->left->str, O_WRONLY | O_CREAT | O_APPEND, 0644),
 					"open",
 					"open failed");
-	out_fd = dup(STDOUT_FILENO);
+	//out_fd = dup(STDOUT_FILENO);
 	ft_protect(dup2(fd, STDOUT_FILENO), "dup2", "dup2 failed");
 	ft_protect(close(fd), "close", "close failed");
 	// status = ft_execution(list->right, env);

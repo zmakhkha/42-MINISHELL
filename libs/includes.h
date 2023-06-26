@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   includes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:11:49 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/05/22 14:21:05 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/26 07:30:38 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "Add_functions/add.h"
 # include "Additional/additional.h"
-# include "GNL/gnl.h"
 # include "check_is/check_is.h"
 # include "define.h"
 # include "ft_printf/ft_printf.h"

@@ -54,11 +54,9 @@ int	ft_validouble(char *str, char op)
 
 void	ft_prt(char *str, t_token **lst, int *a, int *b)
 {
-	int		len;
 	char	*s;
 
 	s = NULL;
-	len = ft_strlen(str);
 	if (str[*b] && (str[*b] == '(' && if_validp(str + *b) != -1))
 	{
 		*b += if_validp(str + *b);

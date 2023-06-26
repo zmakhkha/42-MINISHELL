@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:36:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/28 19:11:53 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/26 07:33:26 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,7 @@ int	ft_isforbidden(t_token *lst)
 
 void	ft_check_op(t_token *lst)
 {
-	t_token	*tail;
-	int		ret;
 
-	ret = SUCC;
-	tail = NULL;
 	if (lst)
 	{
 		if (ft_loperators(lst) || ft_loperators(ft_getlast(lst)) \

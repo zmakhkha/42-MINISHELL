@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 19:11:24 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/25 11:46:23 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/26 07:33:32 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,7 @@ void	ft_syntaxerr(t_token *lst)
 void	ft_op_space_(t_token **list)
 {
 	t_token	*lst;
-	t_token	*tmp;
 
-	tmp = NULL;
 	lst = *list;
 	while (lst && lst->prev)
 	{

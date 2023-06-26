@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/26 01:29:57 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/26 07:35:45 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int ft_containequl(char *str)
 	{
 		if (str[i] == '=')
 			return(true);
-			i++;
+		i++;
 	}
 	return (false);
 }
@@ -50,8 +50,7 @@ void	ft_mergewordspace(t_token **list)
 
 char	**ft_devide(char *r, char del)
 {
-	int	i;
-	int	j;
+	int		i;
 	char	**res;
 
 	res = NULL;
@@ -60,7 +59,6 @@ char	**ft_devide(char *r, char del)
 		
 	res = ft_calloc(3, sizeof(char*));
 	i = 0;
-	j = i;
 	while(r && r[i] && r[i] != del)
 		i++;
 	if (!r || r[i] == del)
@@ -157,7 +155,6 @@ void	ft_format_print(t_env *env)
 void	ft_makekey_value(t_token *lst, t_env **env)
 {
 	int	i;
-	int	j;
 	char	*key;
 	char	*val;
 
@@ -166,7 +163,6 @@ void	ft_makekey_value(t_token *lst, t_env **env)
 		key = NULL;
 		val = NULL;
 		i = 0;
-		j = i;
 		if (!ft_strchr(lst->str, '='))
 		{
 			change_env(lst->str, ft_strdup("-1"), env);

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/26 01:08:39 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/26 07:33:52 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,7 @@ char	*ft_rm_exp(char *str, t_env *env)
 
 int	ft_isquote(char *str)
 {
-	int	i;
 
-	i = 0;
 	if (str)
 	{
 		while (str)

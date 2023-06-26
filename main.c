@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/26 00:44:53 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/26 07:31:57 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,8 @@ void ft_signal_child()
 
 void ft_signal_main()
 {
-    int                 count;
     struct sigaction    signal;
 
-    count = 0;
     signal.sa_handler = (void (*)(int))ft_main_handler;
     sigemptyset(&signal.sa_mask);
     signal.sa_flags = SA_RESTART;
@@ -79,10 +77,8 @@ void ft_signal_main()
 }
 void ft_signal_ignore()
 {
-    int                 count;
     struct sigaction    signal;
 
-    count = 0;
     signal.sa_handler = SIG_IGN;
     sigemptyset(&signal.sa_mask);
     // signal.sa_flags = SA_RESTART;

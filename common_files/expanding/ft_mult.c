@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:20:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 12:51:47 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/26 07:34:38 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_str	*ft___multi(t_str *res, char *cnd, char **parts)
 		tmp = ft_wc_left(tmp, parts[0]);
 	if (cnd[len - 1] != '*')
 		tmp = ft_wc_right(tmp, parts[len1 - 1]);
-		ft_free_str(&res);
+	ft_free_str(&res);
 	return (tmp);
 }
 
@@ -68,13 +68,11 @@ t_str	*ft_multi(t_str *src, char *cnd)
 {
 	char	**parts;
 	t_str	*res;
-	int		len;
 
 	parts = ft_split(cnd, '*');
 	res = NULL;
 	if (!parts)
 		ft_exit("Allocation error ", 1);
-	len = ft_strlen2(parts);
 	res = ft__multi(src, parts, res);
 	res = ft___multi(res, cnd, parts);
 	ft_free_2dstr(parts);

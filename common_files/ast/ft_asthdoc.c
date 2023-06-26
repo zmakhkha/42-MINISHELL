@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_asthdoc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:05:01 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/26 01:13:32 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/26 07:32:16 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_get_path(char *del, int type, t_env **env_list)
 	else
 	{
 		ft_signal_ignore();
-		waitpid(-1, &g_status, 0);
+		//waitpid(-1, &g_status, 0);
 		ft_signal_main();
 		return (ft_strdup(path));
 		// free(tmp);

@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 14:57:35 by ayel-fil          #+#    #+#              #
-#    Updated: 2023/06/24 18:14:59 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/06/26 07:31:12 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ AR = ar -rcs
 
 #HEADERS:
 
-Includes =  GNL/gnl.h print_fd/print_fd.h Add_functions/add.h includes.h\
+Includes =  print_fd/print_fd.h Add_functions/add.h includes.h\
 			linkedlist/linkedlist.h libc_function/lib_c.h ft_printf/ft_printf.h\
 			Additional/additional.h check_is/check_is.h define.h
  #Cfiles:
@@ -41,7 +41,6 @@ LIB_C =  libc_function/ft_strnstr.c libc_function/ft_strlcpy.c\
 		 libc_function/ft_atoi.c libc_function/ft_itoa.c\
 		 libc_function/ft_tolower.c libc_function/ft_strcmp.c
 
-GNL = 	GNL/ft_substr_gnl.c GNL/get_next_line.c GNL/get_next_line_bonus.c
 
 CHECK =	 check_is/ft_isalpha.c check_is/ft_isdigit.c check_is/ft_isalnum.c \
 		 check_is/ft_isascii.c check_is/ft_isprint.c check_is/ft_isspace.c
@@ -68,14 +67,13 @@ FD = print_fd/ft_putchar_fd.c print_fd/ft_putstr_fd.c print_fd/ft_putnbr_fd.c\
 
 #OBJ_FILES
 OBJ_LIB_C = $(LIB_C:.c=.o)
-OBJ_GNL = $(GNL:.c=.o)
 OBJ_CHECK = $(CHECK:.c=.o)
 OBJ_PRINTF = $(PRINTF:.c=.o)
 OBJ_LINKED = $(LINKED:.c=.o)
 OBJ_ADD = $(ADD:.c=.o)
 OBJ_ADD_F = $(ADD_F:.c=.o)
 OBJ_FD = $(FD:.c=.o)
-OBJ = $(OBJ_LIB_C) $(OBJ_GNL) $(OBJ_CHECK) $(OBJ_PRINTF) $(OBJ_LINKED)\
+OBJ = $(OBJ_LIB_C) $(OBJ_CHECK) $(OBJ_PRINTF) $(OBJ_LINKED)\
 	  $(OBJ_ADD) $(OBJ_ADD_F) $(OBJ_FD)
 
 
