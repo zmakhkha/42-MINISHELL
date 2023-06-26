@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:20:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/25 04:06:49 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/25 14:52:00 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	execute_builtin(char **list, t_env *env)
 			return (execute_cd(list, &env));
 		else if (!ft_strcmpl(list[0], "pwd"))
 			return (execute_pwd(&env));
-		else if (!ft_strcmp(list[0], "export"))
-			return (execute_export(list, &env));
+		// else if (!ft_strcmp(list[0], "export"))
+		// 	return (execute_export(list, &env));
 		else if (!ft_strcmp(list[0], "unset"))
 			return (execute_unset(list, &env));
 		else if (!ft_strcmpl(list[0], "env"))

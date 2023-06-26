@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:01:55 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/26 01:16:18 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/26 01:35:40 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ t_token	*ft_strtok(char *str)
 	j = 0;
 	lst = NULL;
 	ft_forbidden(str);
+	while (str && str[j] && !g_status)
 	while (str && str[j] && !g_status)
 	{
 		i = j;

@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/26 00:45:17 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/26 01:37:38 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@
 
 # define EXLUDE "` @ # % ^ + = \ ;"
 # define H_PATH "/tmp/.minishell_history"
-// # define H_DOCP "/tmp/"
-# define H_DOCP "/Users/ayel-fil/Desktop/dd/"
+# define H_DOCP "/tmp/"
 # define SUCC 0
 # define ERR 1
 
@@ -232,7 +231,7 @@ void				ft_swap_red2(t_token **list);
 void				ft_swap_red3(t_token **list);
 
 // common_files/lexer/ft_mergeutils.c
-void				ft_rm_SPACE_(t_token **list);
+void				ft_rm_space_(t_token **list);
 void				ft_merge_sp(t_token **list);
 void				ft_merge_dig(t_token **list);
 void				ft_word_dig(t_token **list);
@@ -443,6 +442,13 @@ void				ft_main_handler(int signal);
 void				ft_signal_main(void);
 void				ft_signal_child(void);
 void				ft_signal_ignore(void);
+
+void	ft_mergewords(t_token **list);
+
+void	ft_mergeword_num(t_token **list);
+char	**ft_onesplit(char const *s, char c);
+
+char	*ft_rm__exp(char *str, t_env *env, char *res, int i);
 
 #endif
 

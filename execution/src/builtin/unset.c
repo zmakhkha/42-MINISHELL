@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 05:25:46 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/24 21:26:55 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/26 00:33:10 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,49 @@ void	free_env_node(t_env *node)
 	node = NULL;
 }
 
+// void	unset_env(const char *key, t_env **env_list)
+// {
+// 	t_env	*current;
+// 	t_env	*prev;
+
+// 	current = *env_list;
+// 	prev = NULL;
+// 	while (current != NULL)
+// 	{
+// 		if (!ft_strcmp(current->key, key))
+// 		{
+// 			if (prev == NULL)
+// 				*env_list = current->next;
+// 			else
+// 				prev->next = current->next;
+// 			free_env_node(current);
+// 			return ;
+// 		}
+// 		prev = current;
+// 		current = current->next;
+// 	}
+// }
 void	unset_env(const char *key, t_env **env_list)
 {
 	t_env	*current;
-	t_env	*prev;
 
-	current = *env_list;
-	prev = NULL;
-	while (current != NULL)
+	if (env_list && *env_list)
 	{
-		if (!ft_strcmp(current->key, key))
+		if (!ft_strcmp(key, (*env_list)->key))
 		{
-			if (prev == NULL)
-				*env_list = current->next;
-			else
-				prev->next = current->next;
-			free_env_node(current);
-			return ;
+			current = (*env_list);
+			*env_list = current->next;
+			if (current->key)
+				free(current->key);
+			current->key = ft_strdup("");
+			if (current->value)
+				free(current->value);
+			current->value = ft_strdup("");
+			// current = NULL;
 		}
-		prev = current;
-		current = current->next;
-	}
+		else
+			unset_env(key, &(*env_list)->next);
+	} 
 }
 
 int	execute_unset(char **list, t_env **env_list)
