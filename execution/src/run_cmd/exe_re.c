@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 17:08:24 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/23 04:41:25 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/25 23:01:38 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,23 @@ int	execute_re(t_token *list, t_env *env)
 {
 	int	status;
 
-	if (!list->right || !list->right->str)
-		return (EXIT_FAILURE);
-	status = EXIT_FAILURE;
-	if (list->left->type == RE_IN)
+	status = 0;
+	if (!list)
+		return (EXIT_SUCCESS);
+	if (list->type == Empty)
+	{
+		status = execute_re(list->left, env);
+		status = execute_re(list->right, env);
+	}
+	if (list->type == RE_IN)
 		status = run_re_in(list, env);
-	else if (list->left->type == RE_OUT)
+	else if (list->type == RE_OUT)
 		status = run_re_out(list, env);
-	else if (list->left->type == APPEND)
+	else if (list->type == APPEND)
 		status = run_append(list, env);
-	return (status);
+	else
+		status = EXIT_FAILURE;
+	if (status == EXIT_FAILURE)
+		return (status);
+	return (EXIT_SUCCESS);
 }

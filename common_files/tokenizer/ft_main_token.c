@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main_token.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:01:55 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/25 11:45:01 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/26 01:16:18 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_token	*ft_strtok(char *str)
 	j = 0;
 	lst = NULL;
 	ft_forbidden(str);
-	while (str[j] && !g_status)
+	while (str && str[j] && !g_status)
 	{
 		i = j;
 		if (ft_is_whitespace_(str[j]))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_asthdoc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:05:01 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/23 15:14:56 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/26 01:13:32 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,13 @@ char	*ft_get_path(char *del, int type, t_env **env_list)
 	}
 	else
 	{
-		waitpid(a, NULL, 0);
+		ft_signal_ignore();
+		waitpid(-1, &g_status, 0);
+		ft_signal_main();
 		return (ft_strdup(path));
-
 		// free(tmp);
 	}
-	return(NULL);
+	return (NULL);
 }
 
 void	ft_hdoc_to_file(t_token **list, t_env **env_list)
@@ -72,4 +73,3 @@ void	ft_hdocontree(t_token **list, t_env **env_list)
 		ft_hdocontree(&lst->right, env_list);
 	}
 }
-
