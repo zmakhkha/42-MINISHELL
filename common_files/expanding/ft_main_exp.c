@@ -3,52 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main_exp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/24 19:11:43 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/26 01:08:39 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
 
-char	*ft_expand(char *str, t_env *env)
+char *ft_expand(char *str, t_env *env)
 {
-	int		i;
-	int		j;
-	char	*res;
-	char	*res_;
-	char	*tmp_val;
+	int i = 0;
+	int j = 0;
+	char *res = NULL;
+	char *tmp_val = NULL;
 
-	res = NULL;
-	tmp_val = NULL;
-	i = 0;
-	j = 0;
 	while (str[i] && str[i] != '$')
 		i++;
+
 	if (str[i] && str[i] == '$')
 	{
-		res = ft_join_freel(res, &str[j], i - j);
+		res = ft_join_free(res, ft_substr(str, j, i - j));
+
 		j = i + 1;
 		while (str[j] && (ft_isalnum(str[j]) || str[j] == '_'))
 			j++;
+
 		tmp_val = ft_substr(str, i + 1, j - i - 1);
-		res_ = tmp_val;
-		tmp_val = get_value(tmp_val, env);
-		free(res_);
-		res_ = res;
-		res = ft_join_free(res, tmp_val);
-		free(res_);
+		char *expanded_val = get_value(tmp_val, env);
+		free(tmp_val);
+
+		res = ft_join_free(res, expanded_val);
 		i = j;
 	}
+
 	if (str[j])
-	{
-		res_ = res;
-		res = ft_join_free(res, &str[j]);
-		free(res_);
-	}
+		res = ft_join_free(res, ft_substr(str, j, ft_strlen(str) - j));
+
 	free(str);
-	return (res);
+	return res;
 }
 
 char	*ft_rm__exp(char *str, t_env *env, char *res, int i)
@@ -136,12 +130,19 @@ char	**ft_main_exp(char *str, t_env *env)
 	s_tmp = NULL;
 	lst = NULL;
 	lst = ft_strtok(str);
+	ft_mergeword_num(&lst);
+	ft_mergewords(&lst);
+	ft_merge_sp(&lst);
 	tmp = lst;
 	while (lst)
 	{
-		if (ft_strchr(lst->str, '$'))
-			lst->str = ft_rm_exp(lst->str, env);
-		if ((ft_strchr(lst->str, '\'') || ft_strchr(lst->str, '\"')))
+		if(ft_strnstr(lst->str, "**", 2))
+		{
+			ft_free_token(&lst);
+			return (NULL);
+		}
+		if (ft_strchr(lst->str, '\'') || ft_strchr(lst->str, '\"')\
+		|| ft_strchr(lst->str, '$'))
 		{
 			a = 1;
 			s_tmp = lst->str;

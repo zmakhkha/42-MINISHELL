@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/25 20:51:10 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:29:15 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,10 @@ void	ft_format_print(t_env *env)
 	while(env)
 	{
 		printf("declare -x ");
-		printf("%s=\"%s\"\n", env->key, env->value);
+		if (!ft_strcmp(env->value, "-1"))
+			printf("%s=\n", env->key);
+		else
+			printf("%s=\"%s\"\n", env->key, env->value);
 		env = env->next;
 	}
 }
@@ -166,7 +169,7 @@ void	ft_makekey_value(t_token *lst, t_env **env)
 		j = i;
 		if (!ft_strchr(lst->str, '='))
 		{
-			change_env(lst->str, NULL, env);
+			change_env(lst->str, ft_strdup("-1"), env);
 			lst = lst->prev;
 			continue ;
 		}
@@ -179,6 +182,8 @@ void	ft_makekey_value(t_token *lst, t_env **env)
 			if (ft_isvalidkey(key))
 			{
 				val = ft_substr(lst->str, i +1, ft_strlen(lst->str));
+				if (!val)
+					val = ft_strdup("");
 			}
 			else
 			{

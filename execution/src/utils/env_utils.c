@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:05:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/25 16:49:20 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/26 00:39:35 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ int	execute_env(t_env *env_list)
 	current = env_list;
 	while (current != NULL)
 	{
-		ft_putstr_fd(current->key, 1);
-		ft_putstr_fd("=", 1);
-		ft_putendl_fd(current->value, 1);
+		if (ft_strcmp(current->key, "") && ft_strcmp(current->value, ""))
+		{
+			ft_putstr_fd(current->key, 1);
+			ft_putstr_fd("=", 1);
+			ft_putendl_fd(current->value, 1);
+		}
 		current = current->next;
 	}
 	return (0);
