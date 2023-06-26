@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/25 11:02:28 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/26 00:44:53 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,6 @@ void ft_main_handler(int signal)
         rl_replace_line("", 0);
         rl_redisplay();
     }
-    else if (signal == SIGTERM)
-    {
-    }
 }
 
 void ft_signal_child()
@@ -79,6 +76,17 @@ void ft_signal_main()
     sigaction(SIGINT, &signal, NULL);
     sigaction(SIGTERM, &signal, NULL);
     sigaction(SIGQUIT, &signal, NULL);
+}
+void ft_signal_ignore()
+{
+    int                 count;
+    struct sigaction    signal;
+
+    count = 0;
+    signal.sa_handler = SIG_IGN;
+    sigemptyset(&signal.sa_mask);
+    // signal.sa_flags = SA_RESTART;
+    sigaction(SIGINT, &signal, NULL);
 }
 
 int	main(int ac, char **av, char **env)

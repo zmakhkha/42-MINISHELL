@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
+#    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/06/25 11:23:57 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/06/25 16:27:23 by ayel-fil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,12 @@ RESET = \033[0m
 NAME = minishell
 LIBS = libs/libs.a
 LIBS_DIR = libs
- CFLAGS = -g -Wall -Werror -Wextra -g # -Wunused-function -Winfinite-recursion -g #-fsanitize=address -fno-omit-frame-pointer -g
- LDFLAGS = -lreadline -g  #-fsanitize=address
+ CFLAGS = -g   -Wall -Werror -Wextra -fsanitize=address # -Wunused-function -Winfinite-recursion -g -fno-omit-frame-pointer -g
+#  LDFLAGS = -lreadline -g  -fsanitize=address
 HEADERS = header.h
 
-LDFLAGS = -L/goinfre/zmakhkha/homebrew/opt/readline/lib
-CPPFLAGS = -I/goinfre/zmakhkha/homebrew/opt/readline/include
+LDFLAGS = -L/goinfre/ayel-fil/.brew/opt/readline/lib -fsanitize=address
+CPPFLAGS = -I/goinfre/ayel-fil/.brew/opt/readline/include -fsanitize=address
 
 
 #parsing part:
@@ -81,7 +81,7 @@ SRC_EX = execution/execute.c execution/src/env/env.c execution/src/builtin/cd.c\
 		 
 #create .OBJ files:
 SRC = $(SRC_MN) $(SRC_EX)
-OBJ = $(SRC:.c=.o)
+OBJ = $(addprefix objs/, $(SRC:.c=.o))
 
 
 all: $(NAME)
@@ -93,7 +93,8 @@ $(NAME) : $(OBJ) $(HEADERS) $(LIBS)
 library:
 	@make -C $(LIBS_DIR)
 
-%.o: %.c  $(HEADERS)  Makefile | library
+objs/%.o: %.c  $(HEADERS)  Makefile | library
+	@mkdir -p $(dir $@)
 	@$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 

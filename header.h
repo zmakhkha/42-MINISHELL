@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/25 11:45:07 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/26 00:45:17 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <dirent.h>
 # include <errno.h>
 # include <fcntl.h>
-# include <signal.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
@@ -46,7 +45,7 @@
 # define EXLUDE "` @ # % ^ + = \ ;"
 # define H_PATH "/tmp/.minishell_history"
 // # define H_DOCP "/tmp/"
-# define H_DOCP "/tmp/"
+# define H_DOCP "/Users/ayel-fil/Desktop/dd/"
 # define SUCC 0
 # define ERR 1
 
@@ -439,11 +438,11 @@ char				*ft_main_wc(char *str, t_env *env_list);
 
 //--------------> The Signals stage <---------------//
 
-void ft_main_handler(int signal);
+void				ft_main_handler(int signal);
 
-void 				ft_signal_main();
-void 				ft_signal_child();
-
+void				ft_signal_main(void);
+void				ft_signal_child(void);
+void				ft_signal_ignore(void);
 
 #endif
 

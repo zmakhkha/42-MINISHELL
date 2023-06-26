@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/25 11:48:05 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/25 23:51:35 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
+
+// int	o_O_o()
+// {
+		
+// }
 
 int	ft_execution(t_token *list, t_env *env)
 {
@@ -24,7 +29,6 @@ int	ft_execution(t_token *list, t_env *env)
 	if (list->type == WORD)
 	{
 		expanded_cmd = ft_main_exp(list->str, env);
-		// ft_p2darray(expanded_cmd,2);
 		if (!expanded_cmd)
 			return (EXIT_FAILURE);
 		if (is_builtin(expanded_cmd))
