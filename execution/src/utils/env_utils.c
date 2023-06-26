@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:05:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/26 00:39:35 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/26 02:03:58 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,18 @@ char	**list_to_array(t_env *env)
 	return (array);
 }
 
+// void	ft_format_print(t_env *env)
+// {
+// 	while(env)
+// 	{
+// 		printf("declare -x ");
+// 		if (!ft_strcmp(env->value, "-1"))
+// 			printf("%s=\n", env->key);
+// 		else
+// 			printf("%s=\"%s\"\n", env->key, env->value);
+// 		env = env->next;
+// 	}
+// }
 int	declare_env(t_env **env_list)
 {
 	t_env	*current;
@@ -98,9 +110,9 @@ int	declare_env(t_env **env_list)
 		parse_arguments(sorted[i], &key, &value);
 		printf("declare -x ");
 		printf("%s=\"", key);
-		if (value == NULL)
-			printf("\"\n");
-		else
+		// if (value == NULL)
+			// printf("\"\n");
+		if(ft_strcmp(value, "-1"))
 			printf("%s\"\n", value);
 		i++;
 	}

@@ -1,14 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   export.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/11 10:01:54 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/25 16:11:08 by zmakhkha         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// /* ************************************************************************** */
+// /*                                                                            */
+// /*                                                        :::      ::::::::   */
+// /*   export.c                                           :+:      :+:    :+:   */
+// /*                                                    +:+ +:+         +:+     */
+// /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+// /*                                                +#+#+#+#+#+   +#+           */
+// /*   Created: 2023/06/11 10:01:54 by ayel-fil          #+#    #+#             */
+// /*   Updated: 2023/06/26 01:48:02 by zmakhkha         ###   ########.fr       */
+// /*                                                                            */
+// /* ************************************************************************** */
 
 #include "../../../header.h"
 
@@ -44,30 +44,30 @@ int	parse_arguments(char *arg, char **key, char **value)
 
 
 
-int	execute_export(char **args, t_env **env_list)
-{
-	int		i;
-	char	*key;
-	char	*value;
-	int		ret;
+// int	execute_export(char **args, t_env **env_list)
+// {
+// 	int		i;
+// 	char	*key;
+// 	char	*value;
+// 	int		ret;
 
-	i = 1;
-	ret = 0;
-	if (args == NULL)
-	{
-		return (0);
-	}
-	if (args[0] && !args[1])
-	{
-		declare_env(env_list);
-	}
-	while (args[i])
-	{
-		ret = check_if_valid(args[i]);
-		parse_arguments(args[i], &key, &value);
-		if (!ret)
-			change_env(key, value, env_list);
-		i++;
-	}
-	return (0);
-}
+// 	i = 1;
+// 	ret = 0;
+// 	if (args == NULL)
+// 	{
+// 		return (0);
+// 	}
+// 	if (args[0] && !args[1])
+// 	{
+// 		declare_env(env_list);
+// 	}
+// 	while (args[i])
+// 	{
+// 		ret = check_if_valid(args[i]);
+// 		parse_arguments(args[i], &key, &value);
+// 		if (!ret)
+// 			change_env(key, value, env_list);
+// 		i++;
+// 	}
+// 	return (0);
+// }

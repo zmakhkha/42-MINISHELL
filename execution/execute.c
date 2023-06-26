@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/26 01:29:57 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/26 02:02:50 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,18 +141,6 @@ void	ft_merge_num_word(t_token **list)
 	}
 }
 
-void	ft_format_print(t_env *env)
-{
-	while(env)
-	{
-		printf("declare -x ");
-		if (!ft_strcmp(env->value, "-1"))
-			printf("%s=\n", env->key);
-		else
-			printf("%s=\"%s\"\n", env->key, env->value);
-		env = env->next;
-	}
-}
 
 void	ft_makekey_value(t_token *lst, t_env **env)
 {
@@ -219,16 +207,39 @@ void	ft_handle_one(char *s, t_env **env)
 	
 }
 
-
-//validated
+// void	ft_format_print(t_env *env)
+// {
+// 	while(env)
+// 	{
+// 		printf("declare -x ");
+// 		if (!ft_strcmp(env->value, "-1"))
+// 			printf("%s=\n", env->key);
+// 		else
+// 			printf("%s=\"%s\"\n", env->key, env->value);
+// 		env = env->next;
+// 	}
+// }
+	
+// //validated
 void	ft_export_it(t_token *list, t_env **env)
 {
 	if (ft_lstlen(list) == 1 && \
 	!ft_strcmp(ft_strtrim(list->str, " "), "export"))
-		ft_format_print(*env);
+		declare_env(env);
+
 	else
 		ft_handle_one(list->str + 6, env);
 }
+
+//validated
+// void	ft_export_it(t_token *list, t_env **env)
+// {
+// 	if (ft_lstlen(list) == 1 && \
+// 	!ft_strcmp(ft_strtrim(list->str, " "), "export"))
+// 		ft_format_print(*env);
+// 	else
+// 		ft_handle_one(list->str + 6, env);
+// }
 
 int	ft_execution(t_token *list, t_env *env)
 {
