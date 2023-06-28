@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/26 00:37:00 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/28 08:23:34 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,13 @@ void	ft_free_2dstr(char **str)
 	str = NULL;
 }
 
+void reset_terminal() {
+    struct termios term;
+    tcgetattr(STDIN_FILENO, &term);
+    term.c_lflag |= (ICANON | ECHO);
+    tcsetattr(STDIN_FILENO, TCSANOW, &term);
+}
+
 // Add a command history
 void	ft_prompt(char **env)
 {
@@ -94,6 +101,7 @@ void	ft_prompt(char **env)
 		change_env("_", "/usr/bin/env", &env_list);
 	}
 	// ft_free_envstr(env);
+	reset_terminal();
 	while (1)
 	{
 		// usleep(100);

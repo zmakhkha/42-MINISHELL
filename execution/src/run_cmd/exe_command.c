@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:16:02 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/28 05:55:48 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/28 08:10:50 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,3 +117,4 @@ int	execute_command(char **args, t_env *env)
 	ft_free_2dstr(cmd.env);
 	return (status);
 }
+

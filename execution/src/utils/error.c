@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:24:48 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/28 06:00:17 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/28 08:32:16 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	ft_exit_pipe(t_pipex *px)
 	close(px->pipefd[0]);
 	close(px->pipefd[1]);
 	// ft_signal_ignore();
+	waitpid(-1, &px->status, 0);
 	waitpid(-1, &px->status, 0);
 	// ft_signal_main();
 	return (px->status);

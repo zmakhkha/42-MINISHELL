@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/28 05:33:21 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/28 08:50:21 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,6 +295,8 @@ int ft_execution(t_token *list, t_env *env)
 
         if (!splited)
          return (EXIT_FAILURE);
+		else if (!ft_strcmp(splited[0], "export"))
+			ft_export_it(list, &env);
         if (is_builtin(splited))
         	g_status = execute_builtin(splited, env);
         else

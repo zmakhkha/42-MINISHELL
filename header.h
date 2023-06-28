@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/28 05:57:34 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/28 08:42:06 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <sys/wait.h>
+#include <termios.h>
 
 // static void *_malloc(size_t c, char *file, int line)
 // {
@@ -454,7 +455,7 @@ char	*ft_rm__exp(char *str, t_env *env, char *res, int i);
 # define QUOTE -10
 
 t_token	*ft_strtok1(char *str);
-
+void	ft_export_it(t_token *list, t_env **env);
 #endif
 
 //
