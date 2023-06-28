@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/28 03:59:22 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/28 07:31:55 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,11 +120,9 @@ char	*ft_main_exp(char *str, t_env *env)
 	t_token	*lst;
 	t_token	*tmp;
 	char	*s_tmp;
-	char	**res;
 	int		a;
 
 	a = 0;
-	res = NULL;
 	s_tmp = NULL;
 	lst = NULL;
 	lst = ft_strtok(str);
