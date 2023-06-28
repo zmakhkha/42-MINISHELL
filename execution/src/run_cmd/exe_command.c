@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exe_command.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:16:02 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/26 00:47:07 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/06/28 05:55:48 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,9 @@ int	execute_command(char **args, t_env *env)
 		ft_free_2dstr(cmd.env);
 		exit(status);
 	}
-	ft_signal_ignore();
+	// ft_signal_ignore();
 	waitpid(-1, &status, 0);
-	ft_signal_main();
+	// ft_signal_main();
 	ft_free_2dstr(cmd.paths);
 	free(cmd.path_cmd);
 	ft_free_2dstr(cmd.env);

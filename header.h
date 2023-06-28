@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/28 04:27:13 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/28 05:57:34 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 
 # define EXLUDE "` @ # % ^ + = \ ;"
 # define H_PATH "/tmp/.minishell_history"
-# define H_DOCP "/tmp/"
+# define H_DOCP "/Users/zmakhkha/Desktop/"
 # define SUCC 0
 # define ERR 1
 
