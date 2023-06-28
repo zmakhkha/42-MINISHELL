@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/26 07:38:08 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/28 04:27:13 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -422,7 +422,7 @@ char				*ft_expand(char *str, t_env *env);
 char				*ft_rm__exp(char *str, t_env *env, char *res, int i);
 char				*ft_rm_exp(char *str, t_env *env);
 int					ft_isquote(char *str);
-char				**ft_main_exp(char *str, t_env *env);
+char				*ft_main_exp(char *str, t_env *env);
 
 // expanding/ft_mult.c
 
@@ -450,6 +450,10 @@ void	ft_mergeword_num(t_token **list);
 char	**ft_onesplit(char const *s, char c);
 
 char	*ft_rm__exp(char *str, t_env *env, char *res, int i);
+
+# define QUOTE -10
+
+t_token	*ft_strtok1(char *str);
 
 #endif
 

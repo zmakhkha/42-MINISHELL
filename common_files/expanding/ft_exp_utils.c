@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:45:00 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/25 20:47:43 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/28 05:22:45 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	*ft_rmsq(char *str)
 
 	i = 0;
 	len = 0;
-	while (str[i] && (str[i] != '\'' && str[i] != '\"'))
+	while (str[i] && (str[i] != '\"')) // removed str[i] != '\'' &&
 		i++;
 	if (str[i])
 		c = str[i];

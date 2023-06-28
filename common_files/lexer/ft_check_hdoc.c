@@ -109,7 +109,7 @@ char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
 	char	*path;
 	char	*tmp;
 	char	*full_path;
-	char	**tm;
+	// char	**tm;
 	ssize_t	b;
 
 	b = 0;
@@ -120,8 +120,9 @@ char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
 	path = NULL;
 	if (type == 1)
 	{
-		tm = ft_main_exp(str, env_list);
-		str = ft_twotoone(tm); 
+		// tm = ft_main_exp(str, env_list);
+		// str = ft_twotoone(tm); 
+		str = ft_main_exp(str, env_list);
 	}
 	free(tmp);
 	tmp = NULL;

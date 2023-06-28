@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/26 07:33:52 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/28 03:59:22 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ char	**ft_format(char *str)
 }
 
 // expand a string command
-char	**ft_main_exp(char *str, t_env *env)
+char	*ft_main_exp(char *str, t_env *env)
 {
 	t_token	*lst;
 	t_token	*tmp;
@@ -139,7 +139,7 @@ char	**ft_main_exp(char *str, t_env *env)
 			ft_free_token(&lst);
 			return (NULL);
 		}
-		if (ft_strchr(lst->str, '\'') || ft_strchr(lst->str, '\"')\
+		if (ft_strchr(lst->str, '\"')\
 		|| ft_strchr(lst->str, '$'))
 		{
 			a = 1;
@@ -153,9 +153,11 @@ char	**ft_main_exp(char *str, t_env *env)
 	}
 	
 	s_tmp = ft_toktostr(tmp);
-	// detect(tmp);
-	res = ft_format(s_tmp);
-	if (tmp != NULL)
 	ft_free_token(&tmp);
-	return (res);
+	return (s_tmp);
+	// detect(tmp);
+	// res = ft_format(s_tmp);
+	// if (tmp != NULL)
+	// ft_free_token(&tmp);
+	// return (res);
 }
