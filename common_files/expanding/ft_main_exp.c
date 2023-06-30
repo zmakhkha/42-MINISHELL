@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/30 14:53:16 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/30 19:37:12 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ char	**ft_format(char *str)
 	return (spl);
 }
 
-// expand a string command
+// expand a string command just before execve
 char	*ft_main_exp(char *str, t_env *env)
 {
 	t_token	*lst;
@@ -133,25 +133,17 @@ char	*ft_main_exp(char *str, t_env *env)
 	tmp = lst;
 	while (lst)
 	{
-		if(ft_strnstr(lst->str, "**", 2))
-		{
-			ft_free_token(&lst);
-			return (NULL);
-		}
-		// else if (lst->str[0] == '\'')
-		// 	lst->str = ft_strtrim(lst->str, "'");
-		else if ((lst->str[0] == '\"' && ft_strchr(lst->str, '$')) || \
-		(!ft_strchr(lst->str, '\'') && ft_strchr(lst->str, '$')) )
-		{
-			a = 1;
-			s_tmp = lst->str;
-			lst->str = ft_rm_exp(lst->str, env);
-		}
-		if (!a && lst->str && ft_strchr(lst->str, '*'))
+		
+		if (lst->str[0] != '\"' && lst->str[0] != '\'' && \
+			ft_strchr(lst->str, '*'))
 			lst->str = ft_main_wc(lst->str, env);
-		lst = lst->prev;
+		else if (lst->str[0] == '\"')
+			lst->str = ft_strtrim(lst->str, "\"");
+		if (lst->str[0] != '\'' && lst->str && ft_strchr(lst->str, '*'))
+			lst->str = ft_rm_exp(lst->str, env);
+			lst = lst->prev;
 	}
 	s_tmp = ft_toktostr(tmp);
 	ft_free_token(&tmp);
-	return (s_tmp);
+	return (ft_strtrim(s_tmp, " "));
 }

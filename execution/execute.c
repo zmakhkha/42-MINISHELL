@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/30 12:48:07 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/30 19:40:11 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,13 +255,30 @@ char    **ft_tokto2dstr(t_token *tok)
     return (res);
 }
 
+void	ft_first_exp(t_token **list)
+{
+	t_token	*lst;
+
+	lst = ft_getlast(*list);
+	while(lst && lst->next)
+	{
+		if (lst->str && lst->str[0] == '"' && lst->next->type == WORD)
+			lst->str = ft_strtrim(lst->str, " \"");
+		if (lst->str && lst->str[0] == '\'' && lst->next->type == WORD)
+			lst->str = ft_strtrim(lst->str, " '");
+			lst = lst->next;
+	}
+	*list = lst;
+}
+
 char    **ft_split_command(char *str)
 {
     t_token *tok;
     char    **res;
 
     res = NULL;
-    tok = ft_strtok1(str);
+    tok = ft_strtok(str);
+	ft_first_exp(&tok);
 	ft_mergewords(&tok);
 	ft_rm_space_(&tok);
     res = ft_tokto2dstr(tok);
@@ -284,7 +301,7 @@ int ft_execution(t_token *list, t_env *env)
     if (list->type == WORD)
     {
         str = ft_main_exp(list->str,env);
-        splited = ft_split_command(str);
+        splited = ft_split_command(list->str);
 
         if (!splited)
          return (EXIT_FAILURE);

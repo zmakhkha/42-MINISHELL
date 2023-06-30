@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/28 08:42:06 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/30 18:08:45 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -361,7 +361,8 @@ t_cmd				ft_init_cmd(char **args, char **env);
 char				*set_cmd_path(t_cmd *cmd);
 bool				ft_check_relative_or_binary(t_cmd *cmd);
 /* src/process/child.c */
-int					ft_child_process(t_cmd *cmd);
+int					ft_child_process(t_cmd *cmd, t_env *env);
+
 /* src/run_cmd/ */
 int					execute_logical_op(t_token *list, t_env *env);
 int					execute_command(char **args, t_env *env);

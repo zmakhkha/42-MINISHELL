@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:16:02 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/28 08:10:50 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/30 18:08:39 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	execute_command(char **args, t_env *env)
 	pid = ft_protect(fork(), "fork", "Fork failed");
 	if (pid == 0)
 	{
-		status = ft_child_process(&cmd);
+		status = ft_child_process(&cmd, env);
 		ft_free_2dstr(cmd.paths);
 		free(cmd.path_cmd);
 		ft_free_2dstr(cmd.env);
