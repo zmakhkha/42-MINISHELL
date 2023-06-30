@@ -131,7 +131,7 @@ bash-3.2$ echo $a
 $HOME lala
 bash-3.2$ echo "$a"
 $HOME     lala 
-------------------------->
+-----------------------
 bash-3.2$ export b="$HOME     lala "
 bash-3.2$ echo $b
 /Users/zmakhkha lala

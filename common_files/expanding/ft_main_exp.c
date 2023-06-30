@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/30 12:26:09 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/30 14:53:16 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,10 +138,10 @@ char	*ft_main_exp(char *str, t_env *env)
 			ft_free_token(&lst);
 			return (NULL);
 		}
-		else if (lst->str[0] == '\'')
-			lst->str = ft_strtrim(lst->str, "'");
-		else if ((lst->str[0] == '\"')\
-		|| ft_strchr(lst->str, '$'))
+		// else if (lst->str[0] == '\'')
+		// 	lst->str = ft_strtrim(lst->str, "'");
+		else if ((lst->str[0] == '\"' && ft_strchr(lst->str, '$')) || \
+		(!ft_strchr(lst->str, '\'') && ft_strchr(lst->str, '$')) )
 		{
 			a = 1;
 			s_tmp = lst->str;

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/28 08:50:21 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/30 12:48:07 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,14 +205,7 @@ void	ft_handle_one(char *s, t_env **env)
 	ft_merge_num_word(&lst);
 	ft_mergeword_num(&lst);
 	ft_rm_space_(&lst);
-		ft_makekey_value(lst, env);
-	// puts("\nprinting our list\n-----");
-	// while(lst)
-	// {
-	// 	printf("(%s)\n", lst->str);
-	// 	lst = lst->prev;
-	// }
-	
+	ft_makekey_value(lst, env);	
 }
 
 
