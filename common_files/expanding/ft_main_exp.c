@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/28 07:31:55 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/30 12:26:09 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,14 +120,15 @@ char	*ft_main_exp(char *str, t_env *env)
 	t_token	*lst;
 	t_token	*tmp;
 	char	*s_tmp;
+	char	**res;
 	int		a;
 
 	a = 0;
+	res = NULL;
 	s_tmp = NULL;
 	lst = NULL;
 	lst = ft_strtok(str);
 	ft_mergeword_num(&lst);
-	ft_mergewords(&lst);
 	ft_merge_sp(&lst);
 	tmp = lst;
 	while (lst)
@@ -137,25 +138,20 @@ char	*ft_main_exp(char *str, t_env *env)
 			ft_free_token(&lst);
 			return (NULL);
 		}
-		if (ft_strchr(lst->str, '\"')\
+		else if (lst->str[0] == '\'')
+			lst->str = ft_strtrim(lst->str, "'");
+		else if ((lst->str[0] == '\"')\
 		|| ft_strchr(lst->str, '$'))
 		{
 			a = 1;
 			s_tmp = lst->str;
 			lst->str = ft_rm_exp(lst->str, env);
-
 		}
 		if (!a && lst->str && ft_strchr(lst->str, '*'))
 			lst->str = ft_main_wc(lst->str, env);
 		lst = lst->prev;
 	}
-	
 	s_tmp = ft_toktostr(tmp);
 	ft_free_token(&tmp);
 	return (s_tmp);
-	// detect(tmp);
-	// res = ft_format(s_tmp);
-	// if (tmp != NULL)
-	// ft_free_token(&tmp);
-	// return (res);
 }
