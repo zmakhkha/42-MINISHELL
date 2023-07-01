@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:36:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/26 07:33:26 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 12:26:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void	ft_check_op(t_token *lst)
 	{
 		if (ft_loperators(lst) || ft_loperators(ft_getlast(lst)) \
 		|| ft_getlast(lst)->type == HDOC)
-			g_status = ERR;
+			glob.g_status = ERR;
 		while (lst && lst->prev)
 		{
 			if (ft_isforbidden(lst) == ERR || lst->type == AMP)
-				g_status = ERR;
+				glob.g_status = ERR;
 			lst = lst->prev;
 		}
 	}
@@ -61,5 +61,5 @@ void	ft_operrors(t_token *lst)
 	tail = ft_getlast(lst);
 	if (ft_loperators(head) || ft_loperators(tail) || ft_isbigoperators(head) \
 	|| ft_isbigoperators(tail))
-		g_status = ERR;
+		glob.g_status = ERR;
 }

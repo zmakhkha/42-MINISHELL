@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 10:26:38 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/26 14:08:32 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 12:26:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	d_quotes(char *str, t_token **lst, int *a, int *b)
 			*b += 1;
 		}
 		else if (*b == len)
-			g_status = ERR;
+			glob.g_status = ERR;
 	}
 }
 // void	d_quotes(char *str, t_token **lst, int *a, int *b)
@@ -57,9 +57,9 @@ void	d_quotes(char *str, t_token **lst, int *a, int *b)
 // 		while (str[*b] && str[*b] != '"')
 // 			*b += 1;
 // 		if (str[*b] == '"')
-// 			g_status = SUCC;
+// 			glob.g_status = SUCC;
 // 		else if (*b == len)
-// 			g_status = ERR;
+// 			glob.g_status = ERR;
 // 		s = ft_substr(str, *a, *b - *a + 1);
 // 		ft_token_addback(lst, ft_add_token(s, WORD));
 // 		*b += 1;
@@ -85,7 +85,7 @@ void	s_quotes(char *str, t_token **lst, int *a, int *b)
 			*b += 1;
 		}
 		else if (*b == len)
-			g_status = ERR;
+			glob.g_status = ERR;
 	}
 }
 

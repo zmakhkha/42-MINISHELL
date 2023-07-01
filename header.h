@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 11:26:59 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 12:30:43 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,14 @@
 # define SUCC 0
 # define ERR 1
 
-int					g_status;
+typedef struct s_gobvar
+{
+	int	g_status;
+	int	g_ctrl_c;
+	int	g_ctrl_s;
+} t_global;
+
+t_global glob;
 // -------> Tokens enumeration <------- //
 
 enum

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 02:40:39 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/25 04:03:41 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/07/01 12:26:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	execute_exit(char **list)
 
 	ft_putstr_fd("exit\n", STDERR_FILENO);
 	if (list[1] == NULL)
-		exit(g_status);
+		exit(glob.g_status);
 	else if (check_if_all_digits(list[1]))
 	{
 		if (list[2] != NULL)

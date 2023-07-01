@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/07/01 11:20:59 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 12:26:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int ft_execution(t_token *list, t_env *env)
         return (EXIT_FAILURE);
     if (list->type == PIPE || list->type == AND || list->type == OR || \
         list->type == Empty)
-        g_status = execute_logical_op(list, env);
+        glob.g_status = execute_logical_op(list, env);
     if (list->type == WORD)
     {
         // str = ft_main_exp(list->str,env);
@@ -101,10 +101,10 @@ int ft_execution(t_token *list, t_env *env)
 		else if (!ft_strcmp(splited[0], "export"))
 			ft_export_it(list, &env);
         if (is_builtin(splited))
-        	g_status = execute_builtin(splited, env);
+        	glob.g_status = execute_builtin(splited, env);
         else
-        	g_status = execute_command(splited, env);
+        	glob.g_status = execute_command(splited, env);
         ft_free_2dstr(splited);
     }
-    return (g_status);
+    return (glob.g_status);
 }

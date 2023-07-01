@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:06:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/25 11:43:31 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 12:26:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_lasterr(t_token *lst)
 	{
 		if (ft_getlast(lst)->type == RE_IN || ft_getlast(lst)->type == RE_OUT\
 		|| ft_getlast(lst)->type == APPEND)
-		g_status = ERR;
+		glob.g_status = ERR;
 	}
 }
 
@@ -28,7 +28,7 @@ void	ft_singleerr(t_token *lst)
 	{
 		if (lst->type == RE_IN || lst->type == RE_OUT\
 		|| lst->type == APPEND)
-		g_status = ERR;
+		glob.g_status = ERR;
 	}
 }
 
@@ -46,7 +46,7 @@ void	ft_checkfiles(t_token *lst)
 		if ((ft_isredirection(lst) || lst->type == HDOC) && \
 		(lst->prev->type != FILE_))
 		{
-			g_status = ERR;
+			glob.g_status = ERR;
 			break ;
 		}
 		lst = lst->prev;
@@ -82,7 +82,7 @@ void	ft_mergeword_num(t_token **list)
 		// }		
 void	ft_lexit(t_token *lst)
 {
-	if (!g_status)
+	if (!glob.g_status)
 	{
 		ft_op_space_(&lst);
 		ft_fd_file(&lst);
@@ -123,7 +123,7 @@ void	ft_main_lexer(t_token *lst)
 	ft_mergeword_num(&lst);
 	ft_detect_op(&lst);
 	ft_check_op(lst);
-	if (!g_status && lst)
+	if (!glob.g_status && lst)
 	{
 		ft_readfd(&lst);
 		ft_word_dig(&lst);

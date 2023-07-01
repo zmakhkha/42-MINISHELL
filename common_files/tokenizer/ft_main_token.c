@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:01:55 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 11:16:37 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 12:26:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	ft__strtok(char *str, t_token **lst, int *a, int *b)
 {
-	if (!g_status && str[*b] && ft_isdigit(str[*b]))
+	if (!glob.g_status && str[*b] && ft_isdigit(str[*b]))
 		ft_digits(str, lst, a, b);
-	else if (!g_status && str[*b] && str[*b] == '"')
+	else if (!glob.g_status && str[*b] && str[*b] == '"')
 		d_quotes(str, lst, a, b);
-	else if (!g_status && str[*b] && str[*b] == '\'')
+	else if (!glob.g_status && str[*b] && str[*b] == '\'')
 		s_quotes(str, lst, a, b);
-	else if (!g_status && str[*b] && (str[*b] == '(' || str[*b] == ')'))
+	else if (!glob.g_status && str[*b] && (str[*b] == '(' || str[*b] == ')'))
 		ft_prt(str, lst, a, b);
-	else if (!g_status && str[*b] && ft_is_moperator(str[*b]))
+	else if (!glob.g_status && str[*b] && ft_is_moperator(str[*b]))
 		ft_operators(str, lst, a, b);
-	else if (!g_status && str[*b] && (str[*b] == '>'))
+	else if (!glob.g_status && str[*b] && (str[*b] == '>'))
 		ft_operators2(str, lst, a, b);
-	else if (!g_status && str[*b] && str[*b] == '<')
+	else if (!glob.g_status && str[*b] && str[*b] == '<')
 		ft_operators3(str, lst, a, b);
-	if (g_status == ERR)
+	if (glob.g_status == ERR)
 		printf("Tokenizer Error!!\n");
 }
 
@@ -41,8 +41,8 @@ t_token	*ft_strtok(char *str)
 	j = 0;
 	lst = NULL;
 	ft_forbidden(str);
-	while (str && str[j] && !g_status)
-	while (str && str[j] && !g_status)
+	while (str && str[j] && !glob.g_status)
+	while (str && str[j] && !glob.g_status)
 	{
 		i = j;
 		if (ft_is_whitespace_(str[j]))
@@ -52,7 +52,7 @@ t_token	*ft_strtok(char *str)
 		else
 			ft__strtok(str, &lst, &i, &j);
 	}
-	if (g_status == SUCC)
+	if (glob.g_status == SUCC)
 		return (lst);
 	else
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 09:47:50 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/25 17:29:06 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/07/01 12:26:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	execute_echo(char **cmd)
 	if (cmd[i] == NULL)
 	{
 		ft_putstr("\n");
-		return (g_status);
+		return (glob.g_status);
 	}
 	while (cmd[i] && is_flag_n(cmd[i]))
 	{
@@ -67,8 +67,8 @@ int	execute_echo(char **cmd)
 		ft_putstr("\n");
 	if (cmd[i] && !ft_strcmp(cmd[i], "?"))
 	{
-		ft_putnbr(g_status);
+		ft_putnbr(glob.g_status);
 		ft_putstr("\n");
 	}
-	return (g_status);
+	return (glob.g_status);
 }

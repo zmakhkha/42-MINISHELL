@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 14:29:03 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/21 14:29:14 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 12:26:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void	ft_subtotree(t_token **list)
 		{
 			t = ft_strtok(lst->str);
 
-			if (!g_status && t)
+			if (!glob.g_status && t)
 				ft_main_lexer(t);
 			else if (t)
 			{
 				printf("Lexer Error !!\n");
 				return ;
 			}
-			if (!g_status && t)
+			if (!glob.g_status && t)
 			{
 				ft_sub_ast(&t);
 				*list = t;

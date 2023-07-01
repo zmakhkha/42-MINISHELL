@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 04:22:17 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/28 05:26:49 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 12:26:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	d_quotes1(char *str, t_token **lst, int *a, int *b)
 			*b += 1;
 		}
 		else if (*b == len)
-			g_status = ERR;
+			glob.g_status = ERR;
 	}
 }
 
@@ -54,7 +54,7 @@ void	s_quotes1(char *str, t_token **lst, int *a, int *b)
 			*b += 1;
 		}
 		else if (*b == len)
-			g_status = ERR;
+			glob.g_status = ERR;
 	}
 }
 
@@ -66,9 +66,9 @@ int	ft_valid_word1(char c)
 void	ft__strtok1(char *str, t_token **lst, int *a, int *b)
 {
 	
-	if (!g_status && str[*b] && str[*b] == '"')
+	if (!glob.g_status && str[*b] && str[*b] == '"')
 		d_quotes(str, lst, a, b);
-	else if (!g_status && str[*b] && str[*b] == '\'')
+	else if (!glob.g_status && str[*b] && str[*b] == '\'')
 		s_quotes1(str, lst, a, b);
 }
 
@@ -91,7 +91,7 @@ t_token	*ft_strtok1(char *str)
 	j = 0;
 	lst = NULL;
 	ft_forbidden(str);
-	while (str && str[j] && !g_status)
+	while (str && str[j] && !glob.g_status)
 	{
 		if (i == j)
 			j++;
@@ -104,7 +104,7 @@ t_token	*ft_strtok1(char *str)
 		else
 			ft__strtok1(str, &lst, &i, &j);
 	}
-	if (g_status == SUCC)
+	if (glob.g_status == SUCC)
 		return (lst);
 	else
 	{

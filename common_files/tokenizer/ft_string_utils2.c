@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:29 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/25 11:45:11 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 12:26:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_operators2(char *str, t_token **lst, int *a, int *b)
 		}
 	}
 	else
-		g_status = ERR;
+		glob.g_status = ERR;
 	return (ret);
 }
 
@@ -85,6 +85,6 @@ int	ft_operators3(char *str, t_token **lst, int *a, int *b)
 		}
 	}
 	else
-		g_status = ERR;
+		glob.g_status = ERR;
 	return (ret);
 }

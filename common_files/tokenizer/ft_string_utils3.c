@@ -67,14 +67,14 @@ void	ft_prt(char *str, t_token **lst, int *a, int *b)
 				ft_token_addback(lst, ft_add_token(s, SUBSHELL));
 			else
 			{
-				g_status = ERR;
+				glob.g_status = ERR;
 				return;
 			}
 			*b += 1;
 		}
 	}
 	else
-		g_status = ERR;
+		glob.g_status = ERR;
 }
 
 int	if_validp(char *str)
