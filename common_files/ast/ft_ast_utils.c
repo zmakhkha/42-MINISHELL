@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 15:24:04 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 12:26:49 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 15:55:29 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_lstlen(t_token *lst)
 
 void	ft_exe_tree(t_token *list, t_env *env_list)
 {
-	glob.g_status =  ft_execution(list, env_list);
+	g_glob.g_status = ft_execution(list, env_list);
 }
 
 t_token	*ft_pop(t_token **list)

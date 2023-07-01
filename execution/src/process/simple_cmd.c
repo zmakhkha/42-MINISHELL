@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:13:41 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/07/01 10:58:41 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 15:04:28 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	ft_child_process(t_cmd *cmd, t_env *env)
 {
 	int	i;
-(void)env;
+
+	(void)env;
 	i = 0;
 	if (execve(cmd->path_cmd, cmd->args, cmd->env) == -1)
 	{

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 10:01:54 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/25 16:11:08 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 15:07:09 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ int	parse_arguments(char *arg, char **key, char **value)
 	}
 	return (EXIT_SUCCESS);
 }
-
-
 
 int	execute_export(char **args, t_env **env_list)
 {

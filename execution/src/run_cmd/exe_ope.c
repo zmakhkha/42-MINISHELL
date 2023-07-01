@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   exe_ope.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 03:32:50 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/25 21:51:29 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/07/01 15:03:26 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../header.h"
 
-int		execute_logical_op(t_token *list, t_env *env)
+int	execute_logical_op(t_token *list, t_env *env)
 {
 	int	status;
-	int fd_in;
-	int fd_out;
+	int	fd_in;
+	int	fd_out;
 
 	status = 0;
 	if (list == NULL)

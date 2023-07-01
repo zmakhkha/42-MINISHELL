@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:05:01 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 11:59:33 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 15:55:29 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ char	*ft_get_path(char *del, int type, t_env **env_list)
 	}
 	else
 	{
-		waitpid(a, NULL, 0);
+		// waitpid(a, NULL, 0);
+		ft_signal_ignore();
+		waitpid(-1, &g_glob.g_status, 0);
+		ft_signal_main();
 	}
 	return (path);
 }

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:40:37 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/23 16:18:33 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 15:33:36 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ t_str	*ft_strmkcpy(t_str *src)
 	res = NULL;
 	while (src)
 	{
-		ft_str_addback(&res,(ft_add_str(ft_strdup(src->str))));
+		ft_str_addback(&res, (ft_add_str(ft_strdup(src->str))));
 		src = src->prev;
 	}
-	return(res);
+	return (res);
 }
 
 t_str	*ft_matching(t_str *src, char *str)
@@ -99,7 +99,7 @@ char	*ft_tostr(t_str *src)
 			free(res);
 		res = NULL;
 		if (tmp)
-		free(tmp);
+			free(tmp);
 		tmp = NULL;
 		src = src->prev;
 	}
@@ -119,9 +119,9 @@ void	ft_free_obj(t_str **s)
 // to be called foreach node
 char	*ft_main_wc(char *str, t_env *env_list)
 {
-	t_str	*r;
-	t_str	*b;   // haaaada ba9i fih double free mli kitfreea fih mochkila m3a r
 	char	*res;
+	t_str	*r;
+	t_str	*b;
 
 	res = NULL;
 	r = NULL;
@@ -145,13 +145,13 @@ char	*ft_main_wc(char *str, t_env *env_list)
 	else
 	{
 		if (r)
-		ft_free_str(&r);
+			ft_free_str(&r);
 		r = NULL;
 		if (b)
-		ft_free_str(&b);
+			ft_free_str(&b);
 		b = NULL;
 		if (str)
-		free(str);
+			free(str);
 		str = NULL;
 	}
 	return (res);

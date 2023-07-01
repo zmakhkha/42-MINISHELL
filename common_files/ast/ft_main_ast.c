@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:58:17 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/28 06:28:53 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 15:36:11 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,5 @@ void	ft_main_ast(t_token **list, t_env **env_list)
 	ft_leaf_nodes(list);
 	ft_subtotree(list);
 	ft_hdocontree(list, env_list);
-	// ft_printini(list);
-	
 	ft_exe_tree(*list, *env_list);
-	
 }

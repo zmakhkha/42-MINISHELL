@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 02:40:39 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/07/01 12:26:49 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 15:55:29 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	execute_exit(char **list)
 
 	ft_putstr_fd("exit\n", STDERR_FILENO);
 	if (list[1] == NULL)
-		exit(glob.g_status);
+		exit(g_glob.g_status);
 	else if (check_if_all_digits(list[1]))
 	{
 		if (list[2] != NULL)

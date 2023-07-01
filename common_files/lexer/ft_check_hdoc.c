@@ -53,10 +53,11 @@ char	*ft_heredoc(char *del)
 
 	star = NULL;
 	hdoc = NULL;
+	g_glob.g_ctrl_c = false;
 	while (1)
 	{
 		star = readline("> ");
-		if (star == NULL || !ft_strcmp(del, star))
+		if (star == NULL || !ft_strcmp(del, star) || g_glob.g_ctrl_c)
 			break ;
 		else
 		{
@@ -68,7 +69,7 @@ char	*ft_heredoc(char *del)
 	return (hdoc);
 }
 
-char *ft_twotoone(char **table)
+char	*ft_twotoone(char **table)
 {
 	int		i;
 	char	*res;
@@ -97,11 +98,12 @@ char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
 	char	*path;
 	char	*full_path;
 	ssize_t	b;
+
 	b = 0;
 	path = ft_join_free("HDOC", " ");
 	full_path = ft_join_free(H_DOCP, path);
 	if (type == 1)
-		str = ft_twotoone(ft_main_exp(str, env_list)); 
+		str = ft_twotoone(ft_main_exp(str, env_list));
 	while (access(full_path, F_OK) == 0)
 		full_path = ft_join_free(ft_strtrim(full_path, " "), "_1");
 	fd = open(full_path, O_WRONLY | O_APPEND | O_CREAT, 0644);
@@ -110,11 +112,11 @@ char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
 	if (str)
 	{
 		b = write(fd, str, ft_strlen(str));
-	if (b == -1)
-		ft_exit("Failed to update the tmp heredoc file !!\n", 1);
-	b = write(fd, "\n", 1);
-	if (b == -1)
-		ft_exit("Failed to update the tmp heredoc file !!\n", 1);
+		if (b == -1)
+			ft_exit("Failed to update the tmp heredoc file !!\n", 1);
+		b = write(fd, "\n", 1);
+		if (b == -1)
+			ft_exit("Failed to update the tmp heredoc file !!\n", 1);
 	}
 	if (close(fd) == -1)
 		ft_exit("Failed to close tmp heredoc file !!\n", 1);
