@@ -63,7 +63,13 @@ void	ft_prt(char *str, t_token **lst, int *a, int *b)
 		if (str[*b] == ')')
 		{
 			s = ft_substr(str, *a + 1, *b - *a -1);
-			ft_token_addback(lst, ft_add_token(s, SUBSHELL));
+			if (ft_strlen(s) > 0)
+				ft_token_addback(lst, ft_add_token(s, SUBSHELL));
+			else
+			{
+				g_status = ERR;
+				return;
+			}
 			*b += 1;
 		}
 	}

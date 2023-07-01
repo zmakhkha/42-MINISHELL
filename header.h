@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 10:19:56 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 11:26:59 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -457,6 +457,25 @@ char	*ft_rm__exp(char *str, t_env *env, char *res, int i);
 
 t_token	*ft_strtok1(char *str);
 void	ft_export_it(t_token *list, t_env **env);
+
+
+//--------------> The export built-in stage <---------------//
+// execution/src/builtin/export/utils.c
+
+void	ft_merge_num_word(t_token **list);
+void	ft_format_print(t_env *env);
+void	ft_makekey_value(t_token *lst, t_env **env);
+void	ft_handle_one(char *s, t_env **env);
+void	ft_export_it(t_token *list, t_env **env);
+
+// execution/src/builtin/export/utils2.c
+int ft_containequl(char *str);
+void	ft_mergewordspace(t_token **list);
+char	**ft_devide(char *r, char del);
+int	ft_isvalidkey(char *str);
+void	ft_addnode(t_token *lst, t_env **env);
+
+
 #endif
 
 //

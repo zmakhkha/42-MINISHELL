@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:05:01 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/28 07:45:22 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 11:59:33 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_hdoc_to_file(t_token **list, t_env **env_list)
 		tmp = ft_strtrim((*list)->str, " \t");
 		if (ft_strchr(tmp, '\'') || ft_strchr(tmp, '\"'))
 		{
-			tmp = ft_exp1((*list)->str);
+			tmp = ft_strtrim(tmp, "\'\"");
 			(*list)->str = ft_get_path(tmp, 0, env_list);
 		}
 		else
