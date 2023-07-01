@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 11:21:50 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 15:06:37 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 22:56:16 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,6 @@ void	ft_merge_num_word(t_token **list)
 	}
 }
 
-// void	ft_format_print(t_env *env)
-// {
-//     char    *min;
-
-//     while(env && env->next)
-//     {
-//         min = env->key;
-//         if (ft_strcmp(min, ))
-//     }
-// 	while(env)
-// 	{
-// 		printf("declare -x ");
-// 		if (!ft_strcmp(env->value, "-1"))
-// 			printf("%s=\n", env->key);
-// 		else
-// 			printf("%s=\"%s\"\n", env->key, env->value);
-// 		env = env->next;
-// 	}
-// }
-
 void	ft_format_print(t_env *env)
 {
 	while (env)
@@ -65,45 +45,152 @@ void	ft_format_print(t_env *env)
 	}
 }
 
-void	ft_makekey_value(t_token *lst, t_env **env)
-{
-	int		i;
-	char	*key;
-	char	*val;
+#define APP -10
+#define REP -20
 
-	while (lst)
+void	ft_with_quotes(t_token *lst, t_env *env)
+{
+	char	*key;
+
+	key = ft_substr(lst->str, 0, ft_strlen(lst->str) - 1);
+	if (!ft_isvalidkey(key))
 	{
-		key = NULL;
-		val = NULL;
-		i = 0;
-		if (!ft_strchr(lst->str, '='))
+		printf("minishell export `%s' : not a valid identifier\n", key);
+		return ;
+	}
+	if (!get_value(key, env))
+		change_env(key, ft_strdup("with"), &env);
+}
+
+void	ft_no_qoute(t_token *lst, t_env *env)
+{
+	char	*key;
+
+	key = ft_substr(lst->str, 0, ft_strlen(lst->str));
+	if (!ft_isvalidkey(key))
+	{
+		printf("minishell export `%s' : not a valid identifier\n", key);
+		return ;
+	}
+	if (!get_value(key, env))
+		change_env(key, ft_strdup("No"), &env);
+}
+
+void	ft_app_exp(t_token *lst, t_env *env)
+{
+	char	**tmp;
+	char	*s_tmp;
+	char	*key;
+	char	*t_key;
+
+	tmp = NULL;
+	tmp = ft_devide(lst->str, '=');
+	key = ft_substr(tmp[0], 0, ft_strlen(tmp[0]) - 1);
+	if (!ft_isvalidkey(key))
+	{
+		printf("minishell export `%s' : not a valid identifier\n", key);
+		return ;
+	}
+	if (tmp && tmp[0] && tmp[1] && ft_strlen(tmp[1]))
+	{
+		t_key = get_value(key, env);
+		if (!ft_strcmp(t_key, "with") || !ft_strcmp(t_key, "No"))
 		{
-			change_env(lst->str, ft_strdup("-1"), env);
+			free(t_key);
+			t_key = NULL;
+		}
+		s_tmp = ft_join_free(t_key, ft_strtrim(tmp[1], "\"\'"));
+		change_env(key, ft_strtrim(s_tmp, "\'\""), &env);
+	}
+	else if (!ft_strlen(tmp[1]))
+	{
+		lst->str = key;
+		ft_with_quotes(lst, env);
+	}
+}
+
+void	ft_rep_exp(t_token *lst, t_env *env)
+{
+	char	**tmp;
+	char	*key;
+
+	tmp = ft_devide(lst->str, '=');
+	key = tmp[0];
+	if (!ft_isvalidkey(key))
+	{
+		printf("minishell export `%s' : not a valid identifier\n", key);
+		return ;
+	}
+	if (tmp && tmp[0] && tmp[1] && ft_strlen(tmp[1]))
+		change_env(tmp[0], ft_strtrim(tmp[1], "\'\""), &env);
+	else if (!ft_strcmp(tmp[1], ""))
+		ft_with_quotes(lst, env);
+}
+
+void	ft_detect(t_token *lst, t_env *env)
+{
+	int	i;
+
+	i = -1;
+	if (lst && lst->str)
+	{
+		while (lst->str && lst->str[++i])
+		{
+			if (lst->str[i] == '+' && lst->str[i + 1] && lst->str[i + 1] == '=')
+			{
+				if (i == 0)
+					printf("minishell: export: `%s': not a valid identifier\n",
+						lst->str);
+				else
+					ft_app_exp(lst, env);
+				return ;
+			}
+			else if (lst->str[i] == '=')
+			{
+				if (i == 0)
+					printf("minishell: export: `%s': not a valid identifier\n",
+						lst->str);
+				else
+					ft_rep_exp(lst, env);
+				return ;
+			}
+		}
+	}
+}
+
+// will get a trimmed key=value || key+=vaue
+void	ft_parse_export(t_token *lst, t_env *env)
+{
+	if (lst && lst->str && (ft_strchr(lst->str, '+') || ft_strchr(lst->str,
+				'=')))
+	{
+		while (lst)
+		{
+			ft_detect(lst, env);
 			lst = lst->prev;
+		}
+	}
+	else
+		ft_no_qoute(lst, env);
+}
+
+void	ft_print_exp(t_env *env)
+{
+	while (env)
+	{
+		printf("declare -x ");
+		printf("%s", env->key);
+		if (!ft_strcmp(env->value, "No"))
+		{
+			printf("\n");
+			env = env->next;
 			continue ;
 		}
-		while (lst->str[i] && lst->str[i] != '=')
-			i++;
-		if (lst->str[i] == '=')
-		{
-			key = ft_substr(lst->str, 0, i);
-			key = ft_rm__exp(key, *env, key, 0);
-			if (ft_isvalidkey(key))
-			{
-				val = ft_substr(lst->str, i + 1, ft_strlen(lst->str));
-				if (!val)
-					val = ft_strdup("");
-			}
-			else
-			{
-				printf("export: `%s' : not a valid identifier\n", lst->str);
-				key = NULL;
-				lst = lst->prev;
-				continue ;
-			}
-		}
-		change_env(key, ft_rm__exp(val, *env, val, 0), env);
-		lst = lst->prev;
+		else if (!ft_strcmp(env->value, "with") || !ft_strcmp(env->value, ""))
+			printf("=\"\"\n");
+		else
+			printf("=\"%s\"\n", env->value);
+		env = env->next;
 	}
 }
 
@@ -112,21 +199,13 @@ void	ft_handle_one(char *s, t_env **env)
 	t_token	*lst;
 
 	(void)env;
+	s = ft_strtrim(s, " ");
 	lst = ft_strtok(s);
 	ft_mergewords(&lst);
 	ft_mergewordspace(&lst);
 	ft_merge_num_word(&lst);
 	ft_mergeword_num(&lst);
 	ft_rm_space_(&lst);
-	ft_makekey_value(lst, env);
-}
-
-// validated
-void	ft_export_it(t_token *list, t_env **env)
-{
-	if (ft_lstlen(list) == 1 && !ft_strcmp(ft_strtrim(list->str, " "),
-			"export"))
-		ft_format_print(*env);
-	else
-		ft_handle_one(list->str + 6, env);
+	ft_parse_export(lst, *env);
+	// ft_makekey_value(lst, env);
 }

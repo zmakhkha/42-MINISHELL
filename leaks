@@ -1,0 +1,18 @@
+Simple command
+"ls"
+"ls -la"
+
+relative path command
+"/bin/ls"
+
+heredoc
+9 (160 bytes) << TOTAL >>
+    1 (32 bytes) ROOT LEAK: 0x7f8bf0004080 [32]  length: 29  "/Users/zmakhkha/Desktop/HDOC "
+    1 (16 bytes) ROOT LEAK: 0x7f8bee405c80 [16]  length: 2  "ig"
+    1 (16 bytes) ROOT LEAK: 0x7f8bee405c90 [16]  length: 2  "ig"
+    1 (16 bytes) ROOT LEAK: 0x7f8bee7040d0 [16]  length: 1  "f"
+    1 (16 bytes) ROOT LEAK: 0x7f8bee704120 [16]  length: 1  "f"
+    1 (16 bytes) ROOT LEAK: 0x7f8bf00040a0 [16]  length: 1  "f"
+    1 (16 bytes) ROOT LEAK: 0x7f8bf00040b0 [16]  length: 5  "HDOC "
+    1 (16 bytes) ROOT LEAK: 0x7f8bf00040c0 [16]  length: 2  "ig"
+    1 (16 bytes) ROOT LEAK: 0x7f8bf0004140 [16]  length: 3  "ig "

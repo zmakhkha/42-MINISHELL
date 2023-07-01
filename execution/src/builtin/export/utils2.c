@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 11:22:51 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 15:04:41 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 22:01:11 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,10 @@ int	ft_isvalidkey(char *str)
 	i = 0;
 	if (!str || (!isalpha(str[i]) && str[i] != '_'))
 		return (false);
+	i++;
 	while (str[i])
 	{
-		if ((!ft_isalpha(str[i]) && str[i] != '_') || (str[ft_strlen(str) \
+		if ((!ft_isalnum(str[i]) && str[i] != '_') || (str[ft_strlen(str) \
 			- 1] == ' '))
 		{
 			return (false);

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/07/01 15:55:29 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 21:16:21 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,3 +109,4 @@ int	ft_execution(t_token *list, t_env *env)
 	}
 	return (g_glob.g_status);
 }
+

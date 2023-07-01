@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 15:54:55 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 21:15:32 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -480,6 +480,8 @@ void				ft_mergewordspace(t_token **list);
 char				**ft_devide(char *r, char del);
 int					ft_isvalidkey(char *str);
 void				ft_addnode(t_token *lst, t_env **env);
+
+void	ft_print_exp(t_env *env);
 
 #endif
 
