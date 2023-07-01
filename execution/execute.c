@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/30 19:40:11 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 10:48:56 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -300,8 +300,8 @@ int ft_execution(t_token *list, t_env *env)
         g_status = execute_logical_op(list, env);
     if (list->type == WORD)
     {
-        str = ft_main_exp(list->str,env);
-        splited = ft_split_command(list->str);
+        // str = ft_main_exp(list->str,env);
+        splited = ft_main_exp(list->str, env);
 
         if (!splited)
          return (EXIT_FAILURE);

@@ -2,7 +2,7 @@ cat /etc/passwd | awk '{print $1}' : passes
 awk -F: '{print $1}' /etc/passwd : passes
 
 
-cat /etc/passwd | awk '{print $1 ' ' $2}' : passes
+cat /etc/passwd | awk '{print $1 ' ' $2}' : passes : awk synatx error
 cat /etc/passwd | awk '{print $1 " " $2}' : passes
 awk -F '{print $1 " " $2}' /etc/passwd : hangs on bash && minishell
 
@@ -17,3 +17,17 @@ awk -F: '$3 > 10 {print "Username: " $1 ", Home: " $6}' /etc/passwd : passes
 ls -l $HOME | awk 'NR > 1 {sum += $5} END {print "Total Size: " sum " bytes"}' : passes
 ls -l "$HOME" | awk 'NR > 1 {sum += $5} END {print "Total Size: " sum " bytes"}' : passes
 ls -l '$HOME' | awk 'NR > 1 {sum += $5} END {print "Total Size: " sum " bytes"}' : passes
+
+lsof / | awk '{ if($7 > 1048576) print $7/1048576 "MB" " " $9 " " $1 }' | sort -n -u | tail : passes
+
+l"s" '-'"l"'a' : passes
+
+ls "*.c" : passes
+ls '*.c' : passes
+ls *.c : passes
+
+ls "'$HOME'" : passes
+echo '$HOME' : passes
+echo "$HOME" : passes
+echo '"$HOME"' : passes
+echo "'$HOME'" : passes

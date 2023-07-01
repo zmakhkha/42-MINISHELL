@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/30 18:08:45 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 10:19:56 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -424,7 +424,7 @@ char				*ft_expand(char *str, t_env *env);
 char				*ft_rm__exp(char *str, t_env *env, char *res, int i);
 char				*ft_rm_exp(char *str, t_env *env);
 int					ft_isquote(char *str);
-char				*ft_main_exp(char *str, t_env *env);
+char				**ft_main_exp(char *str, t_env *env);
 
 // expanding/ft_mult.c
 

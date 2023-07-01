@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/28 08:23:34 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 10:49:29 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	ft_run_it(char *str, t_env *env_list)
 	t_token	*t;
 
 	t = NULL;
-	ft_add_history(str);
 	t = ft_strtok(str);
 	if (!g_status && t)
 	{
@@ -79,13 +78,6 @@ void	ft_free_2dstr(char **str)
 	str = NULL;
 }
 
-void reset_terminal() {
-    struct termios term;
-    tcgetattr(STDIN_FILENO, &term);
-    term.c_lflag |= (ICANON | ECHO);
-    tcsetattr(STDIN_FILENO, TCSANOW, &term);
-}
-
 // Add a command history
 void	ft_prompt(char **env)
 {
@@ -101,14 +93,20 @@ void	ft_prompt(char **env)
 		change_env("_", "/usr/bin/env", &env_list);
 	}
 	// ft_free_envstr(env);
-	reset_terminal();
 	while (1)
 	{
 		// usleep(100);
 		str = readline("minishell $ ");
 		if (str == NULL)
 			break ;
+		ft_add_history(str);
 		ft_run_it(str, env_list);
+		
+		// char **tmp = ft_main_exp(str, env_list);
+		// int i = -1;
+		// while (tmp[++i])
+		// 	puts(tmp[i]);			
+		
 		free(str);
 		// break ;
 	}
