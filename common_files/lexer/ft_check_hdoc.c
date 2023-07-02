@@ -104,7 +104,7 @@ char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
 	path = ft_join_free("HDOC", " ");
 	full_path = ft_join_free(H_DOCP, path);
 	if (type == 1)
-		str = ft_rm_exp(str, env_list);
+		str = ft_expand(str, env_list);
 	while (access(full_path, F_OK) == 0)
 		full_path = ft_join_free(ft_strtrim(full_path, " "), "_1");
 	fd = open(full_path, O_WRONLY | O_APPEND | O_CREAT, 0644);
