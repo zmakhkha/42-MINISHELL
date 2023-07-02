@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 11:21:50 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 20:12:12 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 23:25:57 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,21 @@ void	ft_format_print(t_env *env)
 void	ft_with_quotes(t_token *lst, t_env *env)
 {
 	char	*key;
+	char	*a;
+	int		i;
 
-	key = ft_substr(lst->str, 0, ft_strlen(lst->str) - 1);
+	i = 0;
+	while (lst->str[i] && lst->str[i] != '=')
+		i++;
+	key = ft_substr(lst->str, 0, i);
 	if (!ft_isvalidkey(key))
 	{
-		printf("minishell export `%s' : not a valid identifier\n", key);
+		printf("minishell export `%s' : not a valid identifier3\n", key);
 		free(key);
 		return ;
 	}
-	if (!get_value(key, env))
+	a = get_value(key, env);
+	if (!a || !ft_strcmp(a, "No"))
 		change_env(key, "with", &env);
 	free(key);
 }
@@ -67,7 +73,7 @@ void	ft_no_qoute(t_token *lst, t_env *env)
 	key = ft_substr(lst->str, 0, ft_strlen(lst->str));
 	if (!ft_isvalidkey(key))
 	{
-		printf("minishell export `%s' : not a valid identifier\n", key);
+		printf("minishell export `%s' : not a valid identifier2\n", key);
 		free(key);
 		return ;
 	}
@@ -105,7 +111,7 @@ void	ft_app_exp(t_token *lst, t_env *env)
 	key = ft_substr(tmp[0], 0, ft_strlen(tmp[0]) - 1);
 	if (!ft_isvalidkey(key))
 	{
-		printf("minishell export `%s' : not a valid identifier\n", key);
+		printf("minishell export `%s' : not a valid identifier1\n", key);
 		free(key);
 		ft_free_2dstr(tmp);
 		return ;

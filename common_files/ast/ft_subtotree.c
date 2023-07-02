@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 14:29:03 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 20:10:08 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 23:26:28 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	ft__subtotree(t_token **list)
 
 void	ft_subtotree(t_token **list)
 {
-
 	if (list && *list)
 	{	
 		ft__subtotree(list);

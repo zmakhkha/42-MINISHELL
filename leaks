@@ -22,7 +22,10 @@ resolved ^
 
 02/07/23
      "''" : '' all signle quotes causes leaks
-     heredoc delimiter leaks
+     heredoc delimiter leaks : fixed by zac
      "'$HOME'" : double free : resolved
      export a -> export a= : not working
      export not sorted
+     >> segv
+     cat: l: No such file or directory  
+    minishell $  << o | > l

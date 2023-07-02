@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 20:09:09 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 23:49:01 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -504,5 +504,10 @@ void				ft_detect(t_token *lst, t_env *env);
 void				ft_parse_export(t_token *lst, t_env *env);
 void				ft_print_exp(t_env *env);
 void				ft_handle_one(char *s, t_env **env);
+
+// execution/src/builtin/export/utils4.c
+int					ft_envlen(t_env *env);
+char				**ft_env_to_char(t_env *env);
+void				ft_sort_char(char **table);
 
 #endif

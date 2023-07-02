@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 20:30:59 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 23:29:59 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ char	*ft_rm_exp(char *str, t_env *env)
 void	ft__main_exp(t_token *lst, t_env *env)
 {
 	int		a;
+	char	*t;
 
 	a = 0;
 	if (lst->str[0] == '\'' || lst->str[0] == '\"')
@@ -105,7 +106,12 @@ void	ft__main_exp(t_token *lst, t_env *env)
 		a = 1;
 	}
 	else if (lst->str && lst->str[0] == '\'' && !a)
+	{
+		t = lst->str;
 		lst->str = ft_strtrim(lst->str, "\'");
+		free(t);
+		t = NULL;
+	}
 }
 
 // expand a string command just before execve

@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/07/02 20:29:37 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/07/02 23:49:32 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,8 @@ SRC_MN =	main.c \
 			execution/src/builtin/export/ft_main_export.c \
 			execution/src/builtin/export/utils.c \
 			execution/src/builtin/export/utils2.c \
-			execution/src/builtin/export/utils3.c 
+			execution/src/builtin/export/utils3.c  \
+			execution/src/builtin/export/utils4.c
 
 #execution part:
 

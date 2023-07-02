@@ -58,6 +58,9 @@ char	*ft_heredoc(char *del)
 			hdoc = ft_join_free(hdoc, star);
 		}
 	}
+	if (star)
+		free(star);
+	star = NULL;
 	return (hdoc);
 }
 
