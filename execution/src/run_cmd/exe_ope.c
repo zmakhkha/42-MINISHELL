@@ -26,8 +26,7 @@ int	execute_logical_op(t_token *list, t_env *env)
 		fd_in = dup(STDIN_FILENO);
 		fd_out = dup(STDOUT_FILENO);
 		status = execute_re(list->left, env);
-		if (status != -1)
-			status = ft_execution(list->right, env);
+		status = ft_execution(list->right, env);
 		ft_protect(dup2(fd_in, STDIN_FILENO), "dup2", "dup2 failed");
 		ft_protect(dup2(fd_out, STDOUT_FILENO), "dup2", "dup2 failed");
 	}

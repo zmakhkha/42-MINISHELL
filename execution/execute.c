@@ -109,3 +109,4 @@ int	ft_execution(t_token *list, t_env *env)
 	}
 	return (g_glob.g_status);
 }
+

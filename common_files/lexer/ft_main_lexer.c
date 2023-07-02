@@ -87,7 +87,7 @@ void	ft_lexit(t_token *lst)
 		ft_fd_file(&lst);
 		ft_sub_red(lst);
 		ft_swap_red(&lst);
-		// ft_swap_red2(&lst);
+		ft_swap_red2(&lst);
 		ft_merge_dig(&lst);
 		ft_checksyntax(lst);
 	}
@@ -131,4 +131,6 @@ void	ft_main_lexer(t_token *lst)
 		ft_checkfiles(lst);
 		ft_lexit(lst);
 	}
+	else
+		printf("lexer error2 !!\n");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exe_re.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 17:08:24 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/26 02:55:31 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/25 23:01:38 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,7 @@ int	execute_re(t_token *list, t_env *env)
 	if (list->type == Empty)
 	{
 		status = execute_re(list->left, env);
-		if (!status)
-			return (-1);
 		status = execute_re(list->right, env);
-		if (!status)
-			return (-1);
 	}
 	if (list->type == RE_IN)
 		status = run_re_in(list, env);
@@ -36,8 +32,6 @@ int	execute_re(t_token *list, t_env *env)
 		status = run_append(list, env);
 	else
 		status = EXIT_FAILURE;
-	if (status == -1)
-		return (-1);
 	if (status == EXIT_FAILURE)
 		return (status);
 	return (EXIT_SUCCESS);

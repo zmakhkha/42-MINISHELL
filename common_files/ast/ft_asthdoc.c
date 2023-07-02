@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:05:01 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 17:20:18 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 11:57:19 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,3 @@ void	ft_hdocontree(t_token **list, t_env **env_list)
 		ft_hdocontree(&lst->right, env_list);
 	}
 }
-
