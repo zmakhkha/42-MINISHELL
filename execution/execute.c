@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/07/01 21:16:21 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 22:25:50 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,8 @@ char	**ft_split_command(char *str)
 int	ft_execution(t_token *list, t_env *env)
 {
 	char	**splited;
-	char	*str;
 
 	splited = NULL;
-	str = NULL;
 	if (!list)
 		return (EXIT_FAILURE);
 	if (list->type == PIPE || list->type == AND || list->type == OR
@@ -109,4 +107,3 @@ int	ft_execution(t_token *list, t_env *env)
 	}
 	return (g_glob.g_status);
 }
-

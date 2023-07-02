@@ -1,0 +1,17 @@
+common_files
+draft.c
+execution
+header.h
+index.py
+leaks
+leaks.txt
+libs
+main.c
+Makefile
+minishell
+note
+objs
+pe
+tests
+test.sh
+tmp

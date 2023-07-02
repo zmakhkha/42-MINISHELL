@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 22:18:22 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 17:30:58 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
+t_global	g_glob = {.g_ctrl_c = 0, .g_ctrl_s = 0, .g_status = 0};
 // void	l(void)
 // {
 // 	system("leaks minishell");
@@ -97,4 +98,3 @@ int	main(int ac, char **av, char **env)
 	ft_prompt(env);
 	return (0);
 }
-

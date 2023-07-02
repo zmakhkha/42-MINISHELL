@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   re_utils.c.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 02:12:42 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/07/01 15:02:21 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 22:31:34 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	run_re_in(t_token *list, t_env *env)
 	if (!list)
 		return (0);
 	status = EXIT_SUCCESS;
-	fd = ft_protect(open(ft_strtrim(list->str, " "), O_RDONLY, 0644), "open", \
+	fd = ft_protect(open(ft_strtrim(list->str, " "), O_RDONLY, 0644), "open",
 		"open failed");
 	ft_protect(dup2(fd, STDIN_FILENO), "dup2", "dup2 failed");
 	ft_protect(close(fd), "close", "close failed");
@@ -40,7 +40,7 @@ int	run_re_out(t_token *list, t_env *env)
 	if (!list)
 		return (0);
 	status = EXIT_SUCCESS;
-	fd = ft_protect(open(ft_strtrim(list->str, " "), \
+	fd = ft_protect(open(ft_strtrim(list->str, " "),
 			O_WRONLY | O_TRUNC | O_CREAT, 0644), "open", "open failed");
 	// out_fd = dup(STDOUT_FILENO);
 	ft_protect(dup2(fd, STDOUT_FILENO), "dup2", "dup2 failed");
@@ -60,8 +60,8 @@ int	run_append(t_token *list, t_env *env)
 	if (!list)
 		return (0);
 	status = EXIT_SUCCESS;
-	fd = ft_protect(open(list->left->str, O_WRONLY | O_CREAT | O_APPEND, 0644), \
-		"open", "open failed");
+	fd = ft_protect(open(ft_strtrim(list->str, " "),
+			O_WRONLY | O_CREAT | O_APPEND, 0644), "open", "open failed");
 	// out_fd = dup(STDOUT_FILENO);
 	ft_protect(dup2(fd, STDOUT_FILENO), "dup2", "dup2 failed");
 	ft_protect(close(fd), "close", "close failed");
