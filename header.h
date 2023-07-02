@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 17:16:04 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 20:09:09 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,6 +259,8 @@ void				ft_readfd(t_token **list);
 
 // common_files/lexer/ft_errors.c
 void				ft_three(t_token *lst);
+char				*ft_twotoone(char **table);
+int					ft_valid_hd_delim(t_token *lst);
 
 // -------------------------------------- //
 // ----------> The AST stage <---------- //
@@ -424,6 +426,8 @@ void				ft_merge_all(t_token **list);
 int					ft_isquote(char *str);
 char				**ft_format(char *str);
 void				ft_strrep(char *str, char a, char b);
+t_str				*ft_strmkcpy(t_str *src);
+t_str				*ft_matching(t_str *src, char *str);
 
 // expanding/ft_left_right.c
 
@@ -474,6 +478,9 @@ char				**ft_onesplit(char const *s, char c);
 
 //--------------> The export built-in stage <---------------//
 // execution/src/builtin/export/utils.c
+
+# define APP -10
+# define REP -20
 
 // void				ft_format_print(t_env *env);
 // void				ft_makekey_value(t_token *lst, t_env **env);

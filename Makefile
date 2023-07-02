@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/07/02 17:08:12 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/07/02 20:29:37 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,11 @@ RESET = \033[0m
 NAME = minishell
 LIBS = libs/libs.a
 LIBS_DIR = libs
-CFLAGS = #-Wall -Werror -Wextra -g
+CFLAGS = -g -Wall -Werror -Wextra -g
 # LDFLAGS = -lreadline -g # -fsanitize=address
 HEADERS = header.h
 
-LDFLAGS = -L/goinfre/zmakhkha/homebrew/opt/readline/lib -g #-fsanitize=address
+LDFLAGS = -L/goinfre/zmakhkha/homebrew/opt/readline/lib -g -fsanitize=address
 CPPFLAGS = -I/goinfre/zmakhkha/homebrew/opt/readline/include
 
 
@@ -35,7 +35,7 @@ SRC_MN =	main.c \
 			common_files/ast/ft_leafs_utils.c \
 			common_files/ast/ft_main_ast.c \
 			common_files/ast/ft_ops_utils.c \
-			common_files/lexer/ft_errors.c \
+			common_files/lexer/ft_hdoc_utils.c \
 			common_files/lexer/ft_check_hdoc.c \
 			common_files/lexer/ft_check_redirections.c \
 			common_files/lexer/ft_fdutils.c \

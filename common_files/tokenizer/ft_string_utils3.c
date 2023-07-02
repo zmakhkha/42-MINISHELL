@@ -115,11 +115,6 @@ char	*ft_toktostr(t_token *src)
 		tmp = ft_strdup(src->str);
 		tmp2 = res;
 		res = ft_join_free(tmp2, tmp);
-		// if (tmp2)
-		// {
-		// 	free(tmp2);
-		// 	tmp2 = NULL;
-		// }
 		src = src->prev;
 	}
 	ft_free_token(&src);

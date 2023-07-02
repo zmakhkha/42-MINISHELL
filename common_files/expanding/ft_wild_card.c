@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:40:37 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 17:17:25 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 19:21:15 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,51 +36,6 @@ char	*ft_strnstr1(const char *haystack, const char *needle, size_t len)
 	return (NULL);
 }
 
-t_str	*ft_strmkcpy(t_str *src)
-{
-	t_str	*res;
-
-	res = NULL;
-	while (src)
-	{
-		ft_str_addback(&res, (ft_add_str(ft_strdup(src->str))));
-		src = src->prev;
-	}
-	return (res);
-}
-
-t_str	*ft_matching(t_str *src, char *str)
-{
-	int		a;
-	t_str	*res;
-	char	**prts;
-
-	prts = ft_split(str, '*');
-	a = -1;
-	res = NULL;
-	a = ft_count(str);
-	if (str && src)
-	{
-		if (a == ALONE)
-			res = ft_strmkcpy(src);
-		else if (a == LEFT)
-			res = ft_wc_left(src, prts[0]);
-		else if (a == RIGHT)
-			res = ft_wc_right(src, prts[0]);
-		else if (a == MIDL)
-			res = ft_middle(src, str);
-		else if (a == MULT)
-			res = ft_multi(src, str);
-	}
-	ft_free_2dstr(prts);
-	return (res);
-}
-
-// # define LEFT 0
-// # define RIGHT 1
-// # define MULT 2
-// # define ALONE 2
-
 char	*ft_tostr(t_str *src)
 {
 	char	*res;
@@ -99,15 +54,26 @@ char	*ft_tostr(t_str *src)
 	return (res);
 }
 
-// void	ft_free_obj(t_str **s)
-// {
-// 	if (s)
-// 	{
-// 		ft_free_obj(&(*s)->prev);
-// 		free(*s);
-// 		s = NULL;
-// 	}
-// }
+void	ft__main_wc(t_str *r, t_str *b, char *str, int mode)
+{
+	if (!mode)
+	{
+		ft_free_str(&r);
+		r = NULL;
+		ft_free_str(&b);
+		b = NULL;
+	}
+	if (mode)
+	{
+		if (r)
+			ft_free_str(&r);
+		if (b)
+			ft_free_str(&b);
+		b = NULL;
+		free(str);
+		str = NULL;
+	}
+}
 
 // to be called foreach node
 char	*ft_main_wc(char *str, t_env *env_list)
@@ -127,24 +93,10 @@ char	*ft_main_wc(char *str, t_env *env_list)
 	}
 	if (!res)
 	{
-		ft_free_str(&r);
-		r = NULL;
-		ft_free_str(&b);
-		b = NULL;
-		free(str);
-		str = NULL;
+		ft__main_wc(r, b, str, 0);
 		return (str);
 	}
 	else
-	{
-		if (r)
-			ft_free_str(&r);
-		if (b)
-			ft_free_str(&b);
-		b = NULL;
-		if (str)
-			free(str);
-		str = NULL;
-	}
+		ft__main_wc(r, b, str, 1);
 	return (res);
 }

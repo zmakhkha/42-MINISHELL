@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 16:45:43 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 16:46:11 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 19:53:53 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,5 @@ void	ft_signal_ignore(void)
 
 	signal.sa_handler = SIG_IGN;
 	sigemptyset(&signal.sa_mask);
-	// signal.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &signal, NULL);
 }

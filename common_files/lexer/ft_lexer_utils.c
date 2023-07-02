@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 16:19:15 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 16:19:50 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 19:52:57 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	ft_mergeword_num(t_token **list)
 		if (lst && (lst->type == WORD) && (lst->prev->type == DIGITE))
 		{
 			s_tmp = ft_join_free(lst->str, ft_strdup(lst->prev->str));
-			// free(lst->str);
 			lst->str = s_tmp;
 			ft_remove_tok(list, lst->prev);
 			continue ;

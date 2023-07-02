@@ -6,18 +6,12 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:06:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 16:19:42 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 19:53:23 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
 
-//  Add this to print to tokens after the lexing
-// else
-// {
-// 	ft_print_token_str(lst);
-// 	ft_print_token(lst);
-// }
 void	ft_lexit(t_token *lst)
 {
 	if (!g_glob.g_status)
@@ -43,8 +37,6 @@ void	ft_mergewords(t_token **list)
 		if (lst && (lst->type == WORD) && (lst->prev->type == WORD))
 		{
 			s_tmp = ft_join_free(lst->str, ft_strdup(lst->prev->str));
-			// free(lst->str);
-			// detect(s_tmp);
 			lst->str = s_tmp;
 			ft_remove_tok(list, lst->prev);
 			continue ;

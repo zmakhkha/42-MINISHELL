@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 16:09:48 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 16:10:40 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 19:57:35 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,18 @@ void	ft_rep_exp(t_token *lst, t_env *env)
 	ft_free_2dstr(tmp);
 }
 
+void	ft_detect_one(t_token *lst, t_env *env, int i, int mode)
+{
+	if (!mode)
+	{
+		if (i == 0)
+			printf("minishell: export: `%s': not a valid identifier\n", \
+		lst->str);
+		else
+			ft_app_exp(lst, env);
+	}
+}
+
 void	ft_detect(t_token *lst, t_env *env)
 {
 	int	i;
@@ -47,11 +59,7 @@ void	ft_detect(t_token *lst, t_env *env)
 		{
 			if (lst->str[i] == '+' && lst->str[i + 1] && lst->str[i + 1] == '=')
 			{
-				if (i == 0)
-					printf("minishell: export: `%s': not a valid identifier\n",
-						lst->str);
-				else
-					ft_app_exp(lst, env);
+				ft_detect_one(lst, env, i, 0);
 				return ;
 			}
 			else if (lst->str[i] == '=')
@@ -118,5 +126,4 @@ void	ft_handle_one(char *s, t_env **env)
 	ft_parse_export(lst, *env);
 	ft_free_token(&lst);
 	free(s);
-	// ft_makekey_value(lst, env);
 }

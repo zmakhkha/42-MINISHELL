@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 16:44:14 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 20:30:59 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ char	*ft_expand(char *str, t_env *env)
 	i = 0;
 	j = 0;
 	res = NULL;
-	tmp_val = NULL;
 	while (str && str[i] && str[i] != '$')
 		i++;
 	if (str && str[i] && str[i] == '$')
@@ -35,13 +34,12 @@ char	*ft_expand(char *str, t_env *env)
 		tmp_val = ft_substr(str, i + 1, j - i - 1);
 		expanded_val = get_value(tmp_val, env);
 		free(tmp_val);
-		res = ft_join_free(res, expanded_val);
+		res = ft_join_free(ft_strdup(res), ft_strdup(expanded_val));
 		i = j;
 	}
 	if (str && str[j])
 		res = ft_join_free(res, ft_substr(str, j, ft_strlen(str) - j));
-	free(str);
-	return (res);
+	return (free(str), res);
 }
 
 char	*ft_rm__exp(char *str, t_env *env, char *res, int i)
@@ -84,8 +82,30 @@ char	*ft_rm_exp(char *str, t_env *env)
 	}
 	else
 		res = ft_rm__exp(str, env, res, i);
-	free(str);
+	if (str)
+		free(str);
 	return (res);
+}
+
+void	ft__main_exp(t_token *lst, t_env *env)
+{
+	int		a;
+
+	a = 0;
+	if (lst->str[0] == '\'' || lst->str[0] == '\"')
+		ft_strrep(lst->str, ' ', ' ' * -1);
+	if (lst->str[0] != '\"' && lst->str[0] != '\'' && ft_strchr(lst->str, \
+		'*'))
+		lst->str = ft_main_wc(lst->str, env);
+	if (lst->str && lst->str[0] != '\'')
+		lst->str = ft_rm_exp(lst->str, env);
+	else if (lst->str && lst->str[0] == '\"')
+	{
+		lst->str = ft_strtrim(lst->str, "\"");
+		a = 1;
+	}
+	else if (lst->str && lst->str[0] == '\'' && !a)
+		lst->str = ft_strtrim(lst->str, "\'");
 }
 
 // expand a string command just before execve
@@ -97,7 +117,6 @@ char	**ft_main_exp(char *str, t_env *env)
 	char	**res;
 	int		a;
 
-	a = 0;
 	res = NULL;
 	s_tmp = NULL;
 	lst = NULL;
@@ -106,20 +125,7 @@ char	**ft_main_exp(char *str, t_env *env)
 	tmp = lst;
 	while (lst)
 	{
-		if (lst->str[0] == '\'' || lst->str[0] == '\"')
-			ft_strrep(lst->str, ' ', ' ' * -1);
-		if (lst->str[0] != '\"' && lst->str[0] != '\'' && ft_strchr(lst->str, \
-			'*'))
-			lst->str = ft_main_wc(lst->str, env);
-		if (lst->str && lst->str[0] != '\'')
-			lst->str = ft_rm_exp(lst->str, env);
-		else if (lst->str && lst->str[0] == '\"')
-		{
-			lst->str = ft_strtrim(lst->str, "\"");
-			a = 1;
-		}
-		else if (lst->str && lst->str[0] == '\'' && !a)
-			lst->str = ft_strtrim(lst->str, "\'");
+		ft__main_exp(lst, env);
 		lst = lst->prev;
 	}
 	s_tmp = ft_toktostr(tmp);
