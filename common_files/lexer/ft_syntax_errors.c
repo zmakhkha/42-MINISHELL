@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 14:36:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/28 19:11:53 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 15:55:29 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,15 @@ int	ft_isforbidden(t_token *lst)
 
 void	ft_check_op(t_token *lst)
 {
-	t_token	*tail;
-	int		ret;
-
-	ret = SUCC;
-	tail = NULL;
 	if (lst)
 	{
 		if (ft_loperators(lst) || ft_loperators(ft_getlast(lst)) \
 		|| ft_getlast(lst)->type == HDOC)
-			g_status = ERR;
+			g_glob.g_status = ERR;
 		while (lst && lst->prev)
 		{
 			if (ft_isforbidden(lst) == ERR || lst->type == AMP)
-				g_status = ERR;
+				g_glob.g_status = ERR;
 			lst = lst->prev;
 		}
 	}
@@ -65,5 +60,5 @@ void	ft_operrors(t_token *lst)
 	tail = ft_getlast(lst);
 	if (ft_loperators(head) || ft_loperators(tail) || ft_isbigoperators(head) \
 	|| ft_isbigoperators(tail))
-		g_status = ERR;
+		g_glob.g_status = ERR;
 }

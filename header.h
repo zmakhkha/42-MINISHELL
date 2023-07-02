@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/26 03:53:58 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 21:15:32 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <sys/wait.h>
+# include <termios.h>
 # include <unistd.h>
 
 // static void *_malloc(size_t c, char *file, int line)
@@ -44,11 +46,18 @@
 
 # define EXLUDE "` @ # % ^ + = \ ;"
 # define H_PATH "/tmp/.minishell_history"
-# define H_DOCP "/tmp/"
+# define H_DOCP "/Users/zmakhkha/Desktop/"
 # define SUCC 0
 # define ERR 1
 
-int					g_status;
+typedef struct s_gobvar
+{
+	int				g_status;
+	int				g_ctrl_c;
+	int				g_ctrl_s;
+}					t_global;
+
+t_global			g_glob;
 // -------> Tokens enumeration <------- //
 
 enum
@@ -130,7 +139,7 @@ int					ft_is_operator4(char c);
 int					ft_is_operator2(char c);
 int					ft_is_quote(char c);
 
-//common_files/tokenizer/ft_valid_utils2.c
+// common_files/tokenizer/ft_valid_utils2.c
 void				ft_exit(char *c, int s);
 int					ft_valid_word(char c);
 int					ft_is_valid_comm2(char c);
@@ -359,7 +368,8 @@ t_cmd				ft_init_cmd(char **args, char **env);
 char				*set_cmd_path(t_cmd *cmd);
 bool				ft_check_relative_or_binary(t_cmd *cmd);
 /* src/process/child.c */
-int					ft_child_process(t_cmd *cmd);
+int					ft_child_process(t_cmd *cmd, t_env *env);
+
 /* src/run_cmd/ */
 int					execute_logical_op(t_token *list, t_env *env);
 int					execute_command(char **args, t_env *env);
@@ -443,12 +453,35 @@ void				ft_signal_main(void);
 void				ft_signal_child(void);
 void				ft_signal_ignore(void);
 
-void	ft_mergewords(t_token **list);
+void				ft_mergewords(t_token **list);
 
-void	ft_mergeword_num(t_token **list);
-char	**ft_onesplit(char const *s, char c);
+void				ft_mergeword_num(t_token **list);
+char				**ft_onesplit(char const *s, char c);
 
-char	*ft_rm__exp(char *str, t_env *env, char *res, int i);
+char				*ft_rm__exp(char *str, t_env *env, char *res, int i);
+
+# define QUOTE -10
+
+t_token				*ft_strtok1(char *str);
+void				ft_export_it(t_token *list, t_env **env);
+
+//--------------> The export built-in stage <---------------//
+// execution/src/builtin/export/utils.c
+
+void				ft_merge_num_word(t_token **list);
+void				ft_format_print(t_env *env);
+void				ft_makekey_value(t_token *lst, t_env **env);
+void				ft_handle_one(char *s, t_env **env);
+void				ft_export_it(t_token *list, t_env **env);
+
+// execution/src/builtin/export/utils2.c
+int					ft_containequl(char *str);
+void				ft_mergewordspace(t_token **list);
+char				**ft_devide(char *r, char del);
+int					ft_isvalidkey(char *str);
+void				ft_addnode(t_token *lst, t_env **env);
+
+void	ft_print_exp(t_env *env);
 
 #endif
 

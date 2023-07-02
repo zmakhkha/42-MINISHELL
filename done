@@ -1,9 +1,0 @@
-execute a simple commande : /bin/ls
-empty command :  \n passes, "", '' passes
-
-bash-3.2$ export a="word1      word2    word3"
-bash-3.2$ 
-bash-3.2$ 
-bash-3.2$ echo "$USER"$a'BRAVO'
-zmakhkhaword1 word2 word3BRAVO
-bash-3.2$ 

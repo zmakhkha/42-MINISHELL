@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:20:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/27 17:30:15 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/26 07:33:06 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 void	ft_swap_red(t_token **list)
 {
 	t_token	*lst;
-	t_token	*tmp;
 
-	tmp = NULL;
 	lst = *list;
 	while (lst && lst->prev)
 	{
@@ -39,9 +37,7 @@ void	ft_swap_red(t_token **list)
 void	ft_swap_red2(t_token **list)
 {
 	t_token	*lst;
-	t_token	*tmp;
 
-	tmp = NULL;
 	lst = *list;
 	while (lst && lst->prev)
 	{
@@ -61,9 +57,7 @@ void	ft_swap_red2(t_token **list)
 void	ft_swap_red3(t_token **list)
 {
 	t_token	*lst;
-	t_token	*tmp;
 
-	tmp = NULL;
 	lst = *list;
 	while (lst && lst->prev)
 	{

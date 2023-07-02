@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:37:24 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/26 17:17:57 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/26 07:32:32 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 void	ft_fd_file(t_token **list)
 {
 	t_token	*lst;
-	t_token	*tmp;
 
-	tmp = NULL;
 	lst = *list;
 	while (lst && lst->prev)
 	{
@@ -38,9 +36,7 @@ void	ft_fd_file(t_token **list)
 void	ft_readfd(t_token **list)
 {
 	t_token	*lst;
-	t_token	*tmp;
 
-	tmp = NULL;
 	lst = *list;
 	while (lst && lst->prev)
 	{

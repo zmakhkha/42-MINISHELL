@@ -38,6 +38,7 @@ int	ft_check_hdoc(t_token *lst)
 			{
 				printf("heredoc delimiter error !!\n");
 				i = ERR;
+				g_glob.g_status = ERR;
 				break ;
 			}
 			lst = lst->prev;
@@ -50,35 +51,26 @@ char	*ft_heredoc(char *del)
 {
 	char	*hdoc;
 	char	*star;
-	char	*tmp;
 
-	tmp = NULL;
+	star = NULL;
 	hdoc = NULL;
+	g_glob.g_ctrl_c = false;
 	while (1)
 	{
 		star = readline("> ");
-		if (star == NULL)
+		if (star == NULL || !ft_strcmp(del, star) || g_glob.g_ctrl_c)
 			break ;
-		if (!ft_strcmp(del, star))
-		{
-			free (star);
-			break ;
-		}
 		else
 		{
-			tmp = ft_join_free(hdoc, star);
-			free(hdoc);
-			hdoc = NULL;
-			hdoc = ft_join_free(tmp, "\n");
-			free(tmp);
-			tmp = NULL;
+			if (hdoc)
+				hdoc = ft_join_free(hdoc, "\n");
+			hdoc = ft_join_free(hdoc, star);
 		}
-		free (star);
 	}
 	return (hdoc);
 }
 
-char *ft_twotoone(char **table)
+char	*ft_twotoone(char **table)
 {
 	int		i;
 	char	*res;
@@ -112,20 +104,20 @@ char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
 	path = ft_join_free("HDOC", " ");
 	full_path = ft_join_free(H_DOCP, path);
 	if (type == 1)
-		str = ft_twotoone(ft_main_exp(str, env_list)); 
+		str = ft_rm_exp(str, env_list);
 	while (access(full_path, F_OK) == 0)
-		full_path = ft_join_free(full_path, "_1");
+		full_path = ft_join_free(ft_strtrim(full_path, " "), "_1");
 	fd = open(full_path, O_WRONLY | O_APPEND | O_CREAT, 0644);
 	if (fd == -1)
 		ft_exit("Failed to create the tmp heredoc file !!\n", 1);
 	if (str)
 	{
 		b = write(fd, str, ft_strlen(str));
-	if (b == -1)
-		ft_exit("Failed to update the tmp heredoc file !!\n", 1);
-	b = write(fd, "\n", 1);
-	if (b == -1)
-		ft_exit("Failed to update the tmp heredoc file !!\n", 1);
+		if (b == -1)
+			ft_exit("Failed to update the tmp heredoc file !!\n", 1);
+		b = write(fd, "\n", 1);
+		if (b == -1)
+			ft_exit("Failed to update the tmp heredoc file !!\n", 1);
 	}
 	if (close(fd) == -1)
 		ft_exit("Failed to close tmp heredoc file !!\n", 1);

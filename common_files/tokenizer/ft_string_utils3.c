@@ -12,12 +12,12 @@
 
 #include "../../header.h"
 
-int	ft_voperator(char*str, char op)
+int	ft_voperator(char *str, char op)
 {
 	int	i;
 
 	i = 0;
-	if (str[i] && str[i + 1] && str [i + 2])
+	if (str[i] && str[i + 1] && str[i + 2])
 	{
 		if (str[i] == op && str[i + 1] == op && str[i + 2] == op)
 			return (ERR);
@@ -54,23 +54,27 @@ int	ft_validouble(char *str, char op)
 
 void	ft_prt(char *str, t_token **lst, int *a, int *b)
 {
-	int		len;
 	char	*s;
 
 	s = NULL;
-	len = ft_strlen(str);
 	if (str[*b] && (str[*b] == '(' && if_validp(str + *b) != -1))
 	{
 		*b += if_validp(str + *b);
 		if (str[*b] == ')')
 		{
-			s = ft_substr(str, *a + 1, *b - *a -1);
-			ft_token_addback(lst, ft_add_token(s, SUBSHELL));
+			s = ft_substr(str, *a + 1, *b - *a - 1);
+			if (ft_strlen(s) > 0)
+				ft_token_addback(lst, ft_add_token(s, SUBSHELL));
+			else
+			{
+				g_glob.g_status = ERR;
+				return ;
+			}
 			*b += 1;
 		}
 	}
 	else
-		g_status = ERR;
+		g_glob.g_status = ERR;
 }
 
 int	if_validp(char *str)
@@ -85,10 +89,10 @@ int	if_validp(char *str)
 		if (str[i] == '(')
 		{
 			open++;
-			if_validp(str + i +1);
+			if_validp(str + i + 1);
 		}
 		if (str[i] == ')')
-		{	
+		{
 			open--;
 			if (!open)
 				return (i);
@@ -99,24 +103,25 @@ int	if_validp(char *str)
 	return (-1);
 }
 
-char *ft_toktostr(t_token *src)
+char	*ft_toktostr(t_token *src)
 {
-    char *res = NULL;
-    char *tmp = NULL;
-    char *tmp2 = NULL;
+	char	*res;
+	char	*tmp;
+	char	*tmp2;
 
-    while (src)
-    {
-        tmp = src->str;
+	res = NULL;
+	while (src)
+	{
+		tmp = src->str;
 		tmp2 = res;
-        res = ft_join_free(tmp2, tmp);
+		res = ft_join_free(tmp2, tmp);
 		if (tmp2)
 		{
 			free(tmp2);
 			tmp2 = NULL;
 		}
-        src = src->prev;
-    }
-    ft_free_token(&src); 
-    return res;
+		src = src->prev;
+	}
+	ft_free_token(&src);
+	return (res);
 }

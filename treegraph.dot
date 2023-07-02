@@ -1,6 +1,0 @@
-/*
-<baba>
-*/
-digraph {
-  node1 [label="./minishell"];
-}

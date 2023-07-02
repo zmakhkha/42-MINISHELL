@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exe_command.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:16:02 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/26 00:47:07 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/07/01 15:03:47 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	execute_command(char **args, t_env *env)
 	pid = ft_protect(fork(), "fork", "Fork failed");
 	if (pid == 0)
 	{
-		status = ft_child_process(&cmd);
+		status = ft_child_process(&cmd, env);
 		ft_free_2dstr(cmd.paths);
 		free(cmd.path_cmd);
 		ft_free_2dstr(cmd.env);

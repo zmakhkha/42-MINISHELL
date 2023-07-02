@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 05:25:46 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/26 00:33:10 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 15:07:02 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	unset_env(const char *key, t_env **env_list)
 		}
 		else
 			unset_env(key, &(*env_list)->next);
-	} 
+	}
 }
 
 int	execute_unset(char **list, t_env **env_list)

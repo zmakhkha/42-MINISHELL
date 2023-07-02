@@ -131,7 +131,7 @@ bash-3.2$ echo $a
 $HOME lala
 bash-3.2$ echo "$a"
 $HOME     lala 
-------------------------->
+-----------------------
 bash-3.2$ export b="$HOME     lala "
 bash-3.2$ echo $b
 /Users/zmakhkha lala
@@ -153,3 +153,53 @@ export a=valid  8b=invalid  c="valid     lalalalaa"
 
 minishell $ echo $a $8b
 minishell: 8b: command not found
+
+ls -la | grep ".txt" | wc -l :: passe
+cat file.txt | grep "keyword" | sort | uniq -c | awk '{print $2, $1}' :: passe
+lsof / | awk '{ if($7 > 1048576) print $7/1048576 "MB" " " $9 " " $1 }' | sort -n -u | tail :: passe
+ls -la | grep "main" && wc -l
+
+------------
+exit after ctrl + slash hangs until we tap enter
+
+
+
+export
+
+simple declaration
+epxort b  =>  declare -x b
+epxort c=  =>  declare -x c=""
+epxort d=  =>  declare -x d=""
+epxort ab="lala" => declare -x ab="lalala"
+export ad+=dsf => declare -x ad="dsf" // ad does not exists before
+
+redeclaration of the same variable
+
+declare -x c=""  after export c => declare -x c=""
+export ab="sfdsdfsdf" after declare -x ab="sfdsdfsdf"
+export ab+=74586 after declare -x ab="sfdsdfsdf74586" //append mode
+
+syntax
+export av =dssddsds
+bash: export: `=dssddsds': not a valid identifier
+declare -x av : and av exists
+
+export ab= dssddsds
+declare -x ab=""
+declare -x dssddsds
+
+export asd += dfsgd
+export: `+=': not a valid identifier
+declare -x asd
+declare -x dfsgd
+
+quotes and spacing
+
+bash-3.2$ export az="var1      $HOME     lala"
+bash-3.2$ export | grep az
+declare -x az="var1      /Users/zmakhkha     lala"
+
+bash-3.2$ echo $az
+var1 /Users/zmakhkha lala
+bash-3.2$ echo "$az"
+var1      /Users/zmakhkha     lala

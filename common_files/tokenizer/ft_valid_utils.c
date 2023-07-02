@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_valid_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:27:40 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 11:37:10 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/07/01 15:14:59 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_is_moperator(char c)
 
 int	ft_is_operator4(char c)
 {
-	return (c == '|' || c == '&' ||
+	return (c == '|' || c == '&' || \
 			c == '=' || c == '$');
 }
 
