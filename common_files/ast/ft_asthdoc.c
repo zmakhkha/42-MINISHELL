@@ -69,3 +69,4 @@ void	ft_hdocontree(t_token **list, t_env **env_list)
 		ft_hdocontree(&lst->right, env_list);
 	}
 }
+

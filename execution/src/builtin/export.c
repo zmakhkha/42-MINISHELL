@@ -49,23 +49,24 @@ int	execute_export(char **args, t_env **env_list)
 	char	*value;
 	int		ret;
 
-	i = 1;
-	ret = 0;
-	if (args == NULL)
-	{
-		return (0);
-	}
-	if (args[0] && !args[1])
-	{
-		declare_env(env_list);
-	}
-	while (args[i])
-	{
-		ret = check_if_valid(args[i]);
-		parse_arguments(args[i], &key, &value);
-		if (!ret)
-			change_env(key, value, env_list);
-		i++;
-	}
-	return (0);
-}
+
+// 	i = 1;
+// 	ret = 0;
+// 	if (args == NULL)
+// 	{
+// 		return (0);
+// 	}
+// 	if (args[0] && !args[1])
+// 	{
+// 		declare_env(env_list);
+// 	}
+// 	while (args[i])
+// 	{
+// 		ret = check_if_valid(args[i]);
+// 		parse_arguments(args[i], &key, &value);
+// 		if (!ret)
+// 			change_env(key, value, env_list);
+// 		i++;
+// 	}
+// 	return (0);
+// }

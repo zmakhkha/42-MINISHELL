@@ -69,3 +69,4 @@ int	run_append(t_token *list, t_env *env)
 	// ft_protect(dup2(out_fd, STDOUT_FILENO), "dup2", "dup2 failed");
 	return (status);
 }
+
