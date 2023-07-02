@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 18:12:21 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 17:14:55 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	ft_prompt(char **env)
 		ft_add_history(str);
 		ft_run_it(str, env_list);
 		free(str);
+		// break;
 	}
 	ft_free_env(&env_list);
 }

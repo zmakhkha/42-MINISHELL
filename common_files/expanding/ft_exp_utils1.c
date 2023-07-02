@@ -1,39 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_exp_utils1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 16:46:07 by zmakhkha         ###   ########.fr       */
+/*   Created: 2023/07/02 16:41:47 by zmakhkha          #+#    #+#             */
+/*   Updated: 2023/07/02 16:44:21 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../../header.h"
 
-// void	l(void)
-// {
-// 	system("leaks minishell");
-// }
-
-// void	detect(void	*res)
-// {
-// 		// puts("\n");
-// 		printf("\nHADA: %p,\n", res);
-// 		// puts("\n");
-// }
-
-int	main(int ac, char **av, char **env)
+int	ft_isquote(char *str)
 {
-	rl_catch_signals = 0;
-	rl_initialize();
-	ft_signal_main();
-	if (ac != 1 || av[1])
+	if (str)
 	{
-		printf("This program does not accept arguments\n");
-		exit(0);
+		while (str)
+		{
+			if ((*str) == '\'' || (*str) == '\"')
+				return (1);
+		}
 	}
-	ft_prompt(env);
 	return (0);
+}
+
+char	**ft_format(char *str)
+{
+	char	**spl;
+
+	spl = ft_split(str, ' ');
+	if (str)
+		free(str);
+	str = NULL;
+	return (spl);
+}
+
+void	ft_strrep(char *str, char a, char b)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == a)
+			str[i] = b;
+	}
 }

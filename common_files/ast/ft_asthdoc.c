@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:05:01 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 12:39:45 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 15:58:30 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ char	*ft_get_path(char *del, int type, t_env **env_list)
 	a = -5;
 	path = NULL;
 	tmp = ft_heredoc(del);
-	path = ft_strdup(ft_hdoc_tofd(tmp, type, *env_list));
-	puts(path);
+	path = ft_hdoc_tofd(tmp, type, *env_list);
 	return (path);
 }
 
@@ -34,14 +33,18 @@ void	ft_hdoc_to_file(t_token **list, t_env **env_list)
 	if (list && (*list) && (*list)->type == HDOC)
 	{
 		tmp = ft_strtrim((*list)->str, " \t");
+		free((*list)->str);
+		(*list)->str = NULL;
 		if (ft_strchr(tmp, '\'') || ft_strchr(tmp, '\"'))
 		{
-			tmp = ft_strtrim(tmp, "\'\"");
+			free(tmp);
+			tmp = ft_strtrim(tmp, " \'\"");
 			(*list)->str = ft_get_path(tmp, 0, env_list);
 		}
 		else
 			(*list)->str = ft_get_path(tmp, 1, env_list);
 		(*list)->type = RE_IN;
+		free(tmp);
 	}
 }
 

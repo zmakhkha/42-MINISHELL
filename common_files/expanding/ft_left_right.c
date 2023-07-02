@@ -6,35 +6,11 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:17:06 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/23 15:54:03 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 16:38:24 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
-
-int	ft_count_lmatching(t_str *src, char *cnd)
-{
-	int	m;
-	int	i;
-	int	len1;
-
-	m = 0;
-	len1 = ft_strlen(cnd);
-	if (src && cnd)
-	{
-		while (src)
-		{
-			i = 0;
-			while (i < len1 && src->str[i] && \
-			(src->str[i] == cnd[i]))
-				i++;
-			if (i == len1)
-				m++;
-			src = src->prev;
-		}
-	}
-	return (m);
-}
 
 t_str	*ft_wc_left(t_str *src, char *cnd)
 {

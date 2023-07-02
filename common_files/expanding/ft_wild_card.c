@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:40:37 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 13:01:24 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 17:17:25 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,29 +92,22 @@ char	*ft_tostr(t_str *src)
 	tmp = NULL;
 	while (src)
 	{
-		tmp = ft_join_free(src->str, ft_strdup(" "));
-		res = res_;
-		res_ = ft_join_free(res_, tmp);
-		// if (res)
-		// 	free(res);
-		// res = NULL;
-		// if (tmp)
-		// 	free(tmp);
-		// tmp = NULL;
+		tmp = ft_join_free(ft_strdup(src->str), ft_strdup(" "));
+		res = ft_join_free(res, tmp);
 		src = src->prev;
 	}
-	return (res_);
+	return (res);
 }
 
-void	ft_free_obj(t_str **s)
-{
-	if (s)
-	{
-		ft_free_obj(&(*s)->prev);
-		free(*s);
-		s = NULL;
-	}
-}
+// void	ft_free_obj(t_str **s)
+// {
+// 	if (s)
+// 	{
+// 		ft_free_obj(&(*s)->prev);
+// 		free(*s);
+// 		s = NULL;
+// 	}
+// }
 
 // to be called foreach node
 char	*ft_main_wc(char *str, t_env *env_list)
@@ -146,7 +139,6 @@ char	*ft_main_wc(char *str, t_env *env_list)
 	{
 		if (r)
 			ft_free_str(&r);
-		r = NULL;
 		if (b)
 			ft_free_str(&b);
 		b = NULL;

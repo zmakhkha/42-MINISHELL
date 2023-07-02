@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 13:40:32 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 16:44:14 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,42 +88,6 @@ char	*ft_rm_exp(char *str, t_env *env)
 	return (res);
 }
 
-int	ft_isquote(char *str)
-{
-	if (str)
-	{
-		while (str)
-		{
-			if ((*str) == '\'' || (*str) == '\"')
-				return (1);
-		}
-	}
-	return (0);
-}
-
-char	**ft_format(char *str)
-{
-	char	**spl;
-
-	spl = ft_split(str, ' ');
-	if (str)
-		free(str);
-	str = NULL;
-	return (spl);
-}
-
-void	ft_strrep(char *str, char a, char b)
-{
-	int	i;
-
-	i = -1;
-	while (str[++i])
-	{
-		if (str[i] == a)
-			str[i] = b;
-	}
-}
-
 // expand a string command just before execve
 char	**ft_main_exp(char *str, t_env *env)
 {
@@ -139,7 +103,6 @@ char	**ft_main_exp(char *str, t_env *env)
 	lst = NULL;
 	lst = ft_strtok(str);
 	ft_mergeword_num(&lst);
-	// ft_merge_sp(&lst);
 	tmp = lst;
 	while (lst)
 	{

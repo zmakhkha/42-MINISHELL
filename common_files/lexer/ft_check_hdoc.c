@@ -121,5 +121,6 @@ char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
 	}
 	if (close(fd) == -1)
 		ft_exit("Failed to close tmp heredoc file !!\n", 1);
+	free(str);
 	return (full_path);
 }
