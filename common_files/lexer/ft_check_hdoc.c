@@ -63,7 +63,7 @@ char	*ft_heredoc(char *del)
 		else
 		{
 			if (hdoc)
-				hdoc = ft_join_free(hdoc, "\n");
+				hdoc = ft_join_free(hdoc, ft_strdup("\n"));
 			hdoc = ft_join_free(hdoc, star);
 		}
 	}
@@ -85,8 +85,8 @@ char	*ft_twotoone(char **table)
 	{
 		res_ = res;
 		tmp = ft_join_free(res, table[i]);
-		free(res_);
-		res = ft_join_free(tmp, " ");
+		// free(res_);
+		res = ft_join_free(tmp, ft_strdup(" "));
 		free(tmp);
 	}
 	ft_free_2dstr(table);
@@ -101,12 +101,12 @@ char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
 	ssize_t	b;
 
 	b = 0;
-	path = ft_join_free("HDOC", " ");
-	full_path = ft_join_free(H_DOCP, path);
+	path = ft_strdup("HDOC");
+	full_path = ft_join_free(ft_strdup(H_DOCP), path);
 	if (type == 1)
 		str = ft_expand(str, env_list);
 	while (access(full_path, F_OK) == 0)
-		full_path = ft_join_free(ft_strtrim(full_path, " "), "_1");
+		full_path = ft_join_free(full_path, ft_strdup("_1"));
 	fd = open(full_path, O_WRONLY | O_APPEND | O_CREAT, 0644);
 	if (fd == -1)
 		ft_exit("Failed to create the tmp heredoc file !!\n", 1);

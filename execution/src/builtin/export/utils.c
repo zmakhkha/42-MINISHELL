@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 11:21:50 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 22:56:16 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 15:18:28 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	ft_merge_num_word(t_token **list)
 	{
 		if (lst && (lst->type == DIGITE) && (lst->prev->type == WORD))
 		{
-			s_tmp = ft_join_free(lst->str, lst->prev->str);
-			free(lst->str);
+			s_tmp = ft_join_free(lst->str, ft_strdup(lst->prev->str));
+			// free(lst->str);
 			lst->str = s_tmp;
 			ft_remove_tok(list, lst->prev);
 			continue ;
@@ -56,10 +56,12 @@ void	ft_with_quotes(t_token *lst, t_env *env)
 	if (!ft_isvalidkey(key))
 	{
 		printf("minishell export `%s' : not a valid identifier\n", key);
+		free(key);
 		return ;
 	}
 	if (!get_value(key, env))
-		change_env(key, ft_strdup("with"), &env);
+		change_env(key, "with", &env);
+	free(key);
 }
 
 void	ft_no_qoute(t_token *lst, t_env *env)
@@ -70,10 +72,12 @@ void	ft_no_qoute(t_token *lst, t_env *env)
 	if (!ft_isvalidkey(key))
 	{
 		printf("minishell export `%s' : not a valid identifier\n", key);
+		free(key);
 		return ;
 	}
 	if (!get_value(key, env))
-		change_env(key, ft_strdup("No"), &env);
+		change_env(key, "No", &env);
+	free(key);
 }
 
 void	ft_app_exp(t_token *lst, t_env *env)
@@ -89,24 +93,30 @@ void	ft_app_exp(t_token *lst, t_env *env)
 	if (!ft_isvalidkey(key))
 	{
 		printf("minishell export `%s' : not a valid identifier\n", key);
+		free(key);
+		ft_free_2dstr(tmp);
 		return ;
 	}
 	if (tmp && tmp[0] && tmp[1] && ft_strlen(tmp[1]))
 	{
 		t_key = get_value(key, env);
-		if (!ft_strcmp(t_key, "with") || !ft_strcmp(t_key, "No"))
-		{
-			free(t_key);
-			t_key = NULL;
-		}
-		s_tmp = ft_join_free(t_key, ft_strtrim(tmp[1], "\"\'"));
-		change_env(key, ft_strtrim(s_tmp, "\'\""), &env);
+		s_tmp = ft_strtrim(tmp[1], "\"\'");
+		s_tmp = ft_join_free(ft_strdup(t_key), s_tmp);
+		t_key = ft_strtrim(s_tmp, "\'\"");
+		change_env(key, t_key, &env);
+		free(s_tmp);
+		s_tmp = NULL;
+		free(key);
+		key = NULL;
+		free(t_key);
+		t_key = NULL;
 	}
 	else if (!ft_strlen(tmp[1]))
 	{
 		lst->str = key;
 		ft_with_quotes(lst, env);
 	}
+	ft_free_2dstr(tmp);
 }
 
 void	ft_rep_exp(t_token *lst, t_env *env)
@@ -119,12 +129,18 @@ void	ft_rep_exp(t_token *lst, t_env *env)
 	if (!ft_isvalidkey(key))
 	{
 		printf("minishell export `%s' : not a valid identifier\n", key);
+		ft_free_2dstr(tmp);
 		return ;
 	}
 	if (tmp && tmp[0] && tmp[1] && ft_strlen(tmp[1]))
-		change_env(tmp[0], ft_strtrim(tmp[1], "\'\""), &env);
+	{
+		key = ft_strtrim(tmp[1], "\'\"");
+		change_env(tmp[0], key, &env);
+		free(key);
+	}
 	else if (!ft_strcmp(tmp[1], ""))
 		ft_with_quotes(lst, env);
+	ft_free_2dstr(tmp);
 }
 
 void	ft_detect(t_token *lst, t_env *env)
@@ -207,5 +223,7 @@ void	ft_handle_one(char *s, t_env **env)
 	ft_mergeword_num(&lst);
 	ft_rm_space_(&lst);
 	ft_parse_export(lst, *env);
+	ft_free_token(&lst);
+	free(s);
 	// ft_makekey_value(lst, env);
 }

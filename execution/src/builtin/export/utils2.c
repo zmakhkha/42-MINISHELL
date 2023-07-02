@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 11:22:51 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 22:01:11 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 13:05:36 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	ft_mergewordspace(t_token **list)
 		if (lst && (lst->type == WORD) && (lst->prev->type == WORD)
 			&& ft_containequl(lst->str) && !ft_containequl(lst->prev->str))
 		{
-			s_tmp = ft_join_free(lst->str, lst->prev->str);
-			free(lst->str);
+			s_tmp = ft_join_free(lst->str, ft_strdup(lst->prev->str));
+			// free(lst->str);
 			// detect(s_tmp);
 			lst->str = s_tmp;
 			ft_remove_tok(list, lst->prev);

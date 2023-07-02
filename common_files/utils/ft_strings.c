@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 17:11:44 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/23 11:18:45 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 13:00:03 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_strcmplen(char *s1, char *s2)
 	}
 	return (-1);
 }
-
+// free the two chars and returns the result allocated
 char	*ft_join_free(char *s1, char *s2)
 {
 	size_t		l1;
@@ -66,6 +66,12 @@ char	*ft_join_free(char *s1, char *s2)
 		while (++i < (int)l2)
 			res[l1 + i] = s2[i];
 		res[l1 + i] = 0;
+		if (s1)
+			free(s1);
+		s1 = NULL;
+		if (s2)
+			free(s2);
+		s2 = NULL;
 	}
 	return (res);
 }

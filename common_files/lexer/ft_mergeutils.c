@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:36:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 15:19:46 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/02 13:04:34 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	ft_merge_sp(t_token **list)
 		(lst && (lst->type == WORD) && (\
 		lst->prev->type == DIGITE || lst->prev->type == SPACE)))
 		{
-			s_tmp = ft_join_free(lst->str, lst->prev->str);
-			free(lst->str);
+			s_tmp = ft_join_free(lst->str, ft_strdup(lst->prev->str));
+			// free(lst->str);
 			lst->str = s_tmp;
 			lst->type = WORD;
 			ft_remove_tok(list, lst->prev);
@@ -77,8 +77,8 @@ void	ft_merge_dig(t_token **list)
 			(lst->type == WORD && lst->prev->type == DIGITE) || \
 			(lst->type == WORD && lst->prev->type == WORD))
 		{
-			s_tmp = ft_join_free(lst->str, lst->prev->str);
-			free(lst->str);
+			s_tmp = ft_join_free(lst->str, ft_strdup(lst->prev->str));
+			// free(lst->str);
 			lst->str = s_tmp;
 			lst->type = WORD;
 			ft_remove_tok(list, lst->prev);
@@ -101,8 +101,8 @@ void	ft_word_dig(t_token **list)
 		if (lst && (((lst->type == DIGITE) && (lst->prev->type == WORD)) || \
 		((lst->type == WORD) && (lst->prev->type == DIGITE))))
 		{
-			s_tmp = ft_join_free(lst->str, lst->prev->str);
-			free(lst->str);
+			s_tmp = ft_join_free(lst->str, ft_strdup(lst->prev->str));
+			// free(lst->str);
 			lst->str = s_tmp;
 			lst->type = WORD;
 			ft_remove_tok(list, lst->prev);
