@@ -25,7 +25,7 @@ resolved ^
      heredoc delimiter leaks : fixed by zac
      "'$HOME'" : double free : resolved
      export a -> export a= : not working
-     export not sorted
+     export not sorted : resolved
      >> segv
-     cat: l: No such file or directory  
+     cat: l: No such file or directory 
     minishell $  << o | > l

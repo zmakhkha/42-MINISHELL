@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 11:21:50 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/03 12:07:56 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/03 20:58:44 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_with_quotes(t_token *lst, t_env *env)
 	key = ft_substr(lst->str, 0, i);
 	if (!ft_isvalidkey(key))
 	{
-		printf("minishell export `%s' : not a valid identifier3\n", key);
+		printf("minishell export `%s' : not a valid identifier\n", key);
 		free(key);
 		return ;
 	}
@@ -73,7 +73,7 @@ void	ft_no_qoute(t_token *lst, t_env *env)
 	key = ft_substr(lst->str, 0, ft_strlen(lst->str));
 	if (!ft_isvalidkey(key))
 	{
-		printf("minishell export `%s' : not a valid identifier2\n", key);
+		printf("minishell export `%s' : not a valid identifier\n", key);
 		free(key);
 		return ;
 	}

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/03 12:55:44 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/03 20:58:15 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,10 @@ void	ft__main_exp(t_token *lst, t_env *env)
 	int		a;
 	char	*t;
 
+	t = NULL;
 	a = 0;
+	if (ft_strchr(lst->str, '$'))
+		lst->str = ft_expand(lst->str, env);
 	if (lst->str[0] == '\'' || lst->str[0] == '\"')
 		ft_strrep(lst->str, ' ', ' ' * -1);
 	if (lst->str[0] != '\"' && lst->str[0] != '\'' && ft_strchr(lst->str, \
@@ -90,7 +93,6 @@ void	ft__main_exp(t_token *lst, t_env *env)
 		t = lst->str;
 		lst->str = ft_strtrim(lst->str, "\'");
 		free(t);
-		t = NULL;
 	}
 }
 

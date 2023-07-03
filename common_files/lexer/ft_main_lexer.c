@@ -6,12 +6,13 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:06:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 19:53:23 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/03 20:51:40 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
 
+// Removed the ft_swap_red2(&lst);
 void	ft_lexit(t_token *lst)
 {
 	if (!g_glob.g_status)
@@ -20,7 +21,6 @@ void	ft_lexit(t_token *lst)
 		ft_fd_file(&lst);
 		ft_sub_red(lst);
 		ft_swap_red(&lst);
-		ft_swap_red2(&lst);
 		ft_merge_dig(&lst);
 		ft_checksyntax(lst);
 	}
