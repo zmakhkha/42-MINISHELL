@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/07/02 23:49:32 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/07/03 19:37:47 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CFLAGS = -g -Wall -Werror -Wextra -g
 # LDFLAGS = -lreadline -g # -fsanitize=address
 HEADERS = header.h
 
-LDFLAGS = -L/goinfre/zmakhkha/homebrew/opt/readline/lib -g -fsanitize=address
+LDFLAGS = -L/goinfre/zmakhkha/homebrew/opt/readline/lib -g #-fsanitize=address
 CPPFLAGS = -I/goinfre/zmakhkha/homebrew/opt/readline/include
 
 

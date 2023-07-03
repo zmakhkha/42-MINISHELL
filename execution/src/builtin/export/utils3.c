@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 16:09:48 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/03 13:09:05 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/03 19:57:38 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int	ft_detect(t_token *lst, t_env *env)
 		while (lst->str && lst->str[++i])
 		{
 			if (lst->str[i] == '+' && (i == (int)ft_strlen(lst->str) - 1))
-				return (printf("minishell: export: `%s': \
-				not a valid identifier\n", lst->str));
+				return (printf \
+				("minishell: export: `%s': not a valid identifier\n", lst->str));
 			else if (lst->str[i] == '+' && lst->str[i + 1] \
 			&& lst->str[i + 1] == '=')
 				return (ft_detect_one(lst, env, i, 0), 0);

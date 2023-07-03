@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 23:33:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/03 13:32:07 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/03 19:48:43 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft__app_exp(char *key, char *t_key, t_env *env, char **tmp)
 	char	*s_tmp;
 
 	t_key = get_value(key, env);
-	if (!ft_strcmp(t_key, "with"))
+	if (t_key && !ft_strcmp(t_key, "with"))
 	{
 		t_key = ft_strtrim(tmp[1], "\'\"");
 		puts(t_key);
@@ -42,7 +42,6 @@ void	ft__app_exp(char *key, char *t_key, t_env *env, char **tmp)
 	}
 	else
 	{		
-		puts("ana joujoun");
 		s_tmp = ft_strtrim(tmp[1], "\"\'");
 		s_tmp = ft_join_free(ft_strdup(t_key), s_tmp);
 		t_key = ft_strtrim(s_tmp, "\'\"");
@@ -77,6 +76,7 @@ void	ft_app_exp(t_token *lst, t_env *env)
 		ft__app_exp(key, t_key, env, tmp);
 	else if (!ft_strlen(tmp[1]))
 	{
+		free(lst->str);
 		lst->str = key;
 		ft_with_quotes(lst, env);
 	}
