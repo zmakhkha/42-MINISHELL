@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 11:21:50 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 23:25:57 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:07:56 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,48 +80,4 @@ void	ft_no_qoute(t_token *lst, t_env *env)
 	if (!get_value(key, env))
 		change_env(key, "No", &env);
 	free(key);
-}
-
-void	ft__app_exp(char *key, char *t_key, t_env *env, char **tmp)
-{
-	char	*s_tmp;
-
-	t_key = get_value(key, env);
-	s_tmp = ft_strtrim(tmp[1], "\"\'");
-	s_tmp = ft_join_free(ft_strdup(t_key), s_tmp);
-	t_key = ft_strtrim(s_tmp, "\'\"");
-	change_env(key, t_key, &env);
-	free(s_tmp);
-	s_tmp = NULL;
-	free(key);
-	key = NULL;
-	free(t_key);
-	t_key = NULL;
-}
-
-void	ft_app_exp(t_token *lst, t_env *env)
-{
-	char	**tmp;
-	char	*key;
-	char	*t_key;
-
-	tmp = NULL;
-	t_key = NULL;
-	tmp = ft_devide(lst->str, '=');
-	key = ft_substr(tmp[0], 0, ft_strlen(tmp[0]) - 1);
-	if (!ft_isvalidkey(key))
-	{
-		printf("minishell export `%s' : not a valid identifier1\n", key);
-		free(key);
-		ft_free_2dstr(tmp);
-		return ;
-	}
-	if (tmp && tmp[0] && tmp[1] && ft_strlen(tmp[1]))
-		ft__app_exp(key, t_key, env, tmp);
-	else if (!ft_strlen(tmp[1]))
-	{
-		lst->str = key;
-		ft_with_quotes(lst, env);
-	}
-	ft_free_2dstr(tmp);
 }

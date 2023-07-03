@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:40:37 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 19:21:15 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:56:16 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,34 @@ char	*ft_main_wc(char *str, t_env *env_list)
 	}
 	else
 		ft__main_wc(r, b, str, 1);
+	return (res);
+}
+
+char	*ft_rm_exp(char *str, t_env *env)
+{
+	int		i;
+	int		t;
+	char	*res;
+
+	res = NULL;
+	t = 0;
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == '\'')
+			t = 1;
+		if (str[i] == '\"')
+			t = 2;
+		if (t)
+			break ;
+	}
+	if (t == 1)
+	{
+		res = ft_rmsq(str);
+	}
+	else
+		res = ft_rm__exp(str, env, res, i);
+	if (str)
+		free(str);
 	return (res);
 }

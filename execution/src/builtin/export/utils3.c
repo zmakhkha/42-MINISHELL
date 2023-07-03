@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 16:09:48 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 23:27:39 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/03 13:09:05 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_detect_one(t_token *lst, t_env *env, int i, int mode)
 	}
 }
 
-void	ft_detect(t_token *lst, t_env *env)
+int	ft_detect(t_token *lst, t_env *env)
 {
 	int	i;
 
@@ -58,27 +58,23 @@ void	ft_detect(t_token *lst, t_env *env)
 		while (lst->str && lst->str[++i])
 		{
 			if (lst->str[i] == '+' && (i == (int)ft_strlen(lst->str) - 1))
-			{
-				printf("minishell: export: `%s': not a valid \
-				identifier\n", lst->str);
-				return ;
-			}
-			if (lst->str[i] == '+' && lst->str[i + 1] && lst->str[i + 1] == '=')
-			{
-				ft_detect_one(lst, env, i, 0);
-				return ;
-			}
+				return (printf("minishell: export: `%s': \
+				not a valid identifier\n", lst->str));
+			else if (lst->str[i] == '+' && lst->str[i + 1] \
+			&& lst->str[i + 1] == '=')
+				return (ft_detect_one(lst, env, i, 0), 0);
 			else if (lst->str[i] == '=')
 			{
 				if (i == 0)
-					printf("minishell: export: `%s': not a valid identifier\n",
+					printf("minishell: export: `%s': not a valid identifier\n", \
 						lst->str);
 				else
 					ft_rep_exp(lst, env);
-				return ;
+				return (0);
 			}
 		}
 	}
+	return (0);
 }
 
 // will get a trimmed key=value || key+=vaue
@@ -115,21 +111,4 @@ void	ft_print_exp(t_env *env)
 			printf("=\"%s\"\n", env->value);
 		env = env->next;
 	}
-}
-
-void	ft_handle_one(char *s, t_env **env)
-{
-	t_token	*lst;
-
-	(void)env;
-	s = ft_strtrim(s, " ");
-	lst = ft_strtok(s);
-	ft_mergewords(&lst);
-	ft_mergewordspace(&lst);
-	ft_merge_num_word(&lst);
-	ft_mergeword_num(&lst);
-	ft_rm_space_(&lst);
-	ft_parse_export(lst, *env);
-	ft_free_token(&lst);
-	free(s);
 }

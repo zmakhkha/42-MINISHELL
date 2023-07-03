@@ -6,19 +6,35 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 23:29:59 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:55:44 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
+
+static char	*ft__expand(char *str, t_env *env, int	*i, int *j)
+{
+	char	*res;
+	char	*tmp_val;
+	char	*expanded_val;
+
+	res = NULL;
+	res = ft_join_free(res, ft_substr(str, *j, *i - *j));
+	*j = *i + 1;
+	while (str[*j] && (ft_isalnum(str[*j]) || str[*j] == '_'))
+		*j += 1;
+	tmp_val = ft_substr(str, *i + 1, *j - *i - 1);
+	expanded_val = get_value(tmp_val, env);
+	free(tmp_val);
+	res = ft_join_free(ft_strdup(res), ft_strdup(expanded_val));
+	return (res);
+}
 
 char	*ft_expand(char *str, t_env *env)
 {
 	int		i;
 	int		j;
 	char	*res;
-	char	*tmp_val;
-	char	*expanded_val;
 
 	i = 0;
 	j = 0;
@@ -27,14 +43,7 @@ char	*ft_expand(char *str, t_env *env)
 		i++;
 	if (str && str[i] && str[i] == '$')
 	{
-		res = ft_join_free(res, ft_substr(str, j, i - j));
-		j = i + 1;
-		while (str[j] && (ft_isalnum(str[j]) || str[j] == '_'))
-			j++;
-		tmp_val = ft_substr(str, i + 1, j - i - 1);
-		expanded_val = get_value(tmp_val, env);
-		free(tmp_val);
-		res = ft_join_free(ft_strdup(res), ft_strdup(expanded_val));
+		res = ft__expand(str, env, &i, &j);
 		i = j;
 	}
 	if (str && str[j])
@@ -55,35 +64,6 @@ char	*ft_rm__exp(char *str, t_env *env, char *res, int i)
 			i++;
 		}
 	}
-	return (res);
-}
-
-char	*ft_rm_exp(char *str, t_env *env)
-{
-	int		i;
-	int		t;
-	char	*res;
-
-	res = NULL;
-	t = 0;
-	i = -1;
-	while (str[++i])
-	{
-		if (str[i] == '\'')
-			t = 1;
-		if (str[i] == '\"')
-			t = 2;
-		if (t)
-			break ;
-	}
-	if (t == 1)
-	{
-		res = ft_rmsq(str);
-	}
-	else
-		res = ft_rm__exp(str, env, res, i);
-	if (str)
-		free(str);
 	return (res);
 }
 
