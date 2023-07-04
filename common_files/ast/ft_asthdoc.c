@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:05:01 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 15:58:30 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/04 19:39:43 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,30 @@ char	*ft_get_path(char *del, int type, t_env **env_list)
 	int		a;
 	char	*tmp;
 	char	*path;
+	int		p[2];
 
+	if (pipe(p) == -1)
+		perror("minishell : ");
 	a = -5;
+	tmp = ft_calloc(1000000, sizeof(char ));
 	path = NULL;
-	tmp = ft_heredoc(del);
+	a = fork();
+	rl_catch_signals = 1;
+	if (!a)
+	{
+		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_IGN);
+		tmp = ft_heredoc(del);
+		close(p[0]);
+		write(p[1], tmp, ft_strlen(tmp));
+		close(p[1]);
+		exit(0);
+	}
+	rl_catch_signals = 0;
+	waitpid(a, NULL, 0);
+	ft_signal_main();
+	close (p[1]);
+    read(p[0], tmp, 10000);
 	path = ft_hdoc_tofd(tmp, type, *env_list);
 	return (path);
 }

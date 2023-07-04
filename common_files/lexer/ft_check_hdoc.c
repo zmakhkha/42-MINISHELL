@@ -48,6 +48,7 @@ char	*ft_heredoc(char *del)
 	g_glob.g_ctrl_c = false;
 	while (1)
 	{
+		rl_catch_signals = 1;
 		star = readline("> ");
 		if (star == NULL || !ft_strcmp(del, star) || g_glob.g_ctrl_c)
 			break ;
@@ -57,6 +58,7 @@ char	*ft_heredoc(char *del)
 				hdoc = ft_join_free(hdoc, ft_strdup("\n"));
 			hdoc = ft_join_free(hdoc, star);
 		}
+		rl_catch_signals = 0;
 	}
 	if (star)
 		free(star);
