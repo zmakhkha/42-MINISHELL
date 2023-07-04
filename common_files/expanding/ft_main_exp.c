@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/03 20:58:15 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/04 13:41:53 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*ft__expand(char *str, t_env *env, int	*i, int *j)
 	tmp_val = ft_substr(str, *i + 1, *j - *i - 1);
 	expanded_val = get_value(tmp_val, env);
 	free(tmp_val);
-	res = ft_join_free(ft_strdup(res), ft_strdup(expanded_val));
+	res = ft_join_free(res, ft_strdup(expanded_val));
 	return (res);
 }
 
@@ -41,14 +41,17 @@ char	*ft_expand(char *str, t_env *env)
 	res = NULL;
 	while (str && str[i] && str[i] != '$')
 		i++;
-	if (str && str[i] && str[i] == '$')
+	if (str && str[i] && str[i] == '$' && str[i + 1] && \
+	ft_isalpha(str[i + 1]))
 	{
 		res = ft__expand(str, env, &i, &j);
 		i = j;
 	}
 	if (str && str[j])
 		res = ft_join_free(res, ft_substr(str, j, ft_strlen(str) - j));
-	return (free(str), res);
+	free(str);
+	str = NULL;
+	return (res);
 }
 
 char	*ft_rm__exp(char *str, t_env *env, char *res, int i)
@@ -76,10 +79,10 @@ void	ft__main_exp(t_token *lst, t_env *env)
 	a = 0;
 	if (ft_strchr(lst->str, '$'))
 		lst->str = ft_expand(lst->str, env);
-	if (lst->str[0] == '\'' || lst->str[0] == '\"')
+	if (lst->str && (lst->str[0] == '\'' || lst->str[0] == '\"'))
 		ft_strrep(lst->str, ' ', ' ' * -1);
-	if (lst->str[0] != '\"' && lst->str[0] != '\'' && ft_strchr(lst->str, \
-		'*'))
+	if (lst->str && lst->str[0] != '\"' && \
+	lst->str[0] != '\'' && ft_strchr(lst->str, '*'))
 		lst->str = ft_main_wc(lst->str, env);
 	if (lst->str && lst->str[0] != '\'')
 		lst->str = ft_rm_exp(lst->str, env);

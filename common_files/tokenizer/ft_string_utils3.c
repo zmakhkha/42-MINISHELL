@@ -107,14 +107,13 @@ char	*ft_toktostr(t_token *src)
 {
 	char	*res;
 	char	*tmp;
-	char	*tmp2;
 
 	res = NULL;
+	tmp = NULL;
 	while (src)
 	{
 		tmp = ft_strdup(src->str);
-		tmp2 = res;
-		res = ft_join_free(tmp2, tmp);
+		res = ft_join_free(res, tmp);
 		src = src->prev;
 	}
 	ft_free_token(&src);

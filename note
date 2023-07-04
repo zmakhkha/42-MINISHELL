@@ -207,7 +207,14 @@ var1      /Users/zmakhkha     lala
 
 
 
-export a=*.c && ls $a : not working
-<main.c | >tmpl : does not create tmpl
-<main.c << l wc -l : should read from the heredoc : solved
-export a=*.c -> ls $a : unknown object leaks
++ export a=*.c && ls $a : not working
++ <main.c | >tmpl : does not create tmpl
++ <main.c << l wc -l : should read from the heredoc : solved
++ export a=*.c -> ls $a : unknown object leaks
+
+
++ export a=*.c -> ls $a : Fixed
++ ls $ : SEGV : Fixed
++ $ : object leaks : Fixed
++ $HOME--+$USR : leaks : Fixed
++ ls $ : wrong result : fixed
