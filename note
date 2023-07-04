@@ -218,3 +218,13 @@ var1      /Users/zmakhkha     lala
 + $ : object leaks : Fixed
 + $HOME--+$USR : leaks : Fixed
 + ls $ : wrong result : fixed
+
+
+minishell $ ls > file1 > file2 < in > file3 > file4 | ls > file4 > file6 <in2 > file7 > file8
+minish: moipneins:h :o poepne nf:a iolpeedn
+ failed
+minishell $ > s
+minishell $ < in
+minishell $ echo $?
+$?
+minishell $ 
