@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:40:37 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/03 12:56:16 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/05 12:48:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_tostr(t_str *src)
 	res = NULL;
 	res_ = NULL;
 	tmp = NULL;
-	while (src)
+	while (src && src->str && *src->str)
 	{
 		tmp = ft_join_free(ft_strdup(src->str), ft_strdup(" "));
 		res = ft_join_free(res, tmp);
@@ -98,6 +98,8 @@ char	*ft_main_wc(char *str, t_env *env_list)
 	}
 	else
 		ft__main_wc(r, b, str, 1);
+	if (!ft_strcmp(res, ""))
+		res = NULL;
 	return (res);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_c.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 14:56:02 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/05/21 17:44:16 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/07/05 12:15:30 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char		*ft_strchr(const char *s, int c);
 size_t		ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t		ft_strlen(const char *s);
+size_t		ft_strlenp(const char *s);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 void		*ft_calloc(size_t count, size_t size);
 void		*ft_memchr(const void *s, int c, size_t n);

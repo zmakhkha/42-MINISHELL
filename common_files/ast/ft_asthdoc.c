@@ -6,11 +6,12 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:05:01 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/04 20:35:11 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/05 13:15:39 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
+
 // if type == 0 we should expand else no need to
 char	*ft_get_path(char *del, int type, t_env **env_list)
 {
@@ -34,22 +35,48 @@ char	*ft_get_path(char *del, int type, t_env **env_list)
 		tmp = ft_heredoc(del);
 		path = ft_hdoc_tofd(tmp, type, *env_list);
 		close(p[0]);
-		write(p[1], tmp, ft_strlen(tmp));
+		write(p[1], path, ft_strlen(path));
 		close(p[1]);
 		exit(0);
 	}
 	rl_catch_signals = 0;
 	waitpid(a, NULL, 0);
 	ft_signal_main();
-	close (p[1]);
-    read(p[0], tmp, 10000);
-	puts(path);
+	close(p[1]);
+	read(p[0], path, 10000);
 	return (path);
+}
+
+char	*ft_rmsq_(char *str)
+{
+	int		i;
+	int		len;
+	char	c;
+	char	*t;
+
+	i = 0;
+	len = 0;
+	while (str[i] && (str[i] != '\"') && (str[i] != '\''))
+		i++;
+	if (str[i])
+		c = str[i];
+	else
+		return (str);
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] != c)
+			len++;
+	}
+	t = ft__rmsq2(str, len, c);
+	free(str);
+	return (t);
 }
 
 void	ft_hdoc_to_file(t_token **list, t_env **env_list)
 {
 	char	*tmp;
+	char	*t;
 
 	tmp = NULL;
 	if (list && (*list) && (*list)->type == HDOC)
@@ -59,8 +86,10 @@ void	ft_hdoc_to_file(t_token **list, t_env **env_list)
 		(*list)->str = NULL;
 		if (ft_strchr(tmp, '\'') || ft_strchr(tmp, '\"'))
 		{
-			free(tmp);
-			tmp = ft_strtrim(tmp, " \'\"");
+			t = tmp;
+			tmp = ft_rmsq_(tmp);
+			tmp = ft_rmsq_(tmp);
+			printf("------->(%s)\n", tmp);
 			(*list)->str = ft_get_path(tmp, 0, env_list);
 		}
 		else

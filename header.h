@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/04 13:19:05 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/05 14:06:14 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -301,6 +301,7 @@ void				ft_hdocontree(t_token **list, t_env **env_list);
 char				*ft_rmsq2(char *str, int len, char c);
 char				*ft_rmsq1(char *str);
 char				*ft_exp1(char *str);
+char				*ft_rmsq_(char *str);
 
 //--------------> The SUB TO TREE stage <---------------//
 
@@ -419,6 +420,7 @@ t_str				*ft_dirfiles(t_env *env_list);
 char				*ft_join_freel(char *s1, char *s2, int len);
 char				*ft__rmsq(char *str, int i, int len, int c);
 char				*ft_rmsq(char *str);
+char				*ft__rmsq2(char *str, int len, char c);
 void				ft_merge_all(t_token **list);
 
 // common_files/expanding/ft_exp_utils1.c
