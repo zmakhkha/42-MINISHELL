@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 16:09:48 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/05 14:45:31 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/05 19:12:46 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ void	ft_rep_exp(t_token *lst, t_env *env)
 	}
 	if (tmp && tmp[0] && tmp[1] && ft_strlen(tmp[1]))
 	{
-		key = ft_strtrim(tmp[1], "\'\"");
-		change_env(tmp[0], key, &env);
-		free(key);
+		change_env(tmp[0], tmp[1], &env);
 	}
 	else if (!ft_strcmp(tmp[1], ""))
 		ft_with_quotes(lst, env);

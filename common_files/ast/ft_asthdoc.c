@@ -6,11 +6,19 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:05:01 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/05 13:15:39 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/05 20:41:30 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
+
+static void	ft_handle_pipe(char *path, int *p)
+{
+	close(p[0]);
+	write(p[1], path, ft_strlen(path));
+	close(p[1]);
+	exit(0);
+}
 
 // if type == 0 we should expand else no need to
 char	*ft_get_path(char *del, int type, t_env **env_list)
@@ -22,9 +30,7 @@ char	*ft_get_path(char *del, int type, t_env **env_list)
 
 	if (pipe(p) == -1)
 		perror("minishell : ");
-	a = -5;
 	path = ft_calloc(1000000, sizeof(char ));
-	tmp = NULL;
 	a = fork();
 	signal(SIGINT, SIG_IGN);
 	rl_catch_signals = 1;
@@ -34,10 +40,7 @@ char	*ft_get_path(char *del, int type, t_env **env_list)
 		signal(SIGQUIT, SIG_IGN);
 		tmp = ft_heredoc(del);
 		path = ft_hdoc_tofd(tmp, type, *env_list);
-		close(p[0]);
-		write(p[1], path, ft_strlen(path));
-		close(p[1]);
-		exit(0);
+		ft_handle_pipe(path, p);
 	}
 	rl_catch_signals = 0;
 	waitpid(a, NULL, 0);

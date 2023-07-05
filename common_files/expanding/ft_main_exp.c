@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/05 13:15:49 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/05 20:46:59 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,37 +54,26 @@ char	*ft_expand(char *str, t_env *env)
 	return (res);
 }
 
-char	*ft_rm__exp(char *str, t_env *env, char *res, int i)
+static void	ft___main_exp(t_token *lst, t_env *env, int i)
 {
-	res = ft_rmsq(str);
-	i = 0;
-	if (res)
-	{
-		while (res && res[i] != '\0')
-		{
-			if (res[i] == '$')
-				res = ft_expand(res, env);
-			i++;
-		}
-	}
-	return (res);
-}
-
-void	ft__main_exp(t_token *lst, t_env *env)
-{
-	int		a;
-	char	*t;
-
-	t = NULL;
-	a = 0;
 	if (lst->str && lst->str[0] && \
 	lst->str && lst->str[0] != '\'' && ft_strchr(lst->str, '$'))
 		lst->str = ft_expand(lst->str, env);
 	if (lst->str && (lst->str[0] == '\'' || lst->str[0] == '\"'))
 		ft_strrep(lst->str, ' ', ' ' * -1);
 	if (lst->str && lst->str[0] != '\"' && \
-	lst->str[0] != '\'' && ft_strchr(lst->str, '*'))
+	lst->str[0] != '\'' && ft_strchr(lst->str, '*') && !i)
 		lst->str = ft_main_wc(lst->str, env);
+}
+
+void	ft__main_exp(t_token *lst, t_env *env, int i)
+{
+	int		a;
+	char	*t;
+
+	t = NULL;
+	a = 0;
+	ft___main_exp(lst, env, i);
 	if (lst->str && lst->str[0] != '\'')
 		lst->str = ft_rm_exp(lst->str, env);
 	else if (lst->str && lst->str[0] == '\"')
@@ -101,7 +90,7 @@ void	ft__main_exp(t_token *lst, t_env *env)
 }
 
 // expand a string command just before execve
-char	**ft_main_exp(char *str, t_env *env)
+char	**ft_main_exp(char *str, t_env *env, int i)
 {
 	t_token	*lst;
 	t_token	*tmp;
@@ -117,7 +106,7 @@ char	**ft_main_exp(char *str, t_env *env)
 	tmp = lst;
 	while (lst)
 	{
-		ft__main_exp(lst, env);
+		ft__main_exp(lst, env, i);
 		lst = lst->prev;
 	}
 	s_tmp = ft_toktostr(tmp);

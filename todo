@@ -8,3 +8,22 @@ echo '"$papth"' | "$8" | ""
  dfsds |
  || 
    
+
+$sfg : should perror command not found
+
+
+
+   # ENV EXPANSIONS
+"env | sort | grep -v SHLVL | grep -v _=" : should show command not found
+env | sort | grep -v SHLVL | grep -v _= : done
+"export | sort | grep -v SHLVL | grep -v _= | grep -v OLDPWD" same
+'export =' done
+'export 1TEST= ;' done 
+'export TEST ;' done
+'export ""="" ; ' done
+'export TES=T="" ;' done
+'export TE+S=T="" ;' done
+'export TEST=LOL ; echo $TEST ;' done
+'export TEST=LOL ; echo $TEST$TEST$TEST=lol$TEST' done
+'export TEST=LOL; export TEST+=LOL ; echo $TEST ;' done
+'export TEST="ls       -l     - a" ; echo $TEST ; $LS ; ' fails :passes

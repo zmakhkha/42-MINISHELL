@@ -6,26 +6,53 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 23:33:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/05 14:45:36 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/05 20:41:15 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../header.h"
 
+char	*ft_twootoone_(char **str)
+{
+	int		i;
+	char	*res;
+
+	i = -1;
+	res = NULL;
+	while (str[++i])
+	{
+		res = ft_join_free(res, str[i]);
+	}
+	i = -1;
+	return (res);
+}
+
 void	ft_handle_one(char *s, t_env **env)
 {
 	t_token	*lst;
+	t_token	*t;
+	char	**tm;
+	char	*tmp;
 
-	(void)env;
+	t = NULL;
 	s = ft_strtrim(s, " ");
 	lst = ft_strtok(s);
+	t = lst;
 	ft_mergewords(&lst);
-	ft_mergewordspace(&lst);
 	ft_merge_num_word(&lst);
 	ft_mergeword_num(&lst);
 	ft_rm_space_(&lst);
-	ft_parse_export(lst, *env);
-	ft_free_token(&lst);
+	while (lst)
+	{
+		tmp = lst->str;
+		tm = ft_main_exp(lst->str, *env, 1);
+		lst->str = ft_twootoone_(tm);
+		free(tmp);
+		free(tm);
+		lst = lst->prev;
+	}
+	ft_parse_export(t, *env);
+	ft_free_token(&t);
 	free(s);
 }
 
