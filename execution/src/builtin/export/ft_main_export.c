@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 11:26:30 by zmakhkha          #+#    #+#             */
 /*   Updated: 2023/07/03 12:06:34 by zmakhkha         ###   ########.fr       */

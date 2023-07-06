@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 05:25:46 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/07/01 15:07:02 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/03 11:11:48 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ int	execute_unset(char **list, t_env **env_list)
 		return (EXIT_SUCCESS);
 	while (list[i])
 	{
-		valid = check_if_valid(list[i]);
-		if (!valid)
+		valid = ft_isvalidkey(list[i]);
+		if (valid)
 			unset_env(list[i], env_list);
 		i++;
 	}

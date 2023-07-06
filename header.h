@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
 /*   Updated: 2023/07/05 18:05:34 by zmakhkha         ###   ########.fr       */
@@ -57,7 +57,7 @@ typedef struct s_gobvar
 	int				g_ctrl_s;
 }					t_global;
 
-t_global			g_glob;
+extern t_global			g_glob;
 // -------> Tokens enumeration <------- //
 
 enum

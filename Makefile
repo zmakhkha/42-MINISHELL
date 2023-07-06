@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
+#    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
 #    Updated: 2023/07/05 20:33:46 by zmakhkha         ###   ########.fr        #
@@ -22,8 +22,8 @@ CFLAGS = -g -Wall -Werror -Wextra -g
 # LDFLAGS = -lreadline -g # -fsanitize=address
 HEADERS = header.h
 
-LDFLAGS = -L/goinfre/zmakhkha/homebrew/opt/readline/lib -g -fsanitize=address
-CPPFLAGS = -I/goinfre/zmakhkha/homebrew/opt/readline/include
+# LDFLAGS = -L/goinfre/zmakhkha/homebrew/opt/readline/lib -g -fsanitize=address
+# CPPFLAGS = -I/goinfre/zmakhkha/homebrew/opt/readline/include
 
 
 #parsing part:
