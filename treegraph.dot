@@ -2,13 +2,5 @@
 <baba>
 */
 digraph {
-  node1 [label="(null)"];
-  node2 [label="(null)"];
-  node1 -> node2;
-  node3 [label="mn "];
-  node2 -> node3;
-  node4 [label=" ls"];
-  node2 -> node4;
-  node5 [label="cat "];
-  node1 -> node5;
+  node1 [label="bash"];
 }

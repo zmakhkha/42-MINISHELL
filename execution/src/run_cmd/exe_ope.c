@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 03:32:50 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/07/06 21:35:03 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/07/06 21:46:54 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	execute_logical_op(t_token *list, t_env *env)
 		fd_in = dup(STDIN_FILENO);
 		fd_out = dup(STDOUT_FILENO);
 		status = execute_re(list->left, env);
-		
 		if(status != 1)
 			status = ft_execution(list->right, env); 
 		ft_protect(dup2(fd_in, STDIN_FILENO), "dup2", "dup2 failed");
