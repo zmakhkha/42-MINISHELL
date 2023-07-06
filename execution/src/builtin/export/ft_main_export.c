@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 11:26:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/06 15:47:51 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 16:54:47 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,5 @@ int	ft_export_it(t_token *list, t_env **env)
 		ft_handle_one(list->str + 6, env);
 	free(tmp);
 	stat = g_glob.g_exp;
-	printf("------<(%d)>\n", stat);
 	return (stat);
 }
