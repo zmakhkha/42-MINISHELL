@@ -27,7 +27,7 @@ int	execute_logical_op(t_token *list, t_env *env)
 		fd_out = dup(STDOUT_FILENO);
 		status = execute_re(list->left, env);
 		if(status != 1)
-			status = ft_execution(list->right, env); 
+			status = ft_execution(list->right, &env); 
 		ft_protect(dup2(fd_in, STDIN_FILENO), "dup2", "dup2 failed");
 		ft_protect(dup2(fd_out, STDOUT_FILENO), "dup2", "dup2 failed");
 	}
@@ -35,15 +35,15 @@ int	execute_logical_op(t_token *list, t_env *env)
 		status = execute_pipe(list, env);
 	else if (list->type == AND)
 	{
-		if (ft_execution(list->left, env) == EXIT_SUCCESS)
-			status = ft_execution(list->right, env);
+		if (ft_execution(list->left, &env) == EXIT_SUCCESS)
+			status = ft_execution(list->right, &env);
 		else
 			status = EXIT_FAILURE;
 	}
 	else if (list->type == OR)
 	{
-		if (ft_execution(list->left, env) != EXIT_SUCCESS)
-			status = ft_execution(list->right, env);
+		if (ft_execution(list->left, &env) != EXIT_SUCCESS)
+			status = ft_execution(list->right, &env);
 		else
 			status = EXIT_SUCCESS;
 	}

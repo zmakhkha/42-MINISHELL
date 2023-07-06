@@ -34,5 +34,5 @@ void	ft_main_ast(t_token **list, t_env **env_list)
 	// print_tree_dot(list);
 	// ft_printini(list);
 	ft_hdocontree(list, env_list);
-	ft_exe_tree(*list, *env_list);
+	ft_exe_tree(*list, env_list);
 }

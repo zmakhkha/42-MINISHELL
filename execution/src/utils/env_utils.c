@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:05:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/07/05 14:46:17 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 18:55:52 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ int	execute_env(t_env *env_list)
 	t_env	*current;
 
 	current = env_list;
-	while (current != NULL)
+	while (current && current->key)
 	{
-		if (ft_strcmp(current->key, "") && ft_strcmp(current->value, ""))
+		if (ft_strcmp(current->key, "") && ft_strcmp(current->value, "") && \
+		ft_strcmp(current->value, "with") && ft_strcmp(current->value, "No"))
 		{
 			ft_putstr_fd(current->key, 1);
 			ft_putstr_fd("=", 1);
@@ -87,22 +88,30 @@ int	declare_env(t_env **env_list)
 {
 	t_env	*current;
 	char	**sorted;
-	char	*key;
-	char	*value;
+	char	*key = NULL;
+	char	*value = NULL;
 	int		i;
 
 	current = *env_list;
 	sorted = ft_sort_env(list_to_array(current));
+	if (sorted)
+		puts(*sorted);
 	i = 0;
-	while (sorted[i] != NULL)
+	while (sorted && sorted[i] != NULL)
 	{
 		parse_arguments(sorted[i], &key, &value);
 		printf("declare -x ");
-		printf("%s=\"", key);
-		if (value == NULL)
-			printf("\"\n");
+		printf("%s", key);
+		if (!ft_strcmp(value, "No"))
+		{
+			printf("\n");
+			i++;
+			continue ;
+		}
+		else if (!ft_strcmp(value, "with") || !ft_strcmp(value, ""))
+			printf("=\"\"\n");
 		else
-			printf("%s\"\n", value);
+			printf("=\"%s\"\n", value);
 		i++;
 	}
 	return (0);

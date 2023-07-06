@@ -33,7 +33,7 @@ void	ft_free_env(t_env **env)
 	}
 }
 
-void	ft_run_it(char *str, t_env *env_list)
+void	ft_run_it(char *str, t_env **env_list)
 {
 	t_token	*t;
 
@@ -46,7 +46,7 @@ void	ft_run_it(char *str, t_env *env_list)
 	else if (t)
 		printf("Parsing Error !!\n");
 	if (!g_glob.g_status && t)
-		ft_main_ast(&t, &env_list);
+		ft_main_ast(&t, env_list);
 	else if (t)
 		printf("Lexing Error !!\n");
 	t = ft_getfirst(t);
@@ -97,7 +97,7 @@ void	ft_prompt(char **env)
 			break ;
 		}
 		ft_add_history(str);
-		ft_run_it(str, env_list);
+		ft_run_it(str, &env_list);
 		free(str);
 	}
 	ft_free_env(&env_list);

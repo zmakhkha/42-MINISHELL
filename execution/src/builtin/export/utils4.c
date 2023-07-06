@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 23:33:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/05 20:41:15 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 15:57:06 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	ft__app_exp(char *key, char *t_key, t_env *env, char **tmp)
 		free(t_key);
 		t_key = NULL;
 	}
+		g_glob.g_exp = 0;
 }
 
 void	ft_app_exp(t_token *lst, t_env *env)
@@ -95,6 +96,7 @@ void	ft_app_exp(t_token *lst, t_env *env)
 	if (!ft_isvalidkey(key))
 	{
 		printf("minishell export `%s' : not a valid identifier1\n", key);
+		g_glob.g_exp = 1;
 		free(key);
 		ft_free_2dstr(tmp);
 		return ;

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 11:44:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/05 20:46:48 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 17:44:26 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,12 @@ char	*ft_rm__exp(char *str, t_env *env, char *res, int i)
 		while (res && res[i] != '\0')
 		{
 			if (res[i] == '$')
-				res = ft_expand(res, env);
+			{
+				if (res[i + 1] && res[i + 1] == '?')
+					res = ft_itoa(g_glob.g_status);
+				else
+					res = ft_expand(res, env);
+			}
 			i++;
 		}
 	}

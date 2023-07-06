@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 11:21:50 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/03 20:58:44 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 15:58:28 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	ft_with_quotes(t_token *lst, t_env *env)
 	if (!ft_isvalidkey(key))
 	{
 		printf("minishell export `%s' : not a valid identifier\n", key);
+		g_glob.g_exp = 1;
 		free(key);
 		return ;
 	}
@@ -64,6 +65,7 @@ void	ft_with_quotes(t_token *lst, t_env *env)
 	if (!a || !ft_strcmp(a, "No"))
 		change_env(key, "with", &env);
 	free(key);
+	g_glob.g_exp = 0;
 }
 
 void	ft_no_qoute(t_token *lst, t_env *env)
@@ -74,10 +76,12 @@ void	ft_no_qoute(t_token *lst, t_env *env)
 	if (!ft_isvalidkey(key))
 	{
 		printf("minishell export `%s' : not a valid identifier\n", key);
+		g_glob.g_exp = 1;
 		free(key);
 		return ;
 	}
 	if (!get_value(key, env))
 		change_env(key, "No", &env);
 	free(key);
+	g_glob.g_exp = 0;
 }
