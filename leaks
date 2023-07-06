@@ -1,3 +1,4 @@
+01/07/23
 Simple command
 "ls"
 "ls -la"
@@ -16,3 +17,15 @@ heredoc
     1 (16 bytes) ROOT LEAK: 0x7f8bf00040b0 [16]  length: 5  "HDOC "
     1 (16 bytes) ROOT LEAK: 0x7f8bf00040c0 [16]  length: 2  "ig"
     1 (16 bytes) ROOT LEAK: 0x7f8bf0004140 [16]  length: 3  "ig "
+
+resolved ^
+
+02/07/23
+     "''" : '' all signle quotes causes leaks
+     heredoc delimiter leaks : fixed by zac
+     "'$HOME'" : double free : resolved
+     export a -> export a= : not working
+     export not sorted : resolved
+     >> segv
+     cat: l: No such file or directory 
+    minishell $  << o | > l

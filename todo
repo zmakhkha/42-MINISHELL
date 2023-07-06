@@ -1,0 +1,29 @@
+ export p="g"'l'+ | g'l'+ | gl+
+ unset , pwd, ls >o -la  | leaks | no leaks
+echo $$PATH_p | $$PATH_p | $ 
+expand "$8" | "$8" | ""
+echo '"$papth"' | "$8" | ""
+<< + signle cat: stdin: Bad file descripto
+ echo sfds&dsdsd | error | 
+ dfsds |
+ || 
+   
+
+$sfg : should perror command not found
+
+
+
+   # ENV EXPANSIONS
+"env | sort | grep -v SHLVL | grep -v _=" : should show command not found
+env | sort | grep -v SHLVL | grep -v _= : done
+"export | sort | grep -v SHLVL | grep -v _= | grep -v OLDPWD" same
+'export =' done
+'export 1TEST= ;' done 
+'export TEST ;' done
+'export ""="" ; ' done
+'export TES=T="" ;' done
+'export TE+S=T="" ;' done
+'export TEST=LOL ; echo $TEST ;' done
+'export TEST=LOL ; echo $TEST$TEST$TEST=lol$TEST' done
+'export TEST=LOL; export TEST+=LOL ; echo $TEST ;' done
+'export TEST="ls       -l     - a" ; echo $TEST ; $LS ; ' fails :passes

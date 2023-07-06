@@ -12,15 +12,6 @@
 
 #include "../../header.h"
 
-//Valid here doc delimiter
-int	ft_valid_hd_delim(t_token *lst)
-{
-	if (lst)
-		return (lst->type == WORD || \
-		lst->type == FILE_);
-	return (0);
-}
-
 //Check for the here doc delimiter
 int	ft_check_hdoc(t_token *lst)
 {
@@ -57,56 +48,26 @@ char	*ft_heredoc(char *del)
 	g_glob.g_ctrl_c = false;
 	while (1)
 	{
+		rl_catch_signals = 1;
 		star = readline("> ");
 		if (star == NULL || !ft_strcmp(del, star) || g_glob.g_ctrl_c)
 			break ;
 		else
 		{
 			if (hdoc)
-				hdoc = ft_join_free(hdoc, "\n");
+				hdoc = ft_join_free(hdoc, ft_strdup("\n"));
 			hdoc = ft_join_free(hdoc, star);
 		}
+		rl_catch_signals = 0;
 	}
+	if (star)
+		free(star);
+	star = NULL;
 	return (hdoc);
 }
 
-char	*ft_twotoone(char **table)
+void	ft_write_to_file(int fd, ssize_t b, char *str, char *full_path)
 {
-	int		i;
-	char	*res;
-	char	*res_;
-	char	*tmp;
-
-	res = NULL;
-	res_ = NULL;
-	tmp = NULL;
-	i = -1;
-	while (table && table[++i])
-	{
-		res_ = res;
-		tmp = ft_join_free(res, table[i]);
-		free(res_);
-		res = ft_join_free(tmp, " ");
-		free(tmp);
-	}
-	ft_free_2dstr(table);
-	return (res);
-}
-
-char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
-{
-	int		fd;
-	char	*path;
-	char	*full_path;
-	ssize_t	b;
-
-	b = 0;
-	path = ft_join_free("HDOC", " ");
-	full_path = ft_join_free(H_DOCP, path);
-	if (type == 1)
-		str = ft_rm_exp(str, env_list);
-	while (access(full_path, F_OK) == 0)
-		full_path = ft_join_free(ft_strtrim(full_path, " "), "_1");
 	fd = open(full_path, O_WRONLY | O_APPEND | O_CREAT, 0644);
 	if (fd == -1)
 		ft_exit("Failed to create the tmp heredoc file !!\n", 1);
@@ -121,5 +82,24 @@ char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
 	}
 	if (close(fd) == -1)
 		ft_exit("Failed to close tmp heredoc file !!\n", 1);
+}
+
+char	*ft_hdoc_tofd(char *str, int type, t_env *env_list)
+{
+	int		fd;
+	char	*path;
+	char	*full_path;
+	ssize_t	b;
+
+	b = 0;
+	fd = 0;
+	path = ft_strdup("HDOC");
+	full_path = ft_join_free(ft_strdup(H_DOCP), path);
+	if (type == 1)
+		str = ft_expand(str, env_list);
+	while (access(full_path, F_OK) == 0)
+		full_path = ft_join_free(full_path, ft_strdup("_1"));
+	ft_write_to_file(fd, b, str, full_path);
+	free(str);
 	return (full_path);
 }

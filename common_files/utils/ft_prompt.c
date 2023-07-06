@@ -6,19 +6,19 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 18:12:21 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/05 18:06:08 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
 
-int	ft_check(char *str)
-{
-	if (ft_strchr(str, '`') || ft_strchr(str, '^') || ft_strchr(str, '@')
-		|| ft_strchr(str, '!') || ft_strchr(str, '#') || ft_strchr(str, '-'))
-		g_glob.g_status = 1;
-	return (1);
-}
+// int	ft_check(char *str)
+// {
+// 	if (ft_strchr(str, '`') || ft_strchr(str, '^') || ft_strchr(str, '@')
+// 		|| ft_strchr(str, '!') || ft_strchr(str, '#') || ft_strchr(str, '-'))
+// 		g_glob.g_status = 1;
+// 	return (1);
+// }
 
 void	ft_free_env(t_env **env)
 {
@@ -78,6 +78,14 @@ void	ft_free_2dstr(char **str)
 	str = NULL;
 }
 
+void	ft_set(t_env *env_list)
+{
+	add_env_node("PATH", VALUE_PATH, &env_list);
+	change_env("PWD", getcwd(NULL, 0), &env_list);
+	change_env("SHLVL", "1", &env_list);
+	change_env("_", "/usr/bin/env", &env_list);
+}
+
 // Add a command history
 void	ft_prompt(char **env)
 {
@@ -86,15 +94,10 @@ void	ft_prompt(char **env)
 
 	env_list = set_env(env);
 	if (env_list == NULL)
-	{
-		add_env_node("PATH", VALUE_PATH, &env_list);
-		change_env("PWD", getcwd(NULL, 0), &env_list);
-		change_env("SHLVL", "1", &env_list);
-		change_env("_", "/usr/bin/env", &env_list);
-	}
+		ft_set(env_list);
 	while (1)
 	{
-		// usleep(100);
+		usleep(100);
 		str = readline("minishell $ ");
 		if (str == NULL)
 		{

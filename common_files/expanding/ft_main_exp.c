@@ -6,126 +6,91 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:29:02 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 15:35:27 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/05 20:46:59 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
+
+static char	*ft__expand(char *str, t_env *env, int	*i, int *j)
+{
+	char	*res;
+	char	*tmp_val;
+	char	*expanded_val;
+
+	res = NULL;
+	res = ft_join_free(res, ft_substr(str, *j, *i - *j));
+	*j = *i + 1;
+	while (str[*j] && (ft_isalnum(str[*j]) || str[*j] == '_'))
+		*j += 1;
+	tmp_val = ft_substr(str, *i + 1, *j - *i - 1);
+	expanded_val = get_value(tmp_val, env);
+	free(tmp_val);
+	res = ft_join_free(res, ft_strdup(expanded_val));
+	return (res);
+}
 
 char	*ft_expand(char *str, t_env *env)
 {
 	int		i;
 	int		j;
 	char	*res;
-	char	*tmp_val;
-	char	*expanded_val;
 
 	i = 0;
 	j = 0;
 	res = NULL;
-	tmp_val = NULL;
-	while (str[i] && str[i] != '$')
+	while (str && str[i] && str[i] != '$')
 		i++;
-	if (str[i] && str[i] == '$')
+	if (str && str[i] && str[i] == '$' && str[i + 1] && \
+	ft_isalpha(str[i + 1]))
 	{
-		res = ft_join_free(res, ft_substr(str, j, i - j));
-		j = i + 1;
-		while (str[j] && (ft_isalnum(str[j]) || str[j] == '_'))
-			j++;
-		tmp_val = ft_substr(str, i + 1, j - i - 1);
-		expanded_val = get_value(tmp_val, env);
-		free(tmp_val);
-		res = ft_join_free(res, expanded_val);
+		res = ft__expand(str, env, &i, &j);
 		i = j;
 	}
-	if (str[j])
+	if (str && str[j])
 		res = ft_join_free(res, ft_substr(str, j, ft_strlen(str) - j));
 	free(str);
-	return (res);
-}
-
-char	*ft_rm__exp(char *str, t_env *env, char *res, int i)
-{
-	res = ft_rmsq(str);
-	i = 0;
-	if (res)
-	{
-		while (res && res[i] != '\0')
-		{
-			if (res[i] == '$')
-				res = ft_expand(res, env);
-			i++;
-		}
-	}
-	return (res);
-}
-
-char	*ft_rm_exp(char *str, t_env *env)
-{
-	int		i;
-	int		t;
-	char	*res;
-
-	res = NULL;
-	t = 0;
-	i = -1;
-	while (str[++i])
-	{
-		if (str[i] == '\'')
-			t = 1;
-		if (str[i] == '\"')
-			t = 2;
-		if (t)
-			break ;
-	}
-	if (t == 1)
-	{
-		res = ft_rmsq(str);
-	}
-	else
-		res = ft_rm__exp(str, env, res, i);
-	free(str);
-	return (res);
-}
-
-int	ft_isquote(char *str)
-{
-	if (str)
-	{
-		while (str)
-		{
-			if ((*str) == '\'' || (*str) == '\"')
-				return (1);
-		}
-	}
-	return (0);
-}
-
-char	**ft_format(char *str)
-{
-	char	**spl;
-
-	spl = ft_split(str, ' ');
-	if (str)
-		free(str);
 	str = NULL;
-	return (spl);
+	return (res);
 }
 
-void	ft_strrep(char *str, char a, char b)
+static void	ft___main_exp(t_token *lst, t_env *env, int i)
 {
-	int	i;
+	if (lst->str && lst->str[0] && \
+	lst->str && lst->str[0] != '\'' && ft_strchr(lst->str, '$'))
+		lst->str = ft_expand(lst->str, env);
+	if (lst->str && (lst->str[0] == '\'' || lst->str[0] == '\"'))
+		ft_strrep(lst->str, ' ', ' ' * -1);
+	if (lst->str && lst->str[0] != '\"' && \
+	lst->str[0] != '\'' && ft_strchr(lst->str, '*') && !i)
+		lst->str = ft_main_wc(lst->str, env);
+}
 
-	i = -1;
-	while (str[++i])
+void	ft__main_exp(t_token *lst, t_env *env, int i)
+{
+	int		a;
+	char	*t;
+
+	t = NULL;
+	a = 0;
+	ft___main_exp(lst, env, i);
+	if (lst->str && lst->str[0] != '\'')
+		lst->str = ft_rm_exp(lst->str, env);
+	else if (lst->str && lst->str[0] == '\"')
 	{
-		if (str[i] == a)
-			str[i] = b;
+		lst->str = ft_strtrim(lst->str, "\"");
+		a = 1;
+	}
+	else if (lst->str && lst->str[0] == '\'' && !a)
+	{
+		t = lst->str;
+		lst->str = ft_strtrim(lst->str, "\'");
+		free(t);
 	}
 }
 
 // expand a string command just before execve
-char	**ft_main_exp(char *str, t_env *env)
+char	**ft_main_exp(char *str, t_env *env, int i)
 {
 	t_token	*lst;
 	t_token	*tmp;
@@ -133,30 +98,15 @@ char	**ft_main_exp(char *str, t_env *env)
 	char	**res;
 	int		a;
 
-	a = 0;
 	res = NULL;
 	s_tmp = NULL;
 	lst = NULL;
 	lst = ft_strtok(str);
 	ft_mergeword_num(&lst);
-	// ft_merge_sp(&lst);
 	tmp = lst;
 	while (lst)
 	{
-		if (lst->str[0] == '\'' || lst->str[0] == '\"')
-			ft_strrep(lst->str, ' ', ' ' * -1);
-		if (lst->str[0] != '\"' && lst->str[0] != '\'' && ft_strchr(lst->str, \
-			'*'))
-			lst->str = ft_main_wc(lst->str, env);
-		if (lst->str[0] != '\'') // && lst->str && ft_strchr(lst->str, '*')
-			lst->str = ft_rm_exp(lst->str, env);
-		else if (lst->str[0] == '\"')
-		{
-			lst->str = ft_strtrim(lst->str, "\"");
-			a = 1;
-		}
-		else if (lst->str[0] == '\'' && !a)
-			lst->str = ft_strtrim(lst->str, "\'");
+		ft__main_exp(lst, env, i);
 		lst = lst->prev;
 	}
 	s_tmp = ft_toktostr(tmp);
@@ -165,5 +115,6 @@ char	**ft_main_exp(char *str, t_env *env)
 	while (res && res[++a])
 		ft_strrep(res[a], ' ' * -1, ' ');
 	ft_free_token(&tmp);
+	free(s_tmp);
 	return (res);
 }
