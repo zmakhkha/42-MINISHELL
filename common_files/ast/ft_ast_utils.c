@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 15:24:04 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 15:55:29 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 18:40:17 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_lstlen(t_token *lst)
 	return (i);
 }
 
-void	ft_exe_tree(t_token *list, t_env *env_list)
+void	ft_exe_tree(t_token *list, t_env **env_list)
 {
 	g_glob.g_status = ft_execution(list, env_list);
 }

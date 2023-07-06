@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:14:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/05 18:06:08 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 18:52:56 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_free_env(t_env **env)
 	}
 }
 
-void	ft_run_it(char *str, t_env *env_list)
+void	ft_run_it(char *str, t_env **env_list)
 {
 	t_token	*t;
 
@@ -54,7 +54,7 @@ void	ft_run_it(char *str, t_env *env_list)
 	else if (t)
 		printf("Parsing Error !!\n");
 	if (!g_glob.g_status && t)
-		ft_main_ast(&t, &env_list);
+		ft_main_ast(&t, env_list);
 	else if (t)
 		printf("Lexing Error !!\n");
 	t = ft_getfirst(t);
@@ -105,7 +105,7 @@ void	ft_prompt(char **env)
 			break ;
 		}
 		ft_add_history(str);
-		ft_run_it(str, env_list);
+		ft_run_it(str, &env_list);
 		free(str);
 	}
 	ft_free_env(&env_list);

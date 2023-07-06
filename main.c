@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/05 18:03:13 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 16:12:05 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-t_global	g_glob = {.g_ctrl_c = 0, .g_ctrl_s = 0, .g_status = 0};
+t_global	g_glob = {.g_ctrl_c = 0, .g_ctrl_s = 0, .g_status = 0, .g_exp = 0};
 // void	l(void)
 // {
 // 	system("leaks minishell");

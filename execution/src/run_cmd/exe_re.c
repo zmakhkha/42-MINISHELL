@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exe_re.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 17:08:24 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/25 23:01:38 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/07/06 17:43:17 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	execute_re(t_token *list, t_env *env)
 {
 	int	status;
 
-	status = 0;
+	status =  g_glob.g_status;
 	if (!list)
 		return (EXIT_SUCCESS);
 	if (list->type == Empty)

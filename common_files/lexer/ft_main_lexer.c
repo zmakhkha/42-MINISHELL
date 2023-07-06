@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:06:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/03 20:51:40 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 18:57:27 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,4 @@ void	ft_main_lexer(t_token *lst)
 		ft_checkfiles(lst);
 		ft_lexit(lst);
 	}
-	else
-		printf("lexer error2 !!\n");
 }
