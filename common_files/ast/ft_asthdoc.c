@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_asthdoc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:05:01 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/05 20:41:30 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:10:07 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_get_path(char *del, int type, t_env **env_list)
 
 	if (pipe(p) == -1)
 		perror("minishell : ");
-	path = ft_calloc(1000000, sizeof(char ));
+	path = ft_calloc(1000000, sizeof(char));
 	a = fork();
 	signal(SIGINT, SIG_IGN);
 	rl_catch_signals = 1;
@@ -79,7 +79,6 @@ char	*ft_rmsq_(char *str)
 void	ft_hdoc_to_file(t_token **list, t_env **env_list)
 {
 	char	*tmp;
-	char	*t;
 
 	tmp = NULL;
 	if (list && (*list) && (*list)->type == HDOC)
@@ -89,7 +88,6 @@ void	ft_hdoc_to_file(t_token **list, t_env **env_list)
 		(*list)->str = NULL;
 		if (ft_strchr(tmp, '\'') || ft_strchr(tmp, '\"'))
 		{
-			t = tmp;
 			tmp = ft_rmsq_(tmp);
 			tmp = ft_rmsq_(tmp);
 			printf("------->(%s)\n", tmp);

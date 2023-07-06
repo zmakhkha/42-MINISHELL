@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/06 18:46:17 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 20:15:49 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 // #define free(c) _free(c, __FILE__, __LINE__)
 
 # define H_PATH "/tmp/.minishell_history"
-# define H_DOCP "/Users/zmakhkha/Desktop/"
+# define H_DOCP "/tmp/"
 # define SUCC 0
 # define ERR 1
 
@@ -391,9 +391,9 @@ int					execute_re(t_token *list, t_env *env);
 void				child1_handler(t_pipex *pipex, t_token *list, t_env *env);
 void				child2_handler(t_pipex *pipex, t_token *list, t_env *env);
 /* src/utils/ */
-int					run_append(t_token *list, t_env *env);
-int					run_re_in(t_token *list, t_env *env);
-int					run_re_out(t_token *list, t_env *env);
+int					run_append(t_token *list);
+int					run_re_in(t_token *list);
+int					run_re_out(t_token *list);
 
 //-----------------------------------------------------//
 //--------------> The expanding stage <---------------//

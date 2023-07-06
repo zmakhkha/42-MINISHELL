@@ -1,0 +1,6 @@
+/*
+<baba>
+*/
+digraph {
+  node1 [label="bash"];
+}

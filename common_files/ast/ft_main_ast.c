@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main_ast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:58:17 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/06 18:41:32 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 22:01:27 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	ft_main_ast(t_token **list, t_env **env_list)
 	ft_pipe_nodes(list);
 	ft_leaf_nodes(list);
 	ft_subtotree(list);
+	// print_tree_dot(list);
+	// ft_printini(list);
 	ft_hdocontree(list, env_list);
 	ft_exe_tree(*list, env_list);
 }

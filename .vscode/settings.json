@@ -2,7 +2,7 @@
 	"files.associations": {
 		"stddef.h": "c",
 		"header.h": "c",
-		"__locale": "c",
-		"ios": "c"
+		"ios": "c",
+		"locale": "c"
 	}
 }

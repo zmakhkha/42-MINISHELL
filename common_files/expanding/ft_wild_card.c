@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wild_card.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:40:37 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/05 20:16:57 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:10:20 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,9 @@ char	*ft_strnstr1(const char *haystack, const char *needle, size_t len)
 char	*ft_tostr(t_str *src)
 {
 	char	*res;
-	char	*res_;
 	char	*tmp;
 
 	res = NULL;
-	res_ = NULL;
 	tmp = NULL;
 	if (!src || src->str == NULL)
 		return (NULL);

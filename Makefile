@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/07/06 13:48:54 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/07/06 18:33:19 by ayel-fil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ RESET = \033[0m
 NAME = minishell
 LIBS = libs/libs.a
 LIBS_DIR = libs
-CFLAGS = -g -Wall -Werror -Wextra -g
-# LDFLAGS = -lreadline -g # -fsanitize=address
+CFLAGS = -g -Wall -Werror -Wextra -g -fsanitize=address
+# LDFLAGS = -lreadline -g  -fsanitize=address
 HEADERS = header.h
 
 LDFLAGS = -L/goinfre/zmakhkha/homebrew/opt/readline/lib -g -fsanitize=address

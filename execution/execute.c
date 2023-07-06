@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/07/06 18:45:22 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 22:20:22 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,23 +81,45 @@ char	**ft_split_command(char *str)
 	return (res);
 }
 
+int	execute_simple(t_token *list,int status)
+{
+	int	fd_in;
+	int	fd_out;
+	
+	fd_in = dup(STDIN_FILENO);
+	fd_out = dup(STDOUT_FILENO);
+	if (list->type == RE_OUT)
+		status = run_re_out(list);
+	else if (list->type == APPEND)
+		status = run_append(list);
+	ft_protect(dup2(fd_in, STDIN_FILENO), "dup2", "dup2 failed");
+	ft_protect(dup2(fd_out, STDOUT_FILENO), "dup2", "dup2 failed");
+	return(status);
+}
+
 int	ft_execution(t_token *list, t_env **env)
 {
 	char	**splited;
 	int		status;
 
-	status = g_glob.g_status;
+	status = 0;
+
 	splited = NULL;
 	if (!list)
 		return (EXIT_FAILURE);
 	if (list->type == PIPE || list->type == AND || list->type == OR
 		|| list->type == Empty)
 		status = execute_logical_op(list, *env);
+	if (list->type == APPEND || list->type == RE_OUT)
+		status = execute_simple(list,status);
 	if (list->type == WORD)
 	{
 		splited = ft_main_exp(list->str, *env, 0);
 		if (!splited)
-			return (EXIT_FAILURE);
+		{
+			ft_perror("\"\"", CNF);
+			return (127);
+		}
 		if (is_builtin(splited))
 			status = execute_builtin(splited, list, env);
 		else
