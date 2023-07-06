@@ -1,6 +1,8 @@
 {
 	"files.associations": {
 		"stddef.h": "c",
-		"header.h": "c"
+		"header.h": "c",
+		"ios": "c",
+		"locale": "c"
 	}
 }

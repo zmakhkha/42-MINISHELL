@@ -1,0 +1,23 @@
+total 792
+-rw-r--r--   1 ayel-fil  candidate     159 Jul  6 20:27 1
+-rw-r--r--   1 ayel-fil  candidate    4607 Jul  6 18:33 Makefile
+drwxr-xr-x   9 ayel-fil  candidate     306 Jul  6 18:47 common_files
+drwxr-xr-x   4 ayel-fil  candidate     136 Jul  6 17:20 execution
+-rw-r--r--   1 ayel-fil  candidate   15364 Jul  6 20:15 header.h
+-rw-r--r--   1 ayel-fil  candidate    1286 Jun 25 13:31 index.py
+-rw-r--r--   1 ayel-fil  candidate    1027 Jul  6 15:21 leaks
+-rw-r--r--   1 ayel-fil  candidate   20746 Jul  6 15:21 leaks.txt
+drwxr-xr-x  14 ayel-fil  candidate     476 Jul  6 20:20 libs
+-rw-r--r--   1 ayel-fil  candidate       0 Jul  6 20:13 ll
+-rw-r--r--   1 ayel-fil  candidate    1376 Jul  6 17:20 main.c
+-rwxr-xr-x   1 ayel-fil  candidate  311272 Jul  6 20:20 minishell
+drwxr-xr-x   3 ayel-fil  candidate     102 Jun 25 13:30 minishell.dSYM
+-rw-r--r--   1 ayel-fil  candidate    4558 Jul  6 15:21 note
+drwxr-xr-x   5 ayel-fil  candidate     170 Jul  6 20:20 objs
+-rw-r--r--   1 ayel-fil  candidate       0 Jul  6 19:59 opp
+-rw-r--r--   1 ayel-fil  candidate      36 Jul  6 20:19 out
+-rwxr-xr-x   1 ayel-fil  candidate     173 Jul  6 15:21 test.sh
+-rw-r--r--   1 ayel-fil  candidate    1230 Jul  6 20:22 tests
+-rw-r--r--   1 ayel-fil  candidate     854 Jul  6 20:21 todo
+-rw-r--r--   1 ayel-fil  candidate      49 Jul  6 20:28 treegraph.dot
+-rw-r--r--   1 ayel-fil  candidate       0 Jul  6 20:28 wcc

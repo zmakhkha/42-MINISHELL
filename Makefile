@@ -6,7 +6,7 @@
 #    By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/07/06 14:33:41 by ayel-fil         ###   ########.fr        #
+#    Updated: 2023/07/06 18:33:19 by ayel-fil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,11 @@ NAME = minishell
 LIBS = libs/libs.a
 LIBS_DIR = libs
 CFLAGS = -g -Wall -Werror -Wextra -g -fsanitize=address
- LDFLAGS = -lreadline -g  -fsanitize=address
+# LDFLAGS = -lreadline -g  -fsanitize=address
 HEADERS = header.h
 
-# LDFLAGS = -L/goinfre/zmakhkha/homebrew/opt/readline/lib -g -fsanitize=address
-# CPPFLAGS = -I/goinfre/zmakhkha/homebrew/opt/readline/include
+LDFLAGS = -L/goinfre/ayel-fil/.brew/opt/readline/lib -g -fsanitize=address
+CPPFLAGS = -I/goinfre/ayel-fil/.brew/opt/readline/include
 
 
 #parsing part:

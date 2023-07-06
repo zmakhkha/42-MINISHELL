@@ -19,3 +19,8 @@
 + echo "$HOME" : passes
 + echo '"$HOME"' : passes
 + echo "'$HOME'" : passes
++ minishell $ > "out" << dsds cat
+> fdg
+> dfhdf
+> dsds
+minishell $ | should not create a file witou

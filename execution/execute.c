@@ -6,7 +6,7 @@
 /*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/07/06 14:45:00 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/07/06 21:29:48 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	ft_execution(t_token *list, t_env *env)
 	char	**splited;
 	int		status;
 
-	status = EXIT_SUCCESS;
+	status = 0;
 	splited = NULL;
 	if (!list)
 		return (EXIT_FAILURE);
@@ -98,7 +98,7 @@ int	ft_execution(t_token *list, t_env *env)
 		splited = ft_main_exp(list->str, env, 0);
 		if (!splited)
 		{
-			ft_perror("""",CNF);
+			ft_perror("\"\"", CNF);
 			return (127);
 		}
 		else if (splited[0] && !ft_strcmp(splited[0], "export"))
