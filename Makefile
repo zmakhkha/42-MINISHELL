@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:52:21 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/07/01 20:44:34 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/07/05 20:33:46 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RESET = \033[0m
 NAME = minishell
 LIBS = libs/libs.a
 LIBS_DIR = libs
-CFLAGS = -g -Wall -Werror -Wextra -g # -Wunused-function -Winfinite-recursion 
+CFLAGS = -g -Wall -Werror -Wextra -g
 # LDFLAGS = -lreadline -g # -fsanitize=address
 HEADERS = header.h
 
@@ -35,10 +35,11 @@ SRC_MN =	main.c \
 			common_files/ast/ft_leafs_utils.c \
 			common_files/ast/ft_main_ast.c \
 			common_files/ast/ft_ops_utils.c \
-			common_files/lexer/ft_errors.c \
+			common_files/lexer/ft_hdoc_utils.c \
 			common_files/lexer/ft_check_hdoc.c \
 			common_files/lexer/ft_check_redirections.c \
 			common_files/lexer/ft_fdutils.c \
+			common_files/lexer/ft_lexer_utils.c \
 			common_files/lexer/ft_main_lexer.c \
 			common_files/lexer/ft_mergeutils.c \
 			common_files/lexer/ft_operators.c \
@@ -47,6 +48,7 @@ SRC_MN =	main.c \
 			common_files/lexer/ft_redirections.c \
 			common_files/lexer/ft_syntax_errors.c \
 			common_files/lexer/ft_syntax_errors2.c \
+			common_files/signals/ft_signals.c \
 			common_files/tokenizer/ft_valid_utils.c \
 			common_files/tokenizer/ft_string_utils.c \
 			common_files/tokenizer/ft_string_utils4.c \
@@ -61,6 +63,7 @@ SRC_MN =	main.c \
 			common_files/utils/ft_strings.c \
 			common_files/expanding/ft_dir_lst.c \
 			common_files/expanding/ft_exp_utils.c \
+			common_files/expanding/ft_exp_utils1.c \
 			common_files/expanding/ft_left_right.c \
 			common_files/expanding/ft_lst_utils.c \
 			common_files/expanding/ft_main_exp.c \
@@ -70,7 +73,9 @@ SRC_MN =	main.c \
 			execution/src/utils/ft_onesplit.c \
 			execution/src/builtin/export/ft_main_export.c \
 			execution/src/builtin/export/utils.c \
-			execution/src/builtin/export/utils2.c
+			execution/src/builtin/export/utils2.c \
+			execution/src/builtin/export/utils3.c  \
+			execution/src/builtin/export/utils4.c
 
 #execution part:
 

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:05:09 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/06/26 00:39:35 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/05 14:46:17 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	change_env(char *key, char *value, t_env **env_list)
 		{
 			if (ft_strcmp(tmp->value, value))
 			{
+				free(tmp->value);
 				tmp->value = NULL;
 				tmp->value = ft_strdup(value);
 			}

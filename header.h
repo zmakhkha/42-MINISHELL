@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 21:15:32 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/05 18:05:34 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,15 @@ int					if_valid_re_floower(t_token *node);
 int					ft_check_redirections(t_token *lst);
 int					ft__opperators(t_token *lst);
 
+// common_files/lexer/ft_lexer_utils.c
+void				ft_lasterr(t_token *lst);
+void				ft_singleerr(t_token *lst);
+void				ft_checksyntax(t_token *lst);
+void				ft_checkfiles(t_token *lst);
+void				ft_mergeword_num(t_token **list);
+
 // common_files/lexer/ft_main_lexer.c
+void				ft_mergewords(t_token **list);
 void				ft_merge_sp(t_token **list);
 
 void				ft_main_lexer(t_token *lst);
@@ -251,6 +259,8 @@ void				ft_readfd(t_token **list);
 
 // common_files/lexer/ft_errors.c
 void				ft_three(t_token *lst);
+char				*ft_twotoone(char **table);
+int					ft_valid_hd_delim(t_token *lst);
 
 // -------------------------------------- //
 // ----------> The AST stage <---------- //
@@ -291,6 +301,7 @@ void				ft_hdocontree(t_token **list, t_env **env_list);
 char				*ft_rmsq2(char *str, int len, char c);
 char				*ft_rmsq1(char *str);
 char				*ft_exp1(char *str);
+char				*ft_rmsq_(char *str);
 
 //--------------> The SUB TO TREE stage <---------------//
 
@@ -409,7 +420,16 @@ t_str				*ft_dirfiles(t_env *env_list);
 char				*ft_join_freel(char *s1, char *s2, int len);
 char				*ft__rmsq(char *str, int i, int len, int c);
 char				*ft_rmsq(char *str);
+char				*ft__rmsq2(char *str, int len, char c);
 void				ft_merge_all(t_token **list);
+
+// common_files/expanding/ft_exp_utils1.c
+
+int					ft_isquote(char *str);
+char				**ft_format(char *str);
+void				ft_strrep(char *str, char a, char b);
+t_str				*ft_strmkcpy(t_str *src);
+t_str				*ft_matching(t_str *src, char *str);
 
 // expanding/ft_left_right.c
 
@@ -431,7 +451,7 @@ char				*ft_expand(char *str, t_env *env);
 char				*ft_rm__exp(char *str, t_env *env, char *res, int i);
 char				*ft_rm_exp(char *str, t_env *env);
 int					ft_isquote(char *str);
-char				**ft_main_exp(char *str, t_env *env);
+char				**ft_main_exp(char *str, t_env *env, int i);
 
 // expanding/ft_mult.c
 
@@ -447,32 +467,31 @@ char				*ft_main_wc(char *str, t_env *env_list);
 
 //--------------> The Signals stage <---------------//
 
+void				ft_child_handler(int signal);
 void				ft_main_handler(int signal);
-
-void				ft_signal_main(void);
 void				ft_signal_child(void);
+void				ft_signal_main(void);
 void				ft_signal_ignore(void);
-
-void				ft_mergewords(t_token **list);
-
-void				ft_mergeword_num(t_token **list);
 char				**ft_onesplit(char const *s, char c);
-
-char				*ft_rm__exp(char *str, t_env *env, char *res, int i);
 
 # define QUOTE -10
 
-t_token				*ft_strtok1(char *str);
-void				ft_export_it(t_token *list, t_env **env);
+// t_token				*ft_strtok1(char *str);
 
 //--------------> The export built-in stage <---------------//
 // execution/src/builtin/export/utils.c
 
+# define APP -10
+# define REP -20
+
+// void				ft_format_print(t_env *env);
+// void				ft_makekey_value(t_token *lst, t_env **env);
+void				ft_export_it(t_token *list, t_env **env);
 void				ft_merge_num_word(t_token **list);
 void				ft_format_print(t_env *env);
-void				ft_makekey_value(t_token *lst, t_env **env);
-void				ft_handle_one(char *s, t_env **env);
-void				ft_export_it(t_token *list, t_env **env);
+void				ft_with_quotes(t_token *lst, t_env *env);
+void				ft_no_qoute(t_token *lst, t_env *env);
+void				ft_app_exp(t_token *lst, t_env *env);
 
 // execution/src/builtin/export/utils2.c
 int					ft_containequl(char *str);
@@ -481,9 +500,18 @@ char				**ft_devide(char *r, char del);
 int					ft_isvalidkey(char *str);
 void				ft_addnode(t_token *lst, t_env **env);
 
-void	ft_print_exp(t_env *env);
+// execution/src/builtin/export/utils3.c
+void				ft_rep_exp(t_token *lst, t_env *env);
+int					ft_detect(t_token *lst, t_env *env);
+void				ft_parse_export(t_token *lst, t_env *env);
+void				ft_print_exp(t_env *env);
+void				ft_handle_one(char *s, t_env **env);
+
+// execution/src/builtin/export/utils4.c
+char				**ft_env_to_char(t_env *env);
+void				ft_sort_char(char **table);
+void				ft_sort_print_env(t_env *env);
+t_env				*ft_make_envcpy(t_env *env);
+int					ft_envlen(t_env *env);
 
 #endif
-
-//
-// ls | gsdgs|gsgs|dgsgs| ls -l

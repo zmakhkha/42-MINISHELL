@@ -6,53 +6,99 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:05:01 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/02 11:57:19 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/05 20:41:30 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
+
+static void	ft_handle_pipe(char *path, int *p)
+{
+	close(p[0]);
+	write(p[1], path, ft_strlen(path));
+	close(p[1]);
+	exit(0);
+}
+
 // if type == 0 we should expand else no need to
 char	*ft_get_path(char *del, int type, t_env **env_list)
 {
 	int		a;
 	char	*tmp;
 	char	*path;
+	int		p[2];
 
-	a = -5;
-	path = NULL;
+	if (pipe(p) == -1)
+		perror("minishell : ");
+	path = ft_calloc(1000000, sizeof(char ));
 	a = fork();
-	if (a == 0)
+	signal(SIGINT, SIG_IGN);
+	rl_catch_signals = 1;
+	if (!a)
 	{
+		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_IGN);
 		tmp = ft_heredoc(del);
-		path = ft_strdup(ft_hdoc_tofd(tmp, type, *env_list));
-		return (path);
+		path = ft_hdoc_tofd(tmp, type, *env_list);
+		ft_handle_pipe(path, p);
 	}
-	else
-	{
-		// waitpid(a, NULL, 0);
-		ft_signal_ignore();
-		waitpid(a, &g_glob.g_status, 0);
-		ft_signal_main();
-	}
+	rl_catch_signals = 0;
+	waitpid(a, NULL, 0);
+	ft_signal_main();
+	close(p[1]);
+	read(p[0], path, 10000);
 	return (path);
+}
+
+char	*ft_rmsq_(char *str)
+{
+	int		i;
+	int		len;
+	char	c;
+	char	*t;
+
+	i = 0;
+	len = 0;
+	while (str[i] && (str[i] != '\"') && (str[i] != '\''))
+		i++;
+	if (str[i])
+		c = str[i];
+	else
+		return (str);
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] != c)
+			len++;
+	}
+	t = ft__rmsq2(str, len, c);
+	free(str);
+	return (t);
 }
 
 void	ft_hdoc_to_file(t_token **list, t_env **env_list)
 {
 	char	*tmp;
+	char	*t;
 
 	tmp = NULL;
 	if (list && (*list) && (*list)->type == HDOC)
 	{
 		tmp = ft_strtrim((*list)->str, " \t");
+		free((*list)->str);
+		(*list)->str = NULL;
 		if (ft_strchr(tmp, '\'') || ft_strchr(tmp, '\"'))
 		{
-			tmp = ft_strtrim(tmp, "\'\"");
+			t = tmp;
+			tmp = ft_rmsq_(tmp);
+			tmp = ft_rmsq_(tmp);
+			printf("------->(%s)\n", tmp);
 			(*list)->str = ft_get_path(tmp, 0, env_list);
 		}
 		else
 			(*list)->str = ft_get_path(tmp, 1, env_list);
 		(*list)->type = RE_IN;
+		free(tmp);
 	}
 }
 

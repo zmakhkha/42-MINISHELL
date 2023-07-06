@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:40:37 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/01 15:33:36 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/05 20:16:57 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,51 +36,6 @@ char	*ft_strnstr1(const char *haystack, const char *needle, size_t len)
 	return (NULL);
 }
 
-t_str	*ft_strmkcpy(t_str *src)
-{
-	t_str	*res;
-
-	res = NULL;
-	while (src)
-	{
-		ft_str_addback(&res, (ft_add_str(ft_strdup(src->str))));
-		src = src->prev;
-	}
-	return (res);
-}
-
-t_str	*ft_matching(t_str *src, char *str)
-{
-	int		a;
-	t_str	*res;
-	char	**prts;
-
-	prts = ft_split(str, '*');
-	a = -1;
-	res = NULL;
-	a = ft_count(str);
-	if (str && src)
-	{
-		if (a == ALONE)
-			res = ft_strmkcpy(src);
-		else if (a == LEFT)
-			res = ft_wc_left(src, prts[0]);
-		else if (a == RIGHT)
-			res = ft_wc_right(src, prts[0]);
-		else if (a == MIDL)
-			res = ft_middle(src, str);
-		else if (a == MULT)
-			res = ft_multi(src, str);
-	}
-	ft_free_2dstr(prts);
-	return (res);
-}
-
-// # define LEFT 0
-// # define RIGHT 1
-// # define MULT 2
-// # define ALONE 2
-
 char	*ft_tostr(t_str *src)
 {
 	char	*res;
@@ -90,29 +45,35 @@ char	*ft_tostr(t_str *src)
 	res = NULL;
 	res_ = NULL;
 	tmp = NULL;
+	if (!src || src->str == NULL)
+		return (NULL);
 	while (src)
 	{
-		tmp = ft_join_free(src->str, " ");
-		res = res_;
-		res_ = ft_join_free(res_, tmp);
-		if (res)
-			free(res);
-		res = NULL;
-		if (tmp)
-			free(tmp);
-		tmp = NULL;
+		tmp = ft_join_free(ft_strdup(src->str), ft_strdup(" "));
+		res = ft_join_free(res, tmp);
 		src = src->prev;
 	}
-	return (res_);
+	return (res);
 }
 
-void	ft_free_obj(t_str **s)
+void	ft__main_wc(t_str *r, t_str *b, char *str, int mode)
 {
-	if (s)
+	if (!mode)
 	{
-		ft_free_obj(&(*s)->prev);
-		free(*s);
-		s = NULL;
+		ft_free_str(&r);
+		r = NULL;
+		ft_free_str(&b);
+		b = NULL;
+	}
+	if (mode)
+	{
+		if (r)
+			ft_free_str(&r);
+		if (b)
+			ft_free_str(&b);
+		b = NULL;
+		free(str);
+		str = NULL;
 	}
 }
 
@@ -134,25 +95,41 @@ char	*ft_main_wc(char *str, t_env *env_list)
 	}
 	if (!res)
 	{
-		ft_free_str(&r);
-		r = NULL;
-		ft_free_str(&b);
-		b = NULL;
-		free(str);
-		str = NULL;
+		ft__main_wc(r, b, str, 0);
 		return (str);
 	}
 	else
+		ft__main_wc(r, b, str, 1);
+	if (!ft_strcmp(res, ""))
+		res = NULL;
+	return (res);
+}
+
+char	*ft_rm_exp(char *str, t_env *env)
+{
+	int		i;
+	int		t;
+	char	*res;
+
+	res = NULL;
+	t = 0;
+	i = -1;
+	while (str[++i])
 	{
-		if (r)
-			ft_free_str(&r);
-		r = NULL;
-		if (b)
-			ft_free_str(&b);
-		b = NULL;
-		if (str)
-			free(str);
-		str = NULL;
+		if (str[i] == '\'')
+			t = 1;
+		if (str[i] == '\"')
+			t = 2;
+		if (t)
+			break ;
 	}
+	if (t == 1)
+	{
+		res = ft_rmsq(str);
+	}
+	else
+		res = ft_rm__exp(str, env, res, i);
+	if (str)
+		free(str);
 	return (res);
 }

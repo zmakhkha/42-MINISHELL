@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 11:44:09 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/23 11:41:17 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/05 20:46:48 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,21 @@ void	ft_free_str(t_str **t)
 		(*t) = NULL;
 	}
 	t = NULL;
+}
+
+// this should not be here but for norm purposes
+char	*ft_rm__exp(char *str, t_env *env, char *res, int i)
+{
+	res = ft_rmsq(str);
+	i = 0;
+	if (res)
+	{
+		while (res && res[i] != '\0')
+		{
+			if (res[i] == '$')
+				res = ft_expand(res, env);
+			i++;
+		}
+	}
+	return (res);
 }
