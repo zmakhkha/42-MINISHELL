@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 05:25:46 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/07/03 11:11:48 by ayel-fil         ###   ########.fr       */
+/*   Updated: 2023/07/06 16:04:30 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ void	unset_env(const char *key, t_env **env_list)
 			*env_list = current->next;
 			if (current->key)
 				free(current->key);
-			current->key = ft_strdup("");
+			current->key = NULL;
 			if (current->value)
 				free(current->value);
-			current->value = ft_strdup("");
-			// current = NULL;
+			current->value = NULL;
+			current = NULL;
 		}
 		else
 			unset_env(key, &(*env_list)->next);

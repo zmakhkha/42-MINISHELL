@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 16:09:48 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/05 19:12:46 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 16:44:36 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_rep_exp(t_token *lst, t_env *env)
 	if (!ft_isvalidkey(key))
 	{
 		printf("minishell export `%s' : not a valid identifier\n", key);
+		g_glob.g_exp = 1;
 		ft_free_2dstr(tmp);
 		return ;
 	}
@@ -32,6 +33,7 @@ void	ft_rep_exp(t_token *lst, t_env *env)
 	else if (!ft_strcmp(tmp[1], ""))
 		ft_with_quotes(lst, env);
 	ft_free_2dstr(tmp);
+		g_glob.g_exp = 0;
 }
 
 void	ft_detect_one(t_token *lst, t_env *env, int i, int mode)
@@ -56,23 +58,23 @@ int	ft_detect(t_token *lst, t_env *env)
 		while (lst->str && lst->str[++i])
 		{
 			if (lst->str[i] == '+' && (i == (int)ft_strlen(lst->str) - 1))
-				return (printf \
-				("minishell: export: `%s': not a valid identifier\n", lst->str));
+				return \
+	(printf("minishell: export: `%s': not a valid identifier\n", lst->str), 1);
 			else if (lst->str[i] == '+' && lst->str[i + 1] \
 			&& lst->str[i + 1] == '=')
 				return (ft_detect_one(lst, env, i, 0), 0);
 			else if (lst->str[i] == '=')
 			{
 				if (i == 0)
-					printf("minishell: export: `%s': not a valid identifier\n", \
-						lst->str);
+					return (printf \
+		("minishell: export: `%s': not a valid identifier\n", lst->str), 1);
 				else
 					ft_rep_exp(lst, env);
-				return (0);
+				return (g_glob.g_exp);
 			}
 		}
 	}
-	return (0);
+	return (g_glob.g_exp);
 }
 
 // will get a trimmed key=value || key+=vaue
@@ -83,7 +85,7 @@ void	ft_parse_export(t_token *lst, t_env *env)
 	{
 		while (lst)
 		{
-			ft_detect(lst, env);
+			g_glob.g_exp = ft_detect(lst, env);
 			lst = lst->prev;
 		}
 	}

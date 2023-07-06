@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 01:55:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/07/05 15:27:09 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 16:42:15 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,8 @@ int	ft_execution(t_token *list, t_env *env)
 		splited = ft_main_exp(list->str, env, 0);
 		if (!splited)
 			return (EXIT_FAILURE);
-		else if (splited[0] && !ft_strcmp(splited[0], "export"))
-			ft_export_it(list, &env);
 		if (is_builtin(splited))
-			status = execute_builtin(splited, env);
+			status = execute_builtin(splited, list, env);
 		else
 			status = execute_command(splited, env);
 		ft_free_2dstr(splited);
