@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:13:57 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/06 16:32:54 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 18:46:17 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,7 +277,7 @@ void				ft_pipe_nodes(t_token **list);
 // common_files/ast/ft_ast_utils.c
 
 int					ft_lstlen(t_token *lst);
-void				ft_exe_tree(t_token *list, t_env *env_list);
+void				ft_exe_tree(t_token *list, t_env **env_list);
 t_token				*ft_pop(t_token **list);
 void				ft_free_tree(t_token **list);
 
@@ -351,7 +351,7 @@ int					ft_protect(int fd, char *str, char *msg);
 void				ft_perror(char *err_msg1, char *err_msg2);
 int					ft_exit_pipe(t_pipex *px);
 /* src/execution */
-int					ft_execution(t_token *t, t_env *env_list);
+int					ft_execution(t_token *t, t_env **env_list);
 
 /* src/env/ */
 t_env				*set_env(char **env);
@@ -362,7 +362,7 @@ void				add_env_node(char *key, char *value, t_env **env_list);
 /* src/builtin */
 bool				is_builtin(char **commad);
 int					execute_env(t_env *env_list);
-int					execute_builtin(char **list, t_token *lst, t_env *env);
+int					execute_builtin(char **list, t_token *lst, t_env **env);
 int					execute_cd(char **cmd, t_env **env_list);
 int					execute_echo(char **cmd);
 int					execute_export(char **list, t_env **env_list);

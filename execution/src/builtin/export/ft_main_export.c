@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 11:26:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/06 16:54:47 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 17:47:07 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,7 @@ void	ft_chng_val(t_env *copy)
 
 void	ft_sort_print_env(t_env *env)
 {
-	t_env	*copy;
-	t_env	*pos;
-	int		i;
-
-	pos = env;
-	while (pos)
-	{
-		copy = pos;
-		i = 0;
-		while (copy && copy->next)
-		{
-			if (copy->key && ft_strcmp(copy->key, copy->next->key) > 0)
-			{
-				ft_chng_val(copy);
-				i = 1;
-			}
-			if (i)
-				break ;
-			copy = copy->next;
-		}
-		if (i == 1)
-			continue ;
-		pos = pos->next;
-	}
-	ft_print_exp(env);
+	declare_env(&env);
 }
 
 int	ft_export_it(t_token *list, t_env **env)

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 16:09:48 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/06 16:44:36 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 17:46:35 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,22 +93,20 @@ void	ft_parse_export(t_token *lst, t_env *env)
 		ft_no_qoute(lst, env);
 }
 
-void	ft_print_exp(t_env *env)
+t_env	*ft_copyenv(t_env *env)
 {
+	t_env	*res;
+
+	res = NULL;
 	while (env)
 	{
-		printf("declare -x ");
-		printf("%s", env->key);
-		if (!ft_strcmp(env->value, "No"))
-		{
-			printf("\n");
-			env = env->next;
-			continue ;
-		}
-		else if (!ft_strcmp(env->value, "with") || !ft_strcmp(env->value, ""))
-			printf("=\"\"\n");
-		else
-			printf("=\"%s\"\n", env->value);
+		add_env_node(env->key, env->value, &res);
 		env = env->next;
 	}
+	return (res);
 }
+
+// void	ft_print_exp(t_env *env)
+// {
+// 	declare_env(&env);
+// }

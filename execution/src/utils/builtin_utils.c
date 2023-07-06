@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:20:43 by ayel-fil          #+#    #+#             */
-/*   Updated: 2023/07/06 16:45:25 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 18:56:13 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,22 @@ bool	is_builtin(char **command)
 	return (false);
 }
 
-int	execute_builtin(char **list, t_token *lst, t_env *env)
+int	execute_builtin(char **list, t_token *lst, t_env **env)
 {
 	if (list)
 	{
 		if (!ft_strcmp(list[0], "export"))
-			return (ft_export_it(lst,&env));
+			return (ft_export_it(lst, env));
 		else if (!ft_strcmpl(list[0], "echo"))
 			return (execute_echo(list));
 		else if (!ft_strcmp(list[0], "cd"))
-			return (execute_cd(list, &env));
+			return (execute_cd(list, env));
 		else if (!ft_strcmpl(list[0], "pwd"))
-			return (execute_pwd(&env));
+			return (execute_pwd(env));
 		else if (!ft_strcmp(list[0], "unset"))
-			return (execute_unset(list, &env));
+			return (execute_unset(list, env));
 		else if (!ft_strcmpl(list[0], "env"))
-			return (execute_env(env));
+			return (execute_env(*env));
 		else if (!ft_strcmp(list[0], "exit"))
 			execute_exit(list);
 	}
