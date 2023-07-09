@@ -6,35 +6,27 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:06:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/28 19:22:34 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/06 18:57:27 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
 
-void	ft_checksyntax(t_token *lst)
+// Removed the ft_swap_red2(&lst);
+void	ft_lexit(t_token *lst)
 {
-	ft_succop(lst);
-	ft_syntaxerr(lst);
-	ft_operrors(lst);
-}
-
-void	ft_checkfiles(t_token *lst)
-{
-	while (lst && lst->prev)
+	if (!g_glob.g_status)
 	{
-		if ((ft_isredirection(lst) || lst->type == HDOC) && \
-		(lst->prev->type != FILE_))
-		{
-			g_status = ERR;
-			break ;
-		}
-		lst = lst->prev;
+		ft_op_space_(&lst);
+		ft_fd_file(&lst);
+		ft_sub_red(lst);
+		ft_swap_red(&lst);
+		ft_merge_dig(&lst);
+		ft_checksyntax(lst);
 	}
 }
 
-// to solve the case ls1>haha
-void	ft_mergeword_num(t_token **list)
+void	ft_mergewords(t_token **list)
 {
 	t_token	*lst;
 	char	*s_tmp;
@@ -42,10 +34,9 @@ void	ft_mergeword_num(t_token **list)
 	lst = *list;
 	while (lst && lst->prev)
 	{
-		if (lst && (lst->type == WORD) && (lst->prev->type == DIGITE))
+		if (lst && (lst->type == WORD) && (lst->prev->type == WORD))
 		{
-			s_tmp = ft_join_free(lst->str, lst->prev->str);
-			free(lst->str);
+			s_tmp = ft_join_free(lst->str, ft_strdup(lst->prev->str));
 			lst->str = s_tmp;
 			ft_remove_tok(list, lst->prev);
 			continue ;
@@ -54,38 +45,15 @@ void	ft_mergeword_num(t_token **list)
 	}
 }
 
-//  Add this to print to tokens after the lexing
-		// else
-		// {
-		// 	ft_print_token_str(lst);
-		// 	ft_print_token(lst);
-		// }		
-void	ft_lexit(t_token *lst)
-{
-	if (!g_status)
-	{
-		ft_op_space(&lst);
-		ft_fd_file(&lst);
-		ft_sub_red(lst);
-		ft_swap_red(&lst);
-		ft_swap_red2(&lst);
-		ft_merge_dig(&lst);
-		ft_checksyntax(lst);
-		if (g_status)
-		{
-			printf("lexer error3 !!\n");
-			return ;
-		}		
-	}
-}
-
 // to add ft_swap_red3(&lst) after ft_swap_red2(&lst); if we need to
 void	ft_main_lexer(t_token *lst)
 {
+	ft_lasterr(lst);
+	ft_mergewords(&lst);
 	ft_mergeword_num(&lst);
 	ft_detect_op(&lst);
 	ft_check_op(lst);
-	if (!g_status && lst)
+	if (!g_glob.g_status && lst)
 	{
 		ft_readfd(&lst);
 		ft_word_dig(&lst);
@@ -93,9 +61,5 @@ void	ft_main_lexer(t_token *lst)
 		ft_detect_files(&lst);
 		ft_checkfiles(lst);
 		ft_lexit(lst);
-		if (g_status)
-			printf("lexer error2 !!\n");
 	}
-	else
-		printf("lexer error1 !! \n");
 }

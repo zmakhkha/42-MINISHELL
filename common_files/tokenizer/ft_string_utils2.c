@@ -6,18 +6,18 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:58:29 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/06/19 12:49:23 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 15:55:29 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header.h"
 
-void	ft_space(char *str, t_token **lst, int *a, int *b)
+void	ft_space_(char *str, t_token **lst, int *a, int *b)
 {
 	char	*s;
 
 	s = NULL;
-	while (str[(*b)] && ft_is_whitespace(str[*b]))
+	while (str[(*b)] && ft_is_whitespace_(str[*b]))
 		*b += 1;
 	s = ft_substr(str, *a, *b - *a);
 	ft_token_addback(lst, ft_add_token(s, SPACE));
@@ -41,7 +41,7 @@ int	ft_operators2(char *str, t_token **lst, int *a, int *b)
 
 	ret = SUCC;
 	s = NULL;
-	if (ft_voperator(str + *b, '>') || ft_voperator(str + *b, '<'))
+	if (ft_voperator(str + *b, '>') == SUCC)
 	{
 		if (ft_validouble(str + *a, '>'))
 		{	
@@ -57,7 +57,7 @@ int	ft_operators2(char *str, t_token **lst, int *a, int *b)
 		}
 	}
 	else
-		g_status = ERR;
+		g_glob.g_status = ERR;
 	return (ret);
 }
 
@@ -69,7 +69,7 @@ int	ft_operators3(char *str, t_token **lst, int *a, int *b)
 	ret = SUCC;
 	(void)a;
 	s = NULL;
-	if (ERR == ft_voperator(str + *b, '<'))
+	if (ft_voperator(str + *b, '<') == SUCC)
 	{
 		if (ft_validouble(str + *b, '<'))
 		{	
@@ -85,6 +85,6 @@ int	ft_operators3(char *str, t_token **lst, int *a, int *b)
 		}
 	}
 	else
-		g_status = ERR;
+		g_glob.g_status = ERR;
 	return (ret);
 }

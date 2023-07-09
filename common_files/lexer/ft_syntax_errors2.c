@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 19:11:24 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/28 19:12:07 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/01 15:55:29 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_succop(t_token *lst)
 		if ((lst->type == PIPE && ft_isbigoperators(lst->prev)) || \
 			(ft_isbigoperators(lst) && lst->prev->type == PIPE))
 		{
-			g_status = ERR;
+			g_glob.g_status = ERR;
 		}
 		lst = lst->prev;
 	}
@@ -30,10 +30,10 @@ void	ft_succop(t_token *lst)
 // we should check that before swapping
 void	ft_sub_red(t_token *lst)
 {
-	if (ft_isredirection(lst) && lst->prev->type == SUBSHELL)
+	if (lst && ft_isredirection(lst) && lst->prev && \
+	lst->prev->type == SUBSHELL)
 	{
-		g_status = ERR;
-		puts("3\n");
+		g_glob.g_status = ERR;
 	}
 }
 
@@ -45,30 +45,25 @@ void	ft_syntaxerr(t_token *lst)
 		if (lst->type == SUBSHELL && (lst->prev->type == SUBSHELL \
 		|| lst->prev->type == WORD))
 		{
-			g_status = ERR;
-			puts("1\n");
+			g_glob.g_status = ERR;
 		}
 		if ((lst->type == SUBSHELL || lst->type == WORD) && \
 		lst->prev->type == SUBSHELL)
 		{
-			g_status = ERR;
-			puts("2\n");
+			g_glob.g_status = ERR;
 		}
 		if (lst->type == HDOC && (lst->prev->type == SUBSHELL))
 		{
-			g_status = ERR;
-			puts("3\n");
+			g_glob.g_status = ERR;
 		}
 	}
 }
 
 // if we remove the next pointers it double free
-void	ft_op_space(t_token **list)
+void	ft_op_space_(t_token **list)
 {
 	t_token	*lst;
-	t_token	*tmp;
 
-	tmp = NULL;
 	lst = *list;
 	while (lst && lst->prev)
 	{

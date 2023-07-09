@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 15:08:34 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/05/27 18:19:48 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/06/23 11:11:32 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ void	ft_free_token(t_token **t)
 	if (t && *t)
 	{
 		ft_free_token(&(*t)->prev);
-		free((*t)->str);
+		if ((*t)->str)
+			free((*t)->str);
 		(*t)->str = NULL;
 		free(*t);
 		(*t) = NULL;
